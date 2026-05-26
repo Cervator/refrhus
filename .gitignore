@@ -1,2 +1,7 @@
-# Packed artifact — rebuilt from sh3d-internals/ via the realm's pack.sh.
+# Generated artifact — repacked from sh3d-internals/ via the realm's pack.sh.
 *.sh3d
+
+# Serialized Home blob — redundant with Home.xml (SH3D reads it in priority) and
+# re-churned on every save. normalize.sh strips it on unpack; ignore it too so a stray
+# manual unzip can't re-track it.
+sh3d-internals/Home

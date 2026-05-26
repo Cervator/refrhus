@@ -1,42 +1,30 @@
-# Hoard
+# Refrhus — Sweet Home 3D house data
 
-A personal hoard — a private git repo that lives inside the yggdrasil
-workspace and syncs across machines or collaborators via its own git
-history.
+The house model, tracked **exploded** so git can diff the design — "PR your house" (branch a change, diff it, show a contractor, merge when built).
 
 ## Layout
 
-Add whatever structure makes sense for this hoard's purpose. Common
-patterns:
+- `sh3d-internals/` — the exploded `.sh3d` (which is a ZIP): `Home.xml` (walls / rooms / levels / furniture — the diffable truth), the serialized `Home`, `ContentDigests`, and numbered content entries (background images, 3D models). **Source of truth — commit changes here.**
+- `Refrhus.sh3d` — the packed file you open in Sweet Home 3D. **Generated, gitignored.**
 
-```text
-<hoard-name>/
-  README.md           # this file
-  .ws-cadence.yaml    # commit staleness threshold
-  notes/              # private notes, never published
-  publish/            # content destined for external publishing
-```
+## Pack / unpack
 
-## Cadence
-
-Edit `.ws-cadence.yaml` to control how often the workspace nudges you
-to commit. Default is 2 days.
-
-## Pushing to your remote
-
-`ws hoard init` creates the hoard as a local git repo without a remote.
-To push:
+Scripts live in `realms/realm-siliconsaga/sweethome3d/`; run from the workspace root:
 
 ```bash
-# GitHub
-gh repo create <yourname>/<hoard-name> \
-  --private --source=hoards/<hoard-name> \
-  --remote=<yourname> --push
+# rebuild the openable .sh3d from the exploded tree, then open it in SH3D
+bash realms/realm-siliconsaga/sweethome3d/pack.sh   hoards/refrhus/sh3d-internals hoards/refrhus/Refrhus.sh3d
 
-# GitLab / other — set up manually:
-cd hoards/<hoard-name>
-git remote add <yourname> <your-url>
-git push -u <yourname> main
+# after editing in SH3D, re-explode and commit the diff
+bash realms/realm-siliconsaga/sweethome3d/unpack.sh hoards/refrhus/Refrhus.sh3d   hoards/refrhus/sh3d-internals
 ```
 
-The workspace convention is to name remotes after the owner, not `origin`.
+`Home.xml` is the meaningful diff target; the serialized `Home` is binary (tracked for now — may be dropped once we confirm SH3D reads `Home.xml` in priority, the `.sh3x` route).
+
+## Pushing to a remote
+
+Private repo recommended (it's your real house layout). `ws hoard init` left it remote-less:
+
+```bash
+gh repo create Cervator/refrhus --private --source=hoards/refrhus --remote=Cervator --push
+```

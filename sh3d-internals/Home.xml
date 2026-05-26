@@ -1,23 +1,5 @@
 <?xml version='1.0'?>
 <home version='7400' name='Refrhus.sh3d' camera='topCamera' selectedLevel='level-e7a412ad-f7b9-4030-9cdf-2864bfb96bef' wallHeight='243.84' furnitureSortedProperty='NAME'>
-  <property name='com.eteks.sweethome3d.SweetHome3D.CatalogPaneDividerLocation' value='492'/>
-  <property name='com.eteks.sweethome3d.SweetHome3D.ColumnWidths' value='155,44,42,41,40'/>
-  <property name='com.eteks.sweethome3d.SweetHome3D.FrameHeight' value='39'/>
-  <property name='com.eteks.sweethome3d.SweetHome3D.FrameMaximized' value='true'/>
-  <property name='com.eteks.sweethome3d.SweetHome3D.FrameWidth' value='136'/>
-  <property name='com.eteks.sweethome3d.SweetHome3D.FrameX' value='-452'/>
-  <property name='com.eteks.sweethome3d.SweetHome3D.FrameY' value='122'/>
-  <property name='com.eteks.sweethome3d.SweetHome3D.MainPaneDividerLocation' value='344'/>
-  <property name='com.eteks.sweethome3d.SweetHome3D.PlanPaneDividerLocation' value='829'/>
-  <property name='com.eteks.sweethome3d.SweetHome3D.PlanScale' value='1.4150416'/>
-  <property name='com.eteks.sweethome3d.SweetHome3D.PlanViewportX' value='4082'/>
-  <property name='com.eteks.sweethome3d.SweetHome3D.PlanViewportY' value='2350'/>
-  <property name='com.eteks.sweethome3d.SweetHome3D.ScreenHeight' value='1170'/>
-  <property name='com.eteks.sweethome3d.SweetHome3D.ScreenWidth' value='1920'/>
-  <property name='com.eteks.sweethome3d.swing.PhotoPanel.PhotoDialogHeight' value='544'/>
-  <property name='com.eteks.sweethome3d.swing.PhotoPanel.PhotoDialogWidth' value='436'/>
-  <property name='com.eteks.sweethome3d.swing.PhotoPanel.PhotoDialogX' value='330'/>
-  <property name='com.eteks.sweethome3d.swing.PhotoPanel.PhotoDialogY' value='155'/>
   <furnitureVisibleProperty name='NAME'/>
   <furnitureVisibleProperty name='WIDTH'/>
   <furnitureVisibleProperty name='DEPTH'/>

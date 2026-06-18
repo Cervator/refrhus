@@ -1,5 +1,5 @@
 <?xml version='1.0'?>
-<home version='7400' name='Refrhus.sh3d' camera='topCamera' selectedLevel='level-e7a412ad-f7b9-4030-9cdf-2864bfb96bef' wallHeight='243.84' furnitureSortedProperty='NAME'>
+<home version='7400' name='Refrhus.sh3d' camera='topCamera' wallHeight='243.84' furnitureSortedProperty='NAME'>
   <furnitureVisibleProperty name='NAME'/>
   <furnitureVisibleProperty name='WIDTH'/>
   <furnitureVisibleProperty name='DEPTH'/>
@@ -10,24 +10,24 @@
   <level id='level-e7a412ad-f7b9-4030-9cdf-2864bfb96bef' name='Basement' elevation='0.0' floorThickness='12.0' height='213.36' elevationIndex='0'>
     <backgroundImage image='0' scaleDistance='647.7' scaleDistanceXStart='409.3023' scaleDistanceYStart='430.23254' scaleDistanceXEnd='823.2558' scaleDistanceYEnd='427.90698' xOrigin='-10.16' yOrigin='788.7' visible='false'/>
   </level>
-  <level id='level-4cb8bdfc-8cc0-4388-a0d7-709344c56043' name='Garage' elevation='121.92' floorThickness='12.0' height='304.8' elevationIndex='0' visible='false'>
+  <level id='level-4cb8bdfc-8cc0-4388-a0d7-709344c56043' name='Garage' elevation='121.92' floorThickness='12.0' height='304.8' elevationIndex='0'>
     <backgroundImage image='1' scaleDistance='624.83997' scaleDistanceXStart='104.25' scaleDistanceYStart='513.0' scaleDistanceXEnd='261.0' scaleDistanceYEnd='513.0' xOrigin='320.03998' yOrigin='1013.45996'/>
   </level>
-  <level id='level-743b7892-2812-4e57-84f7-2d36feb729c5' name='Crawlspace' elevation='121.92' floorThickness='12.0' height='121.92' elevationIndex='1' visible='false'/>
-  <level id='level-949bf08b-4546-44a0-98b7-4dba690eb180' name='basement-main-transition' elevation='213.36' floorThickness='2.54' height='30.48' elevationIndex='0' visible='false'/>
-  <level id='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' name='Main' elevation='255.84' floorThickness='12.0' height='243.84' elevationIndex='0' visible='false'>
+  <level id='level-743b7892-2812-4e57-84f7-2d36feb729c5' name='Crawlspace' elevation='121.92' floorThickness='12.0' height='121.92' elevationIndex='1'/>
+  <level id='level-949bf08b-4546-44a0-98b7-4dba690eb180' name='basement-main-transition' elevation='213.36' floorThickness='2.54' height='30.48' elevationIndex='0'/>
+  <level id='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' name='Main' elevation='255.84' floorThickness='12.0' height='243.84' elevationIndex='0'>
     <backgroundImage image='0' scaleDistance='647.7' scaleDistanceXStart='409.3023' scaleDistanceYStart='430.23254' scaleDistanceXEnd='823.2558' scaleDistanceYEnd='427.90698' xOrigin='574.3' yOrigin='308.4'/>
   </level>
   <level id='level-0d922f9f-cfe5-4888-b129-0fc80367e6ed' name='2nd floor' elevation='511.68' floorThickness='12.0' height='243.84' elevationIndex='0' visible='false'>
     <backgroundImage image='0' scaleDistance='647.7' scaleDistanceXStart='409.3023' scaleDistanceYStart='430.23254' scaleDistanceXEnd='823.2558' scaleDistanceYEnd='427.90698' xOrigin='1902.2' yOrigin='121.4' visible='false'/>
   </level>
-  <doorOrWindow id='doorOrWindow-e92e5945-6300-4e1d-8a90-e0e017dbebc8' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' catalogId='eTeks#doorFrame' name='Door frame' creator='eTeks' model='3' icon='2' x='1342.4691' y='822.78735' angle='3.1415927' width='66.674995' depth='9.678149' height='208.28' modelSize='1281' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.004801229' wallThickness='0.7874016' wallDistance='0.10498688' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true' boundToWall='false'/>
+  <doorOrWindow id='doorOrWindow-e92e5945-6300-4e1d-8a90-e0e017dbebc8' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' catalogId='eTeks#doorFrame' name='Door frame' creator='eTeks' model='3' icon='2' x='1342.4691' y='822.8211' width='66.674995' depth='16.12975' height='208.28' modelSize='1281' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.004801229' wallThickness='0.7874016' wallDistance='0.10498688' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true'/>
   <doorOrWindow id='doorOrWindow-30f2b448-5d1c-48b7-a45f-2d86ced91a58' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' catalogId='eTeks#doorFrame' name='Door frame' creator='eTeks' model='3' icon='2' x='1386.2975' y='867.65454' angle='1.5707964' width='72.39' depth='9.678149' height='208.28' modelSize='1281' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.004801229' wallThickness='0.7874016' wallDistance='0.10498688' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true'/>
-  <doorOrWindow id='doorOrWindow-057b0f21-ecf8-4a70-8d01-e2f32f31156e' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' catalogId='eTeks#doorFrame' name='Door frame' creator='eTeks' model='3' icon='2' x='1345.3657' y='914.2526' width='69.85' depth='9.678149' height='208.28' modelSize='1281' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.004801229' wallThickness='0.7874016' wallDistance='0.10498688' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true'/>
-  <doorOrWindow id='doorOrWindow-06e0e59d-0f1f-4e52-b910-478e21fbe5ee' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' catalogId='eTeks#doubleHungWindow80x122' name='Double-hung window' creator='eTeks' model='5' icon='4' x='1684.5056' y='1130.9227' elevation='60.96' angle='1.5707964' width='81.28' depth='8.1297655' height='127.9525' modelSize='3457' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.007815369' wallThickness='0.9373828' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true'/>
-  <doorOrWindow id='doorOrWindow-66e9aae2-8bf8-4265-8175-7d8b15423908' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' catalogId='eTeks#doubleHungWindow80x122' name='Double-hung window' creator='eTeks' model='5' icon='4' x='1684.5056' y='1445.6832' elevation='63.5' angle='1.5707964' width='81.28' depth='8.1297655' height='127.9525' modelSize='3457' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.007815369' wallThickness='0.9373828' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true'/>
-  <doorOrWindow id='doorOrWindow-03abb428-c042-43b9-9261-a4909d767125' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' catalogId='eTeks#doubleHungWindow80x122' name='Double-hung window' creator='eTeks' model='5' icon='4' x='1413.6957' y='1538.8256' elevation='69.85' angle='3.1415927' width='81.28' depth='8.1297655' height='127.9525' modelSize='3457' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.007815369' wallThickness='0.9373828' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true'/>
-  <doorOrWindow id='doorOrWindow-5d68ad28-fb11-4fcb-b9eb-08959ca2369c' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' catalogId='eTeks#doubleHungWindow80x122' name='Double-hung window' creator='eTeks' model='5' icon='4' x='1510.9572' y='1538.8256' elevation='69.85' angle='3.1415927' width='81.28' depth='8.1297655' height='127.9525' modelSize='3457' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.007815369' wallThickness='0.9373828' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true'/>
+  <doorOrWindow id='doorOrWindow-057b0f21-ecf8-4a70-8d01-e2f32f31156e' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' catalogId='eTeks#doorFrame' name='Door frame' creator='eTeks' model='3' icon='2' x='1345.3657' y='914.2611' width='69.85' depth='16.12975' height='208.28' modelSize='1281' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.004801229' wallThickness='0.7874016' wallDistance='0.10498688' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true'/>
+  <doorOrWindow id='doorOrWindow-06e0e59d-0f1f-4e52-b910-478e21fbe5ee' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' catalogId='eTeks#doubleHungWindow80x122' name='Double-hung window' creator='eTeks' model='5' icon='4' x='1721.4282' y='1147.4908' elevation='60.96' angle='1.5708014' width='81.28' depth='18.968454' height='127.9525' modelSize='3457' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.007815369' wallThickness='0.9373828' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true'/>
+  <doorOrWindow id='doorOrWindow-66e9aae2-8bf8-4265-8175-7d8b15423908' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' catalogId='eTeks#doubleHungWindow80x122' name='Double-hung window' creator='eTeks' model='5' icon='4' x='1721.4266' y='1442.0636' elevation='63.5' angle='1.5708014' width='81.28' depth='18.968454' height='127.9525' modelSize='3457' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.007815369' wallThickness='0.9373828' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true'/>
+  <doorOrWindow id='doorOrWindow-03abb428-c042-43b9-9261-a4909d767125' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' catalogId='eTeks#doubleHungWindow80x122' name='Double-hung window' creator='eTeks' model='5' icon='4' x='1424.3737' y='1540.8885' elevation='69.85' angle='0.0067851073' width='81.28' depth='18.968454' height='127.9525' modelSize='3457' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.007815369' wallThickness='0.9373828' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true'/>
+  <doorOrWindow id='doorOrWindow-5d68ad28-fb11-4fcb-b9eb-08959ca2369c' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' catalogId='eTeks#doubleHungWindow80x122' name='Double-hung window' creator='eTeks' model='5' icon='4' x='1528.2881' y='1541.5936' elevation='69.85' angle='0.0067851073' width='81.28' depth='18.968454' height='127.9525' modelSize='3457' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.007815369' wallThickness='0.9373828' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true'/>
   <doorOrWindow id='doorOrWindow-57a3cd68-38e1-4a76-8f3e-e4fbb238ffef' level='level-e7a412ad-f7b9-4030-9cdf-2864bfb96bef' catalogId='eTeks#sliderWindow126x200' name='Slider window' creator='eTeks' model='7' icon='6' x='1587.7054' y='615.75037' elevation='154.94' angle='1.7484555E-7' width='91.44' depth='10.16' height='60.96' modelSize='7950' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.0047649' wallThickness='0.9373828' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true' boundToWall='false'/>
   <doorOrWindow id='doorOrWindow-fd30304f-e3cb-4fcc-9d96-199c8d234a81' level='level-e7a412ad-f7b9-4030-9cdf-2864bfb96bef' catalogId='eTeks#doubleWindow126x123' name='Double small window' creator='eTeks' model='9' icon='8' x='845.8211' y='616.0585' elevation='158.75' angle='3.1415927' width='66.04' depth='10.452342' height='55.879997' modelSize='13503' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.007463522' wallThickness='0.7290755' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true'>
     <sash xAxis='0.015142337' yAxis='0.7290755' width='0.48076922' startAngle='0.0' endAngle='-1.5707964'/>
@@ -36,14 +36,14 @@
   <doorOrWindow id='doorOrWindow-59f27b41-20cc-4fec-8235-cd1787039047' level='level-e7a412ad-f7b9-4030-9cdf-2864bfb96bef' catalogId='eTeks#sliderWindow126x200' name='Slider window' creator='eTeks' model='7' icon='6' x='698.3595' y='1162.8003' elevation='156.20999' angle='1.5707964' width='127.0' depth='10.16' height='50.8' modelSize='7950' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.0047649' wallThickness='0.9373828' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true' boundToWall='false'/>
   <doorOrWindow id='doorOrWindow-f32a0567-fa6a-477a-b579-f32ef314c4ce' level='level-4cb8bdfc-8cc0-4388-a0d7-709344c56043' catalogId='eTeks#garageDoor' name='Garage door' creator='eTeks' model='11' icon='10' x='389.62512' y='1013.30005' angle='9.386558E-8' width='480.06' widthInPlan='480.0599' depth='7.62075' height='205.105' modelSize='10637' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.004878049' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true'/>
   <pieceOfFurniture id='pieceOfFurniture-a02b8ca3-7d32-4c0c-8e0e-9ac657c15238' level='level-4cb8bdfc-8cc0-4388-a0d7-709344c56043' catalogId='eTeks#staircase' name='Staircase' creator='eTeks' model='13' icon='12' x='601.45' y='445.61002' angle='1.5707964' width='152.4' depth='213.36' height='152.4' modelSize='13868' license='GNU GPL / CC-BY' movable='false' staircaseCutOutShape='M0,0 v1 h1 v-1 z' dropOnTopElevation='-0.0027628124'/>
-  <doorOrWindow id='doorOrWindow-1be0d081-7e88-4a0d-b5f0-b55fa63bcd95' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' catalogId='eTeks#doorFrame' name='Door frame' creator='eTeks' model='3' icon='2' x='711.95264' y='447.28833' angle='4.712389' width='91.44' depth='9.678149' height='208.28' modelSize='1281' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.004801229' wallThickness='0.7874016' wallDistance='0.10498688' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true'/>
-  <doorOrWindow id='doorOrWindow-f1d3943b-6ba9-497c-bad4-23eedf0fbadf' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' catalogId='eTeks#fixedWindow85x123' name='Fixed window' creator='eTeks' model='15' icon='14' x='1230.1' y='484.40933' elevation='86.994995' angle='1.5707964' width='91.44' depth='7.62075' height='133.985' modelSize='2198' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.007463522' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true'/>
-  <doorOrWindow id='doorOrWindow-daffc53e-1d27-4b37-90e6-1f3034442ac4' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' catalogId='eTeks#doorFrame' name='Door frame' creator='eTeks' model='3' icon='2' x='956.5411' y='822.81256' angle='1.1779211E-7' width='152.4' widthInPlan='152.39998' depth='9.678149' height='208.28' modelSize='1281' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.004801229' wallThickness='0.7874016' wallDistance='0.10498688' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true'/>
-  <doorOrWindow id='doorOrWindow-29464e89-b461-49d5-9736-6b6ad674d091' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' catalogId='eTeks#doorFrame' name='Door frame' creator='eTeks' model='3' icon='2' x='1191.1204' y='1308.02' angle='3.1511161' width='91.44' depth='9.678149' height='208.28' modelSize='1281' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.004801229' wallThickness='0.7874016' wallDistance='0.10498688' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true'/>
-  <doorOrWindow id='doorOrWindow-f9848df3-8f8f-4579-a04e-2045debe6959' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' catalogId='eTeks#fixedWindow85x123' name='Fixed window' creator='eTeks' model='15' icon='14' x='888.7441' y='1308.02' elevation='86.994995' angle='0.00952344' width='184.15' widthInPlan='184.14998' depth='7.62075' height='133.985' modelSize='2198' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.007463522' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true'/>
-  <doorOrWindow id='doorOrWindow-e824fc6d-7532-42d9-9e89-2d167e229a9a' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' catalogId='eTeks#doubleHungWindow80x122' name='Double-hung window' creator='eTeks' model='5' icon='4' x='1684.5056' y='778.6173' elevation='66.04' angle='1.5707964' width='81.28' depth='8.1297655' height='127.9525' modelSize='3457' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.007815369' wallThickness='0.9373828' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true'/>
-  <doorOrWindow id='doorOrWindow-a69d343f-fbda-4667-9346-12cf51a95812' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' catalogId='eTeks#doubleHungWindow80x122' name='Double-hung window' creator='eTeks' model='5' icon='4' x='1527.1556' y='609.24536' elevation='68.58' angle='3.1415927' width='81.28' depth='8.1297655' height='127.9525' modelSize='3457' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.007815369' wallThickness='0.9373828' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true'/>
-  <doorOrWindow id='doorOrWindow-7602fa41-9899-47d9-b4c7-ac3543d3aeb6' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' name='frenchDoors' model='17/frenchDoors.obj' icon='16' x='901.7424' y='365.6' width='152.4' depth='7.62075' height='203.2' modelSize='67250' movable='false' wallCutOutOnBothSides='true'/>
+  <doorOrWindow id='doorOrWindow-1be0d081-7e88-4a0d-b5f0-b55fa63bcd95' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' catalogId='eTeks#doorFrame' name='Door frame' creator='eTeks' model='3' icon='2' x='711.92316' y='448.44067' angle='1.5707964' width='91.44' depth='12.903949' height='208.28' modelSize='1281' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.004801229' wallThickness='0.7874016' wallDistance='0.10498688' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true'/>
+  <doorOrWindow id='doorOrWindow-f1d3943b-6ba9-497c-bad4-23eedf0fbadf' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' catalogId='eTeks#fixedWindow85x123' name='Fixed window' creator='eTeks' model='15' icon='14' x='1230.1' y='484.67267' elevation='86.994995' angle='4.712389' width='91.44' depth='12.700749' height='133.985' modelSize='2198' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.007463522' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true'/>
+  <doorOrWindow id='doorOrWindow-daffc53e-1d27-4b37-90e6-1f3034442ac4' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' catalogId='eTeks#doorFrame' name='Door frame' creator='eTeks' model='3' icon='2' x='955.6524' y='822.82104' angle='1.1779211E-7' width='152.4' depth='16.12975' height='208.28' modelSize='1281' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.004801229' wallThickness='0.7874016' wallDistance='0.10498688' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true'/>
+  <doorOrWindow id='doorOrWindow-29464e89-b461-49d5-9736-6b6ad674d091' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' catalogId='eTeks#doorFrame' name='Door frame' creator='eTeks' model='3' icon='2' x='1191.1204' y='1308.0326' width='91.44' depth='9.678149' height='208.28' modelSize='1281' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.004801229' wallThickness='0.7874016' wallDistance='0.10498688' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true'/>
+  <doorOrWindow id='doorOrWindow-f9848df3-8f8f-4579-a04e-2045debe6959' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' catalogId='eTeks#fixedWindow85x123' name='Fixed window' creator='eTeks' model='15' icon='14' x='889.1391' y='1308.02' elevation='86.994995' width='184.15' widthInPlan='184.14998' depth='7.62075' height='133.985' modelSize='2198' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.007463522' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true'/>
+  <doorOrWindow id='doorOrWindow-e824fc6d-7532-42d9-9e89-2d167e229a9a' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' catalogId='eTeks#doubleHungWindow80x122' name='Double-hung window' creator='eTeks' model='5' icon='4' x='1721.4261' y='779.5062' elevation='66.04' angle='1.5707964' width='81.28' depth='18.968454' height='127.9525' modelSize='3457' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.007815369' wallThickness='0.9373828' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true'/>
+  <doorOrWindow id='doorOrWindow-a69d343f-fbda-4667-9346-12cf51a95812' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' catalogId='eTeks#doubleHungWindow80x122' name='Double-hung window' creator='eTeks' model='5' icon='4' x='1527.1556' y='609.92413' elevation='68.58' angle='1.7484555E-7' width='81.28' depth='13.549109' height='127.9525' modelSize='3457' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.007815369' wallThickness='0.9373828' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true'/>
+  <doorOrWindow id='doorOrWindow-7602fa41-9899-47d9-b4c7-ac3543d3aeb6' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' name='frenchDoors' model='17/frenchDoors.obj' icon='16' x='901.7422' y='365.69644' angle='3.1421008' width='152.4' depth='17.78075' height='203.2' modelSize='67250' movable='false' wallCutOutOnBothSides='true'/>
   <pieceOfFurniture id='pieceOfFurniture-0db2482d-e5f5-4db8-9fa8-dfdd4a160b1f' level='level-949bf08b-4546-44a0-98b7-4dba690eb180' name='texturableBox' model='19/texturableBox.obj' icon='18' x='1705.4357' y='962.02435' width='5.08' depth='688.33997' height='20.32' color='FF8A6642' modelSize='1211'/>
   <doorOrWindow id='doorOrWindow-f237a387-848a-42d0-a1d3-e04eb79fcb3a' level='level-4cb8bdfc-8cc0-4388-a0d7-709344c56043' catalogId='eTeks#doorFrame' name='Door frame' creator='eTeks' model='3' icon='2' x='711.9274' y='430.55496' angle='1.5707964' width='71.119995' depth='9.678149' height='91.44' modelSize='1281' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.004801229' wallThickness='0.7874016' wallDistance='0.10498688' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true' boundToWall='false'/>
   <doorOrWindow id='doorOrWindow-9dc86939-a698-4e9c-b9b0-0f1b875bbd5c' level='level-0d922f9f-cfe5-4888-b129-0fc80367e6ed' catalogId='eTeks#doorFrame' name='Door frame' creator='eTeks' model='3' icon='2' x='1248.8287' y='872.48096' angle='1.5707964' width='91.44' depth='9.678149' height='208.28' modelSize='1281' license='GNU GPL / CC-BY' movable='false' dropOnTopElevation='-0.004801229' wallThickness='0.7874016' wallDistance='0.10498688' cutOutShape='M0,0 v1 h1 v-1 z' wallCutOutOnBothSides='true'/>
@@ -123,22 +123,22 @@
   <wall id='wall-d524693a-208e-4964-bf4b-1d285e2cfa4d' level='level-4cb8bdfc-8cc0-4388-a0d7-709344c56043' wallAtStart='wall-491671ac-14bd-483e-9546-d28189d9c04f' wallAtEnd='wall-50f42d0d-0d5c-42de-91f5-4b67387dc833' xStart='711.94' yStart='1013.30005' xEnd='61.700012' yEnd='1013.3' height='304.8' thickness='7.62' pattern='hatchUp'/>
   <wall id='wall-50f42d0d-0d5c-42de-91f5-4b67387dc833' level='level-4cb8bdfc-8cc0-4388-a0d7-709344c56043' wallAtStart='wall-d524693a-208e-4964-bf4b-1d285e2cfa4d' xStart='61.700012' yStart='1013.3' xEnd='61.699986' yEnd='365.6' height='304.8' thickness='7.62' pattern='hatchUp'/>
   <wall id='wall-8d1b077f-9c8f-4a17-8ee6-d5069684799b' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' wallAtStart='wall-5e35100a-cd8b-4174-baec-be2543ebd9c6' wallAtEnd='wall-ee233fd2-0d73-411b-ad23-ce8e9d063849' xStart='699.04' yStart='365.6' xEnd='699.04' yEnd='1280.0' height='243.84' thickness='17.78' pattern='hatchUp'/>
-  <wall id='wall-5e35100a-cd8b-4174-baec-be2543ebd9c6' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' wallAtStart='wall-8d1b077f-9c8f-4a17-8ee6-d5069684799b' wallAtEnd='wall-cb058160-5794-44d0-950c-cd9d65d80fb8' xStart='711.94' yStart='365.6' xEnd='1230.1' yEnd='365.6' height='243.84' thickness='17.78' pattern='hatchUp'/>
-  <wall id='wall-cb058160-5794-44d0-950c-cd9d65d80fb8' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' wallAtStart='wall-5e35100a-cd8b-4174-baec-be2543ebd9c6' wallAtEnd='wall-bbb132f7-e7c1-4829-a100-e3bea7d8cf26' xStart='1230.1' yStart='365.6' xEnd='1230.1' yEnd='822.8' height='243.84' thickness='12.7' pattern='hatchUp'/>
-  <wall id='wall-bbb132f7-e7c1-4829-a100-e3bea7d8cf26' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' wallAtStart='wall-cb058160-5794-44d0-950c-cd9d65d80fb8' xStart='1230.1' yStart='822.8' xEnd='711.94' yEnd='822.7999' height='243.84' thickness='12.7' pattern='hatchUp'/>
+  <wall id='wall-5e35100a-cd8b-4174-baec-be2543ebd9c6' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' wallAtStart='wall-8d1b077f-9c8f-4a17-8ee6-d5069684799b' wallAtEnd='wall-cb058160-5794-44d0-950c-cd9d65d80fb8' xStart='711.94' yStart='365.6' xEnd='1230.1' yEnd='365.8633' height='243.84' thickness='17.78' pattern='hatchUp'/>
+  <wall id='wall-cb058160-5794-44d0-950c-cd9d65d80fb8' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' wallAtStart='wall-5e35100a-cd8b-4174-baec-be2543ebd9c6' wallAtEnd='wall-bbb132f7-e7c1-4829-a100-e3bea7d8cf26' xStart='1230.1' yStart='365.8633' xEnd='1230.1' yEnd='823.0633' height='243.84' thickness='12.7' pattern='hatchUp'/>
+  <wall id='wall-bbb132f7-e7c1-4829-a100-e3bea7d8cf26' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' wallAtStart='wall-cb058160-5794-44d0-950c-cd9d65d80fb8' xStart='1230.1' yStart='823.0633' xEnd='711.94' yEnd='822.7999' height='243.84' thickness='12.7' pattern='hatchUp'/>
   <wall id='wall-ee233fd2-0d73-411b-ad23-ce8e9d063849' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' wallAtStart='wall-8d1b077f-9c8f-4a17-8ee6-d5069684799b' xStart='711.94' yStart='1308.02' xEnd='1245.34' yEnd='1308.02' height='243.84' thickness='7.62' pattern='hatchUp'/>
-  <wall id='wall-cf822e34-d354-40a6-b1c7-6eb56c7360b1' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' wallAtStart='wall-41720302-993e-406f-8710-97d41b81c7d7' wallAtEnd='wall-9a217fda-6744-4c54-a2e5-ba735f03055d' xStart='1245.34' yStart='914.24' xEnd='1684.76' yEnd='914.24' height='243.84' thickness='12.7' pattern='hatchUp'/>
-  <wall id='wall-9a217fda-6744-4c54-a2e5-ba735f03055d' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' wallAtStart='wall-cf822e34-d354-40a6-b1c7-6eb56c7360b1' wallAtEnd='wall-25b93281-2b24-4b8f-8c40-cd7e794fd756' xStart='1722.02' yStart='914.24' xEnd='1722.02' yEnd='1539.08' height='243.84' thickness='17.78' pattern='hatchUp'/>
-  <wall id='wall-25b93281-2b24-4b8f-8c40-cd7e794fd756' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' wallAtStart='wall-9a217fda-6744-4c54-a2e5-ba735f03055d' xStart='1684.76' yStart='1539.08' xEnd='1245.34' yEnd='1539.08' height='243.84' thickness='17.78' pattern='hatchUp'/>
-  <wall id='wall-c214a756-642a-479f-85c3-6f738643c3dc' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' wallAtEnd='wall-41720302-993e-406f-8710-97d41b81c7d7' xStart='1245.34' yStart='1539.08' xEnd='1245.34' yEnd='1280.0' height='243.84' thickness='12.7' pattern='hatchUp'/>
+  <wall id='wall-cf822e34-d354-40a6-b1c7-6eb56c7360b1' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' wallAtStart='wall-41720302-993e-406f-8710-97d41b81c7d7' wallAtEnd='wall-9a217fda-6744-4c54-a2e5-ba735f03055d' xStart='1245.34' yStart='914.24' xEnd='1722.0232' yEnd='914.24' height='243.84' thickness='12.7' pattern='hatchUp'/>
+  <wall id='wall-9a217fda-6744-4c54-a2e5-ba735f03055d' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' wallAtStart='wall-cf822e34-d354-40a6-b1c7-6eb56c7360b1' wallAtEnd='wall-25b93281-2b24-4b8f-8c40-cd7e794fd756' xStart='1722.0232' yStart='914.24' xEnd='1722.02' yEnd='1542.3143' height='243.84' thickness='17.78' pattern='hatchUp'/>
+  <wall id='wall-25b93281-2b24-4b8f-8c40-cd7e794fd756' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' wallAtStart='wall-9a217fda-6744-4c54-a2e5-ba735f03055d' xStart='1722.02' yStart='1542.3143' xEnd='1238.15' yEnd='1542.3143' height='243.84' thickness='17.78' pattern='hatchUp'/>
+  <wall id='wall-c214a756-642a-479f-85c3-6f738643c3dc' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' wallAtEnd='wall-41720302-993e-406f-8710-97d41b81c7d7' xStart='1245.34' yStart='1550.51' xEnd='1245.34' yEnd='1280.0' height='243.84' thickness='12.7' pattern='hatchUp'/>
   <wall id='wall-41720302-993e-406f-8710-97d41b81c7d7' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' wallAtStart='wall-c214a756-642a-479f-85c3-6f738643c3dc' wallAtEnd='wall-cf822e34-d354-40a6-b1c7-6eb56c7360b1' xStart='1245.34' yStart='1280.0' xEnd='1245.34' yEnd='914.24' height='243.84' thickness='12.7' pattern='hatchUp'/>
-  <wall id='wall-f322ab62-92ef-4445-8d9a-e22ca60a2c50' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' wallAtEnd='wall-05e14440-ccc7-4aee-a86c-2462c1cdccf3' xStart='1684.76' yStart='1072.0444' xEnd='1386.31' yEnd='1072.0444' height='243.84' thickness='12.7' pattern='hatchUp'/>
+  <wall id='wall-f322ab62-92ef-4445-8d9a-e22ca60a2c50' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' wallAtEnd='wall-05e14440-ccc7-4aee-a86c-2462c1cdccf3' xStart='1722.02' yStart='1072.0444' xEnd='1386.31' yEnd='1072.0444' height='243.84' thickness='12.7' pattern='hatchUp'/>
   <wall id='wall-05e14440-ccc7-4aee-a86c-2462c1cdccf3' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' wallAtStart='wall-f322ab62-92ef-4445-8d9a-e22ca60a2c50' xStart='1386.31' yStart='1072.0444' xEnd='1386.31' yEnd='914.24' height='243.84' thickness='12.7' pattern='hatchUp'/>
   <wall id='wall-933d9546-0e93-4941-be1e-158e9a91fd69' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' wallAtEnd='wall-329bf030-a9fc-49b5-99f6-36ff9c8b1276' xStart='1305.7' yStart='914.24' xEnd='1305.7' yEnd='1059.02' height='243.84' thickness='12.7' pattern='hatchUp'/>
   <wall id='wall-329bf030-a9fc-49b5-99f6-36ff9c8b1276' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' wallAtStart='wall-933d9546-0e93-4941-be1e-158e9a91fd69' xStart='1305.7' yStart='1059.02' xEnd='1245.34' yEnd='1059.02' height='243.84' thickness='12.7' pattern='hatchUp'/>
   <wall id='wall-d173df95-7084-4037-ba93-6ea642fccec7' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' xStart='1245.34' yStart='1005.3778' xEnd='1305.7' yEnd='1005.3778' height='243.84' thickness='12.7' pattern='hatchUp'/>
-  <wall id='wall-294c9309-dba9-43ed-b3b1-919a7cab1759' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' xStart='1381.2556' yStart='1005.3778' xEnd='1459.9956' yEnd='1005.3778' height='243.84' thickness='12.7' pattern='hatchUp'/>
-  <wall id='wall-12cb5a75-6eca-4896-9a80-20d6db6b4ba7' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' xStart='1459.9956' yStart='914.24' xEnd='1459.9956' yEnd='1005.3778' height='243.84' thickness='12.7' pattern='hatchUp'/>
+  <wall id='wall-294c9309-dba9-43ed-b3b1-919a7cab1759' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' xStart='1381.2556' yStart='1005.3778' xEnd='1465.7106' yEnd='1005.3778' height='243.84' thickness='12.7' pattern='hatchUp'/>
+  <wall id='wall-12cb5a75-6eca-4896-9a80-20d6db6b4ba7' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' xStart='1459.9956' yStart='914.24' xEnd='1459.9956' yEnd='1012.02997' height='243.84' thickness='12.7' pattern='hatchUp'/>
   <wall id='wall-119de978-4a10-4f7a-abcd-0876123a7804' level='level-e7a412ad-f7b9-4030-9cdf-2864bfb96bef' wallAtStart='wall-1842b448-a26e-4635-984b-15d4b9dfe5b3' wallAtEnd='wall-45664268-12da-403d-a5ef-fcada4db0180' xStart='699.0382' yStart='615.07166' xEnd='699.0382' yEnd='1308.0216' height='243.84' thickness='20.32' pattern='hatchUp'/>
   <wall id='wall-45664268-12da-403d-a5ef-fcada4db0180' level='level-e7a412ad-f7b9-4030-9cdf-2864bfb96bef' wallAtStart='wall-119de978-4a10-4f7a-abcd-0876123a7804' wallAtEnd='wall-7dcb735a-1512-4521-837d-12b99691da7d' xStart='699.0382' yStart='1308.0216' xEnd='1722.0232' yEnd='1308.0216' height='243.84' thickness='20.32' pattern='hatchUp'/>
   <wall id='wall-7dcb735a-1512-4521-837d-12b99691da7d' level='level-e7a412ad-f7b9-4030-9cdf-2864bfb96bef' wallAtStart='wall-45664268-12da-403d-a5ef-fcada4db0180' wallAtEnd='wall-1842b448-a26e-4635-984b-15d4b9dfe5b3' xStart='1722.0232' yStart='1308.0216' xEnd='1722.2217' yEnd='615.07166' height='243.84' thickness='20.32' pattern='hatchUp'/>
@@ -146,7 +146,7 @@
   <wall id='wall-c40f7d8e-c2e2-4b43-9f8b-fe8fce93dac6' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' wallAtEnd='wall-0fff433e-18bc-4502-81aa-64fbeb1547ab' xStart='1230.1' yStart='822.8' xEnd='1386.31' yEnd='822.8' height='243.84' thickness='12.7' pattern='hatchUp'/>
   <wall id='wall-0fff433e-18bc-4502-81aa-64fbeb1547ab' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' wallAtStart='wall-c40f7d8e-c2e2-4b43-9f8b-fe8fce93dac6' xStart='1386.31' yStart='822.8' xEnd='1386.31' yEnd='914.24' height='243.84' thickness='12.7' pattern='hatchUp'/>
   <wall id='wall-f703d7cf-e3b4-482e-8fe3-c9735ad953a4' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' wallAtEnd='wall-0279d925-0a02-4cd5-a5a0-ceffe138f933' xStart='1722.02' yStart='914.24' xEnd='1722.02' yEnd='609.4999' height='243.84' thickness='17.78' pattern='hatchUp'/>
-  <wall id='wall-0279d925-0a02-4cd5-a5a0-ceffe138f933' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' wallAtStart='wall-f703d7cf-e3b4-482e-8fe3-c9735ad953a4' wallAtEnd='wall-88d86ce7-cfed-4217-a29d-c646ceb42074' xStart='1684.76' yStart='609.4999' xEnd='1459.9956' yEnd='609.4999' height='243.84' thickness='12.7' pattern='hatchUp'/>
+  <wall id='wall-0279d925-0a02-4cd5-a5a0-ceffe138f933' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' wallAtStart='wall-f703d7cf-e3b4-482e-8fe3-c9735ad953a4' wallAtEnd='wall-88d86ce7-cfed-4217-a29d-c646ceb42074' xStart='1722.02' yStart='609.4999' xEnd='1459.9956' yEnd='609.4999' height='243.84' thickness='12.7' pattern='hatchUp'/>
   <wall id='wall-88d86ce7-cfed-4217-a29d-c646ceb42074' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' wallAtStart='wall-0279d925-0a02-4cd5-a5a0-ceffe138f933' wallAtEnd='wall-07625424-9124-4e57-80cc-c33953654a18' xStart='1459.9956' yStart='609.4999' xEnd='1459.9956' yEnd='822.8' height='243.84' thickness='12.7' pattern='hatchUp'/>
   <wall id='wall-07625424-9124-4e57-80cc-c33953654a18' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' wallAtStart='wall-88d86ce7-cfed-4217-a29d-c646ceb42074' wallAtEnd='wall-f3c40e6a-9219-41a6-a341-afabb1e67f20' xStart='1459.9956' yStart='822.8' xEnd='1386.31' yEnd='822.8' height='243.84' thickness='12.7' pattern='hatchUp'/>
   <wall id='wall-f3c40e6a-9219-41a6-a341-afabb1e67f20' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' wallAtStart='wall-07625424-9124-4e57-80cc-c33953654a18' xStart='1386.31' yStart='822.8' xEnd='1386.31' yEnd='609.4999' height='243.84' thickness='12.7' pattern='hatchUp'/>
@@ -226,51 +226,68 @@
     <point x='715.75' y='369.41'/>
   </room>
   <room id='room-95cb91d0-13d0-4c9e-9a8e-e5b0e99f018b' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' name='Main Bed' areaVisible='true' ceilingFlat='true'>
-    <point x='1382.5' y='918.05'/>
-    <point x='1382.5' y='1001.5678'/>
-    <point x='1381.2556' y='1001.5678'/>
-    <point x='1381.2556' y='1009.1878'/>
-    <point x='1382.5' y='1009.1878'/>
-    <point x='1382.5' y='1075.8545'/>
-    <point x='1680.95' y='1075.8545'/>
-    <point x='1680.95' y='1535.2699'/>
-    <point x='1249.15' y='1535.2699'/>
-    <point x='1249.15' y='1280.0'/>
-    <point x='1249.15' y='1062.8301'/>
-    <point x='1309.51' y='1062.8301'/>
-    <point x='1309.51' y='918.05'/>
+    <point x='1379.9601' y='920.58997'/>
+    <point x='1379.9601' y='1078.3944'/>
+    <point x='1713.1323' y='1078.3944'/>
+    <point x='1713.13' y='1533.4243'/>
+    <point x='1257.2107' y='1533.4243'/>
+    <point x='1257.2107' y='1283.2344'/>
+    <point x='1251.69' y='1283.2344'/>
+    <point x='1251.69' y='1280.0'/>
+    <point x='1251.69' y='1065.37'/>
+    <point x='1312.0499' y='1065.37'/>
+    <point x='1312.0499' y='920.58997'/>
   </room>
   <room id='room-8e45305e-6aab-4162-9911-457a57a8ff69' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' name='Living room' areaVisible='true' ceilingFlat='true'>
-    <point x='715.75' y='826.6099'/>
-    <point x='1230.1' y='826.61'/>
-    <point x='1382.5' y='826.61'/>
-    <point x='1382.5' y='910.43'/>
-    <point x='1241.5299' y='910.43'/>
-    <point x='1241.5299' y='1280.0'/>
-    <point x='1241.5299' y='1281.2335'/>
-    <point x='715.75' y='1276.2262'/>
+    <point x='1308.8691' y='822.7749'/>
+    <point x='1308.8691' y='829.14996'/>
+    <point x='1236.45' y='829.14996'/>
+    <point x='1236.45' y='829.4165'/>
+    <point x='1032.4452' y='829.3128'/>
+    <point x='1032.4452' y='822.9381'/>
+    <point x='878.8596' y='822.86005'/>
+    <point x='878.8596' y='829.23474'/>
+    <point x='717.02' y='829.15247'/>
+    <point x='717.02' y='1017.11005'/>
+    <point x='707.93' y='1017.11005'/>
+    <point x='707.93' y='1304.21'/>
+    <point x='1144.8004' y='1304.21'/>
+    <point x='1144.8004' y='1308.0449'/>
+    <point x='1237.4403' y='1308.0449'/>
+    <point x='1237.4403' y='1304.21'/>
+    <point x='1238.99' y='1304.21'/>
+    <point x='1238.99' y='1280.0'/>
+    <point x='1238.99' y='907.89'/>
+    <point x='1379.9601' y='907.89'/>
+    <point x='1379.9601' y='904.1346'/>
+    <point x='1386.3352' y='904.13446'/>
+    <point x='1386.3352' y='831.1746'/>
+    <point x='1379.9601' y='831.1746'/>
+    <point x='1379.9601' y='829.14996'/>
+    <point x='1376.0691' y='829.14996'/>
+    <point x='1376.0691' y='822.7749'/>
   </room>
   <room id='room-dd4d6f45-0233-4ef7-9854-aacfda27a27b' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' name='Main Closet' areaVisible='true' ceilingFlat='true'>
-    <point x='1680.95' y='918.05'/>
-    <point x='1680.95' y='1068.2344'/>
-    <point x='1390.1201' y='1068.2344'/>
-    <point x='1390.1201' y='1009.1878'/>
-    <point x='1459.9956' y='1009.1878'/>
+    <point x='1713.1332' y='920.58997'/>
+    <point x='1713.1324' y='1065.6945'/>
+    <point x='1392.66' y='1065.6945'/>
+    <point x='1392.66' y='1011.7278'/>
+    <point x='1459.9956' y='1011.7278'/>
     <point x='1459.9956' y='1005.3778'/>
-    <point x='1463.8057' y='1005.3778'/>
-    <point x='1463.8057' y='918.05'/>
+    <point x='1466.3456' y='1005.3778'/>
+    <point x='1466.3456' y='920.58997'/>
   </room>
   <room id='room-51033468-3807-4441-9bf3-e801506859e3' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' name='Kids Room' areaVisible='true' ceilingFlat='true'>
-    <point x='1463.8057' y='613.3099'/>
-    <point x='1463.8057' y='826.61'/>
-    <point x='1390.1201' y='826.61'/>
-    <point x='1390.1201' y='830.98456'/>
-    <point x='1386.2852' y='830.98456'/>
-    <point x='1386.2852' y='904.3245'/>
-    <point x='1390.1201' y='904.32465'/>
-    <point x='1390.1201' y='910.43'/>
-    <point x='1680.95' y='910.43'/>
-    <point x='1680.95' y='613.3099'/>
+    <point x='1713.13' y='615.84985'/>
+    <point x='1466.3456' y='615.8499'/>
+    <point x='1466.3456' y='829.14996'/>
+    <point x='1392.66' y='829.14996'/>
+    <point x='1392.66' y='831.17456'/>
+    <point x='1386.2852' y='831.17456'/>
+    <point x='1386.2852' y='904.1345'/>
+    <point x='1392.66' y='904.13464'/>
+    <point x='1392.66' y='907.89'/>
+    <point x='1713.13' y='907.89'/>
   </room>
   <room id='room-314073ea-36ac-4e94-b67b-ea25a3a6fd2d' level='level-092e956a-ae9d-4548-a3c4-2cf9b72f2d55' name='Main Bath' areaVisible='true' ceilingFlat='true'>
     <point x='1233.91' y='613.3099'/>
@@ -301,10 +318,14 @@
     <point x='1249.15' y='918.05'/>
   </room>
   <room id='room-c8249e55-2b26-4097-80ed-17c7a34fc35d' level='level-743b7892-2812-4e57-84f7-2d36feb729c5' name='Crawlspace' areaVisible='true' ceilingFlat='true'>
-    <point x='1217.6273' y='605.6899'/>
-    <point x='711.94' y='605.68994'/>
-    <point x='711.94' y='361.79'/>
-    <point x='1217.6273' y='361.79'/>
+    <point x='717.02' y='371.95'/>
+    <point x='717.02' y='394.64496'/>
+    <point x='711.9151' y='394.64496'/>
+    <point x='711.9151' y='466.46497'/>
+    <point x='717.02' y='466.46497'/>
+    <point x='717.02' y='604.9117'/>
+    <point x='1261.6807' y='604.9117'/>
+    <point x='1261.6807' y='371.95'/>
   </room>
   <room id='room-381b3ef1-fbf5-48a0-848d-d068c476f512' level='level-0d922f9f-cfe5-4888-b129-0fc80367e6ed' name='Office' areaVisible='true' ceilingFlat='true'>
     <point x='1336.4087' y='1532.3895'/>

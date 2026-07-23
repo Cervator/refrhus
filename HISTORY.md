@@ -62,7 +62,8 @@ numbered **west→east** (`joist-01` … `joist-25`), and are modeled on the
 `basement-main-transition` level (they sit atop the basement walls). Two ~3.5″
 post-width main beams and one extra joist sit in the stair area (tighter spacing).
 Real-world caveat: some eastern joists **drift** (not perfectly parallel — up to
-~½″ over a few feet); measure at a consistent Y.
+~½″ over a few feet); measure at a consistent Y. Per-bay spacing + the derived
+basement width: **`basement-joists.md`**.
 
 **What sits on top of the cinderblock** (standard platform-framing perimeter):
 

@@ -54,6 +54,52 @@ Long misremembered as a level *height* confusion. It is actually the **kitchen's
   assessment measured ~243 cm / 8 ft between the Main and 2nd-floor wall-bbox north
   edges, while their south edges matched within 3 cm.)
 
+## Basement framing — the joist datum (measured 2026-07-23)
+
+The basement floor joists are now the **most confident geometry in the house** —
+relative spacing measured to ~1/8″. Joists run **N–S**, spaced along **X (E–W)**,
+numbered **west→east** (`joist-01` … `joist-25`), and are modeled on the
+`basement-main-transition` level (they sit atop the basement walls). Two ~3.5″
+post-width main beams and one extra joist sit in the stair area (tighter spacing).
+Real-world caveat: some eastern joists **drift** (not perfectly parallel — up to
+~½″ over a few feet); measure at a consistent Y.
+
+**What sits on top of the cinderblock** (standard platform-framing perimeter):
+
+- A flat plank laid atop the block, ~**centered**, shorter than a joist — the
+  **sill plate (mudsill):** pressure-treated, anchor-bolted, the code-required
+  wood-to-concrete interface. Along the **E & W** walls it appears to "support
+  nothing" because the joists run **parallel** to those walls and bear on the
+  **N & S** walls instead — so the E/W sill is just the perimeter plate (and a
+  handy nailer; wires get stapled to it). Present on N & S walls' eastern half too.
+- An on-edge member at the **outer edge** of the block — the **rim / band joist**
+  (a.k.a. the outermost joist), capping the floor framing flush to the block's
+  outer face. This is the common, expected pattern.
+
+**East vs. west wall edge conditions differ** (important for the X frame):
+
+- **East wall — confident.** Raw cinder is visible; a true **1″ clear gap** from
+  the block's inner face to the first joist's east face. Anchor the model here.
+- **West wall — fuzzy.** Wood paneling/furring hides the block; ~**8″** (estimated)
+  from where the block likely ends to the first joist's west face. Confirm the raw
+  west block face on the scan visit before trusting the total basement width.
+
+**SH3D anchoring, so the model matches reality:**
+
+- A **wall's coordinate is its centerline** — an 8″ cinderblock extends 4″ each
+  side. To leave a gap to a *face*, place the line **½·thickness beyond** it.
+- **Furniture X is the piece's center** — a joist face is `x ± ½·width` (±0.75″
+  for a 1.5″ joist). The joists were entered aligned to their **left (west) edge**,
+  so every stored center is ~0.75″ west of true — a **uniform, correctable** shift
+  (nudge all joists +0.75″ E so stored X = true center; relative spacing is fine).
+
+**Datum workflow:** treat the joists as ground truth → position the **E/W basement
+walls** to the outermost joists using the real edge conditions (east 1″ + ½·wall;
+west ~8″ + ½·wall) → the **basement width falls out** of the result (no independent
+width measurement needed; its uncertainty lives entirely in the fuzzy west side).
+Then, because the **E/W walls align across levels** (next section), that corrected
+basement X frame is the anchor the Main and 2nd floors register to.
+
 ## Alignment invariants (what *should* line up across levels)
 
 Use these — and only these — to register levels into one plan frame:

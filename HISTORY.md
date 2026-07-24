@@ -63,7 +63,8 @@ numbered **west→east** (`joist-01` … `joist-25`), and are modeled on the
 post-width main beams and one extra joist sit in the stair area (tighter spacing).
 Real-world caveat: some eastern joists **drift** (not perfectly parallel — up to
 ~½″ over a few feet); measure at a consistent Y. Per-bay spacing + the derived
-basement width: **`basement-joists.md`**.
+basement width: **`basement-joists.md`**. The basement is **not a uniform box** —
+zones, staggered posts/beams, and per-wall edge conditions: **`basement-structure.md`**.
 
 **What sits on top of the cinderblock** (standard platform-framing perimeter):
 

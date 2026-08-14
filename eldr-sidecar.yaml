@@ -1,0 +1,42 @@
+# hoards/refrhus/eldr-sidecar.yaml — Refrhus's own Eldr side-car (house-specific thermal
+# assumptions). Derived from eldr's generic example; refine as the house is measured.
+design:
+  indoor_heating_f: 70        # winter setpoint
+  # outdoor_heating_99_f:     # omitted -> looked up from the model's lat/long (nearest station)
+  supply_air_rise_f: 50       # supply-air temperature rise over room, for CFM sizing
+  ground_temp_f: 50           # deep-soil temp. COOLING ONLY: below-grade surfaces face soil below the
+  #                             # summer setpoint, so they are a heat sink and contribute no cooling load.
+  #                             # Heating no longer uses this — below-grade walls + slab now take the full
+  #                             # outdoor ΔT, with the soil path carried in their assembly U (Manual J).
+infiltration:
+  ach: 0.68                   # MEASURED. Blower door at the 2026-08 audit read 3,751 CFM50; over this
+  #                             # model's 16,457 ft^3 conditioned volume that is 13.7 ACH50, and an LBL
+  #                             # N-factor of ~20 (2 storeys, shielding class 4) gives 0.68 natural ACH.
+  #                             # NOT the 0.85/0.44 in the pros' Progression A — those are a "Loose"
+  #                             # tightness-class ESTIMATE, not a measurement. Their Progression C's
+  #                             # 1,751 CFM50 / ACH 0.32 is a speculative post-air-sealing target.
+assemblies:                   # U-value, BTU/(hr*ft^2*F), per surface category
+  exterior_wall: 0.09         # 2x4 + R-13-ish
+  basement_wall: 0.07         # EFFECTIVE below-grade U — stands in for the soil-path resistance.
+  #                             # The bare 8" cinderblock is ~0.20, but a mostly-buried wall loses
+  #                             # far less (long path through earth to the surface); owner reports
+  #                             # the basement never needs active heat. Proper fix: ASHRAE
+  #                             # effective-U-by-depth, once the grade line is measured.
+  window: 0.30                # double-pane
+  door: 0.40
+  ceiling: 0.026              # attic floor, well insulated
+  floor: 0.05                 # slab: effective (real loss is perimeter-edge, not whole area)
+equipment:
+  existing_tons: 4.0          # current unit nominal tonnage
+cooling:
+  indoor_f: 75                # summer setpoint
+  # outdoor_1_f:              # omitted -> looked up from lat/long
+  shgc: 0.35                  # window solar heat gain coefficient
+  occupants: 3                # for internal + latent gains
+ducts:
+  friction_rate: 0.08         # in.wc/100ft
+  unit_name: air handler      # locates the placed air-handler furniture
+  fitting_factor: 1.5         # straight length -> total effective length (rough)
+  # available_static_pressure: 0.5   # set to DERIVE the friction rate (off by default)
+# walls:                      # optional per-wall boundary overrides (SH3D wall id); use --walls to list
+#   wall-<id>: {boundary: buffer}     # garage/crawl-adjacent; 50% of ΔT

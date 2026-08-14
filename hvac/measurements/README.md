@@ -45,11 +45,25 @@ So `BSMT-N-BARE-H12` is the north basement wall, bare block, one foot up. Use th
 
 Everything in the CSV header, and these matter more than instrument precision:
 
-- **`air_f`** — air temperature 2–3 ft off the wall at roughly the same height. **The single most important companion reading**; every flux calculation is `air_f − surface_f`, so a missing air temperature makes the row unusable.
+- **`air_f`** — air temperature 2–3 ft off the wall **at the same height as the surface probe**. **The single most important companion reading**; every flux calculation is `air_f − surface_f`, so a missing air temperature makes the row unusable.
+
+  **One air reading is not enough.** Basements stratify — warm air rises, and the difference between ankle height and joist height can be several degrees, which is the same order as the film ΔT being measured. A single air temperature taken at chest height will overstate flux at the slab and understate it near the ceiling, in a pattern that looks exactly like a depth-dependent U-value. That is a fake gradient, and it would be easy to believe. Pair air probes with the surface ladder at the same heights, or at minimum at low / mid / high.
 - **`outdoor_f`** — at the same moment, not from a forecast.
 - **`outdoor_24h_avg_f`** — approximate. Below-grade walls lag by days, so the instantaneous outdoor temperature is the wrong driver for them; the trailing average is closer. Leave blank if unknown.
 - **`method`** — `IR` or `contact`. They disagree by a degree or two and you want to know which was which.
 - **`steady`** — `y` only if indoor temperature has been stable for several hours, no sun on that wall, nothing blowing across it. An unsteady reading is not wrong, but it should be flagged.
+
+## Where to put a permanent strip
+
+Match everything except the variable under test. The strips are there to isolate **construction** — bare cinder against R-11 finished — so grade depth, orientation and soil conditions should be as close to identical as the house allows. Two strips in opposite corners answer one question with three confounders attached.
+
+The professionals' construction page gives the matching target: bare sections at **3 ft and 4 ft** average depth, R-11 sections at **3 ft**. The clean pairing is therefore **bare-at-3ft against R-11-at-3ft** — same soil path, only the assembly differs.
+
+- **Prefer the true-north side.** The top of each strip covers the above-grade band, where solar gain contaminates readings. A south or west wall bakes in the afternoon and the upper probes end up measuring sunshine.
+- **`northDirection` is ~318°, so plan-north is not true north** — the front of this house faces roughly southwest. Name points by *true* compass direction and let the model resolve which wall that is, or a sunny wall gets labelled `N` and nobody understands the drift.
+- **Avoid:** below a downspout or in a low spot (wet soil conducts far better — that measures soil, not wall); garage- or crawlspace-adjacent walls (those face buffer space, not soil); within a few feet of a supply register or the stairs (air movement destroys the still-air film assumption); and anywhere storage will end up stacked.
+
+A later refinement, once the first pair is trusted: a third strip on a **4 ft** bare section gives a second depth and starts to describe the depth-dependence directly rather than inferring it from one wall's vertical profile.
 
 ## Conditions that matter more than the instrument
 

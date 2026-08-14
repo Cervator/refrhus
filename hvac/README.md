@@ -49,24 +49,29 @@ Worth recording: 3,751 CFM50 × 60 ÷ 16,457 ft³ = 13.7 ACH50, over an LBL N-fa
 
 `eldr-runs/` — Eldr output, one dated pair per run plus the comparison write-up.
 
+**Reports only — the overview is not archived.** `--overview` renders the *same* report body wrapped in about seventy lines of framing prose (what the ACCA chain is, what's demo-grade, the roadmap). That framing is boilerplate that barely changes between runs, so committing it per run would duplicate every number while adding nothing. Generate one when you need something to hand to a contractor; the command is below and takes a second.
+
 | File | Vintage |
 |---|---|
 | `2026-08-12-eldr-report-pre-level-stack.md` | Before the level-stack work. Ceilings and floors came from level *bounding boxes*; no buffer floors existed at all. |
-| `2026-08-12-eldr-overview-pre-level-stack.md` | Narrative form of the same run. |
 | `2026-08-12-eldr-vs-manualj-comparison.md` | First cross-check against Progression A, with an email draft to JL. **Its below-grade-wall line of 4,540 BTU/hr is stale** — the engine has produced 1,589 since before that document was written, and 4,370 since the below-grade fix. |
 | `2026-08-14-eldr-report-level-stack.md` | Resolved floors/ceilings, per-space buffer policies, hot-attic cooling, below-grade at full ΔT, measured ACH. Carries an *Assumptions behind these numbers* section that did not exist before. Assemblies still the old estimates. |
-| `2026-08-14-eldr-overview-level-stack.md` | Narrative form. |
-| `2026-08-14b-eldr-report-measured-assemblies.md` | Same engine, but with the professionals' **measured** ceiling and crawl-floor U-values adopted and the crawlspace's observed winter temperature declared. Heating 31,757 → **37,962**. |
-| `2026-08-14b-eldr-overview-measured-assemblies.md` | Narrative form. |
+| `2026-08-14b-eldr-report-measured-assemblies.md` | The professionals' **measured** ceiling and crawl-floor U-values adopted, and the crawlspace's observed winter temperature declared. Heating 31,757 → **37,962**. |
+| `2026-08-14c-eldr-report-cooling-infiltration.md` | Cooling gains its missing **sensible** infiltration term (it had only latent). Heating unchanged as the control; cooling 17,571 → **20,794**, airflow 610 → **759 CFM**, and the ducts move with it — Living room 6″→7″, Play Room 5″→6″, trunk to 14″. |
 
 Regenerate with the engine checked out beside this repo:
 
 ```bash
+# the report — this is what gets archived
 PYTHONPATH=components/eldr components/eldr/.venv/bin/python -m eldr.cli \
   hoards/refrhus/Refrhus.sh3d hoards/refrhus/eldr-sidecar.yaml
+
+# the narrative version, for handing to someone else — generate on demand, don't commit
+PYTHONPATH=components/eldr components/eldr/.venv/bin/python -m eldr.cli \
+  hoards/refrhus/Refrhus.sh3d hoards/refrhus/eldr-sidecar.yaml --overview
 ```
 
-Add `--overview` for the narrative form, `--json` for structured output, `--walls` to list wall ids for tagging.
+`--json` gives structured output; `--walls` lists wall ids for tagging.
 
 ## Where the two still disagree, and why
 

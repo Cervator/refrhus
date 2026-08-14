@@ -1,41 +1,4 @@
-# Eldr — Manual J / S / D from a 3D model
-
-Eldr reads a Sweet Home 3D house model and computes residential HVAC loads and duct
-sizing along the ACCA chain — heating and cooling loads, equipment sizing, and duct
-design. The model owns the geometry; a small "side-car" file owns the thermal
-assumptions (insulation, setpoints, infiltration, soil temp, per-wall boundaries).
-Edit the house, re-run, watch the numbers move.
-
-These are **demo-grade estimates, not an ACCA-certified design** — the honesty
-section marks exactly where the line is.
-
-## The ACCA chain, implemented
-
-| Step | Manual | What it answers |
-|---|---|---|
-| Loads | **Manual J** | winter heat loss / summer heat gain |
-| Equipment | **Manual S** | what size unit the load calls for; is the existing one right |
-| Distribution | **Manual D** | how big each supply duct needs to be |
-
-## How detailed it gets
-
-- **Solar by the exact degree** — every window's true compass facing (from the model's
-  `northDirection`) sets its solar gain; SW/SE glass loads differently.
-- **Climate from the model's coordinates** — nearest design-weather station, automatic.
-- **The real footprint** — exterior walls follow the room-polygon outline, so a wall on
-  an extension/wing is caught even off the bounding rectangle; unconditioned
-  garage/crawlspace walls are excluded.
-- **Below-grade follows Manual J** — basement walls + slab carry the full outdoor design
-  ΔT for heating, with the soil path inside their effective U-value; in summer the soil is
-  a heat sink, so they add no cooling load.
-- **Buffer walls** — a wall to a garage/crawlspace is neither interior nor fully
-  exterior; tagged `buffer`, it's loaded at **50% of the design
-  ΔT**.
-- **Per-room loads (Manual J 1c)** — each room's own walls/windows/doors/ceiling/floor.
-- **Place the air handler** — each supply run gets a routed length; with the blower's
-  static pressure, the friction rate is derived the ACCA way.
-
-## Your house, by the numbers — whole-house loads (Manual J)
+# Eldr — Heating Load (Phase 1, whole-house)
 
 - Indoor / 99% outdoor design: **70°F / 15°F** (ΔT = 55°F)
 - Infiltration: **0.68 ACH**
@@ -118,13 +81,14 @@ Neither errors nor warnings — assumptions in the numbers above that a careful 
 | solar-SE | 999 |
 | solar-SW | 1,300 |
 | window | 702 |
-| **sensible** | **13,166** |
+| infiltration | 3,223 |
+| **sensible** | **16,389** |
 | latent | 4,405 |
-| **total** | **17,571** |
+| **total** | **20,794** |
 
-**Supply airflow:** 610 CFM
+**Supply airflow:** 759 CFM
 
-**Sensible heat ratio:** 0.75 (sensible ÷ total) — how much of the job is temperature rather than moisture. A standard Manual J figure, directly comparable against any professional report, and an equipment-selection input: the lower it runs, the more of the load is dehumidification, which calls for a coil that stays wet rather than a bigger one.
+**Sensible heat ratio:** 0.79 (sensible ÷ total) — how much of the job is temperature rather than moisture. A standard Manual J figure, directly comparable against any professional report, and an equipment-selection input: the lower it runs, the more of the load is dehumidification, which calls for a coil that stays wet rather than a bigger one.
 
 _Those last three rows are not three more components. Every itemised row above them is sensible heat, and they sum to **sensible** — the heat that has to leave to hold the dry-bulb setpoint. **Latent** is a separate quantity: moisture, from the occupants and from the humidity the infiltrating air carries in. That is why it has no component breakdown — no wall, window or roof contributes to it. **Total** is simply the two added. Supply airflow is sized on **sensible** alone, not on the total, which is why the CFM does not come off the bottom line: air carries the sensible load by temperature difference, while the latent load leaves as condensate at the coil rather than by moving more air._
 
@@ -144,25 +108,25 @@ _Demo estimate, not ACCA-certified. Sized on the larger of heating/cooling (here
 
 | Room | Heating (BTU/hr) | Cooling sens. (BTU/hr) | Design CFM |
 |---|---:|---:|---:|
-| Kitchen | 7,558 | 2,686 | 140 |
-| Main Bed | 6,087 | 2,597 | 120 |
-| Utility Room | 5,227 | 562 | 97 |
-| Living room | 4,599 | 1,897 | 88 |
-| Future Media Room | 4,693 | 596 | 87 |
-| Office | 2,378 | 1,384 | 64 |
-| Play Room | 2,460 | 1,166 | 54 |
-| Kids Room | 1,440 | 903 | 42 |
-| Main Bath | 817 | 407 | 19 |
-| Upper Bath | 599 | 317 | 15 |
-| Upstairs Hallway | 434 | 209 | 10 |
-| Main Closet | 458 | 118 | 8 |
-| Bathroom | 451 | 35 | 8 |
-| Closet | 239 | 112 | 5 |
-| Closet | 203 | 75 | 4 |
-| Closet | 181 | 70 | 3 |
-| **16 rooms** | | | **764** |
+| Kitchen | 7,558 | 3,072 | 142 |
+| Main Bed | 6,087 | 2,968 | 137 |
+| Living room | 4,599 | 2,345 | 109 |
+| Utility Room | 5,227 | 1,005 | 97 |
+| Future Media Room | 4,693 | 1,051 | 87 |
+| Office | 2,378 | 1,714 | 79 |
+| Play Room | 2,460 | 1,445 | 67 |
+| Kids Room | 1,440 | 1,023 | 47 |
+| Main Bath | 817 | 459 | 21 |
+| Upper Bath | 599 | 419 | 19 |
+| Upstairs Hallway | 434 | 268 | 12 |
+| Main Closet | 458 | 185 | 9 |
+| Bathroom | 451 | 67 | 8 |
+| Closet | 239 | 143 | 7 |
+| Closet | 181 | 91 | 4 |
+| Closet | 203 | 86 | 4 |
+| **16 rooms** | | | **850** |
 
-_Each room's load is from the exterior walls, windows, doors and ceiling/floor attributed to it, plus infiltration on its own volume; design CFM is the larger of heating/cooling airflow. Served rooms sum to **764 CFM** vs the whole-house **703 CFM** — the gap is space not carried here: floor area not yet drawn as rooms (halls, stairs, unfinished), plus tiny rooms below the 3-CFM run threshold. Draw more rooms and it closes._
+_Each room's load is from the exterior walls, windows, doors and ceiling/floor attributed to it, plus infiltration on its own volume; design CFM is the larger of heating/cooling airflow. Served rooms sum to **850 CFM** vs the whole-house **703 CFM** — the gap is space not carried here: floor area not yet drawn as rooms (halls, stairs, unfinished), plus tiny rooms below the 3-CFM run threshold. Draw more rooms and it closes._
 
 ## Manual D — Duct Sizing (round, equal-friction)
 
@@ -171,54 +135,22 @@ _Each room's load is from the exterior walls, windows, doors and ceiling/floor a
 
 | Run | CFM | Exact dia | Duct | Velocity | Length | Drop |
 |---|---:|---:|---:|---:|---:|---:|
-| main trunk | 764 | 13.1″ | **14″** | 715 fpm | — | — |
-| Kitchen | 140 | 6.9″ | **7″** | 524 fpm | 45 ft | 0.036″ |
-| Main Bed | 120 | 6.5″ | **7″** | 450 fpm | 39 ft | 0.032″ |
-| Living room | 88 | 5.8″ | **6″** | 447 fpm | 26 ft | 0.021″ |
-| Main Closet | 8 | 2.4″ | **4″** | 97 fpm | 30 ft | 0.024″ |
-| Kids Room | 42 | 4.4″ | **5″** | 307 fpm | 42 ft | 0.034″ |
-| Main Bath | 19 | 3.2″ | **4″** | 216 fpm | 32 ft | 0.025″ |
-| Closet | 3 | 1.7″ | **4″** | 38 fpm | 38 ft | 0.030″ |
-| Office | 64 | 5.1″ | **6″** | 326 fpm | 48 ft | 0.039″ |
-| Upper Bath | 15 | 2.9″ | **4″** | 168 fpm | 39 ft | 0.031″ |
-| Closet (2) | 5 | 2.0″ | **4″** | 60 fpm | 53 ft | 0.043″ |
-| Play Room | 54 | 4.8″ | **5″** | 396 fpm | 41 ft | 0.033″ |
-| Closet (3) | 4 | 1.8″ | **4″** | 43 fpm | 58 ft | 0.047″ |
-| Upstairs Hallway | 10 | 2.5″ | **4″** | 111 fpm | 27 ft | 0.022″ |
+| main trunk | 850 | 13.7″ | **14″** | 795 fpm | — | — |
+| Kitchen | 142 | 6.9″ | **7″** | 532 fpm | 45 ft | 0.036″ |
+| Main Bed | 137 | 6.9″ | **7″** | 514 fpm | 39 ft | 0.032″ |
+| Living room | 109 | 6.3″ | **7″** | 406 fpm | 26 ft | 0.021″ |
+| Main Closet | 9 | 2.4″ | **4″** | 98 fpm | 30 ft | 0.024″ |
+| Kids Room | 47 | 4.6″ | **5″** | 347 fpm | 42 ft | 0.034″ |
+| Main Bath | 21 | 3.4″ | **4″** | 243 fpm | 32 ft | 0.025″ |
+| Closet | 4 | 1.8″ | **4″** | 48 fpm | 38 ft | 0.030″ |
+| Office | 79 | 5.6″ | **6″** | 404 fpm | 48 ft | 0.039″ |
+| Upper Bath | 19 | 3.3″ | **4″** | 222 fpm | 39 ft | 0.031″ |
+| Closet (2) | 7 | 2.2″ | **4″** | 76 fpm | 53 ft | 0.043″ |
+| Play Room | 67 | 5.2″ | **6″** | 341 fpm | 41 ft | 0.033″ |
+| Closet (3) | 4 | 1.8″ | **4″** | 46 fpm | 58 ft | 0.047″ |
+| Upstairs Hallway | 12 | 2.8″ | **4″** | 142 fpm | 27 ft | 0.022″ |
 | Utility Room | 97 | 6.0″ | **7″** | 362 fpm | 16 ft | 0.012″ |
 | Future Media Room | 87 | 5.8″ | **6″** | 443 fpm | 15 ft | 0.012″ |
 | Bathroom | 8 | 2.4″ | **4″** | 96 fpm | 15 ft | 0.012″ |
 
 _Round duct, equal-friction, demo-grade. Total effective length uses a fitting fudge factor, not true fitting equivalent lengths; a full Manual D adds those and rectangular/oval sizing via equivalent diameter._
-
-## What's demo-grade today (the honest line)
-
-- **Assemblies are assumptions, not a takeoff** — the side-car U-values, not measured construction. Real numbers move the loads.
-- **Infiltration is an estimate** (0.68 ACH) — a blower-door test is the real input.
-- **Design weather is nearest-station** (New York, NY), not the certified ASHRAE station for the address.
-- **Below-grade resistance rides on the side-car** — the soil path lives in the declared `basement_wall` / `floor` U-value, and Eldr applies one such value per category no matter how deep the surface sits or how much of a basement wall stands above grade.
-- **Storey heights are whatever the model says** — Sweet Home 3D gives each level a default height, and a level nobody re-measured looks identical to one that was; the *Level heights* table above shows what each level used and what volume it contributed.
-- **Buffer-space temperatures are policy, not measurement** — an attic with no observed summer temperature gets a sol-air estimate (outdoor air plus a flat solar uplift, no roof geometry or ventilation rate); the *Buffer spaces* table above prints the factor and temperature each surface actually got.
-- **149.5 ft² of conditioned floor has no level drawn beneath it** — modeled as `buffer_floor` over undrawn space. That is a gap in the drawing, not a measurement; draw those spaces and the assumption is replaced by geometry.
-- **Duct run lengths use a fitting fudge factor**, not true fitting equivalent lengths; round duct only; no return-side sizing yet.
-- **The envelope follows drawn rooms** — interior space not yet drawn as a room reads as outdoors and can over-count until it's drawn.
-
-## What it would take to aspire to ACCA compliance
-
-ACCA (Air Conditioning Contractors of America) runs a software-approval program against
-their manuals. Moving from demo-grade toward that bar needs: the full Manual J 8th-ed
-procedure (detailed fenestration, infiltration by tightness class, duct gains, internal-
-gain schedules); certified ASHRAE design conditions for the address; real building data
-(a construction takeoff + a blower-door test); a zone-aware bottom boundary and true
-fitting equivalent lengths; then validation against ACCA's reference suite. The
-architecture is already the right shape — geometry in the model, thermal in the side-car,
-each Manual its own tested module — so the path is "add fidelity," not "rewrite."
-
-## Near-term roadmap
-
-- Zone-aware bottom boundary (basement slab vs. crawl vs. slab-on-grade extensions).
-- True fitting equivalent lengths + return-duct sizing.
-- Per-wall height/area splits (a wall that's part exterior, part buffer).
-- Attic / knee-wall geometry; an interview step for the side-car; a Sweet Home 3D plugin.
-
-*Eldr is read-only — it never modifies the house model. Estimates here are for demonstration and are not a substitute for a certified Manual J/S/D design.*

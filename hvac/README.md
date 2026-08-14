@@ -54,8 +54,10 @@ Worth recording: 3,751 CFM50 × 60 ÷ 16,457 ft³ = 13.7 ACH50, over an LBL N-fa
 | `2026-08-12-eldr-report-pre-level-stack.md` | Before the level-stack work. Ceilings and floors came from level *bounding boxes*; no buffer floors existed at all. |
 | `2026-08-12-eldr-overview-pre-level-stack.md` | Narrative form of the same run. |
 | `2026-08-12-eldr-vs-manualj-comparison.md` | First cross-check against Progression A, with an email draft to JL. **Its below-grade-wall line of 4,540 BTU/hr is stale** — the engine has produced 1,589 since before that document was written, and 4,370 since the below-grade fix. |
-| `2026-08-14-eldr-report-level-stack.md` | Resolved floors/ceilings, per-space buffer policies, hot-attic cooling, below-grade at full ΔT, measured ACH. Carries an *Assumptions behind these numbers* section that did not exist before. |
+| `2026-08-14-eldr-report-level-stack.md` | Resolved floors/ceilings, per-space buffer policies, hot-attic cooling, below-grade at full ΔT, measured ACH. Carries an *Assumptions behind these numbers* section that did not exist before. Assemblies still the old estimates. |
 | `2026-08-14-eldr-overview-level-stack.md` | Narrative form. |
+| `2026-08-14b-eldr-report-measured-assemblies.md` | Same engine, but with the professionals' **measured** ceiling and crawl-floor U-values adopted and the crawlspace's observed winter temperature declared. Heating 31,757 → **37,962**. |
+| `2026-08-14b-eldr-overview-measured-assemblies.md` | Narrative form. |
 
 Regenerate with the engine checked out beside this repo:
 
@@ -70,17 +72,24 @@ Add `--overview` for the narrative form, `--json` for structured output, `--wall
 
 Same house, two engines, and the gaps are now nameable rather than mysterious:
 
+As of the `2026-08-14b` run — heating **37,962** against their **54,260**, or 70%, up from 58% before the measured assemblies went in.
+
 | Line | Eldr | Theirs | Status |
 |---|---:|---:|---|
 | Floor **area** | 971.9 ft² | 978 ft² | ✅ within 0.6% |
-| Floors load | 1,866 + 404 | 8,608 | `assemblies.buffer_floor` is unset, so ~293 ft² of framed floor borrows the slab's U-0.05 where they measured **U-0.521** |
-| Ceilings | 707 | 5,008 | Our `ceiling: 0.026` is R-38; their construction page says **R-11 / R-13 / R-19**. Their ceiling *area* is 1,547 ft² against our 984 — probably sloped and knee-wall surfaces counted differently, and unresolved |
-| Below-grade walls | 4,370 | 9,271 | Convention now matches. Remaining gap is our `basement_wall: 0.07`, below even their *finished* 0.088 and far below their bare 0.293 |
+| Crawl floor load | 5,765 | ~7,800 | U now matches (0.521). We apply the crawlspace's **observed** 32 °F (factor 0.67); they model it as *exposed to outdoor air* (factor 1.0, which would give 8,290). **A deliberate difference, not an error** — see the side-car note |
+| Slab | 1,866 | 807 | Our `floor: 0.05` is an effective slab U guess; theirs is a measured U-0.020 on 713.9 ft². We overshoot |
+| Ceilings | 1,550 | 5,008 | U now matches. Two causes left: their ceiling **area** is 1,547 ft² against our 984 — probably sloped and knee-wall surfaces counted differently, unresolved — and our unvented-attic default halves the heating ΔT where they take the full one |
+| Below-grade walls | 4,370 | 9,271 | Convention matches since the below-grade fix. `basement_wall: 0.07` is **deliberately not updated**; see below |
 | Basement wall **area** | ~1,135 ft² | 774 ft² | They split each wall at the grade line; Eldr has no grade-line concept and classes the whole wall below-grade |
-| Occupants | 3 | 5 | Side-car input |
-| SHR | 0.70 | 0.90 | Our assumed 30-grain humidity difference vs their station's 27.805 |
+| Occupants | 3 | 5 | Side-car input, not yet reconciled |
+| SHR | 0.70 | 0.90 | Our assumed 30-grain humidity difference vs their station's 27.805 — and see the cooling gap below |
 
-The pattern: **the geometry agrees and the assemblies do not.** Every remaining gap is a side-car number nobody has measured yet, or the grade-line split Eldr cannot model.
+**Why `basement_wall` was left at 0.07.** Their area-weighted below-grade U is 0.196 (bare 8" stone at 0.293/0.297, finished R-11 at 0.088). Applying that to *our* area gives **12,236 BTU/hr against their 9,271** — a 32% overshoot replacing today's 53% undershoot, because our area is 47% too large for want of a grade line. Substituting one error for another is not accuracy. This one waits for the grade-line split or for measured wall temperatures.
+
+**A known gap on our side, not a disagreement:** Eldr's cooling load includes infiltration only as *latent*. There is no sensible infiltration term in cooling, though heating has one. Their report carries 1,504 BTU/hr of sensible cooling infiltration; the equivalent here would be roughly 1.08 × 186 CFM × 16 °F ≈ 3,200. That is an engine bug, filed separately, and it is part of why our SHR reads low.
+
+The pattern overall: **the geometry agrees and the assemblies are converging.** What is left is two structural gaps (the grade line, the ceiling-area definition), one deliberate divergence (the observed crawlspace temperature), and one engine bug.
 
 ## The measurement that would settle the most
 

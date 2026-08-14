@@ -17,14 +17,27 @@ infiltration:
   #                             # 1,751 CFM50 / ACH 0.32 is a speculative post-air-sealing target.
 assemblies:                   # U-value, BTU/(hr*ft^2*F), per surface category
   exterior_wall: 0.09         # 2x4 + R-13-ish
-  basement_wall: 0.07         # EFFECTIVE below-grade U — stands in for the soil-path resistance.
-  #                             # The bare 8" cinderblock is ~0.20, but a mostly-buried wall loses
-  #                             # far less (long path through earth to the surface); owner reports
-  #                             # the basement never needs active heat. Proper fix: ASHRAE
-  #                             # effective-U-by-depth, once the grade line is measured.
+  basement_wall: 0.07         # EFFECTIVE below-grade U — the soil path is inside this number, and
+  #                             # since the below-grade fix it is applied against the FULL outdoor
+  #                             # ΔT (Manual J convention), not a ground ΔT.
+  #                             # DELIBERATELY NOT UPDATED to the pros' values (bare 8" stone/brick
+  #                             # U-0.293/0.297, finished R-11 U-0.088; area-weighted 0.196).
+  #                             # Reason: Eldr has no grade line, so it classes the WHOLE basement
+  #                             # wall as below-grade — ~1,135 ft^2 against their 774 ft^2, which
+  #                             # they get by splitting each wall at grade and counting the rest as
+  #                             # above-grade. Their U on our area gives 12,236 BTU/hr against their
+  #                             # 9,271: a 32% overshoot replacing today's 53% undershoot. Trading
+  #                             # one error for another is not accuracy. Resolve it properly with
+  #                             # either the grade-line split, or measured wall surface temperatures
+  #                             # (see hvac/README.md) — then this number can be set honestly.
   window: 0.30                # double-pane
   door: 0.40
-  ceiling: 0.026              # attic floor, well insulated
+  ceiling: 0.057              # MEASURED (pros' construction page, area-weighted): 40.4 ft^2 R-11
+  #                             # (U-0.081) + 541.2 R-13 (U-0.070) + 965.7 R-19 (U-0.049) over
+  #                             # 1,547 ft^2 -> 0.0572. Was 0.026 (R-38) — that was aspirational.
+  buffer_floor: 0.521         # MEASURED (pros): "passive floor exposed to outdoor air, no insul,
+  #                             # tile or vinyl" over the crawlspace. Was borrowing `floor`'s slab
+  #                             # 0.05 — wrong by 10x for a framed floor. Prime insulation target.
   floor: 0.05                 # slab: effective (real loss is perimeter-edge, not whole area)
 equipment:
   existing_tons: 4.0          # current unit nominal tonnage
@@ -38,5 +51,14 @@ ducts:
   unit_name: air handler      # locates the placed air-handler furniture
   fitting_factor: 1.5         # straight length -> total effective length (rough)
   # available_static_pressure: 0.5   # set to DERIVE the friction rate (off by default)
+spaces:                       # buffer-space temperature policies
+  crawlspace:
+    winter_temp_f: 32         # OBSERVED by the owner: not deliberately vented, but a crack to the
+    #                           # outside and open into the garage; gets cold, not much below
+    #                           # freezing on the coldest days. On a 70/15 design day that is a
+    #                           # 0.67 factor. NOTE we differ from the pros here on purpose: they
+    #                           # model this floor as "exposed to outdoor air" (full ΔT, factor 1.0,
+    #                           # ~8,290 BTU/hr here); the observation says 5,765 is truer. Set
+    #                           # `vented: true` to reproduce their treatment for comparison.
 # walls:                      # optional per-wall boundary overrides (SH3D wall id); use --walls to list
 #   wall-<id>: {boundary: buffer}     # garage/crawl-adjacent; 50% of ΔT

@@ -16,7 +16,21 @@ infiltration:
   #                             # tightness-class ESTIMATE, not a measurement. Their Progression C's
   #                             # 1,751 CFM50 / ACH 0.32 is a speculative post-air-sealing target.
 assemblies:                   # U-value, BTU/(hr*ft^2*F), per surface category
-  exterior_wall: 0.09         # 2x4 + R-13-ish
+  exterior_wall: 0.123        # MEASURED (pros' construction page, area-weighted over the three
+  #                             # NON-garage above-grade rows): 247.9 ft^2 @ U-0.240 (2x4 stucco/siding,
+  #                             # R-0 cavity / R-0 board — UNINSULATED) + 942.3 @ U-0.097 (R-11) +
+  #                             # 130.5 @ U-0.091 (R-13), over 1,320.7 ft^2 -> 0.1233. Was 0.09, an
+  #                             # "R-13-ish" guess that assumed the whole envelope is insulated —
+  #                             # 247.9 ft^2 of it is not. The garage partition (222.0 ft^2 @ U-0.097)
+  #                             # is EXCLUDED here; it is a buffer wall, declared below.
+  #                             # LIMIT: one U house-wide, so this blend cannot say WHICH sections are
+  #                             # the uninsulated ones. That distorts per-room loads until Eldr grows
+  #                             # per-surface U overrides.
+  buffer_wall: 0.097          # MEASURED (pros): "Garage Partition | 2x4 Wood Framed wall, Stucco/Siding
+  #                             # - R-11 cavity / R-0 board", 222.0 ft^2 @ U-0.097 — a single row, so
+  #                             # this is their measured value, not a blend. Was borrowing
+  #                             # `exterior_wall`. NOTE: no effect until walls are tagged
+  #                             # `{boundary: buffer}` in the `walls:` block below — nothing is today.
   basement_wall: 0.07         # EFFECTIVE below-grade U — the soil path is inside this number, and
   #                             # since the below-grade fix it is applied against the FULL outdoor
   #                             # ΔT (Manual J convention), not a ground ΔT.
@@ -30,22 +44,43 @@ assemblies:                   # U-value, BTU/(hr*ft^2*F), per surface category
   #                             # one error for another is not accuracy. Resolve it properly with
   #                             # either the grade-line split, or measured wall surface temperatures
   #                             # (see hvac/README.md) — then this number can be set honestly.
-  window: 0.30                # double-pane
-  door: 0.40
+  window: 0.588               # MEASURED (pros' construction page, area-weighted over all ten window
+  #                             # rows / 152.5 ft^2 -> 89.72/152.5 = 0.5883). The glazing is a genuine
+  #                             # MIX, not one product: 18.1 ft^2 clear single-pane @ U-0.900 (2 NE +
+  #                             # 1 NW), 9.1 ft^2 single+storm @ U-0.570 (NW), and 125.3 ft^2 LowE
+  #                             # double @ U-0.550/0.530 (the replaced ones). Was 0.30 — "double-pane",
+  #                             # which described only the replacements.
+  #                             # NOTE the 0.645 recorded in the Thalamus was wrong; the rows weight
+  #                             # to 0.588. Window AREA needs no work — 146 ft^2 computed vs their 152.5.
+  #                             # LIMIT: same as exterior_wall — one U house-wide cannot put the three
+  #                             # single-pane windows in the rooms that actually have them, so per-room
+  #                             # loads understate those rooms and overstate the rest.
+  door: 0.40                  # HELD. The pros weight to 0.423 (21.5 ft^2 wood+storm @ U-0.280 +
+  #                             # 17.4 ft^2 metal/fibreglass @ U-0.600) — near enough to 0.40 that
+  #                             # changing it is noise. The door discrepancy is AREA, not U: our
+  #                             # 2,908 BTU/hr implies ~132 ft^2 of door against their 82.3 (38.9
+  #                             # opaque + 43.4 glass). ~50 ft^2 of phantom door lives in the model.
   ceiling: 0.057              # MEASURED (pros' construction page, area-weighted): 40.4 ft^2 R-11
   #                             # (U-0.081) + 541.2 R-13 (U-0.070) + 965.7 R-19 (U-0.049) over
   #                             # 1,547 ft^2 -> 0.0572. Was 0.026 (R-38) — that was aspirational.
   buffer_floor: 0.521         # MEASURED (pros): "passive floor exposed to outdoor air, no insul,
   #                             # tile or vinyl" over the crawlspace. Was borrowing `floor`'s slab
   #                             # 0.05 — wrong by 10x for a framed floor. Prime insulation target.
-  floor: 0.05                 # slab: effective (real loss is perimeter-edge, not whole area)
+  floor: 0.020                # MEASURED (pros): "Bsmnt flr (> 2' below grade) - 32" short slab edge,
+  #                             # no insul, any finish", 713.9 ft^2 @ U-0.020 — their basement slab,
+  #                             # a single row. Effective below-grade value (soil path inside the
+  #                             # number), applied at the full outdoor dT per Manual J. Was 0.05, a
+  #                             # guess 2.5x too high; this is the one true-up that REDUCES our load.
 equipment:
   existing_tons: 4.0          # current unit nominal tonnage
 cooling:
   indoor_f: 75                # summer setpoint
   # outdoor_1_f:              # omitted -> looked up from lat/long
   shgc: 0.35                  # window solar heat gain coefficient
-  occupants: 3                # for internal + latent gains
+  occupants: 5                # for internal + latent gains. Actual headcount: 2 adults + 3 children
+  #                             # (ages 2/5/7). Manual J does not scale a person by age, so all five
+  #                             # count alike. Was 3. Matches the pros' 5, which they likely reached
+  #                             # by the ACCA bedrooms+1 convention — the two methods agree here.
 ducts:
   friction_rate: 0.08         # in.wc/100ft
   unit_name: air handler      # locates the placed air-handler furniture

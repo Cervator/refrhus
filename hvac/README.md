@@ -58,6 +58,7 @@ Worth recording: 3,751 CFM50 × 60 ÷ 16,457 ft³ = 13.7 ACH50, over an LBL N-fa
 | `2026-08-14-eldr-report-level-stack.md` | Resolved floors/ceilings, per-space buffer policies, hot-attic cooling, below-grade at full ΔT, measured ACH. Carries an *Assumptions behind these numbers* section that did not exist before. Assemblies still the old estimates. |
 | `2026-08-14b-eldr-report-measured-assemblies.md` | The professionals' **measured** ceiling and crawl-floor U-values adopted, and the crawlspace's observed winter temperature declared. Heating 31,757 → **37,962**. |
 | `2026-08-14c-eldr-report-cooling-infiltration.md` | Cooling gains its missing **sensible** infiltration term (it had only latent). Heating unchanged as the control; cooling 17,571 → **20,794**, airflow 610 → **759 CFM**, and the ducts move with it — Living room 6″→7″, Play Room 5″→6″, trunk to 14″. |
+| `2026-08-16-eldr-report-assembly-trueup.md` | The professionals' measured **wall, window and slab** U-values adopted, area-weighted off their Construction Details page, plus occupants 3 → 5. Heating 37,962 → **42,097**, cooling → 23,183. The existing 4-ton unit re-reads as **well-matched (+14%)** rather than oversized (+26%) — a verdict flip worth noticing, since it weakens the case that the current equipment is grossly wrong. |
 
 Regenerate with the engine checked out beside this repo:
 
@@ -77,24 +78,35 @@ PYTHONPATH=components/eldr components/eldr/.venv/bin/python -m eldr.cli \
 
 Same house, two engines, and the gaps are now nameable rather than mysterious:
 
-As of the `2026-08-14b` run — heating **37,962** against their **54,260**, or 70%, up from 58% before the measured assemblies went in.
+As of the `2026-08-16` assembly true-up — heating **42,097** against their **54,260**, or 78%, up from 70% before the measured wall and window U-values went in.
 
 | Line | Eldr | Theirs | Status |
 |---|---:|---:|---|
 | Floor **area** | 971.9 ft² | 978 ft² | ✅ within 0.6% |
-| Crawl floor load | 5,765 | ~7,800 | U now matches (0.521). We apply the crawlspace's **observed** 32 °F (factor 0.67); they model it as *exposed to outdoor air* (factor 1.0, which would give 8,290). **A deliberate difference, not an error** — see the side-car note |
-| Slab | 1,866 | 807 | Our `floor: 0.05` is an effective slab U guess; theirs is a measured U-0.020 on 713.9 ft². We overshoot |
-| Ceilings | 1,550 | 5,008 | U now matches. Two causes left: their ceiling **area** is 1,547 ft² against our 984 — probably sloped and knee-wall surfaces counted differently, unresolved — and our unvented-attic default halves the heating ΔT where they take the full one |
+| Above-grade walls | 10,950 | 10,432 | ✅ settled. `exterior_wall: 0.123` is their three non-garage rows area-weighted; we now run 5% *over* |
+| Windows | 4,730 | 5,554 | ✅ largely settled. `window: 0.588` is their ten rows area-weighted over 152.5 ft²; area was already within 4%. The residual is the *distribution* — a blend cannot put the four single-pane units in the rooms that have them |
+| Crawl floor load | 5,765 | ~7,800 | U matches (0.521). We apply the crawlspace's **observed** 32 °F (factor 0.69); they model it as *exposed to outdoor air* (factor 1.0, which would give 8,290). **A deliberate difference, not an error** — see the side-car note |
+| Slab | 746 | 807 | ✅ resolved. `floor` corrected 0.05 → their measured **0.020** on 713.9 ft²; we had been overshooting 2.5× |
+| Ceilings | 1,550 | 5,008 | U matches. **One cause left, and it is geometry:** their ceiling area is 1,547 ft² against our 984 — sloped and knee-wall surfaces on the incomplete 2nd floor. See the attic note below; the unvented attic is *not* an error |
 | Below-grade walls | 4,370 | 9,271 | Convention matches since the below-grade fix. `basement_wall: 0.07` is **deliberately not updated**; see below |
 | Basement wall **area** | ~1,135 ft² | 774 ft² | They split each wall at the grade line; Eldr has no grade-line concept and classes the whole wall below-grade |
-| Occupants | 3 | 5 | Side-car input, not yet reconciled |
-| SHR | 0.70 | 0.90 | Our assumed 30-grain humidity difference vs their station's 27.805 — and see the cooling gap below |
+| Doors | 2,908 | 2,233 | We are **over**, and it is area not U: ~132 ft² of door against their 82.3 (38.9 opaque + 43.4 glass). Interior doors are being counted; a schematic fix, not a side-car one |
+| Occupants | 5 | 5 | ✅ reconciled. The actual headcount, and the ACCA bedrooms+1 convention, agree |
+| SHR | 0.80 | 0.90 | Our assumed 30-grain humidity difference vs their station's 27.805 |
+
+**The attic divergence is deliberate and it is ours to keep.** An earlier version of this table blamed part of the ceiling gap on "our unvented-attic default halves the heating ΔT where they take the full one", which reads as an Eldr error. It is not one. The attic genuinely is unvented, and Eldr already models the seasonal asymmetry correctly: a winter factor of **0.50** from the `vented: false` shorthand, and a summer factor of **3.66** resolved from a sol-air attic temperature. Being unvented *helps* in winter — stale air does not track outdoor temperature — and *hurts* in summer, when superheated air has nowhere to go. Declaring the attic vented to match their treatment would make the schematic less true to the house in order to close a number, which is backwards. The whole remaining ceiling gap is the 563 ft² of area we have not drawn.
 
 **Why `basement_wall` was left at 0.07.** Their area-weighted below-grade U is 0.196 (bare 8" stone at 0.293/0.297, finished R-11 at 0.088). Applying that to *our* area gives **12,236 BTU/hr against their 9,271** — a 32% overshoot replacing today's 53% undershoot, because our area is 47% too large for want of a grade line. Substituting one error for another is not accuracy. This one waits for the grade-line split or for measured wall temperatures.
 
-**A known gap on our side, not a disagreement:** Eldr's cooling load includes infiltration only as *latent*. There is no sensible infiltration term in cooling, though heating has one. Their report carries 1,504 BTU/hr of sensible cooling infiltration; the equivalent here would be roughly 1.08 × 186 CFM × 16 °F ≈ 3,200. That is an engine bug, filed separately, and it is part of why our SHR reads low.
+**Fixed since this section was first written:** Eldr's cooling load carried infiltration only as *latent*, with no sensible term, which is part of why our SHR read low. Closed in the `2026-08-14c` run — cooling gained the missing sensible term (3,223 BTU/hr here) and the SHR moved 0.70 → 0.80.
 
-The pattern overall: **the geometry agrees and the assemblies are converging.** What is left is two structural gaps (the grade line, the ceiling-area definition), one deliberate divergence (the observed crawlspace temperature), and one engine bug.
+The pattern overall: **the geometry agrees, and the assemblies are now mostly settled.** Above-grade walls, windows, the slab and occupants are all reconciled against their measured values. What is left is three items, and only one of them is thermal:
+
+1. **The grade line** (4,901 BTU/hr) — structural. Eldr classes a whole basement wall as below-grade; they split it at grade. Blocks setting `basement_wall` honestly.
+2. **The 2nd-floor ceiling area** (3,458) — geometry. 984 ft² drawn against their 1,547; the knee-wall and sloped surfaces are not modelled.
+3. **The phantom doors** (−675, we are over) — geometry. Interior doors counted as envelope doors.
+
+Plus one deliberate divergence we intend to keep: the crawlspace's observed 32 °F, and the unvented attic.
 
 ## The measurement that would settle the most
 

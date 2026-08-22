@@ -65,6 +65,79 @@ For each post, record:
 - **N–S:** tape from the north interior cinder face to the post's **north face**, and give me the post's depth so I can derive the rest.
 - **Actual size and material.** The model says 6×6 for all six. Confirm — a steel lally column is ~3.5″ diameter and would change both the geometry and how it reads in the plan. Wood 4×4 versus 6×6 matters too.
 
+### Post Details
+
+The posts are likely all the 3.5 inch metal poles, but the four westernmost are encased in wood. It looks like 1x6 wood planks that have been cut as necessary to fit decently then decoratively stained, they are almost certainly not actual 6 inch posts. 
+
+Individual wood-encased post details first:
+
+* SW: 6 and 1/16ths inches across from east to west, 5 and 3/8ths from north to south
+* NW: 6 and 3/16ths inches across from east to west, 5 and 3/16ths from north to south
+* N: 5 and 3/16ths inches across from east to west, 6 and 3/16th from north to south
+* S: 6 and 1/4rga inches across from east to west, 5 and 5/8ths from north to south
+
+Measuring south to north distances are tricky:
+
+* Utility room side has raw cinder walls, but also circular metal poles that are hard to measure against
+* Carpeted side (den etc) has nice solid faced posts, but not raw cinder leaving an undetermined thickness going beyond the cinder face
+
+On the utility side the west-east girder resting on the chimney assembling and the east cinder wall is made up by two adjacent 2x10s. The combined two 2x10s are almost the exact width of the metal pole but may be shy a few milimeters. The two combined in one spot measures 3 and 5/16ths across.
+
+Measuring from the crack between the two 2x10s (so roughly in the center of the SE pillar) to the south cinder wall is almost exactly 115 inches. The SE pillar is almost directly below joist 19, with its west-face essentially exactly above the W-E center of the pillar. It is then 157.25 inches from the center between the two 2x10s to the north cinder wall face, leaving us with 272.25 total north-south distance between raw cinder at the east pillar pair
+
+The joists stagger (if that's an appropriate word - one joist ends, a next begins) atop the south girder / main beam in the utility side. So joist 19's north part sits on the east side of the south part, annoying not touching, with maybe 1/8ths of space between them. I thus have no confidence that they are in fact perfectly parallel and aligned with each other.
+
+At the NE pillar joist 19's north part is not quite immediately atop the pillar. There is a 6x6 inch metal plate atop the metal pole, which you would think probably should be centered, yet it is not! On the north-south direction there is an inch and a half from the north edge of the plate to the metal pole, while only 1 inch exactly on the south part. The east-west side is nicely centered. The east part of the plate is almost aligned directly above the west face of joist 19's northern part. There is almost exactly 89 inches from the south edge of the plate to the north bare cinder wall.
+
+#### Measuring round two
+
+West posts are easily accessible
+
+* 96.25 from south wall (wood panel face) to the north face of the SW post
+* 94.128 from south face of SW post to north face of NW post
+* 89.5 from south face of NW post to wood panel face of north wall
+* SW post west face is about 1.5 inches further west than the west face of joist 6
+* NW post west face is about 5/8ths from the east face of joist 6, so for sure the posts are not E-W aligned, but close 
+
+Middle posts not so much, especially the N post embedded in the bar top and hidden from the north wall by the basement bathroom
+
+* 97 inches exactly from south wall to north face of S post
+* 87.75 from north face of S post to north face of N post
+* 44 and 3/8ths from north wall to door frame north face by the basement bathroom
+* 2.5 inch across the door frame trim
+* 29 inches across the door opening
+* 2.5 inches across the southern door frame trim
+* 1.5 inches from south face of south door frame trip to the north edge of the bar counter
+* 1.75 inches from edge of bar counter to the end of some wood siding decor
+* 1 inch exactly BACKWARDS from the south edge of the wood decor to the actual outer face of the south wall of the bathroom (yet another different kind of wood paneling)
+* 2.5 inches from the south face of the outer bathroom wall to the north face of the N post (so 3.5 inches from the edge of the bar counter, or 5 inches from the door opening)
+* For completeness to also start making the basement bathroom accurate: the north face of the bathroom inner south wall is about a quarter inch more south than the door opening. So in theory we should be able to accurately place that wall including its thickness
+* The S post east face roughly lines up with the east face of joist 12 - the 3.5 inch thick beam
+* Luckily the same joist 12 goes right up to the N post, although its east face seems 2 inches from the east face of the beam, so overall 2 inches further east than the S post
+* It is about 2.5 inches from the south face of the N post to the south face of the girder, the posts do again not appear to be exactly on center vs girder
+* The south face of the NW post likewise is about 2.5 inches from the south face of the girder
+* The north face of the NW post is tricky due to trim: 
+  * 3 and 3/8ths from north face of girder till edge of trim
+  * 1.75 backwards from edge of trim to the wood paneling face that wraps the girder
+  * 2 inches from the north face of the NW post to the north face of the wood paneling face
+  * Therefore: 3.75 inches from north face of post and 3.375 inches back, meaning the girder is actually 3/8ths OFF the edge of the north face of the post
+  * That seems counterintuitive, but there may well be aanother 6 inch mounting plate embedded inside the trim and paneling that again could be offset (since we have a comfortable two inches of buffer space on the north side that could hide said mounting plate)
+
+The northern girder appears to be 3 and 1/8th thick, which again might mean it is two 2x10s - it is a little difficult to be sure as the underside is encased in more wood paneling. On the carpeted / den side of the basement the joists appear contigouos from the south wall until they hit the south face of the north girder
+
+#### Measuring round three
+
+The basement bathroom has a void between its north wall and the basement north wall (holds the main drain stack). I measured within the void and got some more bathroom numbers
+
+* North bare cinder to South face of triple stud stack: 5.25
+* 6.125 from there to north face of scaffolding wood before drywall 
+* 66.5 from that north face to north face of inner south bathroom wall 
+* 1.75 from same north face scaffold wood to South face of North drywall inside bathroom (so void depth from cinder to inner bathroom wall face is 5.25 + 6.125 + 1.75)
+* 47.25 from inner faces West to East
+* 11 and 7/8th from west face of N pole to East edge of bar counter
+* 2 and 7/8ths back from counter edge to outer bathroom wall West face
+* 4 and 5/8ths thickness of door frame, which is as good as flush with the bathroom inner West wall, east face
+
 **Watch for the two easy-to-miss ones.** Per the notes, the middle pair sits by the stairs with one embedded in the bar, and the east pair is low-profile and obvious in person but invisible in the 2D plan.
 
 ## 4. Beam lines — the open question from `basement-structure.md`

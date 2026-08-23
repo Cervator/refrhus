@@ -111,9 +111,52 @@ Use these — and only these — to register levels into one plan frame:
   2nd floor.
 - **Staircase** roughly aligns first ↔ second (scale / exact placement may be a
   little off — verify, don't assume).
+- **North & South walls align too — but only on the original perimeter.** See the
+  clarification below; this used to read as a blanket "don't", which was wrong.
 
-**Do NOT** expect north/south walls to align — they diverge by era (kitchen +8 ft
-north; bedroom/2nd-floor extension south; knee-wall inset).
+**Do NOT** expect the **extensions'** north/south walls to align with anything
+below them — they diverge by era (kitchen +8 ft north; bedroom/2nd-floor extension
+south; knee-wall inset). That is real construction history, not tracing error.
+
+**But the original perimeter is one wall stack, all the way down, on every side.**
+Where the Main floor still sits on the original footprint, its north and south walls
+*do* register to the basement block:
+
+- The **north wall of the main-floor bathroom and kids room** follows the original
+  perimeter — it is not an extension, and it should land on the basement's north
+  block line.
+- Same for the **stump near the middle of the kitchen's west wall**, which is
+  north-aligned with the original wall, and the corresponding **stump on the west
+  wall by the main bedroom extension**.
+- The two **extensions themselves** (kitchen north, bedroom south) need their own
+  measurements and must not be dragged onto the basement footprint.
+
+Clarified 2026-08-23 by the owner, after the blanket reading nearly stopped a
+justified correction. The rule is about *eras*, not about compass directions.
+
+### Framed wall vs. cinder block — where the exterior face goes
+
+Derived 2026-08-23; not previously written down, which is why the upper floors had
+drifted without anyone being able to say by how much.
+
+**A framed exterior wall's OUTER face sits on the block's OUTER face.** It follows
+from the rim/band joist above: that member caps the floor framing *flush to the
+block's outer face*, and the wall's sheathing continues the same plane. So an
+exterior wall of thickness `t` on a level above has its centerline at
+`block_outer_face ∓ t/2` — not on the block's centerline, and not on its inner face.
+
+Two consequences worth stating, because both were got wrong at least once:
+
+- The wall thicknesses **differ by level** (8″ block, 7″ framed), so aligning
+  *centerlines* across levels is wrong by 0.5″ and aligning *inner* faces is wrong
+  by 1.5″. Only the outer faces coincide.
+- The rule may run a siding-thickness shy of exact, since siding usually laps the
+  foundation with a drip edge. Treat sub-inch residuals as noise, not error.
+
+**Anchor east, not west, and never the average.** The east gap to raw cinder is a
+confident 1″; the west is a ~8″ estimate through paneling, so the basement's own
+west face carries all the uncertainty in its width. Registering an upper floor onto
+the *east* face puts the known end of the datum against the thing being corrected.
 
 ## Two registration seams
 

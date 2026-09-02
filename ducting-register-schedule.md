@@ -10,20 +10,21 @@ Airflow is biased on purpose — **second floor ×1.35**, **basement ×0.70**, m
 
 ## Schedule
 
-| Level | Room | Room CFM | Sup | CFM ea | Round | Rect | fpm | Ret | CFM ea | Round | Rect | fpm |
-|---|---|---:|:-:|---:|:-:|:-:|---:|:-:|---:|:-:|:-:|---:|
-| Basement | Future Media Room | 85 | 1 | 85 | 6″ | 3x10 | 435 | 1 | 85 | 6″ | 3x10 | 435 |
-| Basement | Utility Room | 82 | 1 | 82 | 6″ | 3x10 | 415 | 1 | 82 | 6″ | 3x10 | 415 |
-| Main | Kitchen | 251 | 2 | 126 | 7″ | 4x10 | 470 | 1 | 251 | 9″ | 5x14 | 569 |
-| Main | Main Bed | 227 | 2 | 113 | 7″ | 4x10 | 424 | 1 | 227 | 9″ | 5x14 | 513 |
-| Main | Living room | 143 | 2 | 71 | 6″ | 3x10 | 363 | 1 | 143 | 7″ | 4x12 | 534 |
-| Main | Kids Room | 64 | 1 | 64 | 6″ | 3x8 | 324 | 1 | 64 | 6″ | 3x8 | 324 |
-| Main | Main Bath | 36 | 1 | 36 | 5″ | 3x6 | 263 | — | — | — | — | — |
-| Main | Main Closet | 17 | 1 | 17 | 4″ | 3x6 | 191 | — | — | — | — | — |
-| 2nd | Play Room | 115 | 1 | 115 | 7″ | 4x10 | 429 | 1 | 115 | 7″ | 4x10 | 429 |
-| 2nd | Office | 113 | 2 | 56 | 5″ | 3x8 | 413 | 1 | 113 | 7″ | 4x10 | 421 |
-| 2nd | Upper Bath | 28 | 1 | 28 | 4″ | 3x6 | 324 | — | — | — | — | — |
-| 2nd | Upstairs Hallway | 20 | 1 | 20 | 4″ | 3x6 | 233 | — | — | — | — | — |
+| Level | Room | Room CFM | Sup | CFM ea | Round | Rect | fpm | Ret | CFM ea | Round | Rect | fpm | New? | Comment |
+|---|---|---:|:-:|---:|:-:|:-:|---:|:-:|---:|:-:|:-:|---:|---:|---:|
+| Basement | Future Media Room | 85 | 1 | 85 | 6″ | 3x10 | 435 | 1 | 85 | 6″ | 3x10 | 435 | 2 | |
+| Basement | Utility Room | 82 | 1 | 82 | 6″ | 3x10 | 415 | 1 | 82 | 6″ | 3x10 | 415 | 2 | |
+| Basement | Midline | - | 1 | | | | | | | | | | 1 | Possible |
+| Main | Kitchen | 251 | 2 | 126 | 7″ | 4x10 | 470 | 1 | 251 | 9″ | 5x14 | 569 | 2 | One tricky |
+| Main | Main Bed | 227 | 2 | 113 | 7″ | 4x10 | 424 | 1 | 227 | 9″ | 5x14 | 513 | 1 | Return narrow? |
+| Main | Living room | 143 | 2 | 71 | 6″ | 3x10 | 363 | 1 | 143 | 7″ | 4x12 | 534 | | |
+| Main | Kids Room | 64 | 1 | 64 | 6″ | 3x8 | 324 | 1 | 64 | 6″ | 3x8 | 324 | | |
+| Main | Main Bath | 36 | 1 | 36 | 5″ | 3x6 | 263 | — | — | — | — | — | | |
+| Main | Main Closet | 17 | 1 | 17 | 4″ | 3x6 | 191 | — | — | — | — | — | 1 | Tiny split from orphan |
+| 2nd | Play Room | 115 | 1 | 115 | 7″ | 4x10 | 429 | 1 | 115 | 7″ | 4x10 | 429 | 1 | |
+| 2nd | Office | 113 | 2 | 56 | 5″ | 3x8 | 413 | 1 | 113 | 7″ | 4x10 | 421 | 2.5 | Rescue orphan counts half |
+| 2nd | Upper Bath | 28 | 0 | 28 | 4″ | 3x6 | 324 | — | — | — | — | — | | Maybe later, do flow |
+| 2nd | Upstairs Hallway | 20 | 0 | 20 | 4″ | 3x6 | 233 | — | — | — | — | — | | Flow through to play |
 
 Rectangular sizes are the shallowest option holding an **aspect ratio at or under 4:1**. Flatter than that costs friction and makes fittings awkward, so a 3x20 is not a real substitute for a 4x14 even though the areas are similar.
 
@@ -83,27 +84,79 @@ Total return must equal total supply — mass balance, no way around it. But the
 
 ### Balance per level
 
+With the Upper Bath and Upstairs Hallway carrying no supply:
+
 | Level | Total supply | Return registers | Together they must carry |
 |---|---:|:-:|---:|
-| Basement | 167 | 2 | 167 |
+| Basement | 167 | 1 | 167 |
 | Main | 737 | 4 | 737 |
-| 2nd floor | 276 | 2 | 276 |
+| 2nd floor | **228** | 2 | **228** |
 
 ### Using return placement to balance the second floor
 
-Oversizing the Play Room's return to drag air across from the Office is a real technique, and the numbers work. The only constraint is that the floor's two returns sum to 276.
+Oversizing the Play Room's return to drag air across from the Office is a real technique, and the numbers work. The only constraint is that the floor's two returns sum to 228.
 
 | | Supply | Return | Net |
 |---|---:|---:|---|
-| Office | 113 | 100 | 13 CFM leaves |
-| Play Room | 115 | 176 | 61 CFM arrives |
-| Upper Bath | 28 | — | 28 CFM migrates out |
-| Upstairs Hallway | 20 | — | 20 CFM migrates out |
-| | **276** | **276** | balanced |
+| Office | 113 | 60 | 53 CFM leaves |
+| Play Room | 115 | 168 | 53 CFM arrives |
+| Upper Bath | — | — | swept by transit |
+| Upstairs Hallway | — | — | swept by transit |
+| | **228** | **228** | balanced |
 
-That drives 61 CFM of cross-flow into the Play Room — the Office's surplus plus everything supplied to the bath and hallway. Shrink the Office return further to pull harder; the pair just has to keep summing to 276.
+That drives 53 CFM through the bath and hallway on its way to the Play Room. Shrink the Office return further to pull harder; the pair just has to keep summing to 228.
 
 **The mechanism only works if the air has a path.** Door undercuts of ¾″ or transfer grilles between office, bathroom and play room are what make this real rather than theoretical — without them the rooms pressurise and the flow stops.
+
+### Transit air sweeps a room; it does not heat one
+
+Worth stating plainly, because it is the trap in leaving the Upper Bath unsupplied. Air arriving from the Office is at room temperature and has no heat to give up. Steady-state estimate for the bath, on a UA of about 16.5 BTU/hr·°F:
+
+| Transit air through it | Design-day temperature |
+|---:|---:|
+| 53 CFM | ~58°F |
+| 100 CFM | ~63°F |
+
+Conduction from adjacent rooms through interior walls is ignored, so reality is warmer — but no plausible transit rate reaches 70°F, because the air has nothing to deliver.
+
+**A bathroom wants its own heat.** Three ways out, and the middle one is usually best here:
+
+1. Supply it from the riser and accept the register landing over the stairs.
+2. **Electric resistance — a toe-kick heater or heated floor.** Standard for exactly this case, cheap to run for a room this size, independent of the duct layout, and it makes the bathroom warmer than ducting would. It also avoids forcing the north run through the main-floor bathroom and kitchen void.
+3. Accept roughly 60°F on design days.
+
+The Upstairs Hallway needs no such treatment — it is transit space, tolerates being cool, and borrows heat from the rooms it connects.
+
+---
+
+## Zoning — air is not water
+
+The house already runs three heating zones, so three zones feels like the obvious carry-over. It is not, and the reason is worth being blunt about:
+
+> **Zoning water is easy. Zoning air is hard.** A zone valve closes and the boiler simply makes less hot water. A zone damper closes and the air has to go *somewhere* — the blower is still turning.
+
+The arithmetic here is unfriendly. Against a whole-house design of ~1,180 CFM, and a 3.5–4 ton air handler whose minimum airflow is roughly 40% of nominal (**550–640 CFM**):
+
+| Zone calling alone | CFM | Versus minimum |
+|---|---:|---|
+| Basement | 167 | **14% — far below** |
+| 2nd floor | 228 | **19% — far below** |
+| Main | 737 | fine |
+| Basement + Main | 904 | fine |
+
+**Neither the basement nor the second floor can be its own hard zone** on a single unit this size. Either alone starves the blower and drives static pressure up.
+
+What actually works, roughly in order of preference:
+
+- **Manual balancing dampers and no zoning.** A modulating compressor running long low-output cycles does much of what zoning promises, because the classic reason to zone is a single-stage unit blasting and shutting off. Simplest, cheapest, and reversible.
+- **Modulating zone dampers** that throttle rather than shut, so every zone keeps some flow. Avoids the minimum-airflow cliff entirely.
+- **A dump zone** — usually the basement, damper never fully closing, so minimum flow is always available.
+- **A zone panel that reduces blower speed to match the open zones.** Correct in principle, but see the caution below.
+- **A bypass damper.** The old answer and the bad one: it recirculates supply air to the return, degrading dehumidification, and can freeze the coil in cooling or overheat it in heating. Avoid.
+
+**The caution that links back to controls:** a zone panel able to stage the blower generally has to *communicate* with the unit, and zone panels are frequently where the open-controls option quietly disappears. Zoning and third-party thermostats pull against each other, the same tension as modulation and open control.
+
+**Recommendation: manual dampers now, zoning later if the balance genuinely disappoints.** The stack effect is real and does not care about modulation, so this may not be the final answer — but it is the cheap experiment, and the ductwork for it is identical either way.
 
 ## Notes for editing
 

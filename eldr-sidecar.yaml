@@ -3,7 +3,14 @@
 design:
   indoor_heating_f: 70        # winter setpoint
   # outdoor_heating_99_f:     # omitted -> looked up from the model's lat/long (nearest station)
-  supply_air_rise_f: 50       # supply-air temperature rise over room, for CFM sizing
+  supply_air_rise_f: 30       # CORRECTED 2026-09-02. Was 50, which is a GAS FURNACE number
+  #                             # (furnaces deliver 120-140F supply). A heat pump delivers
+  #                             # 95-105F against a 70F return, so ~30F rise — and therefore
+  #                             # needs ~67% MORE airflow for the same heat. Verified against
+  #                             # the pros' own reports: at 30F this model gives 370 CFM/ton
+  #                             # against their 366 (progressions B and C both). At 50F it
+  #                             # gave 222 CFM/ton, which is furnace territory and undersized
+  #                             # every heating-driven duct in the house by a factor of 1.67.
   ground_temp_f: 50           # deep-soil temp. COOLING ONLY: below-grade surfaces face soil below the
   #                             # summer setpoint, so they are a heat sink and contribute no cooling load.
   #                             # Heating no longer uses this — below-grade walls + slab now take the full

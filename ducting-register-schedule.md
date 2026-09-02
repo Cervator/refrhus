@@ -158,6 +158,44 @@ What actually works, roughly in order of preference:
 
 **Recommendation: manual dampers now, zoning later if the balance genuinely disappoints.** The stack effect is real and does not care about modulation, so this may not be the final answer — but it is the cheap experiment, and the ductwork for it is identical either way.
 
+### Throttling is not zoning, and the distinction matters
+
+Everything above concerns **hard zone dampers**, where a whole floor's damper shuts. Smart-home *throttling* of individual branches is a different and much safer thing, because **throttling redistributes air rather than removing it** — a partly-closed damper raises static slightly and the air leaves through the other branches. The system only starves when most of it closes.
+
+| Action | CFM affected | Share of 1,180 |
+|---|---:|---:|
+| One basement branch throttled by half | ~28 | **2.4%** |
+| Whole basement throttled hard | 167 | 14% |
+| Basement + 2nd floor together | 395 | 33% |
+
+A single motorised branch damper reacting to a local sensor — the computer rack under the NW basement supply, for instance — is a balancing damper that moves by itself. It is not a system-level risk.
+
+**Compressor turndown and blower minimum are separate constraints.** The unit modulates capacity to roughly a third; the blower minimum exists to keep enough air over the coil, above freezing in cooling and below the high limit in heating. That minimum **scales with output**, so at a third capacity the required airflow falls too and demand tracks requirement. The failure mode is not low flow — it is **dampers throttling while the compressor stays at full**, which is precisely what two independent control systems can do to each other.
+
+**The architecture that works:** the unit's own thermostat decides *whether* the system runs and at what capacity; the smart-home dampers decide *where* the air goes within that. Clean separation, and it sidesteps the communicating-thermostat trap entirely, because the dampers are just motorised balancing dampers the unit never needs to know about.
+
+**The rule that keeps them from fighting:** never throttle more than ~30–40% of total design airflow at once, and never fully close a damper. Give the smart-home logic a hard floor it cannot cross regardless of what the sensors say.
+
+And if nothing calls, the system is simply off — the minimum-airflow problem only exists while it is running. For a basement that holds temperature unconditioned, letting it drift when it is the only caller uses thermal mass the house already has rather than conceding anything.
+
+## Duct materials
+
+| Option | Where it fits | Watch |
+|---|---|---|
+| **Rectangular sheet metal** | Joist bays, trunks | Most size-flexible — any dimension |
+| **Spiral round** | Exposed runs | Standard increments only; low friction, strong |
+| **Double-wall spiral** | Exposed where insulation is wanted | Confirm ID vs OD; confirm the liner is cooling-rated |
+| **Flat oval** | **Shallow spaces, joist bays, above a soffit** | Round-like friction at a much shallower profile |
+| **Snaplock round** | Concealed round runs | Cheaper than spiral, less handsome |
+| **Flex** | Final 3–6 ft to a register only | 2–3× the friction of rigid; sags and crushes |
+| **Ductboard** | — | Fibres, poor durability, hard to clean. Skip. |
+
+**Flat oval deserves consideration here.** Spiral-formed then flattened, it keeps most of round's low friction in a profile that fits where round will not, which suits a house whose recurring constraint is headroom. Available double-wall.
+
+**Flex is fine and widely abused.** Pulled tight and under about six feet it is a legitimate final connection and kills vibration. Sagging through a joist bay for twenty feet it is the commonest cause of a system that underperforms its design — and it is invisible once the ceiling closes.
+
+**Trunks cannot be resized decently.** The practical hedge is not oversizing — a too-large trunk runs slow, and slow is what makes near takeoffs steal from far ones — but **adding a parallel duct later**, which is a further argument for the four-way plenum split: four modest ducts leave room beside them, one 16″ artery does not.
+
 ## Notes for editing
 
 - **Splitting a room's supply does not change its total** — two registers at half the CFM each, and each duct drops about one nominal size.

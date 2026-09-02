@@ -45,6 +45,59 @@ Design airflow from Eldr's per-room Manual J, on geometry that is deliberately c
 
 ---
 
+## Per-room duct sizing (2026-09-02)
+
+Airflow deliberately biased before sizing, on the owner's read of how the house behaves rather than what the model computes:
+
+- **Second floor ×1.35.** Its ceiling is modelled at 984 ft² whole-house against the professionals' 1,547, its knee walls are not drawn at all, and it is observed to run hot. The uplift sits between the moderate correction (~×1.15) and the worst case (~×1.40).
+- **Basement ×0.70.** Largely below grade, thermally massive, and observed to hold temperature with no conditioning at all. Its design-day peak overstates the airflow it actually needs.
+- **Main floor unchanged.**
+
+Rooms under 10 CFM get no dedicated run — door undercut or a transfer grille instead.
+
+| Level | Room | Raw | Biased | Exact | Duct | fpm |
+|---|---|---:|---:|---:|---|---:|
+| Basement | Future Media Room | 73 | 51 | 4.7″ | 5″ | 376 |
+| Basement | Utility Room | 70 | 49 | 4.6″ | 5″ | 359 |
+| Main | Main Bed | 156 | 156 | 7.2″ | 8″ | 448 |
+| Main | Kitchen | 153 | 153 | 7.1″ | 8″ | 439 |
+| Main | Living room | 114 | 114 | 6.4″ | 7″ | 426 |
+| Main | Kids Room | 57 | 57 | 4.9″ | 5″ | 419 |
+| Main | Main Bath | 27 | 27 | 3.7″ | 4″ | 305 |
+| Main | Main Closet | 10 | 10 | 2.5″ | 4″ | 115 |
+| 2nd | Office | 83 | 113 | 6.4″ | 7″ | 421 |
+| 2nd | Play Room | 72 | 98 | 6.0″ | 7″ | 366 |
+| 2nd | Upper Bath | 21 | 28 | 3.8″ | 4″ | 324 |
+| 2nd | Upstairs Hallway | 14 | 19 | 3.2″ | 4″ | 213 |
+
+Velocities run 115–450 fpm throughout — quiet, with nothing strained.
+
+| | CFM | Round | Rectangular |
+|---|---:|---|---|
+| Basement branch | 100 | 7″ | 4×10 |
+| Main branch | 517 | 12″ | 8×16 |
+| 2nd floor riser | **257** | **9″** | **9×9** or 6×12 |
+| Trunk at the unit | **874** | **14″** | **8×24** |
+
+**The two biases nearly cancel at the trunk** — 874 against the unbiased 884 — so the largest single piece of ductwork is insensitive to how those judgement calls land.
+
+**But the uplift changes the old ducts' role.** At design friction a 3×10 carries **86 CFM**, against a biased Office at 113 and Play Room at 98. Together they cover 172 of 257 — **67%**, not the 83% the unbiased numbers suggested. They remain a substantial contribution rather than the base, and the riser should be planned to carry the shortfall rather than leaning on them running hard. A 3×10 pushed to 113 CFM reaches 542 fpm: tolerable, but bought with noise and pressure drop.
+
+Sizes are computed with Eldr's own `ductd` equal-friction math at 0.08 in.wc/100 ft; rectangular equivalents use the ASHRAE relation `De = 1.30·(ab)^0.625 / (a+b)^0.25`.
+
+| Size | Area | Equiv round | CFM @ 0.08 |
+|---|---:|---:|---:|
+| 3×10 | 30 in² | 5.74″ | 86 |
+| 4×10 | 40 | 6.74″ | 131 |
+| 4×14 | 56 | 7.81″ | 194 |
+| 6×10 | 60 | 8.40″ | 235 |
+| 8×8 | 64 | 8.75″ | 261 |
+| 9×9 | 81 | 9.84″ | 357 |
+| 6×14 | 84 | 9.80″ | 353 |
+| 8×12 | 96 | 10.66″ | 441 |
+| 8×16 | 128 | 12.19″ | 628 |
+| 8×24 | 192 | 14.61″ | 1015 |
+
 ## The three-level utility cabinet
 
 The cabinet is the whole argument in physical form. The standard, correct objection to retrofit second-floor ducting is that ducts in an unconditioned knee-wall attic lose 20–30%. A stacked cabinet running basement → main → second floor is a **conditioned chase**: it keeps the ducts inside the thermal envelope, which dissolves the objection rather than arguing with it.

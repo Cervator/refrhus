@@ -12,21 +12,27 @@ Airflow is biased on purpose — **second floor ×1.35**, **basement ×0.70**, m
 
 | Level | Room | Room CFM | Sup | CFM ea | Round | Rect | fpm | Ret | CFM ea | Round | Rect | fpm | New? | Comment |
 |---|---|---:|:-:|---:|:-:|:-:|---:|:-:|---:|:-:|:-:|---:|---:|---:|
-| Basement | Future Media Room | 85 | 1 | 85 | 6″ | 3x10 | 435 | 1 | 85 | 6″ | 3x10 | 435 | 2 | |
-| Basement | Utility Room | 82 | 1 | 82 | 6″ | 3x10 | 415 | 1 | 82 | 6″ | 3x10 | 415 | 2 | |
-| Basement | Midline | - | 1 | | | | | | | | | | 1 | Possible |
+| Basement | Future Media Room | 85 | 1 | 85 | 6″ | 3x10 | 435 | — | — | — | — | — | 1 | Returns via midline |
+| Basement | Utility Room | 82 | 1 | 82 | 6″ | 3x10 | 415 | — | — | — | — | — | 1 | Returns via midline |
+| Basement | **Midline return** | — | — | — | — | — | — | 1 | **167** | 8″ | 4x14 | 478 | 1 | Serves the whole floor |
 | Main | Kitchen | 251 | 2 | 126 | 7″ | 4x10 | 470 | 1 | 251 | 9″ | 5x14 | 569 | 2 | One tricky |
 | Main | Main Bed | 227 | 2 | 113 | 7″ | 4x10 | 424 | 1 | 227 | 9″ | 5x14 | 513 | 1 | Return narrow? |
 | Main | Living room | 143 | 2 | 71 | 6″ | 3x10 | 363 | 1 | 143 | 7″ | 4x12 | 534 | | |
 | Main | Kids Room | 64 | 1 | 64 | 6″ | 3x8 | 324 | 1 | 64 | 6″ | 3x8 | 324 | | |
 | Main | Main Bath | 36 | 1 | 36 | 5″ | 3x6 | 263 | — | — | — | — | — | | |
 | Main | Main Closet | 17 | 1 | 17 | 4″ | 3x6 | 191 | — | — | — | — | — | 1 | Tiny split from orphan |
-| 2nd | Play Room | 115 | 1 | 115 | 7″ | 4x10 | 429 | 1 | 115 | 7″ | 4x10 | 429 | 1 | |
-| 2nd | Office | 113 | 2 | 56 | 5″ | 3x8 | 413 | 1 | 113 | 7″ | 4x10 | 421 | 2.5 | Rescue orphan counts half |
-| 2nd | Upper Bath | 28 | 0 | 28 | 4″ | 3x6 | 324 | — | — | — | — | — | | Maybe later, do flow |
-| 2nd | Upstairs Hallway | 20 | 0 | 20 | 4″ | 3x6 | 233 | — | — | — | — | — | | Flow through to play |
+| 2nd | Play Room | 115 | 1 | 115 | 7″ | 4x10 | 429 | 1 | **168** | 8″ | 4x14 | 481 | 1 | Return oversized for cross-flow |
+| 2nd | Office | 113 | 2 | 56 | 5″ | 3x8 | 413 | 1 | 113 | 7″ | 4x10 | 423 | 2.5 | Rescue orphan counts half |
+| 2nd | Upper Bath | 28 | — | — | — | — | — | — | — | — | — | — | | No supply — wants electric heat |
+| 2nd | Upstairs Hallway | 20 | — | — | — | — | — | — | — | — | — | — | | Swept by transit only |
 
 Rectangular sizes are the shallowest option holding an **aspect ratio at or under 4:1**. Flatter than that costs friction and makes fittings awkward, so a 3x20 is not a real substitute for a 4x14 even though the areas are similar.
+
+**Two return decisions are baked into the table above.**
+
+*The basement runs one central return rather than two room returns.* At 167 CFM through an 8″ it is unremarkable, returns need not match supply count, and the living-room return is right there anyway. It also drops the basement from five new ducts to **three**.
+
+*The second-floor returns are sized for the cross-flow split, not for their own rooms.* The Play Room's is sized at **168** rather than its own 115, so the option to drag air across from the Office exists without re-ducting. Their combined capacity is 281 against the 228 the floor actually needs — **the dampers set the real split**, and sizing for the larger case costs a nominal size, not a redesign.
 
 Room-name mapping, since the model and conversation differ: the 2nd-floor "kids room" is **Play Room**; the main-floor "small kids room" is **Kids Room**; "bathroom" with supply only is **Main Bath**.
 
@@ -86,11 +92,11 @@ Total return must equal total supply — mass balance, no way around it. But the
 
 With the Upper Bath and Upstairs Hallway carrying no supply:
 
-| Level | Total supply | Return registers | Together they must carry |
-|---|---:|:-:|---:|
-| Basement | 167 | 1 | 167 |
-| Main | 737 | 4 | 737 |
-| 2nd floor | **228** | 2 | **228** |
+| Level | Total supply | Return registers | Together they must carry | Sized for |
+|---|---:|:-:|---:|---:|
+| Basement | 167 | 1 | 167 | 167 |
+| Main | 737 | 4 | 737 | 737 |
+| 2nd floor | **228** | 2 | **228** | 281 — deliberately generous |
 
 ### Using return placement to balance the second floor
 

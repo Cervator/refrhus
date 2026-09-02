@@ -7,6 +7,9 @@ The house model, tracked **exploded** so git can diff the design — "PR your ho
 - `sh3d-internals/` — the exploded `.sh3d` (which is a ZIP): `Home.xml` (walls / rooms / levels / furniture — the diffable truth), the serialized `Home`, `ContentDigests`, and numbered content entries (background images, 3D models). **Source of truth — commit changes here.**
 - `Refrhus.sh3d` — the packed file you open in Sweet Home 3D. **Generated, gitignored.**
 - `hvac/` — load calculations: the professional Manual J reports and every dated [Eldr](https://github.com/SiliconSaga/eldr) run, with an index explaining where the two disagree. See [`hvac/README.md`](hvac/README.md).
+- `ducting-scheme.md` — **start here for the duct design**: the scheme as it stands, why it is shaped that way, and the case against a second air handler. `ducting-design.md` is the as-built seed and `ducting-plan.md` the earlier forward spec.
+- Measurement records — `basement-joists.md`, `basement-structure.md`, `basement-measure-sheet.md`, `chimney-measure-sheet.md`, and `basement-post-details.html` (plan-view details of the six posts; also published as an artifact).
+- `schematic-hitlist.md` — what still needs measuring or drawing, ranked by BTU impact.
 - `eldr-sidecar.yaml` — the thermal assumptions Eldr reads alongside the geometry (assemblies, design conditions, infiltration). Live input, not an artifact, so it stays at the root.
 
 ## Pack / unpack

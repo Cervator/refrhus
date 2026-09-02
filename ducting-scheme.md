@@ -102,9 +102,18 @@ B costs a little floor area and buys a clean elevation with one access point ins
 
 ## Room-by-room notes
 
-**Office** — supply up through the floor from the main-floor cabinet. An old duct running *inside a conditioned wall* can serve as secondary supply near the window. One of the two old runs currently dead-ends under the floor near the east window and wants rescuing.
+**The two old second-floor ducts are load-bearing, not supplementary.** Both measure about **3 × 10**, which is 5.74″ equivalent round and carries roughly **84 CFM** at design friction — a quiet 403 fpm.
 
-**Kids room (west)** — the second old duct, also inside conditioned space, is a candidate supply.
+| | Needs | One 3×10 gives |
+|---|---:|---:|
+| Play Room (west) | 72 | 84 ✓ |
+| Office (east, by the window) | 83 | 84 ✓ |
+
+Together **168 CFM — 83% of the floor's 202**. That flips the framing: the old ducts are the *base* and the cabinet riser is the *margin*, which is a cheaper build than the other way round. Worth confirming both are clear and intact end to end, especially the one currently dead-ending under the floor near the east window — at those numbers it is carrying real load, not a nice-to-have.
+
+**Office** — primary supply up through the floor from the main-floor cabinet, keeping it out of the attic entirely. The old duct near the window adds perimeter supply, which is what keeps this floor from being purely central-supply.
+
+**Kids room (west)** — the second old duct, also inside conditioned space.
 
 **Kitchen** — 153 CFM, the second-largest room, and its northern half sits over the crawlspace rather than the basement. Solved by the same principle: a **return** runs from behind the basement bathroom straight through the plank atop the cinder block — where old drain-pipe holes can be widened — out to a register under the kitchen sink. Buffer space, but return only.
 
@@ -149,9 +158,56 @@ Also worth noting: the current HVAC company specialises in insulation, so envelo
 - **The chimney's absolute position** carries a 2″ disagreement with its own tape chain; fine for layout, not for cutting.
 - **The second floor's interior geometry** lags the east–west registration applied to the perimeter, so per-room figures on that level are stale until it catches up.
 
+## Equipment
+
+Sized on the larger of heating and cooling, which here is heating: **39,651 BTU/hr = 3.3 tons** on current geometry, rising to roughly **3.8 tons** once `basement_wall` takes the professionals' measured U-value. So the target is **3.5–4 tons**, and 4 is the safer read.
+
+### Bosch IDS Ultra — the leading candidate
+
+The cold-climate member of the IDS family, and the relevant one here: NJ's 99% design temperature is 15°F, and the Ultra delivers **100% heating capacity down to 5°F**, continuing to initiate heating to −13°F. DOE Cold Climate Heat Pump Challenge approved and ENERGY STAR V6.1 Cold Climate certified, tested at Oak Ridge. Uses **R-454B**, an A2L low-GWP refrigerant.
+
+Two-part system: **BOVA** outdoor condenser, **BIVA** indoor air handler.
+
+| Component | Model | W × H × D (in) |
+|---|---|---|
+| Indoor air handler, 4 ton | BIVA-48MCB-M19X | **22.0 × 54.5 × 24.0** |
+| Indoor air handler, 5 ton | BIVA-60MCB-M19X | 22.0 × 54.5 × 24.0 |
+| Outdoor condenser, 5 ton | BOVA-60MTB-M19E | 29.125 × 43.3125 × 29.125 |
+
+The 4-ton and 5-ton air handlers share a cabinet. Verified from Bosch's own IDS Ultra spec sheet; the 3-ton system exists per Bosch's product literature but its dimensions are not on the sheet consulted.
+
+**What it means for the basement.** In upflow the unit is 54.5″ tall on a 22 × 24 footprint. Converted to horizontal it lies down: roughly **22–24″ tall** (depending on which face it rests on) on a **54.5 × 24** footprint. Against the ~40″ of headroom at the tall end of the stair wedge, a horizontal unit leaves **16–18″ beneath it** for elevation and a duct — which is the configuration this plan assumes.
+
+Behind the bar either orientation fits: the basement's 84″ to joist bottoms clears an upflow cabinet with 29.5″ to spare. The reason to prefer horizontal is not the unit's height but **where its connections land** — sideways at mid-height, matching the wedge, rather than out of the top into the stair soffit.
+
+Electric heat kits (EHK-05B through EHK-20B, 5–20 kW) fit the cabinet without modification, which is the backup-heat path if the cold-climate performance ever needs supplementing.
+
+### Orientation, generally
+
+**Most residential air handlers are multi-position** — the same cabinet is sold for upflow, downflow, horizontal-left and horizontal-right. The Bosch BVA line ships configured for *upflow or horizontal-right* and is field-convertible to *horizontal-left or downflow*. The IDS Ultra air handler's drain pan is explicitly described as offering "flexibility for VT or HZ applications."
+
+**The drain pan is the part that actually changes.** Condensate has to fall toward a drain in whatever orientation the coil ends up, so conversion is usually a matter of repositioning the pan and sometimes fitting a kit. Ask specifically whether the horizontal conversion needs a part, and confirm the drain fall — a horizontal pan with insufficient slope is a recurring source of overflow.
+
+### The controls trade-off, which is a real decision
+
+The requirement here is variable speed **and** open control rather than a locked ecosystem. Those pull against each other, and it is worth deciding deliberately:
+
+| | Conventional 24V | Bosch communicating |
+|---|---|---|
+| Thermostat | any — ecobee, Home Assistant, anything | Bosch's own |
+| Modulation | **staged**, not continuous | full compressor range |
+| Openness | complete | closed |
+
+The good news is that a Bosch variable-speed unit **can** run on a third-party 24V thermostat, because the modulation logic lives in the unit rather than the stat. The IDS Ultra's remote monitoring is documented as working "even without a communicating thermostat." A two-stage-capable smart thermostat is the practical minimum.
+
+The cost is granularity. The Ultra's compressor modulates **35% to 138% in 1% increments**, and a conventional thermostat can only ask for stages, so most of that resolution goes unused. A communicating thermostat unlocks it and closes the system.
+
+**One thing worth confirming before committing:** whether any local telemetry is available, or whether monitoring only goes through Bosch's EasyAir cloud app. Given the house already has an LGTM stack, a local data path would be worth more here than in a typical install.
+
 ## Future options, deliberately deferred
 
+- **Garage mudroom conversion.** Split the return off the kitchen run at one end, bring supply across the *conditioned* basement, and enter at the opposite end. The governing principle holds, and supply and return land diagonally opposite — the arrangement you would choose freely. This is the case that shows the scheme extends rather than merely fits.
 - **A north supply run** if room balance proves poor.
 - **More second-floor supply** beyond the central pair and the two old ducts.
-- **Manual T** — register throw and spread — which is the piece that would turn "should reach the far corner" into a calculation. It is also the piece that speaks the contractor's language most directly.
+- **Manual T** — register throw and spread — which turns "should reach the far corner" into a calculation, and speaks the contractor's language most directly.
 - **Grade line and second-floor ceiling geometry**, the two largest remaining Manual J gaps, both parked while the duct layout takes shape.

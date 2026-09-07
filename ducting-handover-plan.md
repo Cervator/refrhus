@@ -36,6 +36,19 @@ Ducting: North supply trunk 4 [rect]
 
 Vocabulary: `[rect]` · `[spiral]` · `[dwspiral]` (double-wall) · `[oval]` · `[flex]`
 
+**Defaults, so most objects need no tag at all:** a box is `[rect]`, a cylinder is `[spiral]`. Only the exceptions get written down — squeeze a dimension and add `[oval]` where oval earns its place, `[dwspiral]` where a supply is exposed.
+
+### When insulation is actually required
+
+**Supply ducts sweat; returns do not.** A supply carries ~55°F air in cooling, and a basement at 75°F / 50% RH has a dew point right at 55°F — 60°F at 60% RH. So exposed basement supply runs condense *even in conditioned space*. Returns run near 75°F, above any indoor dew point, and never sweat.
+
+| | Treatment |
+|---|---|
+| Supply, **exposed** (basement feature runs) | **`[dwspiral]`** — insulation inside the shell keeps the outer surface warm |
+| Supply, concealed (joist bays, cabinet) | `[rect]` / `[spiral]` with external wrap |
+| All returns | plain — no insulation needed for condensation |
+| Returns in the knee-wall attic | plain; the blown insulation around them *is* the insulation |
+
 Why names rather than `<property>` elements: properties need `tag.py`, which currently handles only walls and rooms, and furniture already has an editable name. The bracket is self-validating in the same way the assembly tags are — a token without a known keyword is just text.
 
 **Do not** put material in the prose part of the name. The names already carry run identity, destination and sequence, and they are close to unwieldy.
@@ -62,6 +75,17 @@ Deliverables:
 | + Main bed west | 405 | 11″ |
 
 At 12×12 it holds 763, so unless it is carrying most of the south side it is oversized — and an oversized trunk runs slow, which is exactly what lets the near takeoff steal from the far one where this splits three ways at the top.
+
+**Shape it wide and shallow, not square.** Three takeoffs need face width more than they need area, and square is the worst shape for the job:
+
+| If it carries | Rectangular | Equiv | Capacity | fpm |
+|---|---|---:|---:|---:|
+| ~292 | **6×16** | 10.4″ | 400 | 350 |
+| ~405 | **8×16** | 12.2″ | 628 | 456 |
+
+16″ of face gives three takeoffs room to be spaced rather than crowded; 6–8″ of depth keeps the riser from eating the cabinet space the return needs alongside it. Velocity runs low at these sizes, so **damper all three takeoffs** — at 350–450 fpm that is how the split gets balanced, not an optional refinement.
+
+**Return riser: 9×9.** It collects the two upstairs returns — Office 113 plus Play Room 168 at the generous sizing, 228 by mass balance. 9×9 gives 9.84″ equivalent and 357 CFM capacity, running 405 fpm at 228 and 499 at 281, both inside the 400–600 window returns want. 8×8 would be 8.75″ and slightly under. Square is fine here because it collects rather than branches.
 
 ## Task 3 — Parts list
 

@@ -51,6 +51,8 @@ Deliverables:
 - Carried CFM at every segment
 - **Required** size versus **drawn** size, flagged both ways
 
+**Rotation will break a naive implementation.** Some segments are drawn at an angle — Sweet Home 3D stores an `angle` on each piece, and an axis-aligned bounding box around a rotated object is both too large and the wrong shape. Angled segments will read as disconnected, or as touching things they do not. Rotate each object's corners by its own angle before testing adjacency.
+
 **The SE riser is the open question this answers.** Drawn 12×12 (763 CFM capacity), deliberately unsized. Scenarios, for scale:
 
 | If it carries | CFM | Wants |
@@ -78,6 +80,34 @@ GitHub Pages from `Cervator/refrhus`, public. Side navigation across the existin
 Suggested order: the scheme primer as the landing page, then the argument against a second unit, the register schedule, the model audit, the parts list, the measurement records, and the renders.
 
 ---
+
+## Task 6 — CI: run Eldr on every push, diff the loads on every PR
+
+The idea that completes "PR your house". `ducting-plan.md` §1 already says as-built anchors live on `main` and proposals live on a branch **so the diff is the proposal** — but today that diff is geometric. Running the engine in CI makes it *quantitative*: change a room, and the load change shows up in the pull request.
+
+**On push to `main`:** regenerate the report and publish it to Pages, so the site is never stale relative to the model.
+
+**On a pull request:** run Eldr against both the PR head and `main`, then comment the difference. `--json` already emits the whole analysis as structured data, so the diff is a dict comparison rather than text scraping:
+
+```
+## Eldr — load change vs main
+
+| Component  |   main |     PR |    Δ |
+|------------|-------:|-------:|-----:|
+| ceiling    |  1,555 |  2,340 | +785 |
+| **total**  | 39,439 | 40,224 | +785 |
+
+Design airflow 1,217 → 1,241 CFM · Manual S 3.3 → 3.4 tons (recommendation unchanged)
+```
+
+**Eldr's warnings become CI checks**, which may be the more valuable half. A pull request that draws a room badly and introduces a new schematic gap, an unbound `spaces:` key or a borrowed U-value would surface it in the comment instead of being discovered three sessions later. That is regression testing for a house.
+
+Practicalities:
+
+- **The engine has to be reachable.** `SiliconSaga/eldr` is a separate repo, and a public `refrhus` pulling a private `eldr` means a token with private-repo read sitting in a public repo's secrets. Cleanest resolution: **make `eldr` public too.** It is an engine with no house data in it, and the whole exercise is a public worked example.
+- **Eldr has no packaging metadata** — a known limitation from the level-stack work. CI checks it out and sets `PYTHONPATH` rather than pip-installing. Worth fixing eventually; not a blocker.
+- **Runs against `sh3d-internals/Home.xml` directly**, which is the tracked artefact. The packed `.sh3d` is gitignored and irrelevant to CI.
+- Dependencies are only `pyyaml` and `defusedxml`.
 
 ## What to fix before handover
 

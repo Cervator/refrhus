@@ -4,7 +4,7 @@ Written 2026-09-07, deliberately before a context compaction, so the next sessio
 
 **Goal:** turn the duct design into something an HVAC company can be handed — a public GitHub Pages site with real navigation, backed by the measured model, carrying a parts list and renders. The company still favours a second air handler upstairs; this package is the argument against it, made in their own units.
 
-**Decision made:** `Cervator/refrhus` goes **fully public**. Refr Hus becomes a public worked example of GDD applied to home improvement, and going public removes the GitHub Pages paid-tier question entirely (free plan publishes Pages from public repos; private-repo Pages needs Pro, and even then the *site* is public anyway).
+**`Cervator/refrhus` is public**, as is `SiliconSaga/eldr`. Refr Hus is a public worked example of GDD applied to home improvement, and public repos publish Pages on the free plan — so neither the Pages tier nor CI repo access is a constraint.
 
 ---
 
@@ -18,7 +18,7 @@ Written 2026-09-07, deliberately before a context compaction, so the next sessio
 | Audit | `ducting-model-audit.md` — drawn objects vs schedule |
 | Branch | `ducts/poc`, so the diff is the proposal |
 
-Fixed since the audit: both plenums to 12×20, north return trunk widened to a stud bay (may have height to spare, deferred to install).
+Both utility closets have ample space for any combination or placement of ducts, so cabinet capacity is not a constraint on the layout. Plenums are 12×20, sized as an estimate that will be refined at install.
 
 **Carried as doc-only metadata**, because there is no clean way to say it in the schematic: the main-bedroom return branch is 7.5×4 (91 CFM) against 227 needed. It is the existing duct through the inaccessible crawlspace, it is **not** a sizing error to correct, and the plan of record is a transfer grille above the bedroom door first, with a second return via the SE corner only if that proves insufficient. **Treat the docs as the home for design metadata the model cannot express.**
 
@@ -36,7 +36,11 @@ Ducting: North supply trunk 4 [rect]
 
 Vocabulary: `[rect]` · `[spiral]` · `[dwspiral]` (double-wall) · `[oval]` · `[flex]`
 
-**Defaults, so most objects need no tag at all:** a box is `[rect]`, a cylinder is `[spiral]`. Only the exceptions get written down — squeeze a dimension and add `[oval]` where oval earns its place, `[dwspiral]` where a supply is exposed.
+**Defaults, so most objects need no tag at all:** a box is `[rect]`, and **a cylinder is `[dwspiral]`**. Only the exceptions get written down — squeeze a dimension and add `[oval]` where oval earns its place.
+
+Every cylinder in the model is in the basement, and every basement *supply* needs insulation against condensation anyway. That leaves exactly one return run that could be plain spiral — not worth a second product line. One round part, ordered one way.
+
+**The caveat that comes with standardising on double-wall:** the insulation sits inside the shell, so the airway is smaller than the nominal size. Sizing here is by *airway*, so confirm whether a supplier quotes inner or outer diameter before ordering — getting it backwards costs two inches of diameter on every round run at once.
 
 ### When insulation is actually required
 
@@ -66,26 +70,21 @@ Deliverables:
 
 **Rotation will break a naive implementation.** Some segments are drawn at an angle — Sweet Home 3D stores an `angle` on each piece, and an axis-aligned bounding box around a rotated object is both too large and the wrong shape. Angled segments will read as disconnected, or as touching things they do not. Rotate each object's corners by its own angle before testing adjacency.
 
-**The SE riser is the open question this answers.** Drawn 12×12 (763 CFM capacity), deliberately unsized. Scenarios, for scale:
+### The SE supply riser — settled, and it reduces
 
-| If it carries | CFM | Wants |
-|---|---:|---|
-| 2nd floor only (Office + Play Room) | 228 | 9″ |
-| + Main-floor kids room | 292 | 10″ |
-| + Main bed west | 405 | 11″ |
+It serves **six registers**: three on the second floor (Play Room ×1, Office ×2) and three on the main floor (Kids Room ×1, Main Bed ×2). So it leaves the plenum carrying **519 CFM** and sheds load twice on the way up:
 
-At 12×12 it holds 763, so unless it is carrying most of the south side it is oversized — and an oversized trunk runs slow, which is exactly what lets the near takeoff steal from the far one where this splits three ways at the top.
+| Segment | Carries | Section | Equiv | fpm |
+|---|---:|---|---:|---:|
+| Plenum → Main Bed takeoff | **519** | 12×12 | 13.1″ | 519 |
+| → Kids Room takeoff | **292** | 8×10 | 9.8″ | 526 |
+| → 2nd floor split | **228** | 8×8 | 8.8″ | 513 |
 
-**Shape it wide and shallow, not square.** Three takeoffs need face width more than they need area, and square is the worst shape for the job:
+That is the reducing-trunk approach, and it is the right one here — velocity stays near 520 fpm the whole way rather than collapsing as branches leave. **The 12×12 already drawn is correct at the bottom**; what it needs is the two step-downs above.
 
-| If it carries | Rectangular | Equiv | Capacity | fpm |
-|---|---|---:|---:|---:|
-| ~292 | **6×16** | 10.4″ | 400 | 350 |
-| ~405 | **8×16** | 12.2″ | 628 | 456 |
+Keeping velocity up matters more on this riser than anywhere else in the house, because it splits three ways at the top. Damper every takeoff regardless.
 
-16″ of face gives three takeoffs room to be spaced rather than crowded; 6–8″ of depth keeps the riser from eating the cabinet space the return needs alongside it. Velocity runs low at these sizes, so **damper all three takeoffs** — at 350–450 fpm that is how the split gets balanced, not an optional refinement.
-
-**Return riser: 9×9.** It collects the two upstairs returns — Office 113 plus Play Room 168 at the generous sizing, 228 by mass balance. 9×9 gives 9.84″ equivalent and 357 CFM capacity, running 405 fpm at 228 and 499 at 281, both inside the 400–600 window returns want. 8×8 would be 8.75″ and slightly under. Square is fine here because it collects rather than branches.
+**Return riser: 9×9.** It collects the two upstairs returns — Office 113 plus Play Room 168 at the generous sizing, 228 by mass balance — giving 9.84″ equivalent and 357 CFM capacity, running 405 fpm at 228 and 499 at 281, both inside the 400–600 window returns want. 8×8 would be 8.75″ and slightly under. Square is fine because it collects rather than branches.
 
 ## Task 3 — Parts list
 
@@ -128,16 +127,15 @@ Design airflow 1,217 → 1,241 CFM · Manual S 3.3 → 3.4 tons (recommendation 
 
 Practicalities:
 
-- **The engine has to be reachable.** `SiliconSaga/eldr` is a separate repo, and a public `refrhus` pulling a private `eldr` means a token with private-repo read sitting in a public repo's secrets. Cleanest resolution: **make `eldr` public too.** It is an engine with no house data in it, and the whole exercise is a public worked example.
+- **The engine is a separate public repo**, so CI checks out `SiliconSaga/eldr` alongside this one. No secrets involved.
 - **Eldr has no packaging metadata** — a known limitation from the level-stack work. CI checks it out and sets `PYTHONPATH` rather than pip-installing. Worth fixing eventually; not a blocker.
 - **Runs against `sh3d-internals/Home.xml` directly**, which is the tracked artefact. The packed `.sh3d` is gitignored and irrelevant to CI.
 - Dependencies are only `pyyaml` and `defusedxml`.
 
 ## What to fix before handover
 
-1. **Size the SE riser** from Task 2's answer.
-2. **Add material tags** so the parts list can be generated.
-3. **Consider flat oval** on the nine 4″-deep runs the audit lists.
+1. **Add material tags** so the parts list can be generated.
+2. **Step the SE riser down** twice on the way up, per the schedule above.
 
 ## What to be upfront about in the package
 

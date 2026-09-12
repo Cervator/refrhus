@@ -205,7 +205,6 @@ Also worth noting: the current HVAC company specialises in insulation, so envelo
 ## Open questions
 
 - **Which dimension constrains the basement ducts** — stud-bay width after the chimney, or the 16″ closet depth. Changes duct proportions, not position.
-- **56.5″ or "just under 40″"** for the second-floor cabinet depth. They differ by 16″.
 - **The two old ducts** — sizes, and whether the office one can be rescued from its dead end.
 - **The knee-wall attic itself** — not yet entered. Estimated ~32″ deep from the 56.5″ reading.
 - **The chimney's absolute position** carries a 2″ disagreement with its own tape chain; fine for layout, not for cutting.

@@ -52,6 +52,27 @@ A 3D adjacency pass over all 72 objects at 3″ tolerance. **Every run joins som
 
 The SW return is the run that exposes this: trunks 3 and 4 overlap by 1″ in elevation (74–83″ and 82–91″), and a naive pass reports them 26″ apart.
 
+### Topology cannot be inferred from geometry — only the return side works
+
+Adjacency tells you two objects touch. It does not tell you they are *joined*, and in this model that distinction cannot be recovered:
+
+- **Touching is too loose.** In the basement the branches run parallel along the joist bays and touch side by side. At 3″ tolerance the SE supply trunk comes out with **seven** neighbours and four sibling branches appear to tee into each other.
+- **Intersecting is too tight.** Requiring real volume overlap disconnects the North return trunk from the return plenum — a joint that is certainly real, drawn as a butt rather than a penetration.
+
+Joints in this model are a mix of butts and overlaps, so no single threshold separates a tee from a neighbour. **The return side survives anyway** because its runs are sparse enough not to graze, and it walks into exactly the tree the design describes:
+
+```
+Return plenum
+├── North return trunk → kitchen branch, both-main-bedrooms
+│                        └── both-main-bedrooms → main bed, main floor kids
+├── SE return trunk   → office, play room south      (the 2nd-floor riser)
+└── SW return trunk   → SW return branch (living room / SW basement)
+```
+
+**The supply side needs its hierarchy declared rather than computed**, and it already is — the trunk tables in [`ducting-register-schedule.md`](ducting-register-schedule.md) are hand-authored and carry the reducing schedule an installer needs. Re-deriving them from geometry would confirm a thing already known, so it is not worth the modelling discipline it would demand.
+
+**The parts list does not need any of this.** Run membership comes from the object *names* — stem plus ordinal — not from geometry, so per-run length, cross-section, material and direction changes are all reliably derivable without resolving a single junction.
+
 ## Modelling caveats
 
 Sizes here are read off box dimensions, and the longest edge is *assumed* to be the run direction. Where a box is nearly cubic that assumption is weak. Objects do not all touch, and no elbows, tees or takeoffs are modelled — so run lengths are indicative and **total effective length is not derivable from this model**. That matters, because effective length is what a static-pressure argument turns on.

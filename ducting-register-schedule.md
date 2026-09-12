@@ -34,7 +34,41 @@ Rectangular sizes are the shallowest option holding an **aspect ratio at or unde
 
 *The second-floor returns are sized for the cross-flow split, not for their own rooms.* The Play Room's is sized at **168** rather than its own 115, so the option to drag air across from the Office exists without re-ducting. Their combined capacity is 281 against the 228 the floor actually needs — **the dampers set the real split**, and sizing for the larger case costs a nominal size, not a redesign.
 
-Room-name mapping, since the model and conversation differ: the 2nd-floor "kids room" is **Play Room**; the main-floor "small kids room" is **Kids Room**; "bathroom" with supply only is **Main Bath**.
+Room-name mapping, since the model and conversation differ: the 2nd-floor "kids room" is **Play Room**; the main-floor "small kids room" is **Kids Room**; "bathroom" with supply only is **Main Bath**. The two basement supplies are named by position in the model and by room here — **"west basement" is Future Media Room**, **"basement east" is Utility Room**.
+
+---
+
+## Register and grille faces
+
+Sized on face velocity only: supply registers at 40–70% free area running 300–500 fpm, return grilles on gross area at roughly 300–350 fpm. Quiet, and deliberately on the generous side — **an undersized grille is the one part of this system a person hears every day.**
+
+**This is not Manual T.** Throw, spread, drop and NC need the room's dimensions against a specific manufacturer's catalogue, and the choice of *where* on the wall or floor matters as much as the size. Treat the faces below as the starting schedule a contractor prices, not as a selection.
+
+| Level | Room | Qty | CFM ea | Face | fpm | Note |
+|---|---|:-:|---:|:-:|---:|---|
+| Basement | Future Media Room | 1 | 85 | 4x10 | 409 | |
+| Basement | Utility Room | 1 | 82 | 4x10 | 394 | |
+| Main | Kitchen | 2 | 126 | 4x12 | 504 | Highest of any supply |
+| Main | Main Bed | 2 | 113 | 4x12 | 452 | |
+| Main | Living room | 2 | 71 | 4x10 | 341 | |
+| Main | Kids Room | 1 | 64 | 4x10 | 308 | |
+| Main | Main Bath | 1 | 36 | 4x8 | 216 | |
+| Main | Main Closet | 1 | 17 | 4x6 | 136 | Trickle; velocity is irrelevant here |
+| 2nd | Play Room | 1 | 115 | 4x12 | 460 | |
+| 2nd | Office | 2 | 56 | 4x8 | 335 | 4x10 would drop under 270 |
+| | **Supply registers** | **14** | | | | |
+| Basement | Midline return | 1 | 167 | 6x12 | 334 | |
+| Main | Kitchen | 1 | 251 | 8x14 | 323 | |
+| Main | Main Bed | 1 | 227 | 8x14 | 292 | Grille is fine; the *duct* is the constraint |
+| Main | Living room | 1 | 143 | 6x10 | 343 | |
+| Main | Kids Room | 1 | 64 | 4x8 | 288 | |
+| 2nd | Play Room | 1 | 168 | 6x12 | 336 | Sized for cross-flow, per above |
+| 2nd | Office | 1 | 113 | 6x8 | 339 | |
+| | **Return grilles** | **7** | | | | |
+
+**Returns run 290–340 fpm across the board** and supplies 300–500. That spread is intentional: a return grille sits where people are and is judged entirely on noise, while a supply register needs enough velocity to actually throw air into the room rather than dribble it down the wall.
+
+The Main Bed return grille is the one row that understates a known problem. **The 8x14 face is correct and the duct behind it is not** — it is the existing 7.5x4 through the inaccessible crawlspace, good for about 91 CFM against 227. The plan of record is a transfer grille over the bedroom door first; see the note in the handover plan.
 
 ---
 

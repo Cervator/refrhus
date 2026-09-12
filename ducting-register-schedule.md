@@ -21,7 +21,7 @@ Airflow is biased on purpose — **second floor ×1.35**, **basement ×0.70**, m
 | Main | Kids Room | 64 | 1 | 64 | 6″ | 3x8 | 324 | 1 | 64 | 6″ | 3x8 | 324 | | |
 | Main | Main Bath | 36 | 1 | 36 | 5″ | 3x6 | 263 | — | — | — | — | — | | |
 | Main | Main Closet | 17 | 1 | 17 | 4″ | 3x6 | 191 | — | — | — | — | — | 1 | Tiny split from orphan |
-| 2nd | Play Room | 115 | 1 | 115 | 7″ | 4x10 | 429 | 1 | **168** | 8″ | 4x14 | 481 | 1 | Return oversized for cross-flow |
+| 2nd | Play Room | 115 | 2 | 115 | 7″ | 4x10 | 429 | 1 | **168** | 8″ | 4x14 | 481 | 1 | New south duct sized for the *whole* room — see below |
 | 2nd | Office | 113 | 2 | 56 | 5″ | 3x8 | 413 | 1 | 113 | 7″ | 4x10 | 423 | 2.5 | Rescue orphan counts half |
 | 2nd | Upper Bath | 28 | — | — | — | — | — | — | — | — | — | — | | No supply — wants electric heat |
 | 2nd | Upstairs Hallway | 20 | — | — | — | — | — | — | — | — | — | — | | Swept by transit only |
@@ -31,6 +31,8 @@ Rectangular sizes are the shallowest option holding an **aspect ratio at or unde
 **Two return decisions are baked into the table above.**
 
 *The basement runs one central return rather than two room returns.* At 167 CFM through an 8″ it is unremarkable, returns need not match supply count, and the living-room return is right there anyway. It also drops the basement from five new ducts to **three**.
+
+*The Play Room gets two supplies, and the new one is sized as though it were the only one.* The existing east-wall duct is small enough to be suspect, so the new south-wall register is sized for the room's full 115 CFM rather than for half of it. If the east duct turns out to carry its share, the room is comfortably over-served and the damper takes it back; if it carries nothing, the room is still right. **Sizing the new duct for half would have made the room hostage to a duct nobody has measured.** Treat the east register as recovered capacity, not as a design assumption — it is the one supply in this house whose contribution is unknown.
 
 *The second-floor returns are sized for the cross-flow split, not for their own rooms.* The Play Room's is sized at **168** rather than its own 115, so the option to drag air across from the Office exists without re-ducting. Their combined capacity is 281 against the 228 the floor actually needs — **the dampers set the real split**, and sizing for the larger case costs a nominal size, not a redesign.
 
@@ -54,9 +56,10 @@ Sized on face velocity only: supply registers at 40–70% free area running 300�
 | Main | Kids Room | 1 | 64 | 4x10 | 308 | |
 | Main | Main Bath | 1 | 36 | 4x8 | 216 | |
 | Main | Main Closet | 1 | 17 | 4x6 | 136 | Trickle; velocity is irrelevant here |
-| 2nd | Play Room | 1 | 115 | 4x12 | 460 | |
+| 2nd | Play Room — south | 1 | 115 | 4x12 | 460 | New; sized for the whole room |
+| 2nd | Play Room — east | 1 | — | existing | — | Keep the opening; contribution unknown |
 | 2nd | Office | 2 | 56 | 4x8 | 335 | 4x10 would drop under 270 |
-| | **Supply registers** | **14** | | | | |
+| | **Supply registers** | **15** | | | | |
 | Basement | Midline return | 1 | 167 | 6x12 | 334 | |
 | Main | Kitchen | 1 | 251 | 8x14 | 323 | |
 | Main | Main Bed | 1 | 227 | 8x14 | 292 | Grille is fine; the *duct* is the constraint |

@@ -61,6 +61,27 @@ Why names rather than `<property>` elements: properties need `tag.py`, which cur
 
 **Do not** put material in the prose part of the name. The names already carry run identity, destination and sequence, and they are close to unwieldy.
 
+### Registers and grilles are objects, not tags
+
+They carry things a tag on a duct cannot. A register has a **position** — which end of the run, which wall — and `Supply branch for main bed north and basement east` is the case that proves it: one run, two registers, two levels, two rooms. A tag could say "this run has 2" and would leave the contractor guessing which end. Face size and mounting type are per-register too, and the parts list needs something countable.
+
+Modelled with the catalogue's **`frame`** object, named with their own prefixes so both stay countable separately from `Ducting:`:
+
+```
+Register: Return from living room        ← supply and return faces alike
+Grille:   Play Room south
+```
+
+**Only the position matters, not the precision.** Attachment is resolved by adjacency against the duct runs, so a small frame at the right end of the right run is enough. The living-room return overlaps its branch by 0.1″ — the grille face sitting flush against the duct's end, which is exactly right physically and well inside the 3″ tolerance.
+
+Duct names must not contain the word *register*; it collides with the object prefix. One did, and is now `Supply branch for main closet 1`.
+
+### Duct naming, normalised
+
+`<Trunk?> <supply|return> <trunk|branch> for <destination> <n> [material]`
+
+Leading word capitalised, compass trunk designators keep their case (`North`, `SE`, `SW`), every run carries an ordinal even when it is a single object — run membership is derived from *stem plus ordinal*, so a missing ordinal silently makes a run of one. Names must be unique within a run; two objects both called `SE return trunk 2` collapse into one segment for length and parts purposes.
+
 ## Task 2 — Compute the real hierarchy from geometry
 
 The audit reads each object in isolation. What is missing is **connectivity**, and it is what the SE riser question turns on.

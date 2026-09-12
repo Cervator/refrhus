@@ -44,6 +44,29 @@ Nine runs are drawn 4″ deep — shallow enough that the shape is doing real wo
 
 `office east 4` · `little kids room 5` · `play room east 2` · `both main bedrooms` · `main bed room 1` · `main bed room 2` · `west kitchen and west basement` · `west living room 2` · `SW return branch`
 
+## Connectivity — where runs break
+
+A 3D adjacency pass over all objects, with each rotated by its own `angle` before testing (**60 of 72 are rotated**, so this is not optional). Tolerance 3″; anything beyond that is treated as a gap rather than a sloppy joint.
+
+**The SW return chain is broken in three places** and is the one system that needs real attention:
+
+| Gap | Between |
+|---:|---|
+| **38″** | SW return branch (living room / SW basement) → SW return trunk 4 |
+| **32″** | SW return trunk 4 → SW return trunk 3 |
+| 4.5″ | SW return trunk 3 → SW return trunk 2 |
+
+Thirty-odd inches is not a joint left untouched — it reads as a **missing segment**, or two objects that were never moved to meet. SW return trunk 2 also has only one neighbour, so the chain is open at that end too.
+
+**Smaller gaps, probably just untouched joints but worth a glance:**
+
+- Supply branch for main bed north and basement east — 15.4″
+- West living room 1 ↔ west kitchen 3 — 10.5″
+- West kitchen 4 ↔ west living room 2 — 6.6″
+- SE return trunk 2 (Main) — 3.1″, only just over tolerance
+
+Everything else joins within tolerance, so the SE supply, north supply and north return systems are continuous as drawn.
+
 ## Modelling caveats
 
 Sizes here are read off box dimensions, and the longest edge is *assumed* to be the run direction. Where a box is nearly cubic that assumption is weak. Objects do not all touch, and no elbows, tees or takeoffs are modelled — so run lengths are indicative and **total effective length is not derivable from this model**. That matters, because effective length is what a static-pressure argument turns on.

@@ -40,6 +40,10 @@ Vocabulary: `[rect]` · `[spiral]` · `[dwspiral]` (double-wall) · `[oval]` · 
 
 Every cylinder in the model is in the basement, and every basement *supply* needs insulation against condensation anyway. That leaves exactly one return run that could be plain spiral — not worth a second product line. One round part, ordered one way.
 
+**The explicit `[dwspiral]` tags on the supply runs stay**, even though the default now covers them, because they carry a distinction the default cannot: on a supply, double-wall is **required**; on the return it is merely **convenient**. If cost ever forces the question, the tagged runs are the ones that cannot change.
+
+**Oval is deliberately partial.** Only part of the north return is tagged `[oval]`, because that stretch is entirely new work. Elsewhere a run would have to transition spiral → oval → existing rect, and specifying that mid-run is the kind of detail better left to the installer than pinned in a drawing.
+
 **The caveat that comes with standardising on double-wall:** the insulation sits inside the shell, so the airway is smaller than the nominal size. Sizing here is by *airway*, so confirm whether a supplier quotes inner or outer diameter before ordering — getting it backwards costs two inches of diameter on every round run at once.
 
 ### When insulation is actually required
@@ -80,7 +84,9 @@ It serves **six registers**: three on the second floor (Play Room ×1, Office ×
 | → Kids Room takeoff | **292** | 8×10 | 9.8″ | 526 |
 | → 2nd floor split | **228** | 8×8 | 8.8″ | 513 |
 
-That is the reducing-trunk approach, and it is the right one here — velocity stays near 520 fpm the whole way rather than collapsing as branches leave. **The 12×12 already drawn is correct at the bottom**; what it needs is the two step-downs above.
+That is the reducing-trunk approach, and it is the right one here — velocity stays near 520 fpm the whole way rather than collapsing as branches leave. **The 12×12 already drawn is correct at the bottom.**
+
+**The step-downs stay in this document rather than in the model.** Splitting one box into three at exact takeoff points is fiddly to draw and adds nothing an installer needs — the schedule above is the instruction, and reducing a trunk as branches leave is ordinary practice they will do by habit. This is the same call as the main-bedroom return note: design intent the docs carry because the schematic cannot say it cleanly.
 
 Keeping velocity up matters more on this riser than anywhere else in the house, because it splits three ways at the top. Damper every takeoff regardless.
 

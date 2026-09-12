@@ -46,26 +46,11 @@ Nine runs are drawn 4″ deep — shallow enough that the shape is doing real wo
 
 ## Connectivity — where runs break
 
-A 3D adjacency pass over all objects, with each rotated by its own `angle` before testing (**60 of 72 are rotated**, so this is not optional). Tolerance 3″; anything beyond that is treated as a gap rather than a sloppy joint.
+A 3D adjacency pass over all 72 objects at 3″ tolerance. **Every run joins something, and no trunk or plenum dead-ends mid-run** — the supply, SE, north and SW systems are all continuous as drawn.
 
-**The SW return chain is broken in three places** and is the one system that needs real attention:
+**Read Sweet Home 3D's own rotated dimensions, not the raw ones.** A piece tilted by `pitch` or `roll` carries `widthInPlan` / `depthInPlan` / `heightInPlan` — the bounding box *after* that tilt — and its `elevation` is measured to the bottom of that box, not of the upright model. Twenty of the 72 duct objects are tilted, all of them horizontal runs drawn as pitched cylinders. Reconstructing the rotation from `width`/`depth`/`height` instead puts those runs **tens of inches off in elevation** while leaving the plan position right — so they read as badly broken chains that look perfectly joined when you inspect them on screen. Only the yaw (`angle`) still needs applying, to the in-plan footprint.
 
-| Gap | Between |
-|---:|---|
-| **38″** | SW return branch (living room / SW basement) → SW return trunk 4 |
-| **32″** | SW return trunk 4 → SW return trunk 3 |
-| 4.5″ | SW return trunk 3 → SW return trunk 2 |
-
-Thirty-odd inches is not a joint left untouched — it reads as a **missing segment**, or two objects that were never moved to meet. SW return trunk 2 also has only one neighbour, so the chain is open at that end too.
-
-**Smaller gaps, probably just untouched joints but worth a glance:**
-
-- Supply branch for main bed north and basement east — 15.4″
-- West living room 1 ↔ west kitchen 3 — 10.5″
-- West kitchen 4 ↔ west living room 2 — 6.6″
-- SE return trunk 2 (Main) — 3.1″, only just over tolerance
-
-Everything else joins within tolerance, so the SE supply, north supply and north return systems are continuous as drawn.
+The SW return is the run that exposes this: trunks 3 and 4 overlap by 1″ in elevation (74–83″ and 82–91″), and a naive pass reports them 26″ apart.
 
 ## Modelling caveats
 

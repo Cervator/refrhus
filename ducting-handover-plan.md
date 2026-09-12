@@ -72,7 +72,9 @@ Deliverables:
 - Carried CFM at every segment
 - **Required** size versus **drawn** size, flagged both ways
 
-**Rotation will break a naive implementation.** Some segments are drawn at an angle — Sweet Home 3D stores an `angle` on each piece, and an axis-aligned bounding box around a rotated object is both too large and the wrong shape. Angled segments will read as disconnected, or as touching things they do not. Rotate each object's corners by its own angle before testing adjacency.
+**Rotation will break a naive implementation, and the obvious fix is also wrong.** Sweet Home 3D already publishes the rotated bounding box: a piece tilted by `pitch` or `roll` carries `widthInPlan` / `depthInPlan` / `heightInPlan`, and its `elevation` is the bottom of *that* box. Use those three and apply only the yaw (`angle`) to the footprint. Rotating `width`/`depth`/`height` yourself gets the plan position right but the **elevation wrong by tens of inches**, which manufactures broken chains out of runs that are visibly joined on screen. Twenty of the 72 duct objects are tilted — every horizontal cylinder run.
+
+Connectivity has been verified under the corrected reading: **every run joins, nothing dead-ends mid-run.** What remains is the graph walk itself.
 
 ### The SE supply riser — settled, and it reduces
 

@@ -121,7 +121,8 @@ Future runs excluded. Round sizes are **airway** — confirm whether a supplier 
 | Supply registers | 15 | $225 | $900 |
 | Return grilles | 8 | $200 | $800 |
 | Balancing dampers | 21 | $525 | $1,260 |
-| **Ductwork subtotal** | | **$4,591** | **$12,062** |
+| Duct only | | $3,641 | $9,102 |
+| **Subtotal — duct, trim and dampers** | | **$4,591** | **$12,062** |
 
 **All figures are pre-incentive.** No rebate, tax credit or utility programme is netted off anywhere in this document. Incentives change by year, by model and by jurisdiction, and a quote that quietly assumes one is a quote that cannot be compared against another.
 
@@ -181,11 +182,11 @@ The honest caveat on the whole table: **the fittings allowance is the weakest nu
 
 ### What this is for: one air handler or two
 
-The number that matters is not the total, it is **the delta between one unit and two**. The current proposal is a second *internal* ducted handler rather than one in the knee-wall attic, which is a materially better idea — an internal unit sits in conditioned space, so the duct losses that make attic equipment a bad retrofit bet do not apply. It is argued with on its merits in [`ducting-scheme.md`](ducting-scheme.md).
+The number that matters is not the total, it is **the delta between one unit and two**. The proposal is a second ducted handler in the **north knee-wall attic**, reached through the wall at the top of the stairs — so it is attic equipment, in a space our own model puts near 133°F on a summer design day. It is argued with on its merits in [`ducting-scheme.md`](ducting-scheme.md).
 
-On cost alone, the delta is a second indoor unit, a second filter, a second condensate path, a second service point and a second maintenance schedule for as long as the house stands — against a riser that **has to be built anyway** for the main floor.
+On cost alone, the delta is a second indoor unit, a second filter, a second condensate path — over a finished ceiling — a second service point reached through a knee-wall hatch, and a second maintenance schedule for as long as the house stands. Against a riser that **has to be built anyway** for the main floor.
 
-But cost is not what decides it. **This turns on static pressure**, and the two schemes share most of their ductwork regardless of which wins, so the straight-duct total above barely moves between them. Get the fitting counts; they settle it.
+**But cost is not what decides it, and neither is static pressure alone.** A north knee-wall unit does not reach the south side of those rooms, and the suggested remedy — a duct channel along the office wall — is itself a chase. Ask which registers the second unit can actually reach *before* asking whether one unit runs out of static pressure. The fitting counts settle the second question; only a site visit settles the first.
 
 ## Counts
 

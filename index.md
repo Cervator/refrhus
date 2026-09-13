@@ -19,8 +19,8 @@ Everything here is generated from or checked against the model in this repositor
 | Existing unit | 4.0 tons |
 | Duct, straight runs | 344 ft across **29 live runs** (31 drawn, 2 future) |
 | Registers and grilles | 25 |
-| Ductwork, installed | $4,600–12,100 |
-| **Whole job, pre-incentive** | **$12,400–30,400** |
+| Ductwork, straight runs | $3,600–9,100 |
+| **Whole job, pre-incentive** | **$12,200–29,200** |
 
 **Quote the 4 ton, not the 3.5.** The load calculation runs against geometry that is knowingly incomplete, and every gap in it points the same way: there is no grade line, so basement walls are classed below-grade over their full height; and a third of the second-floor ceiling surface is not drawn at all. Taking the professionals' measured basement U-value alone moves the load to ~3.8 tons. The sizing verdict on the existing unit has flipped between *oversized* and *well-matched* three times as corrections landed — **a verdict that flips with each correction is one to hold loosely**, and rounding up is the cheap direction to be wrong in.
 

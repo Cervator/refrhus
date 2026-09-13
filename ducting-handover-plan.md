@@ -175,8 +175,15 @@ Practicalities:
 
 ## What to fix before handover
 
-1. **Add material tags** so the parts list can be generated.
-2. **Step the SE riser down** twice on the way up, per the schedule above.
+**Done:** material tags are in and `tools/partslist.py` consumes them; registers and grilles are modelled as `Register:` objects with faces; the parts list, cost bands and whole-job estimate are generated from the model.
+
+**Deliberately not done:** the SE riser step-downs stay in the schedule rather than the model — splitting one box into three at exact takeoff points is fiddly to draw and adds nothing an installer needs, since reducing a trunk as branches leave is ordinary practice.
+
+**Still open, and all three are the owner's call rather than modelling work:**
+
+1. **The kitchen SE supply** runs 806 fpm at 2″ of cabinet height and wants 4″. Moving one cabinet over or modifying the cabinet both solve it; either is a construction decision.
+2. **The kitchen return** at 3x20 needs roughly double the area, and wants to get *rounder* rather than longer — 8x14 against the drawn 3x20.
+3. **The main-floor return path**, which is the one genuinely worth a site visit before anything is priced. The buried section cannot change; the basement run is open and can be enlarged at least as far as the splitter.
 
 ## What to be upfront about in the package
 

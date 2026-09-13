@@ -2,7 +2,7 @@
 
 Where the ducting design stands as of 2026-09-02, why it is shaped this way, and what is still open. Written to be readable cold — by a contractor, by a future session, or by the owner in six months.
 
-Companion documents: `ducting-design.md` (the as-built seed), `ducting-plan.md` (the earlier forward spec, including the maintenance-wall chase), `chimney-measure-sheet.md` (the chimney's geometry), and `hvac/README.md` (the load calculations and where they disagree with the professional Manual J).
+Companion documents: `chimney-measure-sheet.md` (the chimney's geometry), and `hvac/README.md` (the load calculations and where they disagree with the professional Manual J).
 
 ---
 
@@ -199,6 +199,26 @@ Presented in the order that a contractor will engage with it:
 **Where to be careful.** Eldr's Manual D uses a flat 1.5× fitting factor, not true fitting equivalent lengths. Real elbows, tees and boots on a three-storey run add 50–150 ft of equivalent length, so any static-pressure figure computed with the default is optimistic. Either raise the factor to something defensible (2.5–3) and say so, or count fittings by hand for the contested run. **Do not hand over a number that flatters the case on a modelling shortcut** — it is the one thing that would cost the credibility everything else earns.
 
 Also worth noting: the current HVAC company specialises in insulation, so envelope work is likely already in their plan. That is an ally for this scheme rather than an obstacle — a tighter envelope lowers the load the ducts have to carry.
+
+---
+
+## The maintenance wall — front door to primary bedroom
+
+The wall the upstairs-east risers pass through, and the trickiest build in the scheme. It is currently **one stud space deep**, with room for exactly one more inside the bedroom — a quirk of the doubled/offset wall created when the bedroom was extended south. Breaking in from the bedroom side showed **2–3 studs and an old conduit hole through to the basement**.
+
+**Use the conduit hole as the datum.** It is a single point piercing both the basement and the wall cavity, so it registers the two coordinate frames against each other — the same shared-anchor trick the joists provide. Measure the studs relative to it and reference every riser to it, and "I cannot tell where the studs are versus where the ducts come up" becomes exact offsets from one known hole.
+
+**Go rectangular, not round.** The depth budget is roughly two stud bays back to back (~7″), and a bay gives about 14.5″ clear. Three round 5–6″ ducts side by side need 15–18″ and fight the studs. Residential **wall-stack duct** — 3.25x10 or 3.25x12, purpose-made to run vertically between studs in a 2x4 wall — puts the shallow dimension across the wall depth and solves the problem directly. Oval is the fallback. Prefer running each duct *within* a bay so no stud needs notching; if a riser must cross one, verify the partition is non-load-bearing first, because the south-extension quirk muddies that.
+
+**The panel has to come off and still look intentional.** Build the built-in as a rigid self-bracing box so it does not rack when lifted, and hang it on a French cleat with a few concealed screws — rigidity gives the sturdiness, few fasteners give the removability. Hide screws inside shelf interiors, behind the coat rail, or under a toe-kick. **Put the removable seams on natural trim lines** — design the face as board-and-batten or stile-and-rail so the panel edges fall on a batten joint. That single move is the difference between millwork and an access hatch, and it is what makes the wall read as built-in from the front door rather than as a duct chase with a lid.
+
+The alternative to all of it is over-provisioning ducts up front so the wall never needs opening. This scheme deliberately takes the other bet: **fewer ducts, and a wall you can unscrew.**
+
+## Constraints from the rest of the basement
+
+**The SW utility corner is spoken for.** It is being prepped for a Powerwall — a 45″ × 30″ unit on plywood, with a 40″ × 14″ electrical panel to its left and network gear to the right. Relocating the air handler under the stairs is partly what frees that corner, so **duct routing must stay clear of it**; it is not spare wall.
+
+**Cost intuition for spiral:** roughly *diameter × 2 × length* in dollars — a 6″ run at 5 ft lands near $60, so about $12/ft. Order of magnitude only, useful for judging whether a routing change is worth arguing about.
 
 ---
 

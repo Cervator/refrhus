@@ -2,7 +2,7 @@
 
 Two independent Manual J estimates of this house, kept side by side so they can be compared and so the drift between successive Eldr runs stays visible. [Eldr](https://github.com/SiliconSaga/eldr) is our own engine: it reads `../sh3d-internals/Home.xml` for geometry and `../eldr-sidecar.yaml` for the thermal assumptions geometry cannot hold.
 
-The design intent, duct scheme and as-built notes live one level up in [`../ducting-plan.md`](../ducting-plan.md) and [`../ducting-design.md`](../ducting-design.md). This directory is only load calculations and their inputs.
+The design intent and duct scheme live one level up in [`../ducting-scheme.md`](../ducting-scheme.md). This directory is only load calculations and their inputs.
 
 ## Why keep old runs
 

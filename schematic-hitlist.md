@@ -1,8 +1,12 @@
 # Schematic hit-list
 
-What still has to change in `Refrhus.sh3d`, who does each piece, and what it is worth. Ranked by measured BTU/hr impact within each section, against the `2026-08-16` baseline of **42,097** heating versus the professionals' **54,260**.
+What still has to change in `Refrhus.sh3d`, who does each piece, and what it is worth. Ranked by BTU/hr impact within each section.
 
-The remaining gap is **12,163 BTU/hr**, and after the assembly true-up almost all of it is *geometry* rather than assumptions. Above-grade walls, windows, the slab and occupants are settled against measured values. What is left is drawing and measuring.
+Current run: **39,694** heating against the professionals' **54,260** — a gap of **14,566 BTU/hr**. The gap *widened* after the basement measurement work, which is the right direction for honesty even though it looks like the wrong one: the measured basement is smaller and better-sealed than the estimate it replaced, so the two numbers now disagree for reasons that can be named rather than for reasons nobody had looked at.
+
+After the assembly true-up, almost all of what remains is *geometry* rather than assumptions. Above-grade walls, windows, the slab and occupants are settled against measured values. What is left is drawing and measuring — and item 1.1 alone accounts for roughly a third of the gap.
+
+**The per-BTU figures below predate the basement work and are indicative, not current.** Re-derive from a fresh run before using one to decide what to do next.
 
 ---
 
@@ -75,13 +79,11 @@ Their ceilings are three assemblies: 40.4 ft² at R-11, 541.2 ft² at R-13, 965.
 
 Worth combining with 1.2 — you will be up there anyway.
 
-### 1.6 Re-measure the joist grid and posts — *no load impact, model accuracy*
-
-The clean 16in-OC grid was placed roughly (`joist-01…25`). The staircase-mainbeam zone between joist-14/15 and the west-wall end bay are the re-measure targets, plus the 6 basement posts.
-
 ---
 
 ## 2. Decisions I need from you — then I do the edit
+
+**Several of these may already be resolved** by the basement and duct work — the Garage room naming in particular. Worth a status pass against the current model before treating any of them as outstanding.
 
 These are all model changes I can make, but each needs a judgement call that is yours.
 
@@ -159,4 +161,6 @@ Tags survive Sweet Home 3D's own save and `normalize.sh`. They do **not** surviv
 
 ## What this is all for
 
-Per-room CFM. The whole-house total is already within 22% of a professional Manual J and the equipment sizing barely moves now. What the remaining work buys is *per-room* accuracy — and per-room CFM is the input to Manual T, which is the argument that the far corner of the office can actually be reached, and that the south side of the 2nd floor has a load whether or not it is convenient to duct.
+Per-room CFM. The whole-house total is close enough that equipment sizing barely moves now. What the remaining work buys is *per-room* accuracy — and per-room CFM is the input to Manual T, which is the argument that the far corner of the office can actually be reached, and that the south side of the 2nd floor has a load whether or not it is convenient to duct.
+
+**The duct design did not wait for this list**, and that turned out to be the right call: the scheme, the register schedule and the parts list are all built on per-room figures that are good enough to size ducts, and the items above would move them by less than the biases already applied on purpose. Finish this list to sharpen the *argument*, not to unblock the *build*.

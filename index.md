@@ -44,7 +44,6 @@ If that case fails, it will fail on **static pressure** — see the honesty sect
 - **[Parts list](ducting-parts-list.md)** — generated from the model: per-run section, material, length and bend count, plus material totals.
 - **[Handover plan](ducting-handover-plan.md)** — modelling conventions, and what remains open.
 - **[Model audit](ducting-model-audit.md)** — what is actually drawn, checked against the schedule.
-- **[Earlier ducting plan](ducting-plan.md)** · **[design notes](ducting-design.md)**
 
 ### The house
 

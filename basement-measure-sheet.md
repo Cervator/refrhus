@@ -160,7 +160,7 @@ Model: **36″ wide × 96″ long**, at x 478.9, y 412.5, which puts it between 
 
 ## 7. The through-holes — the highest-leverage thing here
 
-You mentioned holes going through from basement to main floor. **These are worth more than anything else on this sheet**, and `ducting-plan.md` §5a already names one of them as the shared datum: a single point piercing both the basement ceiling and the main-floor wall cavity registers the two coordinate frames against each other, exactly the way the joists do within one level.
+You mentioned holes going through from basement to main floor. **These are worth more than anything else on this sheet**, and the duct scheme already names one of them as the shared datum: a single point piercing both the basement ceiling and the main-floor wall cavity registers the two coordinate frames against each other, exactly the way the joists do within one level.
 
 For **each** hole you can find:
 

@@ -145,7 +145,7 @@ Suggested order: the scheme primer as the landing page, then the argument agains
 
 ## Task 6 — CI: run Eldr on every push, diff the loads on every PR
 
-The idea that completes "PR your house". `ducting-plan.md` §1 already says as-built anchors live on `main` and proposals live on a branch **so the diff is the proposal** — but today that diff is geometric. Running the engine in CI makes it *quantitative*: change a room, and the load change shows up in the pull request.
+The idea that completes "PR your house". As-built anchors live on `main` and proposals live on a branch **so the diff is the proposal** — but today that diff is geometric. Running the engine in CI makes it *quantitative*: change a room, and the load change shows up in the pull request.
 
 **On push to `main`:** regenerate the report and publish it to Pages, so the site is never stale relative to the model.
 

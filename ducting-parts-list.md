@@ -110,6 +110,29 @@ Future runs excluded. Round sizes are **airway** — confirm whether a supplier 
 | 4x9 | rect | 1.3 |
 | **Total** | | **344.5** |
 
+## Cost — planning grade only
+
+**Every figure here is a band, and the bands are wide on purpose.** Fabrication, access and region move installed duct pricing more than size does, so a single number would imply a precision this does not have. Use it to compare options against each other — which is what it is actually for — not to budget.
+
+| Item | Quantity | Low | High |
+|---|---:|---:|---:|
+| Round duct, double-wall spiral | 98 ft | $1,178 | $2,944 |
+| Rectangular and oval, fabricated | 246 ft | $2,463 | $6,159 |
+| Supply registers | 15 | $225 | $900 |
+| Return grilles | 8 | $200 | $800 |
+| Balancing dampers | 21 | $525 | $1,260 |
+| **Ductwork subtotal** | | **$4,591** | **$12,062** |
+
+**Fittings are missing from that subtotal and they are not a rounding error.** Elbows, tees, takeoffs, boots and transitions commonly run **30–50% of a duct job's material cost**, and none of them are modelled here — so treat the straight-duct figure as roughly two thirds of the real material story.
+
+**Equipment is separate.** A 3.5-ton cold-climate heat pump in this class — the Bosch IDS Ultra is the candidate on file — lands around **$5,000–9,000 installed** for the pair, before ductwork. The federal 25C credit takes 30% up to $2,000 off a qualifying heat pump, which is worth confirming against the specific model and the year it is installed rather than assumed.
+
+### What this is for: the second air handler
+
+The number that matters is not the total, it is **the delta between one unit and two**, and that delta is larger than the equipment line suggests. A second handler in the knee-wall attic adds its own outdoor unit and refrigerant lines, a second condensate path out of an attic, a dedicated electrical circuit run to the top of the house, its own filter and service access, and a second maintenance schedule forever. Against that, **the riser it replaces is one supply and one return through a chase that has to be built anyway** for the main floor.
+
+That comparison is why this document exists in a form a contractor can price. It is also why the straight-duct total above matters less than it looks: the single-unit scheme and the two-unit scheme share most of their ductwork, and differ almost entirely in equipment and in the work around it.
+
 ## Counts
 
 | Item | Count |

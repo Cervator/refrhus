@@ -176,6 +176,69 @@ w("")
 
 live_regs = [r for r in regs if not r["future"]]
 branches = [r for r in rows if "branch" in r["stem"].lower() and not r["future"]]
+
+# --- Cost, planning grade -------------------------------------------------
+# Installed $/ft bands. Broad on purpose: fabrication, access and region move
+# these more than size does, and a single figure would imply precision we do
+# not have. Round is double-wall insulated spiral at 5-9in; rect is shop-
+# fabricated galvanised, with the large trunk sections sitting at the top.
+BANDS = {"round": (12, 30), "rect": (10, 25)}
+round_ft = sum(d["length"] for d in ducts if d["shape"] == "round" and not d["future"]) / 12
+rect_ft = sum(d["length"] for d in ducts if d["shape"] != "round" and not d["future"]) / 12
+n_sup = sum(1 for r in live_regs if r["side"] == "supply")
+n_ret = sum(1 for r in live_regs if r["side"] == "return")
+
+cost = [
+    ("Round duct, double-wall spiral", f"{round_ft:.0f} ft",
+     round_ft * BANDS["round"][0], round_ft * BANDS["round"][1]),
+    ("Rectangular and oval, fabricated", f"{rect_ft:.0f} ft",
+     rect_ft * BANDS["rect"][0], rect_ft * BANDS["rect"][1]),
+    ("Supply registers", f"{n_sup}", n_sup * 15, n_sup * 60),
+    ("Return grilles", f"{n_ret}", n_ret * 25, n_ret * 100),
+    ("Balancing dampers", f"{len(branches)}", len(branches) * 25, len(branches) * 60),
+]
+lo = sum(c[2] for c in cost)
+hi = sum(c[3] for c in cost)
+
+w("## Cost — planning grade only")
+w("")
+w("**Every figure here is a band, and the bands are wide on purpose.** Fabrication, "
+  "access and region move installed duct pricing more than size does, so a single "
+  "number would imply a precision this does not have. Use it to compare options "
+  "against each other — which is what it is actually for — not to budget.")
+w("")
+w("| Item | Quantity | Low | High |")
+w("|---|---:|---:|---:|")
+for label, qty, a, b in cost:
+    w(f"| {label} | {qty} | ${a:,.0f} | ${b:,.0f} |")
+w(f"| **Ductwork subtotal** | | **${lo:,.0f}** | **${hi:,.0f}** |")
+w("")
+w("**Fittings are missing from that subtotal and they are not a rounding error.** "
+  "Elbows, tees, takeoffs, boots and transitions commonly run **30–50% of a duct "
+  "job's material cost**, and none of them are modelled here — so treat the straight-"
+  "duct figure as roughly two thirds of the real material story.")
+w("")
+w("**Equipment is separate.** A 3.5-ton cold-climate heat pump in this class — the "
+  "Bosch IDS Ultra is the candidate on file — lands around **$5,000–9,000 installed** "
+  "for the pair, before ductwork. The federal 25C credit takes 30% up to $2,000 off a "
+  "qualifying heat pump, which is worth confirming against the specific model and the "
+  "year it is installed rather than assumed.")
+w("")
+w("### What this is for: the second air handler")
+w("")
+w("The number that matters is not the total, it is **the delta between one unit and "
+  "two**, and that delta is larger than the equipment line suggests. A second handler "
+  "in the knee-wall attic adds its own outdoor unit and refrigerant lines, a second "
+  "condensate path out of an attic, a dedicated electrical circuit run to the top of "
+  "the house, its own filter and service access, and a second maintenance schedule "
+  "forever. Against that, **the riser it replaces is one supply and one return through "
+  "a chase that has to be built anyway** for the main floor.")
+w("")
+w("That comparison is why this document exists in a form a contractor can price. It is "
+  "also why the straight-duct total above matters less than it looks: the single-unit "
+  "scheme and the two-unit scheme share most of their ductwork, and differ almost "
+  "entirely in equipment and in the work around it.")
+w("")
 w("## Counts")
 w("")
 w("| Item | Count |")

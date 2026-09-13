@@ -26,6 +26,8 @@ The house model, tracked **exploded** so git can diff the design — "PR your ho
 
 [`HISTORY.md`](HISTORY.md) is construction ground truth — read it before moving a wall. Measurement records are `basement-joists.md`, `basement-structure.md`, `basement-measure-sheet.md`, `chimney-measure-sheet.md`, and `basement-post-details.html`. [`schematic-hitlist.md`](schematic-hitlist.md) ranks what still needs measuring by BTU impact. [`scanning-plan.md`](scanning-plan.md) is a parked evaluation of 3D scanning as a way to close the remaining gaps.
 
+**Source images**, kept because the model was traced against them and a tracing without its source cannot be re-checked: `OriginalFloorPlan.png` (explicitly *not to scale* — the reason so much of this house had to be measured by hand), `OriginalPlanHVAC.png` and `LargerFloorplanMudroomHvacV2.png` (earlier HVAC concepts, superseded by the duct documents), and `SurveyAlone.png` (the footprint anchor).
+
 ## Pack / unpack
 
 Scripts live in `realms/realm-siliconsaga/sweethome3d/`; run from the workspace root:

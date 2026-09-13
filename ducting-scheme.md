@@ -187,14 +187,36 @@ That is a real trade and it matters more in an old house with mixed glazing than
 
 ---
 
-## The case against a second air handler
+## One air handler or two
 
-Presented in the order that a contractor will engage with it:
+**The proposal has changed, and it got better.** The company now suggests a **second *internal* ducted air handler** — two handlers with ducts, rather than a head per room with none. That is a materially stronger idea than a unit in the knee-wall attic, and the strongest objection to the original version no longer applies: an internal handler sits in conditioned space, so the 20–30% loss that makes retrofit attic equipment a bad bet is simply not on the table.
 
-1. **The objection is usually right, and doesn't apply here.** Ducts in an unconditioned knee-wall attic genuinely lose 20–30%. That is the correct reason to distrust retrofit second-floor ducting. A conditioned three-level chase removes the premise instead of disputing the number.
-2. **The load is modest.** 205 CFM to the second floor, against 524 to the main floor. The second floor is a geometry problem, not a capacity problem.
-3. **Both supply and return reach it.** A second air handler quietly solves the *return* problem by putting the blower where the air is. A single unit needs both, or the floor pressurises and the air stops moving — which is the real reason "you can't duct a second floor" is so often true in retrofits. The cabinet has room for both, measured.
+It deserves to be argued with on its merits rather than dismissed.
+
+### What two internal handlers genuinely buy
+
+- **Real zoning, which one unit cannot have here.** This is the strongest point in its favour, and this document's own analysis supports it: neither the basement (167 CFM, 14% of total) nor the second floor alone can be a hard zone on a single unit this size without starving the blower. Smart throttling of individual branches works, hard per-floor zoning does not. **Two handlers make per-floor zoning real instead of approximate** — and there are already three thermostats in this house expecting exactly that.
+- **Much shorter duct runs, and therefore lower static pressure.** Static pressure is the thing most likely to defeat the single-unit scheme, and a second handler attacks it directly rather than arguing about it.
+- **Independent part-load behaviour**, and no single point of failure for the whole house.
+
+### What it costs
+
+- A second indoor unit, a second filter, a second condensate path, a second service point, and a second maintenance schedule for as long as the house stands.
+- **Somewhere inside conditioned space to put it**, which on the second floor of this house is not obvious. The knee-wall attic is what makes the space available, and putting the unit there is precisely what the internal framing rules out.
+- Equipment and installation cost against a riser that has to exist anyway — the main floor needs the chase regardless.
+
+### Where the single-unit case still stands
+
+1. **The load is modest.** 205 CFM to the second floor against 524 to the main floor. The second floor is a geometry problem, not a capacity problem — and a second handler is a capacity answer to a geometry question.
+2. **Both supply and return reach it.** A second handler quietly solves the *return* problem by putting the blower where the air is; that is the real reason "you can't duct a second floor" is so often true in retrofits. The cabinet has measured room for both, so the single unit is not relying on the return problem going away.
+3. **The chase is conditioned.** Ducts stay inside the envelope for their whole run, which is the same benefit the internal-handler proposal is reaching for, obtained a different way.
 4. **The numbers are conservative.** See the ceiling-area caveat above.
+
+### The honest decision criterion
+
+**This turns on static pressure, and nothing else.** If the single unit can move 1,225 CFM through this duct layout at an acceptable external static pressure, one unit is the better buy — same conditioned-duct benefit, half the equipment, one filter to change. If it cannot, **two internal handlers is the right answer and the attic unit never was.**
+
+That is a question a contractor can settle with the fitting counts this model cannot supply. Ask for them rather than for an opinion — and note that the *answer* determines the layout, so it is worth settling before anything is fabricated.
 
 **Where to be careful.** Eldr's Manual D uses a flat 1.5× fitting factor, not true fitting equivalent lengths. Real elbows, tees and boots on a three-storey run add 50–150 ft of equivalent length, so any static-pressure figure computed with the default is optimistic. Either raise the factor to something defensible (2.5–3) and say so, or count fittings by hand for the contested run. **Do not hand over a number that flatters the case on a modelling shortcut** — it is the one thing that would cost the credibility everything else earns.
 

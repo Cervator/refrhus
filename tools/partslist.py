@@ -213,31 +213,99 @@ for label, qty, a, b in cost:
     w(f"| {label} | {qty} | ${a:,.0f} | ${b:,.0f} |")
 w(f"| **Ductwork subtotal** | | **${lo:,.0f}** | **${hi:,.0f}** |")
 w("")
+w("**All figures are pre-incentive.** No rebate, tax credit or utility programme is "
+  "netted off anywhere in this document. Incentives change by year, by model and by "
+  "jurisdiction, and a quote that quietly assumes one is a quote that cannot be "
+  "compared against another.")
+w("")
 w("**Fittings are missing from that subtotal and they are not a rounding error.** "
   "Elbows, tees, takeoffs, boots and transitions commonly run **30–50% of a duct "
   "job's material cost**, and none of them are modelled here — so treat the straight-"
   "duct figure as roughly two thirds of the real material story.")
 w("")
-w("**Equipment is separate.** A 3.5-ton cold-climate heat pump in this class — the "
-  "Bosch IDS Ultra is the candidate on file — lands around **$5,000–9,000 installed** "
-  "for the pair, before ductwork. The federal 25C credit takes 30% up to $2,000 off a "
-  "qualifying heat pump, which is worth confirming against the specific model and the "
-  "year it is installed rather than assumed.")
+w("### Labour is already inside those bands")
 w("")
-w("### What this is for: the second air handler")
+w("The $/ft figures above are *installed*, not material-only, so labour is not a line "
+  "to add — it is most of what the band's width represents. For sanity-checking a "
+  "quote that separates them: duct labour alone runs roughly **$5–15 per linear foot**, "
+  "and HVAC labour is **$75–150 per hour per technician**.")
+w("")
+w("Published estimates of labour's *share* of a duct job disagree sharply — one puts it "
+  "near 22% of a whole-house replacement, another at 60%. **That spread is a signal, "
+  "not noise:** it is the difference between duct run through open basement joists and "
+  "duct fished through finished walls. This house is both, which is exactly why the "
+  "bands here are wide and why a walkthrough quote will beat any figure on this page.")
+w("")
+w("### Ducted extras, priced separately")
+w("")
+w("| Option | Installed | Note |")
+w("|---|---|---|")
+w("| Media air cleaner | **$400–1,000** | A deep pleated filter in the return. The "
+  "default choice, and the one with no downside beyond filter changes |")
+w("| UV treatment | **$400–800**, up to $3,500 | Coil-sterilising lamps at the low end; "
+  "in-duct air treatment at the high end. Effectiveness claims vary far more than price does |")
+w("| Whole-house humidifier | **$400–1,200**, up to $2,500 | Bypass or steam. Steam "
+  "costs more and actually holds a setpoint |")
+w("")
+w("**A media cleaner has a real interaction with this design and the others do not.** "
+  "A deep filter adds static pressure to the return side, and the return side is "
+  "already this system's constraint — see the main-floor return path above. Size the "
+  "filter cabinet generously and account for its pressure drop in the same breath as "
+  "the return trunk, rather than adding it afterwards. **The others are additions to "
+  "the system; filtration is a change to it.**")
+w("")
+w("### Equipment, and why the number to quote is 4 tons")
+w("")
+w("Manual S on the current model recommends **3.5 tons**. The number to put in front of "
+  "a contractor is **4.0**, and the reason is the state of the model rather than a "
+  "preference for headroom.")
+w("")
+w("The load calculation runs against geometry that is knowingly incomplete, and **every "
+  "gap in it points the same way**:")
+w("")
+w("- **No grade line.** Basement walls are classed below-grade over their whole height. "
+  "Taking the professionals' measured U-value alone moves the load to roughly 3.8 tons.")
+w("- **The second-floor roof is not drawn.** Ceiling area is modelled at 984 ft² against "
+  "a professional report's 1,547 — a third of that surface is missing, and it is the "
+  "hot side of the house.")
+w("- **The load has risen at almost every correction.** 31,757 → 37,962 → 42,097, then "
+  "down to 39,694 only because the basement was finally *measured* rather than "
+  "estimated. The sizing verdict on the existing 4-ton unit has flipped between "
+  "oversized and well-matched three times.")
+w("")
+w("**A sizing verdict that flips with each correction is one to hold loosely.** 3.5 tons "
+  "is what today's model says; 3.8 is what one known-missing input alone would make it; "
+  "and the remaining gaps have not been priced at all. Rounding to the next tier is the "
+  "cheap direction to be wrong in — an oversized heat pump with inverter turndown "
+  "short-cycles far less than a single-stage unit would, while an undersized one has no "
+  "remedy short of replacement.")
+w("")
+w("| | Installed, pre-incentive |")
+w("|---|---:|")
+w("| 3.5-ton cold-climate heat pump, this class | $5,000–9,000 |")
+w("| **4.0-ton — the tier to quote** | **$5,500–10,500** |")
+w("")
+w("The Bosch IDS Ultra is the candidate on file. Treat both rows as placeholders until "
+  "a dealer quotes the specific model: published pricing for this equipment comes "
+  "largely from aggregator sites rather than distributors.")
+w("")
+w("### What this is for: one air handler or two")
 w("")
 w("The number that matters is not the total, it is **the delta between one unit and "
-  "two**, and that delta is larger than the equipment line suggests. A second handler "
-  "in the knee-wall attic adds its own outdoor unit and refrigerant lines, a second "
-  "condensate path out of an attic, a dedicated electrical circuit run to the top of "
-  "the house, its own filter and service access, and a second maintenance schedule "
-  "forever. Against that, **the riser it replaces is one supply and one return through "
-  "a chase that has to be built anyway** for the main floor.")
+  "two**. The current proposal is a second *internal* ducted handler rather than one in "
+  "the knee-wall attic, which is a materially better idea — an internal unit sits in "
+  "conditioned space, so the duct losses that make attic equipment a bad retrofit bet "
+  "do not apply. It is argued with on its merits in "
+  "[`ducting-scheme.md`](ducting-scheme.md).")
 w("")
-w("That comparison is why this document exists in a form a contractor can price. It is "
-  "also why the straight-duct total above matters less than it looks: the single-unit "
-  "scheme and the two-unit scheme share most of their ductwork, and differ almost "
-  "entirely in equipment and in the work around it.")
+w("On cost alone, the delta is a second indoor unit, a second filter, a second "
+  "condensate path, a second service point and a second maintenance schedule for as "
+  "long as the house stands — against a riser that **has to be built anyway** for the "
+  "main floor.")
+w("")
+w("But cost is not what decides it. **This turns on static pressure**, and the two "
+  "schemes share most of their ductwork regardless of which wins, so the straight-duct "
+  "total above barely moves between them. Get the fitting counts; they settle it.")
 w("")
 w("## Counts")
 w("")

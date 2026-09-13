@@ -1,24 +1,20 @@
 # HVAC — load calculations, professional and our own
 
-Two independent Manual J estimates of this house, kept side by side so they can be compared and so the drift between successive Eldr runs stays visible. [Eldr](https://github.com/SiliconSaga/eldr) is our own engine: it reads `../sh3d-internals/Home.xml` for geometry and `../eldr-sidecar.yaml` for the thermal assumptions geometry cannot hold.
+Two independent Manual J estimates of this house, kept side by side so they can be compared. [Eldr](https://github.com/SiliconSaga/eldr) is our own engine: it reads `../sh3d-internals/Home.xml` for geometry and `../eldr-sidecar.yaml` for the thermal assumptions geometry cannot hold.
 
 The design intent and duct scheme live one level up in [`../ducting-scheme.md`](../ducting-scheme.md). This directory is only load calculations and their inputs.
 
-## Why keep old runs
+## One current run, not an archive
 
-Because the totals lie. Between 2026-08-12 and 2026-08-14 the whole-house heating figure moved **31,540 → 31,757 BTU/hr — 0.7%** — while almost every component underneath it moved by thousands:
+[`eldr-report.md`](eldr-report.md) is **generated** — the engine's output against the current model, overwritten on every regeneration. Do not edit it.
 
-| Component | 2026-08-12 | 2026-08-14 | Δ |
-|---|---:|---:|---:|
-| basement_wall | 1,589 | 4,370 | **+2,781** |
-| floor | 762 | 1,866 | **+1,104** |
-| buffer_floor | — | 404 | **+404** |
-| ceiling | 1,465 | 707 | **−758** |
-| infiltration | 14,392 | 11,079 | **−3,313** |
-| exterior_wall · window · door | 8,012 · 2,413 · 2,908 | unchanged | 0 |
-| **total** | **31,540** | **31,757** | **+217** |
+This replaces a folder of dated runs, and the reasoning is worth keeping because it was a real trade. **Totals lie by cancellation.** Between two early runs the whole-house heating figure moved 0.7% while four components underneath it moved by thousands in opposite directions — basement walls and floor up by nearly 4,000 between them, infiltration down by 3,300. Anyone comparing bottom lines alone would have concluded nothing changed. That was the argument for archiving every run, and it was sound.
 
-Four separate corrections that happened to very nearly cancel. Anyone comparing only the bottom lines would conclude nothing had changed. That is the argument for keeping every run rather than overwriting one file.
+What retired it is a **better answer to the same problem**. The archive compared *documents*, which only works while the documents describe the same house — and these did not. Each was produced by a different iteration of the schematic, so a difference between two of them mixed real thermal change with the schematic catching up to the building. Comparing them rewarded careful reading and still misled.
+
+The replacement compares *runs against the same model at a known commit*: regenerate on push, diff component-by-component in the pull request, and the cancellation problem is solved by the diff rather than by the reader's diligence. Component drift becomes visible automatically instead of being available to whoever thinks to look.
+
+**Archive again if that ever stops being true.** The practice was not wrong; it was the best available answer before the model was trustworthy enough for a diff to mean anything.
 
 ## The professional reports
 
@@ -47,23 +43,21 @@ Worth recording: 3,751 CFM50 × 60 ÷ 16,457 ft³ = 13.7 ACH50, over an LBL N-fa
 
 ## Our runs
 
-`eldr-runs/` — Eldr output, one dated pair per run plus the comparison write-up.
+[`eldr-report.md`](eldr-report.md) — the current run. Regenerate after any change to the model or the side-car.
 
-**Reports only — the overview is not archived.** `--overview` renders the *same* report body wrapped in about seventy lines of framing prose (what the ACCA chain is, what's demo-grade, the roadmap). That framing is boilerplate that barely changes between runs, so committing it per run would duplicate every number while adding nothing. Generate one when you need something to hand to a contractor; the command is below and takes a second.
+**How the number got here**, kept as a changelog because each step was a correction worth remembering, not because the documents behind them were worth keeping:
 
-| File | Vintage |
-|---|---|
-| `2026-08-12-eldr-report-pre-level-stack.md` | Before the level-stack work. Ceilings and floors came from level *bounding boxes*; no buffer floors existed at all. |
-| `2026-08-12-eldr-vs-manualj-comparison.md` | First cross-check against Progression A, with an email draft to JL. **Its below-grade-wall line of 4,540 BTU/hr is stale** — the engine has produced 1,589 since before that document was written, and 4,370 since the below-grade fix. |
-| `2026-08-14-eldr-report-level-stack.md` | Resolved floors/ceilings, per-space buffer policies, hot-attic cooling, below-grade at full ΔT, measured ACH. Carries an *Assumptions behind these numbers* section that did not exist before. Assemblies still the old estimates. |
-| `2026-08-14b-eldr-report-measured-assemblies.md` | The professionals' **measured** ceiling and crawl-floor U-values adopted, and the crawlspace's observed winter temperature declared. Heating 31,757 → **37,962**. |
-| `2026-08-14c-eldr-report-cooling-infiltration.md` | Cooling gains its missing **sensible** infiltration term (it had only latent). Heating unchanged as the control; cooling 17,571 → **20,794**, airflow 610 → **759 CFM**, and the ducts move with it — Living room 6″→7″, Play Room 5″→6″, trunk to 14″. |
-| `2026-08-16-eldr-report-assembly-trueup.md` | The professionals' measured **wall, window and slab** U-values adopted, area-weighted off their Construction Details page, plus occupants 3 → 5. Heating 37,962 → **42,097**, cooling → 23,183. The existing 4-ton unit re-reads as **well-matched (+14%)** rather than oversized (+26%) — a verdict flip worth noticing, since it weakens the case that the current equipment is grossly wrong. |
+- **The level stack** replaced ceilings and floors derived from level *bounding boxes* with resolved surfaces, per-space buffer policies, hot-attic cooling and measured ACH.
+- **Measured assemblies** adopted the professionals' ceiling and crawl-floor U-values and the crawlspace's observed winter temperature: heating 31,757 → **37,962**.
+- **Cooling gained its missing sensible infiltration term** — it had only latent. Cooling 17,571 → **20,794**, airflow 610 → **759 CFM**, and duct sizes moved with it.
+- **The assembly true-up** took the professionals' measured wall, window and slab U-values, area-weighted off their Construction Details page, and corrected occupants 3 → 5. Heating → **42,097**.
+- **The basement measurement work** then brought it down to the current **39,694** on geometry that is finally measured rather than estimated.
+
+The one verdict to watch across that sequence: the existing 4-ton unit has read as oversized, then well-matched, then oversized again. **A sizing verdict that flips with each correction is a sizing verdict to hold loosely** — which is the argument for rounding up rather than shaving down.
 
 Regenerate with the engine checked out beside this repo:
 
 ```bash
-# the report — this is what gets archived
 PYTHONPATH=components/eldr components/eldr/.venv/bin/python -m eldr.cli \
   hoards/refrhus/Refrhus.sh3d hoards/refrhus/eldr-sidecar.yaml
 
@@ -72,13 +66,15 @@ PYTHONPATH=components/eldr components/eldr/.venv/bin/python -m eldr.cli \
   hoards/refrhus/Refrhus.sh3d hoards/refrhus/eldr-sidecar.yaml --overview
 ```
 
+**The overview is not committed.** `--overview` wraps the same report body in about seventy lines of framing prose that barely changes between runs, so committing it would duplicate every number while adding nothing.
+
 `--json` gives structured output; `--walls` lists wall ids for tagging.
 
 ## Where the two still disagree, and why
 
 Same house, two engines, and the gaps are now nameable rather than mysterious:
 
-As of the `2026-08-16` assembly true-up — heating **42,097** against their **54,260**, or 78%, up from 70% before the measured wall and window U-values went in.
+Currently heating **39,694** against their **54,260**, or 73%. That ratio *fell* after the basement measurement work, which looks like regression and is not: the measured basement is smaller and better sealed than the estimate it replaced, so the remaining gap is now concentrated in things that can be named — the grade line and the undrawn second-floor roof surfaces — rather than spread thinly across assumptions nobody had checked.
 
 | Line | Eldr | Theirs | Status |
 |---|---:|---:|---|

@@ -43,7 +43,7 @@ Design airflow from Eldr's per-room Manual J, on geometry that is deliberately c
 
 **The main floor is the load** — two and a half times the second floor. Which reframes the whole argument: the second floor is not the hard part *volumetrically*, it is the hard part *geometrically*. That distinction is the crux of the disagreement with the contractors, who are pricing the geometry and concluding the load can't be served.
 
-**These numbers understate the second floor and should be presented that way.** Our ceiling area on that level is 984 ft² against the professional Manual J's 1,547 — sloped roof and knee-wall surfaces nobody has modelled yet. It cuts both ways: it makes *"the south side needs real supply"* stronger than shown, and *"one unit can do it"* easier than reality. Quote them as a floor, not an estimate: *on geometry that understates our second-floor ceiling by a third, the office still needs 87 CFM.* A number biased against your own case is much harder to argue with.
+**These numbers understate the second floor and should be presented that way.** Our ceiling area on that level is 984 ft² against the professional Manual J's 1,547 — sloped roof and knee-wall surfaces nobody has modelled yet. It cuts both ways: it makes *"the south side needs real supply"* stronger than shown, and *"one unit can do it"* easier than reality. Quote them as a floor, not an estimate: *on geometry that understates our second-floor ceiling by a third, the office still needs 100 CFM.* A number biased against your own case is much harder to argue with.
 
 ---
 
@@ -104,7 +104,7 @@ Sizes are computed with Eldr's own `ductd` equal-friction math at 0.08 in.wc/100
 
 The cabinet is the whole argument in physical form. The standard, correct objection to retrofit second-floor ducting is that ducts in an unconditioned knee-wall attic lose 20–30%. A stacked cabinet running basement → main → second floor is a **conditioned chase**: it keeps the ducts inside the thermal envelope, which dissolves the objection rather than arguing with it.
 
-It carries **only the second floor** — 205 CFM up, 205 CFM back. Not the whole 884. The main floor is fed from basement runs and never enters the cabinet. That is why a chase this modest is sufficient.
+It carries **only the second floor** — 235 CFM up, 235 CFM back. Not the whole 1,228. The main floor is fed from basement runs and never enters the cabinet. That is why a chase this modest is sufficient.
 
 | Duct | CFM | Equivalent round | Rectangular options |
 |---|---:|---|---|
@@ -237,7 +237,7 @@ None of that touches the real advantage, and it should be stated plainly rather 
 
 ### Where the single-unit case still stands
 
-1. **The load is modest.** 205 CFM to the second floor against 524 to the main floor. The second floor is a geometry problem, not a capacity problem — and a second handler is a capacity answer to a geometry question.
+1. **The load is modest.** 235 CFM to the second floor against 740 to the main floor. The second floor is a geometry problem, not a capacity problem — and a second handler is a capacity answer to a geometry question.
 2. **Both supply and return reach it.** A second handler quietly solves the *return* problem by putting the blower where the air is; that is the real reason "you can't duct a second floor" is so often true in retrofits. The cabinet has measured room for both, so the single unit is not relying on the return problem going away.
 3. **The chase is conditioned.** Ducts stay inside the envelope for their whole run, which is the same benefit the internal-handler proposal is reaching for, obtained a different way.
 4. **The numbers are conservative.** See the ceiling-area caveat above.

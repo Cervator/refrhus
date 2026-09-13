@@ -166,13 +166,14 @@ The Bosch IDS Ultra is the candidate on file. Treat both rows as placeholders un
 
 | | Low | High |
 |---|---:|---:|
-| Ductwork, straight runs | $4,591 | $12,062 |
-| Fittings allowance (25–40%) | $1,148 | $4,825 |
+| Ductwork, straight runs | $3,641 | $9,102 |
+| Fittings allowance (25–40% of duct) | $910 | $3,641 |
+| Registers, grilles, dampers | $950 | $2,960 |
 | Equipment, 4-ton | $5,500 | $10,500 |
 | Filtration, UV, humidity | $1,200 | $3,000 |
-| **Total, pre-incentive** | **$12,439** | **$30,387** |
+| **Total, pre-incentive** | **$12,201** | **$29,203** |
 
-**Centre of mass is around $21,413**, and the upper band is what you get if every constrained thing turns out to be the hard version — duct fished through finished walls rather than run through open joists, the kitchen cabinetry modified rather than worked around, the high-end UV rather than coil lamps. A realistic landing spot sits below the top of the range rather than at it.
+**Centre of mass is around $20,702**, and the upper band is what you get if every constrained thing turns out to be the hard version — duct fished through finished walls rather than run through open joists, the kitchen cabinetry modified rather than worked around, the high-end UV rather than coil lamps. A realistic landing spot sits below the top of the range rather than at it.
 
 **Pre-incentive throughout.** Nothing here is netted against a rebate, credit or utility programme, so it can be compared against a quote line for line — and whatever incentives apply come off afterwards rather than being baked into a number nobody can reconcile.
 

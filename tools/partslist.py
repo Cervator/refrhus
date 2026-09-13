@@ -200,15 +200,23 @@ rect_ft = sum(d["length"] for d in ducts if d["shape"] != "round" and not d["fut
 n_sup = sum(1 for r in live_regs if r["side"] == "supply")
 n_ret = sum(1 for r in live_regs if r["side"] == "return")
 
-cost = [
+duct_rows = [
     ("Round duct, double-wall spiral", f"{round_ft:.0f} ft",
      round_ft * BANDS["round"][0], round_ft * BANDS["round"][1]),
     ("Rectangular and oval, fabricated", f"{rect_ft:.0f} ft",
      rect_ft * BANDS["rect"][0], rect_ft * BANDS["rect"][1]),
+]
+trim_rows = [
     ("Supply registers", f"{n_sup}", n_sup * 15, n_sup * 60),
     ("Return grilles", f"{n_ret}", n_ret * 25, n_ret * 100),
     ("Balancing dampers", f"{len(branches)}", len(branches) * 25, len(branches) * 60),
 ]
+cost = duct_rows + trim_rows
+# Fittings scale with the DUCT line only. Registers, grilles and dampers are
+# counted items with no fittings of their own, so folding them into the base
+# would inflate the allowance by whatever the trim happens to cost.
+duct_lo = sum(c[2] for c in duct_rows)
+duct_hi = sum(c[3] for c in duct_rows)
 lo = sum(c[2] for c in cost)
 hi = sum(c[3] for c in cost)
 
@@ -304,7 +312,7 @@ w("")
 
 # Fittings add both parts and the labour to hang them; 25-40% on the installed
 # duct line is the working allowance, not the 30-50%-of-material figure.
-fit_lo, fit_hi = lo * 0.25, hi * 0.40
+fit_lo, fit_hi = duct_lo * 0.25, duct_hi * 0.40
 eq_lo, eq_hi = 5500, 10500
 ex_lo, ex_hi = 1200, 3000
 tot_lo = lo + fit_lo + eq_lo + ex_lo
@@ -314,8 +322,9 @@ w("## Whole-job estimate")
 w("")
 w("| | Low | High |")
 w("|---|---:|---:|")
-w(f"| Ductwork, straight runs | ${lo:,.0f} | ${hi:,.0f} |")
-w(f"| Fittings allowance (25–40%) | ${fit_lo:,.0f} | ${fit_hi:,.0f} |")
+w(f"| Ductwork, straight runs | ${duct_lo:,.0f} | ${duct_hi:,.0f} |")
+w(f"| Fittings allowance (25–40% of duct) | ${fit_lo:,.0f} | ${fit_hi:,.0f} |")
+w(f"| Registers, grilles, dampers | ${lo - duct_lo:,.0f} | ${hi - duct_hi:,.0f} |")
 w(f"| Equipment, 4-ton | ${eq_lo:,.0f} | ${eq_hi:,.0f} |")
 w(f"| Filtration, UV, humidity | ${ex_lo:,.0f} | ${ex_hi:,.0f} |")
 w(f"| **Total, pre-incentive** | **${tot_lo:,.0f}** | **${tot_hi:,.0f}** |")

@@ -105,7 +105,7 @@ Deliverables:
 - Carried CFM at every segment
 - **Required** size versus **drawn** size, flagged both ways
 
-**Rotation will break a naive implementation, and the obvious fix is also wrong.** Sweet Home 3D already publishes the rotated bounding box: a piece tilted by `pitch` or `roll` carries `widthInPlan` / `depthInPlan` / `heightInPlan`, and its `elevation` is the bottom of *that* box. Use those three and apply only the yaw (`angle`) to the footprint. Rotating `width`/`depth`/`height` yourself gets the plan position right but the **elevation wrong by tens of inches**, which manufactures broken chains out of runs that are visibly joined on screen. Twenty of the 72 duct objects are tilted — every horizontal cylinder run.
+**Rotation will break a naive implementation, and the obvious fix is also wrong.** Sweet Home 3D already publishes the rotated bounding box: a piece tilted by `pitch` or `roll` carries `widthInPlan` / `depthInPlan` / `heightInPlan`, and its `elevation` is the bottom of *that* box. Use those three and apply only the yaw (`angle`) to the footprint. Rotating `width`/`depth`/`height` yourself gets the plan position right but the **elevation wrong by tens of inches**, which manufactures broken chains out of runs that are visibly joined on screen. Twenty-four of the 73 duct objects are tilted — every horizontal cylinder run.
 
 Connectivity has been verified under the corrected reading: **every run joins, nothing dead-ends mid-run.** What remains is the graph walk itself.
 

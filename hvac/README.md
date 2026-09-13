@@ -59,11 +59,11 @@ Regenerate with the engine checked out beside this repo:
 
 ```bash
 PYTHONPATH=components/eldr components/eldr/.venv/bin/python -m eldr.cli \
-  hoards/refrhus/Refrhus.sh3d hoards/refrhus/eldr-sidecar.yaml
+  hoards/refrhus/sh3d-internals/Home.xml hoards/refrhus/eldr-sidecar.yaml
 
 # the narrative version, for handing to someone else — generate on demand, don't commit
 PYTHONPATH=components/eldr components/eldr/.venv/bin/python -m eldr.cli \
-  hoards/refrhus/Refrhus.sh3d hoards/refrhus/eldr-sidecar.yaml --overview
+  hoards/refrhus/sh3d-internals/Home.xml hoards/refrhus/eldr-sidecar.yaml --overview
 ```
 
 **The overview is not committed.** `--overview` wraps the same report body in about seventy lines of framing prose that barely changes between runs, so committing it would duplicate every number while adding nothing.

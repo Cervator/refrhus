@@ -104,6 +104,21 @@ If the 3″ height really is fixed by cabinetry, no single grille solves it — 
 
 **The Main Bed W register may also want to point east** rather than the way it is drawn — a throw question, and throw is Manual T's business rather than something the plan view can settle.
 
+### The main-floor return path is the real bottleneck
+
+Worth stating plainly, because it is larger than every grille question combined. As drawn, **`Return branch for both main bedrooms` is a single 4x8 running 30 ft**, and three returns hang off it: Main Bed, Kids Room, and — since the utility return was tapped into the Kids Room branch — the Utility Room as well.
+
+| | CFM |
+|---|---:|
+| Main Bed | 227 |
+| Kids Room | 64 |
+| Utility Room | 83 |
+| **Through one 4x8** | **374** |
+
+A 4x8 is 32 in². At 374 CFM that is about **1,680 fpm** — not a sizing error to nudge, a duct carrying roughly four times what it should. Even at the ~91 CFM this duct is believed to actually pass, the two rooms behind it are being starved by the same constraint that starves the bedroom.
+
+This is the same inaccessible crawlspace duct already flagged for the Main Bed, so **it is one problem wearing three hats, not three problems.** It also reframes the transfer-grille plan: a grille over the bedroom door relieves the bedroom, and does nothing for the Kids Room or Utility Room behind the same pinch. Verify the topology on site before pricing a fix — this reading comes from the drawn adjacency, and it is the one place where being wrong would be expensive in the other direction.
+
 **The Main Bed return is not in that list, though its number is the worst.** 726 fpm assumes 227 CFM actually arrives, and it cannot: behind that grille is the existing 7.5x4 through the inaccessible crawlspace, good for roughly 91 CFM. At 91 the 5x9 face runs 291 fpm and is perfectly quiet. **The grille is correctly sized for the duct; the duct is the problem**, and the plan of record remains a transfer grille over the bedroom door first.
 
 The Kids Room supply is the opposite case — 6x12 for 64 CFM is generous enough that throw suffers. Harmless in a small room, and worth leaving if the opening is already cut.

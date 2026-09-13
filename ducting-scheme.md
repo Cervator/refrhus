@@ -34,10 +34,12 @@ Design airflow from Eldr's per-room Manual J, on geometry that is deliberately c
 
 | Level | CFM | Dominated by |
 |---|---:|---|
-| Basement | 155 | Future Media 73, Utility 70 |
-| **Main** | **524** | Main Bed 156, Kitchen 153, Living room 114 |
-| 2nd floor | 205 | Office 87, Play Room 72 |
-| **Total** | **884** | |
+| Basement | 252 | Future Media 122, Utility 116 |
+| **Main** | **740** | Kitchen 251, Main Bed 222, Living room 132 |
+| 2nd floor | 235 | Office 100, Play Room 85 |
+| **Total** | **1,228** | |
+
+> **Three airflow totals appear across these documents and they are not interchangeable.** **1,225 CFM** is the whole-house design airflow Eldr computes — the figure the *equipment* is sized on. **1,228** is the same thing summed per room, differing only by rooms below the run threshold. **1,133** is the [register schedule](ducting-register-schedule.md) total, which is lower because the second-floor ×1.35 and basement ×0.70 biases are applied to it and because it was tuned against an earlier model state. **The schedule is authoritative for duct sizes; Eldr's total is authoritative for equipment.** Where a per-room figure differs between them, the schedule is the older number — the Office in particular reads 83 raw there against 100 now.
 
 **The main floor is the load** — two and a half times the second floor. Which reframes the whole argument: the second floor is not the hard part *volumetrically*, it is the hard part *geometrically*. That distinction is the crux of the disagreement with the contractors, who are pricing the geometry and concluding the load can't be served.
 
@@ -74,12 +76,12 @@ Velocities run 115–450 fpm throughout — quiet, with nothing strained.
 
 | | CFM | Round | Rectangular |
 |---|---:|---|---|
-| Basement branch | 100 | 7″ | 4×10 |
-| Main branch | 517 | 12″ | 8×16 |
-| 2nd floor riser | **257** | **9″** | **9×9** or 6×12 |
-| Trunk at the unit | **874** | **14″** | **8×24** |
+| Basement branch | 167 | 8″ | 4×14 |
+| Main branch | 737 | 14″ | 8×20 |
+| 2nd floor riser | **276** | **9″** | **5×16** |
+| Trunk at the unit | **1,179** | **16″** | **10×22** |
 
-**The two biases nearly cancel at the trunk** — 874 against the unbiased 884 — so the largest single piece of ductwork is insensitive to how those judgement calls land.
+**The biases nearly cancel at the trunk**, so the largest single piece of ductwork is insensitive to how those judgement calls land. And **the 16″ never has to exist** — if the plenum carries four takeoffs directly rather than one duct splitting later, the largest duct in the house becomes a 10″. See the trunk section of the [register schedule](ducting-register-schedule.md), which is where that decision lives.
 
 **But the uplift changes the old ducts' role.** At design friction a 3×10 carries **86 CFM**, against a biased Office at 113 and Play Room at 98. Together they cover 172 of 257 — **67%**, not the 83% the unbiased numbers suggested. They remain a substantial contribution rather than the base, and the riser should be planned to carry the shortfall rather than leaning on them running hard. A 3×10 pushed to 113 CFM reaches 542 fpm: tolerable, but bought with noise and pressure drop.
 
@@ -189,9 +191,37 @@ That is a real trade and it matters more in an old house with mixed glazing than
 
 ## One air handler or two
 
-**The proposal has changed, and it got better.** The company now suggests a **second *internal* ducted air handler** — two handlers with ducts, rather than a head per room with none. That is a materially stronger idea than a unit in the knee-wall attic, and the strongest objection to the original version no longer applies: an internal handler sits in conditioned space, so the 20–30% loss that makes retrofit attic equipment a bad bet is simply not on the table.
+The company suggests a **second ducted air handler** — two handlers with ducts, rather than a head per room with none. Described as "internal", which sounded like conditioned space and would have removed the strongest objection outright. **It is not.** The proposed location is the **north knee-wall attic**, accessed through the wall at the top of the stairs.
 
-It deserves to be argued with on its merits rather than dismissed.
+That puts it back where the standard objection lives, and adds a second one that is harder to fix.
+
+### It is attic equipment, and this attic is hot
+
+The knee-wall attics here are insulated at the floor and wall planes, so the space itself sits outside the thermal envelope. Our own load model estimates **summer attic air at about 133°F** — the sol-air figure Eldr derives from outdoor design plus roof gain. A heat-pump air handler, its coil, its cabinet leakage and every foot of its supply duct would live in that.
+
+That is the whole reason retrofit attic equipment loses 20–30%, and it applies here in full. It also brings a condensate pan over a finished ceiling, and service access — filter changes included — through a knee-wall hatch at the top of the stairs.
+
+### The placement problem, which is worse
+
+**A unit in the north knee-wall attic can reach the north side of those rooms and not the south.** That is not a detail to solve later; it decides what the scheme can deliver. The south side of the second floor has real load — this document's own conservative numbers say so, and they *understate* it, since a third of that ceiling area is not even drawn yet.
+
+The suggested remedy is a duct run in a channel along the east side of the office, into the small east knee-wall attic. Skepticism there is well placed, and the reason is worth naming precisely: **a channel along a finished wall is a chase.** If building a chase is acceptable, then the objection to this design — which is built around a chase — was never really about chases. It is about *which* one.
+
+Compare them honestly:
+
+| | This design's chase | The proposed channel |
+|---|---|---|
+| Location | Utility cabinet alongside the chimney | A box along a finished office wall |
+| Serves | All three floors, supply and return | One register |
+| Inside the envelope | Yes | Partly — it ends in an unconditioned knee-wall attic |
+| Visible | No | Yes, in a room people use |
+| Has to exist anyway | **Yes** — the main floor needs it | No |
+
+The second unit is meant to *avoid* building a chase. Needing one anyway, in a worse place, to reach a corner the first unit was going to reach through the chase already planned, is the argument turning back on itself.
+
+### What it still genuinely buys
+
+None of that touches the real advantage, and it should be stated plainly rather than buried under the objections.
 
 ### What two internal handlers genuinely buy
 
@@ -214,9 +244,14 @@ It deserves to be argued with on its merits rather than dismissed.
 
 ### The honest decision criterion
 
-**This turns on static pressure, and nothing else.** If the single unit can move 1,225 CFM through this duct layout at an acceptable external static pressure, one unit is the better buy — same conditioned-duct benefit, half the equipment, one filter to change. If it cannot, **two internal handlers is the right answer and the attic unit never was.**
+**Static pressure decides whether one unit is enough.** If it can move 1,225 CFM through this layout at an acceptable external static pressure, one unit is the better buy — everything inside the envelope, half the equipment, one filter to change. That is a question the fitting counts settle, and a contractor is better placed to supply them than this model is. Ask for the counts rather than for an opinion.
 
-That is a question a contractor can settle with the fitting counts this model cannot supply. Ask for them rather than for an opinion — and note that the *answer* determines the layout, so it is worth settling before anything is fabricated.
+**But placement decides whether two units would even help.** A second handler in the north knee-wall attic does not serve the south side of those rooms, and no amount of static-pressure headroom changes that. So the two questions are independent, and they should be asked in this order:
+
+1. *Where would the second unit sit, and which registers can it actually reach?* If the answer is "north only, plus a channel along the office wall", the proposal has not solved the problem it was brought in to solve.
+2. *Only if it reaches everything:* does one unit hit its static-pressure limit?
+
+A second handler somewhere genuinely central and inside the envelope would be a real alternative worth pricing — it would buy the per-floor zoning a single unit cannot have here. **The north knee-wall attic is not that location**, and choosing it converts the strongest argument for two units into an argument about where to put a chase.
 
 **Where to be careful.** Eldr's Manual D uses a flat 1.5× fitting factor, not true fitting equivalent lengths. Real elbows, tees and boots on a three-storey run add 50–150 ft of equivalent length, so any static-pressure figure computed with the default is optimistic. Either raise the factor to something defensible (2.5–3) and say so, or count fittings by hand for the contested run. **Do not hand over a number that flatters the case on a modelling shortcut** — it is the one thing that would cost the credibility everything else earns.
 

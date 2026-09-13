@@ -12,7 +12,7 @@ Written 2026-09-07, deliberately before a context compaction, so the next sessio
 
 | | State |
 |---|---|
-| Model | Basement measurement-true; all three levels registered east–west; 71 `Ducting:` objects drawn |
+| Model | Basement measurement-true; all three levels registered east–west; **73 `Ducting:` objects and 25 registers** drawn |
 | Loads | Eldr, heat-pump airflow (30°F rise), biased 2nd ×1.35 / basement ×0.70 |
 | Schedule | `ducting-register-schedule.md` — per-register sizes, editable |
 | Audit | `ducting-model-audit.md` — drawn objects vs schedule |
@@ -20,7 +20,7 @@ Written 2026-09-07, deliberately before a context compaction, so the next sessio
 
 Both utility closets have ample space for any combination or placement of ducts, so cabinet capacity is not a constraint on the layout. Plenums are 12×20, sized as an estimate that will be refined at install.
 
-**Carried as doc-only metadata**, because there is no clean way to say it in the schematic: the main-bedroom return branch is 7.5×4 (91 CFM) against 227 needed. It is the existing duct through the inaccessible crawlspace, it is **not** a sizing error to correct, and the plan of record is a transfer grille above the bedroom door first, with a second return via the SE corner only if that proves insufficient. **Treat the docs as the home for design metadata the model cannot express.**
+**Carried as doc-only metadata**, because there is no clean way to say it in the schematic: the `Return branch for both main bedrooms` is a single 4x8 running 30 ft and **three returns hang off it** — Main Bed 227, Kids Room 64, Utility Room 83, or about 374 CFM through 32 in². It is the existing duct through the inaccessible crawlspace, so it is not a sizing error to correct in the model. The pinch is only the *buried* section: the basement run is open and can be enlarged at least as far as the splitter. A transfer grille above the bedroom door relieves the bedroom alone and does nothing for the two rooms behind the same constriction. **Treat the docs as the home for design metadata the model cannot express.**
 
 ---
 
@@ -54,7 +54,7 @@ Every cylinder in the model is in the basement, and every basement *supply* need
 |---|---|
 | Supply, **exposed** (basement feature runs) | **`[dwspiral]`** — insulation inside the shell keeps the outer surface warm |
 | Supply, concealed (joist bays, cabinet) | `[rect]` / `[spiral]` with external wrap |
-| All returns | plain — no insulation needed for condensation |
+| All returns | plain for *condensation* purposes — but a round return still orders as `[dwspiral]`, since one round part ordered one way beats a second product line for a single run |
 | Returns in the knee-wall attic | plain; the blown insulation around them *is* the insulation |
 
 Why names rather than `<property>` elements: properties need `tag.py`, which currently handles only walls and rooms, and furniture already has an editable name. The bracket is self-validating in the same way the assembly tags are — a token without a known keyword is just text.
@@ -84,7 +84,9 @@ Register: NW ceiling duct supply for future media room [circular]
 
 **Preposition carries the side:** air returns *from* a room and is supplied *for* one. `Return from kitchen`, `SW supply for kitchen`. This is load-bearing — with a register attached to whichever duct is nearest, a supply face sitting on a return branch is the signal that something is mislabelled or misplaced, and two of them were.
 
-Duct names must not contain the word *register*; it collides with the object prefix. One did, and is now `Supply branch for main closet 1`.
+Duct names must not contain the word *register*; it collides with the object prefix.
+
+**The Main Closet has no duct of its own** — its register hangs off `Supply branch for office east`, which is the "tiny split from orphan" the schedule records. At 17 CFM that is the right call; a dedicated run for a closet would cost more in fittings than the air is worth.
 
 ### Duct naming, normalised
 

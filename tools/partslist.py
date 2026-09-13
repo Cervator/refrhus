@@ -6,6 +6,11 @@ geometry, so this needs no junction resolution. Round vs rectangular comes from
 the catalogue id rather than from guessing at near-square sections.
 
 Usage: partslist.py [Home.xml] [out.md]   (defaults are relative to this file)
+
+Requires `defusedxml` (the only third-party dependency):
+    python3 -m pip install defusedxml
+or use the Eldr virtualenv, which already has it:
+    components/eldr/.venv/bin/python hoards/refrhus/tools/partslist.py
 """
 import math
 import os
@@ -13,7 +18,10 @@ import re
 import sys
 from collections import defaultdict
 
-import defusedxml.ElementTree as DET
+try:
+    import defusedxml.ElementTree as DET
+except ImportError:
+    sys.exit("partslist.py needs defusedxml: python3 -m pip install defusedxml")
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HOME = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, "sh3d-internals", "Home.xml")
@@ -24,6 +32,18 @@ DEFAULT_MATERIAL = {"round": "dwspiral", "rect": "rect"}
 
 root = DET.parse(HOME).getroot()
 levels = {l.get("id"): l.get("name") for l in root.findall("level")}
+
+
+def axis_of(f):
+    """Which world axis the piece's longest in-plan dimension runs along."""
+    w = IN(float(f.get("widthInPlan") or f.get("width")))
+    dp = IN(float(f.get("depthInPlan") or f.get("depth")))
+    h = IN(float(f.get("heightInPlan") or f.get("height")))
+    ang = float(f.get("angle") or 0)
+    cs, sn = abs(math.cos(ang)), abs(math.sin(ang))
+    ex, ey = w * cs + dp * sn, w * sn + dp * cs
+    return max((("x", ex), ("y", ey), ("z", h)), key=lambda t: t[1])[0]
+
 
 ducts, regs = [], []
 for f in root.iter("pieceOfFurniture"):
@@ -60,30 +80,22 @@ for f in root.iter("pieceOfFurniture"):
         ducts.append(dict(name=bare, stem=re.sub(r"\s+\d+$", "", bare), level=lvl,
                           shape=shape, length=dims[2], section=(dims[0], dims[1]),
                           material=tag or DEFAULT_MATERIAL[shape],
-                          axis=None, future=future,
+                          axis=axis_of(f), future=future,
                           ordinal=int(re.search(r"(\d+)$", bare).group(1))
                           if re.search(r"(\d+)$", bare) else 1))
 
-# Which axis each segment runs along, so direction changes can be counted.
-def axis_of(f):
-    w = IN(float(f.get("widthInPlan") or f.get("width")))
-    dp = IN(float(f.get("depthInPlan") or f.get("depth")))
-    h = IN(float(f.get("heightInPlan") or f.get("height")))
-    ang = float(f.get("angle") or 0)
-    cs, sn = abs(math.cos(ang)), abs(math.sin(ang))
-    ex, ey = w * cs + dp * sn, w * sn + dp * cs
-    return max((("x", ex), ("y", ey), ("z", h)), key=lambda t: t[1])[0]
-
-
-by_name = {}
-for f in root.iter("pieceOfFurniture"):
-    nm = f.get("name") or ""
-    if "duct" not in nm.lower() or nm.lower().startswith("register:"):
-        continue
-    bare = re.sub(r"\s*\[\w+\]\s*", " ", nm.split(":", 1)[-1].strip()).strip()
-    by_name.setdefault(bare, []).append(axis_of(f))
-for d in ducts:
-    d["axis"] = by_name.get(d["name"], ["?"])[0]
+# Names carry run membership AND segment order, so a collision is not cosmetic:
+# two segments sharing an ordinal sort arbitrarily against each other, and the
+# bend count silently loses a direction change. Fail rather than emit a
+# plausible wrong number.
+dupes = defaultdict(list)
+for d in ducts + regs:
+    dupes[d["name"]].append(d["level"])
+dupes = {n: lv for n, lv in dupes.items() if len(lv) > 1}
+if dupes:
+    for name, lv in sorted(dupes.items()):
+        print(f"  duplicate name: {name!r} on {', '.join(lv)}", file=sys.stderr)
+    sys.exit(f"{len(dupes)} duplicate object name(s) — renumber before generating.")
 
 runs = defaultdict(list)
 for d in ducts:
@@ -288,6 +300,42 @@ w("")
 w("The Bosch IDS Ultra is the candidate on file. Treat both rows as placeholders until "
   "a dealer quotes the specific model: published pricing for this equipment comes "
   "largely from aggregator sites rather than distributors.")
+w("")
+
+# Fittings add both parts and the labour to hang them; 25-40% on the installed
+# duct line is the working allowance, not the 30-50%-of-material figure.
+fit_lo, fit_hi = lo * 0.25, hi * 0.40
+eq_lo, eq_hi = 5500, 10500
+ex_lo, ex_hi = 1200, 3000
+tot_lo = lo + fit_lo + eq_lo + ex_lo
+tot_hi = hi + fit_hi + eq_hi + ex_hi
+
+w("## Whole-job estimate")
+w("")
+w("| | Low | High |")
+w("|---|---:|---:|")
+w(f"| Ductwork, straight runs | ${lo:,.0f} | ${hi:,.0f} |")
+w(f"| Fittings allowance (25–40%) | ${fit_lo:,.0f} | ${fit_hi:,.0f} |")
+w(f"| Equipment, 4-ton | ${eq_lo:,.0f} | ${eq_hi:,.0f} |")
+w(f"| Filtration, UV, humidity | ${ex_lo:,.0f} | ${ex_hi:,.0f} |")
+w(f"| **Total, pre-incentive** | **${tot_lo:,.0f}** | **${tot_hi:,.0f}** |")
+w("")
+w(f"**Centre of mass is around ${(tot_lo + tot_hi) / 2:,.0f}**, and the upper band is "
+  "what you get if every constrained thing turns out to be the hard version — duct "
+  "fished through finished walls rather than run through open joists, the kitchen "
+  "cabinetry modified rather than worked around, the high-end UV rather than coil "
+  "lamps. A realistic landing spot sits below the top of the range rather than at it.")
+w("")
+w("**Pre-incentive throughout.** Nothing here is netted against a rebate, credit or "
+  "utility programme, so it can be compared against a quote line for line — and "
+  "whatever incentives apply come off afterwards rather than being baked into a number "
+  "nobody can reconcile.")
+w("")
+w("The honest caveat on the whole table: **the fittings allowance is the weakest number "
+  "in it.** It is a percentage standing in for a count nobody has made, on the one "
+  "quantity this model explicitly cannot derive. It is also, not coincidentally, the "
+  "same count that settles the one-unit-versus-two question — so asking for it buys an "
+  "answer twice.")
 w("")
 w("### What this is for: one air handler or two")
 w("")

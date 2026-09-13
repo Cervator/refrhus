@@ -20,7 +20,7 @@ Lengths are centre-line and **do not deduct for fittings**, so they run long at 
 | Supply branch for little kids room | Basement, basement-main-transition | 5 | 8″ ø / 8x8 / 8x10 / 4x10 | dwspiral / rect | 19.4 ft | 3 |
 | Supply branch for main bed north and basement east | Basement | 3 | 8″ ø / 6x8 | dwspiral / rect | 12.0 ft | 1 |
 | Supply branch for main bed west | Main | 1 | 4x10 | rect | 7.0 ft | 0 |
-| Supply branch for office east | Basement, basement-main-transition | 5 | 8″ ø / 8x8 / 4x10 | dwspiral / rect | 27.4 ft | 1 |
+| Supply branch for office east | Basement, basement-main-transition | 5 | 8″ ø / 8x8 / 4x10 | dwspiral / rect | 27.4 ft | 2 |
 | Supply branch for office west | Main | 1 | 8x8 | rect | 3.1 ft | 0 |
 | Supply branch for play room east | Basement | 2 | 5″ ø / 4x10 | dwspiral / rect | 14.6 ft | 0 |
 | Supply branch for play room south | 2nd floor | 2 | 6x10 | rect | 9.7 ft | 1 |
@@ -162,6 +162,22 @@ The load calculation runs against geometry that is knowingly incomplete, and **e
 
 The Bosch IDS Ultra is the candidate on file. Treat both rows as placeholders until a dealer quotes the specific model: published pricing for this equipment comes largely from aggregator sites rather than distributors.
 
+## Whole-job estimate
+
+| | Low | High |
+|---|---:|---:|
+| Ductwork, straight runs | $4,591 | $12,062 |
+| Fittings allowance (25–40%) | $1,148 | $4,825 |
+| Equipment, 4-ton | $5,500 | $10,500 |
+| Filtration, UV, humidity | $1,200 | $3,000 |
+| **Total, pre-incentive** | **$12,439** | **$30,387** |
+
+**Centre of mass is around $21,413**, and the upper band is what you get if every constrained thing turns out to be the hard version — duct fished through finished walls rather than run through open joists, the kitchen cabinetry modified rather than worked around, the high-end UV rather than coil lamps. A realistic landing spot sits below the top of the range rather than at it.
+
+**Pre-incentive throughout.** Nothing here is netted against a rebate, credit or utility programme, so it can be compared against a quote line for line — and whatever incentives apply come off afterwards rather than being baked into a number nobody can reconcile.
+
+The honest caveat on the whole table: **the fittings allowance is the weakest number in it.** It is a percentage standing in for a count nobody has made, on the one quantity this model explicitly cannot derive. It is also, not coincidentally, the same count that settles the one-unit-versus-two question — so asking for it buys an answer twice.
+
 ### What this is for: one air handler or two
 
 The number that matters is not the total, it is **the delta between one unit and two**. The current proposal is a second *internal* ducted handler rather than one in the knee-wall attic, which is a materially better idea — an internal unit sits in conditioned space, so the duct losses that make attic equipment a bad retrofit bet do not apply. It is argued with on its merits in [`ducting-scheme.md`](ducting-scheme.md).
@@ -178,7 +194,7 @@ But cost is not what decides it. **This turns on static pressure**, and the two 
 | Return grilles | 8 |
 | — of which circular | 4 |
 | Branch runs (one balancing damper each) | 21 |
-| Inferred direction changes | 31 |
+| Inferred direction changes | 32 |
 
 **Damper every takeoff regardless of what the balance calculation says.** A branch without one cannot be adjusted after the fact, and the first season in a house is when the balance is actually discovered.
 

@@ -1,65 +1,29 @@
 # Duct model audit
 
-Generated from the drawn objects in `sh3d-internals/Home.xml`, compared against [`ducting-register-schedule.md`](ducting-register-schedule.md). **71 objects** carry `Ducting:` in their name.
+What the drawn model says about itself, and where it disagrees with the [register schedule](ducting-register-schedule.md). Currently **73 `Ducting:` objects and 25 registers**.
 
-Cross-section is taken as the two smaller dimensions of each box — the longest is assumed to be the run direction. Capacity is the equal-friction figure at 0.08 in.wc/100 ft, so it is what the duct *could* carry, not what it does.
+**Per-run sections, lengths and materials are not repeated here** — they live in [`ducting-parts-list.md`](ducting-parts-list.md), which is generated from the model on demand. This document carries only the findings that a table cannot: how the geometry was read, what the topology can and cannot tell us, and which sizing conclusions are contested.
 
 ---
 
-## The system as drawn
+## Connectivity
 
-Two plenums on the air handler, feeding six trunk systems:
+A 3D adjacency pass over all 73 duct objects and 25 registers at 3″ tolerance. **Every run joins something, no trunk or plenum dead-ends mid-run, and every register attaches to a duct** — the supply, SE, north and SW systems are all continuous as drawn.
 
-```
-SUPPLY PLENUM  (22x12 section — 1,660 CFM capacity, comfortably over the 1,179 needed)
-├── SE supply trunk 1 → 2 → 3 → 4      south, past the stairs, rising to Main and 2nd
-├── SW supply trunk                    west of the stairs, open-air junction
-└── North supply trunk 1 → 2 → 3 → 4   north, then the 3 registers near the unit
+**Read Sweet Home 3D's own rotated dimensions, not the raw ones.** A piece tilted by `pitch` or `roll` carries `widthInPlan` / `depthInPlan` / `heightInPlan` — the bounding box *after* that tilt — and its `elevation` is measured to the bottom of that box, not of the upright model. Twenty-four of the 73 duct objects are tilted, all of them horizontal runs drawn as pitched cylinders. Reconstructing the rotation from `width`/`depth`/`height` instead puts those runs **tens of inches off in elevation** while leaving the plan position right — so they read as badly broken chains that look perfectly joined on screen. Only the yaw (`angle`) still needs applying, to the in-plan footprint.
 
-RETURN PLENUM  (12x12 section — 763 CFM capacity)
-├── SE return trunk 1 → 2              two destinations
-├── SW return trunk 1 → 2 → 3 → 4      living room + SW basement
-└── North return trunk 1 → 2           main bedrooms + kitchen, via the crawlspace
-```
+The SW return is the run that exposed this: trunks 3 and 4 overlap by 1″ in elevation (74–83″ and 82–91″), and a naive pass reported them 26″ apart. **Two rounds of model edits chased that phantom before the reader was suspected** — the owner's own observation that the pieces touched was correct throughout.
 
-Mudroom extensions are drawn and marked `FUTURE`; they are excluded from the load arithmetic below.
+**The opposite mistake for the parts list.** In-plan dimensions are an axis-aligned envelope, so for anything tilted off a right angle they *overstate* the part — a rolled cylinder reported a 29″ diameter. Sections and lengths come from the raw `width`/`depth`/`height`, which are true at any rotation. Two questions, two correct answers, and using either one for the other's job produces confident nonsense.
 
-## Four things worth looking at
-
-**1. The return plenum is undersized — the clearest problem in the model.**
-Its 12x12 section carries **763 CFM**, and the whole house returns **1,179**. Supply and return must balance, so the return side has to move the same air the supply side does. The supply plenum was drawn generously at 22x12; the return needs comparable treatment — roughly **12x20** at the unit end.
-
-**2. The north return trunk is about half the size it needs.**
-At 8x8 it carries **259 CFM**, but it serves the main bedrooms (227) plus the kitchen (251) — **478 CFM**. It wants roughly 12x12, matching what the SE return trunks already are.
-
-**3. The main-bedroom return branch is the known bottleneck, now visible in the model.**
-Drawn at 7.5x4, it carries **91 CFM** against the 227 that room needs. This is the existing duct through the inaccessible crawlspace and it is not fixable by re-ducting. The plan of record is a **transfer grille above the bedroom door** first, with a second return via the SE corner only if that proves insufficient. Worth a note on the object so a future reader does not treat it as a sizing error to correct.
-
-**4. The SE supply riser may be oversized, which is its own problem.**
-SE supply trunks 3 and 4 are 12x12 — **763 CFM** of capacity. If they carry only the second floor's 228, that is **228 fpm**, very slow. Slow trunks are exactly what makes the near takeoff steal from the far one, and this one splits three ways at the top. If it is genuinely carrying main-floor branches on the way up, 12x12 is right; if it is a dedicated second-floor riser, it wants to be nearer 9–10″ equivalent.
-
-## Where flat oval would help
-
-Nine runs are drawn 4″ deep — shallow enough that the shape is doing real work, and exactly where flat oval beats a rectangular box on friction for the same depth:
-
-`office east 4` · `little kids room 5` · `play room east 2` · `both main bedrooms` · `main bed room 1` · `main bed room 2` · `west kitchen and west basement` · `west living room 2` · `SW return branch`
-
-## Connectivity — where runs break
-
-A 3D adjacency pass over all 72 objects at 3″ tolerance. **Every run joins something, and no trunk or plenum dead-ends mid-run** — the supply, SE, north and SW systems are all continuous as drawn.
-
-**Read Sweet Home 3D's own rotated dimensions, not the raw ones.** A piece tilted by `pitch` or `roll` carries `widthInPlan` / `depthInPlan` / `heightInPlan` — the bounding box *after* that tilt — and its `elevation` is measured to the bottom of that box, not of the upright model. Twenty of the 72 duct objects are tilted, all of them horizontal runs drawn as pitched cylinders. Reconstructing the rotation from `width`/`depth`/`height` instead puts those runs **tens of inches off in elevation** while leaving the plan position right — so they read as badly broken chains that look perfectly joined when you inspect them on screen. Only the yaw (`angle`) still needs applying, to the in-plan footprint.
-
-The SW return is the run that exposes this: trunks 3 and 4 overlap by 1″ in elevation (74–83″ and 82–91″), and a naive pass reports them 26″ apart.
-
-### Topology cannot be inferred from geometry — only the return side works
+## Topology cannot be inferred from geometry — only the return side works
 
 Adjacency tells you two objects touch. It does not tell you they are *joined*, and in this model that distinction cannot be recovered:
 
 - **Touching is too loose.** In the basement the branches run parallel along the joist bays and touch side by side. At 3″ tolerance the SE supply trunk comes out with **seven** neighbours and four sibling branches appear to tee into each other.
 - **Intersecting is too tight.** Requiring real volume overlap disconnects the North return trunk from the return plenum — a joint that is certainly real, drawn as a butt rather than a penetration.
 
-Joints in this model are a mix of butts and overlaps, so no single threshold separates a tee from a neighbour. **The return side survives anyway** because its runs are sparse enough not to graze, and it walks into exactly the tree the design describes:
+Joints here are a mix of butts and overlaps, so no single threshold separates a tee from a neighbour. **The return side survives anyway**, because its runs are sparse enough not to graze, and it walks into exactly the tree the design describes:
 
 ```
 Return plenum
@@ -69,97 +33,20 @@ Return plenum
 └── SW return trunk   → SW return branch (living room / SW basement)
 ```
 
-**The supply side needs its hierarchy declared rather than computed**, and it already is — the trunk tables in [`ducting-register-schedule.md`](ducting-register-schedule.md) are hand-authored and carry the reducing schedule an installer needs. Re-deriving them from geometry would confirm a thing already known, so it is not worth the modelling discipline it would demand.
+**The supply side needs its hierarchy declared rather than computed**, and it already is — the trunk tables in the register schedule are hand-authored and carry the reducing schedule an installer needs. Re-deriving them from geometry would confirm something already known at the cost of real modelling discipline.
 
-**The parts list does not need any of this.** Run membership comes from the object *names* — stem plus ordinal — not from geometry, so per-run length, cross-section, material and direction changes are all reliably derivable without resolving a single junction.
+**The parts list does not need any of this.** Run membership comes from the object *names* — stem plus ordinal — so per-run length, section, material and direction changes are all derivable without resolving a single junction. That is also why duplicate names are a correctness bug rather than untidiness: two segments sharing an ordinal sort arbitrarily and the bend count silently loses a turn. The generator now refuses to run when it finds one.
+
+## The contested sizing
+
+**The main-floor return path is the system's real bottleneck**, and it is not a grille problem. `Return branch for both main bedrooms` is a single **4x8 running 30 ft**, and three returns hang off it — Main Bed 227, Kids Room 64, and the Utility Room's 83 via the Kids Room tap. That is ~374 CFM through 32 in².
+
+It is the existing duct through the inaccessible crawlspace, so it is not a sizing error to correct in the model — but **the pinch is only the buried section.** The basement portion is open and can be enlarged at least as far as the splitter, and optionally onward to the Kids Room. This also reframes the remedy: a transfer grille above the bedroom door relieves the bedroom alone and does nothing for the two rooms behind the same constriction.
+
+**The Utility Room return shares the Kids Room branch**, which takes that branch from 64 CFM to 147. It is drawn at 8″, which runs 421 fpm and is fine; the 6″ the schedule originally specified would have run 747. A shared branch is sized for the sum, and once shared, the room name on it stops being the whole story.
+
+**Two kitchen faces remain constrained by cabinetry** — the SE supply at 2″ of height running 806 fpm, and the return at 3x20 running 602. Both are construction decisions rather than duct decisions, which is why the model still carries them as drawn.
 
 ## Modelling caveats
 
-Sizes here are read off box dimensions, and the longest edge is *assumed* to be the run direction. Where a box is nearly cubic that assumption is weak. Objects do not all touch, and no elbows, tees or takeoffs are modelled — so run lengths are indicative and **total effective length is not derivable from this model**. That matters, because effective length is what a static-pressure argument turns on.
-
-
-## Plenums
-
-| Level | Object | Run | Section | Equiv | Capacity |
-|---|---|---:|---|---:|---:|
-| Basement | Return plenum | 120″ | 12.0x12.0 | 13.1″ | 763 |
-| Basement | Supply plenum | 24″ | 22.0x12.0 | 17.6″ | 1660 |
-
-## Trunks
-
-| Level | Object | Run | Section | Equiv | Capacity |
-|---|---|---:|---|---:|---:|
-| Basement | North return trunk 1 | 64″ | 8.0x8.0 | 8.7″ | 259 |
-| Basement | North return trunk 2 | 82″ | 8.0x8.0 | 8.7″ | 259 |
-| Basement | North supply trunk 1 | 52″ | 12.0x11.5 | 12.8″ | 720 |
-| Basement | North supply trunk 2 | 24″ | 8.0x8.0 | 8.7″ | 259 |
-| Basement | North supply trunk 3 | 32″ | 8.0x8.0 | 8.7″ | 259 |
-| Basement | North supply trunk 4 | 32″ | 10.0x6.0 | 8.4″ | 232 |
-| Basement | SE return trunk 1 | 20″ | 12.0x11.6 | 12.9″ | 728 |
-| Basement | SE return trunk 2 | 100″ | 12.0x12.0 | 13.1″ | 763 |
-| Main | SE return trunk 2 | 100″ | 12.0x12.0 | 13.1″ | 763 |
-| Basement | SE supply trunk 1 | 30″ | 16.0x12.0 | 15.1″ | 1111 |
-| Basement | SE supply trunk 2 | 16″ | 16.0x12.0 | 15.1″ | 1111 |
-| Basement | SE supply trunk 3 | 98″ | 12.0x12.0 | 13.1″ | 763 |
-| Main | SE supply trunk 4 | 100″ | 12.0x12.0 | 13.1″ | 763 |
-| Basement | SW return trunk 1 | 20″ | 9.0x9.0 | 9.8″ | 354 |
-| Basement | SW return trunk 2 | 64″ | ⌀9.0 | 9.0″ | 279 |
-| Basement | SW return trunk 3 | 36″ | ⌀9.0 | 9.0″ | 279 |
-| Basement | SW return trunk 4 | 90″ | ⌀9.0 | 9.0″ | 279 |
-| Basement | SW supply trunk | 31″ | 16.0x11.0 | 14.4″ | 985 |
-
-## Branches
-
-| Level | Object | Run | Section | Equiv | Capacity |
-|---|---|---:|---|---:|---:|
-| Crawlspac | FUTURE North return branch for mudroom *(future)* | 205″ | 6.0x6.0 | 6.6″ | 120 |
-| Basement | North return branch for kitchen 1 | 98″ | 8.0x8.0 | 8.7″ | 259 |
-| Basement | North return branch for kitchen 2 | 30″ | 8.0x8.0 | 8.7″ | 259 |
-| Basement | North return branch for kitchen 3 | 66″ | 8.0x8.0 | 8.7″ | 259 |
-| Basement | North return branch for kitchen 4 | 32″ | 14.5x6.0 | 10.0″ | 366 |
-| Basement | North supply branch for living room east 1 | 58″ | 8.0x8.0 | 8.7″ | 259 |
-| Basement | North supply branch for living room east 2 | 17″ | 6.6x4.0 | 5.6″ | 78 |
-| Basement | North supply branch for main bathroom 1 | 28″ | 7.0x6.0 | 7.1″ | 147 |
-| basement- | North supply branch for main bathroom 2 | 24″ | 8.8x5.9 | 7.8″ | 191 |
-| Basement | North supply branch for orphaned kitchen register | 24″ | 9.2x9.0 | 10.0″ | 367 |
-| Basement | SW return branch for living room and SW basement | 34″ | 12.0x4.0 | 7.3″ | 160 |
-| Basement | FUTURE supply branch for mud room 1 *(future)* | 30″ | ⌀6.0 | 6.0″ | 95 |
-| Basement | FUTURE supply branch for mud room 2 *(future)* | 30″ | ⌀6.0 | 6.0″ | 95 |
-| Basement | FUTURE supply branch for mud room 3 *(future)* | 18″ | ⌀6.0 | 6.0″ | 95 |
-| basement- | Return branch for both main bedrooms | 360″ | 7.5x4.0 | 5.9″ | 91 |
-| basement- | Return branch for main bed room 1 | 40″ | 7.5x4.0 | 5.9″ | 91 |
-| basement- | Return branch for main bed room 2 | 24″ | 10.0x4.0 | 6.7″ | 129 |
-| Basement | Return branch for main floor kids room 1 | 40″ | 8.0x8.0 | 8.7″ | 259 |
-| Main | Return branch for main floor kids room 2 | 20″ | 8.0x8.0 | 8.7″ | 259 |
-| Basement | Supply branch for little kids room 1 | 36″ | ⌀8.0 | 8.0″ | 204 |
-| Basement | Supply branch for little kids room 2 | 108″ | ⌀8.0 | 8.0″ | 204 |
-| Basement | Supply branch for little kids room 3 | 12″ | 8.0x8.0 | 8.7″ | 259 |
-| basement- | Supply branch for little kids room 4 | 57″ | 10.2x8.0 | 9.9″ | 358 |
-| basement- | Supply branch for little kids room 5 | 24″ | 10.0x4.0 | 6.7″ | 129 |
-| Basement | Supply branch for main bed north and basement east 1 | 36″ | ⌀8.0 | 8.0″ | 204 |
-| Basement | Supply branch for main bed north and basement east 2 | 82″ | ⌀8.0 | 8.0″ | 204 |
-| Basement | Supply branch for main bed north and basement east 3 | 40″ | 8.0x8.0 | 8.7″ | 259 |
-| Basement | Supply branch for office east 1 | 36″ | ⌀8.0 | 8.0″ | 204 |
-| Basement | Supply branch for office east 2 | 127″ | ⌀8.0 | 8.0″ | 204 |
-| Basement | Supply branch for office east 3 | 12″ | 8.0x8.0 | 8.7″ | 259 |
-| basement- | Supply branch for office east 4 | 124″ | 10.0x4.0 | 6.7″ | 129 |
-| basement- | Supply branch for office east 4 | 40″ | 8.5x8.0 | 9.0″ | 280 |
-| Basement | Supply branch for play room east 1 | 43″ | ⌀4.6 | 4.6″ | 46 |
-| Basement | Supply branch for play room east 2 | 132″ | 10.0x4.0 | 6.7″ | 129 |
-| Basement | Supply branch for west kitchen and west basement 1 | 56″ | ⌀8.0 | 8.0″ | 204 |
-| Basement | Supply branch for west kitchen and west basement 2 | 120″ | ⌀8.0 | 8.0″ | 204 |
-| Basement | Supply branch for west kitchen and west basement 3 | 76″ | ⌀8.0 | 8.0″ | 204 |
-| Basement | Supply branch for west kitchen and west basement 4 | 32″ | 10.5x4.0 | 6.9″ | 137 |
-| Basement | Supply branch for west living room 1 | 80″ | ⌀6.0 | 6.0″ | 95 |
-| Basement | Supply branch for west living room 2 | 24″ | 10.5x4.0 | 6.9″ | 137 |
-| Basement | Supply branch for west living room and future mud room 1 | 56″ | ⌀8.0 | 8.0″ | 204 |
-| Basement | Supply branch for west living room and future mud room 2 | 144″ | ⌀8.0 | 8.0″ | 204 |
-| Main | Tiny closet supply register for minimal airflow | 8″ | 4.0x4.0 | 4.4″ | 41 |
-| 2nd floor | return branch for office 1 | 116″ | 10.0x6.0 | 8.4″ | 232 |
-| 2nd floor | return branch for office 2 | 18″ | 10.0x6.0 | 8.4″ | 232 |
-| 2nd floor | return branch for play room south 1 | 207″ | 10.0x6.0 | 8.4″ | 232 |
-| 2nd floor | return branch for play room south 2 | 40″ | 10.0x6.0 | 8.4″ | 232 |
-| Main | supply branch for main bed west | 94″ | 16.0x6.0 | 10.4″ | 411 |
-| Main | supply branch for office west | 32″ | 8.0x8.0 | 8.7″ | 259 |
-| 2nd floor | supply branch for play room south 1 | 92″ | 10.0x6.0 | 8.4″ | 232 |
-| 2nd floor | supply branch for play room south 2 | 26″ | 10.0x6.0 | 8.4″ | 232 |
+Cross-section assumes the longest edge is the run direction; where a box is nearly cubic that assumption is weak. **No elbows, tees, takeoffs or transitions are modelled**, so run lengths are centre-line and indicative, and **total effective length is not derivable from this model**. That matters more than it sounds, because effective length is what a static-pressure argument turns on — and static pressure is what decides the one-unit-versus-two question.

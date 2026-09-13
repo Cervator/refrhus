@@ -13,13 +13,14 @@ Everything here is generated from or checked against the model in this repositor
 | Heating load, 70°F / 15°F design | **39,694 BTU/hr** |
 | Cooling load, 75°F / 91°F design | **23,125 BTU/hr** (18,228 sensible) |
 | Sensible heat ratio | 0.79 |
-| Design supply airflow | **1,225 CFM** |
+| Design supply airflow (equipment) | **1,225 CFM** |
 | Manual S on today's model | 3.5 tons |
 | **Size to quote** | **4.0 tons** — see below |
 | Existing unit | 4.0 tons |
-| Duct, straight runs | 344 ft across 31 runs |
+| Duct, straight runs | 344 ft across **29 live runs** (31 drawn, 2 future) |
 | Registers and grilles | 25 |
-| Ductwork, installed, pre-incentive | $4,600–12,100 |
+| Ductwork, installed | $4,600–12,100 |
+| **Whole job, pre-incentive** | **$12,400–30,400** |
 
 **Quote the 4 ton, not the 3.5.** The load calculation runs against geometry that is knowingly incomplete, and every gap in it points the same way: there is no grade line, so basement walls are classed below-grade over their full height; and a third of the second-floor ceiling surface is not drawn at all. Taking the professionals' measured basement U-value alone moves the load to ~3.8 tons. The sizing verdict on the existing unit has flipped between *oversized* and *well-matched* three times as corrections landed — **a verdict that flips with each correction is one to hold loosely**, and rounding up is the cheap direction to be wrong in.
 
@@ -29,13 +30,15 @@ Everything here is generated from or checked against the model in this repositor
 
 ## The question this package is asking
 
-**One air handler, or two?** The current proposal is a second *internal* ducted handler — two units with ducts, rather than a head per room with none. That is a materially better idea than the knee-wall attic unit originally suggested, and this package argues with it on its merits rather than dismissing it.
+**One air handler, or two?** The proposal is a second ducted handler in the **north knee-wall attic**, reached through the wall at the top of the stairs.
 
-**What two internal handlers genuinely buy:** real per-floor zoning, which a single unit cannot have here — neither the basement nor the second floor alone can be a hard zone without starving the blower. And much shorter runs, which attacks static pressure directly instead of arguing about it.
+**What a second handler genuinely buys** is real per-floor zoning, which a single unit cannot have here — neither the basement nor the second floor alone can be a hard zone without starving the blower. That is a legitimate advantage and this package does not dispute it.
 
-**What the single unit offers against that:** the same conditioned-duct benefit obtained a different way, through a three-level chase that **has to be built anyway** for the main floor — with half the equipment, one filter, and one maintenance schedule.
+**But the proposed location does not reach the south side of those rooms.** A north knee-wall unit serves the north side; the south side has real load, and our own conservative numbers understate it, since a third of that ceiling area is not drawn yet. The suggested remedy — a duct in a channel along the office wall into the small east attic — is a chase. **If a chase is acceptable, the objection was never about chases**: this design is built around one, in the utility cabinet, inside the envelope, serving all three floors, and it has to exist anyway for the main floor.
 
-**The honest criterion is static pressure and nothing else.** If one unit can move 1,225 CFM through this layout at an acceptable external static pressure, it is the better buy. If it cannot, two internal handlers is the right answer — and the attic unit never was. That question is settled by fitting counts this model cannot supply, which is the one thing worth asking a contractor for.
+The attic placement also costs what attic equipment always costs. Our load model puts **summer attic air near 133°F**; the unit, its coil and every foot of its supply duct would sit in that, along with a condensate pan over a finished ceiling.
+
+**Two questions, in this order.** First: where would the second unit sit, and which registers can it actually reach? Second, and only if it reaches everything: does one unit hit its static-pressure limit? That second question is settled by fitting counts this model cannot supply — the one thing genuinely worth asking a contractor for.
 
 Supporting detail: [the duct scheme](ducting-scheme.md) for the full argument, [the register schedule](ducting-register-schedule.md) for how a single plenum carrying four takeoffs keeps the largest duct in the house to 10″, and [the handover plan](ducting-handover-plan.md) for the second-floor riser.
 
@@ -56,7 +59,7 @@ Supporting detail: [the duct scheme](ducting-scheme.md) for the full argument, [
 - **[History](HISTORY.md)** — what was built when, and which walls are original.
 - **[Basement structure](basement-structure.md)** · **[joists](basement-joists.md)** · **[post details](basement-post-details.html)**
 - **[Measurement records](basement-measure-sheet.md)** · **[chimney](chimney-measure-sheet.md)**
-- **[Load calculations](hvac/)** — the current Eldr run, the professional Manual J reports, and where the two disagree.
+- **[Load calculations](hvac/README.md)** — index to the current Eldr run, the professional Manual J reports, and where the two disagree. The run itself is [`hvac/eldr-report.md`](hvac/eldr-report.md).
 
 ---
 

@@ -12,9 +12,8 @@ Airflow is biased on purpose — **second floor ×1.35**, **basement ×0.70**, m
 
 | Level | Room | Room CFM | Sup | CFM ea | Round | Rect | fpm | Ret | CFM ea | Round | Rect | fpm | New? | Comment |
 |---|---|---:|:-:|---:|:-:|:-:|---:|:-:|---:|:-:|:-:|---:|---:|---:|
-| Basement | Future Media Room | 85 | 1 | 85 | 6″ | 3x10 | 435 | — | — | — | — | — | 1 | Returns via midline |
-| Basement | Utility Room | 82 | 1 | 82 | 6″ | 3x10 | 415 | — | — | — | — | — | 1 | Returns via midline |
-| Basement | **Midline return** | — | — | — | — | — | — | 1 | **167** | 8″ | 4x14 | 478 | 1 | Serves the whole floor |
+| Basement | Future Media Room | 85 | 1 | 85 | 6″ | 3x10 | 435 | 1 | 84 | 6″ | 3x10 | 430 | 2 | Own ceiling return |
+| Basement | Utility Room | 82 | 1 | 82 | 6″ | 3x10 | 415 | 1 | 83 | 6″ | 3x10 | 425 | 2 | Own ceiling return |
 | Main | Kitchen | 251 | 2 | 126 | 7″ | 4x10 | 470 | 1 | 251 | 9″ | 5x14 | 569 | 2 | One tricky |
 | Main | Main Bed | 227 | 2 | 113 | 7″ | 4x10 | 424 | 1 | 227 | 9″ | 5x14 | 513 | 1 | Return narrow? |
 | Main | Living room | 143 | 2 | 71 | 6″ | 3x10 | 363 | 1 | 143 | 7″ | 4x12 | 534 | | |
@@ -30,7 +29,7 @@ Rectangular sizes are the shallowest option holding an **aspect ratio at or unde
 
 **Two return decisions are baked into the table above.**
 
-*The basement runs one central return rather than two room returns.* At 167 CFM through an 8″ it is unremarkable, returns need not match supply count, and the living-room return is right there anyway. It also drops the basement from five new ducts to **three**.
+*The basement runs two ceiling returns rather than one midline.* The earlier plan collapsed both rooms onto a single 167 CFM midline grille, which was the cheaper build — three new ducts instead of five. Drawing it settled the question the other way: the two rooms are separated by the stair and utility walls, so a single midline grille would have pulled almost entirely from whichever room it sat in, and the other would have had to give its air up through a doorway. Each room now returns where it is supplied, at **84 and 83 CFM**, the same total split two ways.
 
 *The Play Room gets two supplies, and the new one is sized as though it were the only one.* The existing east-wall duct is small enough to be suspect, so the new south-wall register is sized for the room's full 115 CFM rather than for half of it. If the east duct turns out to carry its share, the room is comfortably over-served and the damper takes it back; if it carries nothing, the room is still right. **Sizing the new duct for half would have made the room hostage to a duct nobody has measured.** Treat the east register as recovered capacity, not as a design assumption — it is the one supply in this house whose contribution is unknown.
 
@@ -46,32 +45,52 @@ Sized on face velocity only: supply registers at 40–70% free area running 300�
 
 **This is not Manual T.** Throw, spread, drop and NC need the room's dimensions against a specific manufacturer's catalogue, and the choice of *where* on the wall or floor matters as much as the size. Treat the faces below as the starting schedule a contractor prices, not as a selection.
 
-| Level | Room | Qty | CFM ea | Face | fpm | Note |
-|---|---|:-:|---:|:-:|---:|---|
-| Basement | Future Media Room | 1 | 85 | 4x10 | 409 | |
-| Basement | Utility Room | 1 | 82 | 4x10 | 394 | |
-| Main | Kitchen | 2 | 126 | 4x12 | 504 | Highest of any supply |
-| Main | Main Bed | 2 | 113 | 4x12 | 452 | |
-| Main | Living room | 2 | 71 | 4x10 | 341 | |
-| Main | Kids Room | 1 | 64 | 4x10 | 308 | |
-| Main | Main Bath | 1 | 36 | 4x8 | 216 | |
-| Main | Main Closet | 1 | 17 | 4x6 | 136 | Trickle; velocity is irrelevant here |
-| 2nd | Play Room — south | 1 | 115 | 4x12 | 460 | New; sized for the whole room |
-| 2nd | Play Room — east | 1 | — | existing | — | Keep the opening; contribution unknown |
-| 2nd | Office | 2 | 56 | 4x8 | 335 | 4x10 would drop under 270 |
-| | **Supply registers** | **15** | | | | |
-| Basement | Midline return | 1 | 167 | 6x12 | 334 | |
-| Main | Kitchen | 1 | 251 | 8x14 | 323 | |
-| Main | Main Bed | 1 | 227 | 8x14 | 292 | Grille is fine; the *duct* is the constraint |
-| Main | Living room | 1 | 143 | 6x10 | 343 | |
-| Main | Kids Room | 1 | 64 | 4x8 | 288 | |
-| 2nd | Play Room | 1 | 168 | 6x12 | 336 | Sized for cross-flow, per above |
-| 2nd | Office | 1 | 113 | 6x8 | 339 | |
-| | **Return grilles** | **7** | | | | |
+Faces below are **as drawn in the model**, sized against available space, with the resulting velocity computed. Five need attention.
 
-**Returns run 290–340 fpm across the board** and supplies 300–500. That spread is intentional: a return grille sits where people are and is judged entirely on noise, while a supply register needs enough velocity to actually throw air into the room rather than dribble it down the wall.
+| Level | Register | CFM | Face | fpm | Verdict |
+|---|---|---:|:-:|---:|---|
+| Basement | Future Media — NW ceiling `[circular]` | 85 | 5x10 | 326 | ok |
+| Basement | Utility — SE ceiling `[circular]` | 82 | 5x10 | 315 | ok |
+| Main | Kitchen — SW | 126 | 6x11 | 367 | ok |
+| Main | Kitchen — SE | 126 | 2x15 | **806** | **too fast** |
+| Main | Main Bed — NE | 113 | 6x11 | 329 | ok |
+| Main | Main Bed — W | 113 | 4x8 | **678** | **too fast** |
+| Main | Living room — NW | 71 | 5x10 | 273 | ok |
+| Main | Living room — NE | 71 | 6x10 | 227 | ok |
+| Main | Kids Room | 64 | 6x12 | 171 | Generous; throw will be weak |
+| Main | Main Bath | 36 | 5x8 | 173 | ok |
+| Main | Main Closet | 17 | 4x8 | 102 | ok |
+| 2nd | Play Room — south | 115 | 5x10 | 442 | ok |
+| 2nd | Play Room — east | — | 4x8 | — | Existing; contribution unknown |
+| 2nd | Office — NE floor | 56 | 4x10 | 269 | ok |
+| 2nd | Office — W floor | 56 | 4x10 | 269 | ok |
+| | **Supply registers** | | | | **15** |
+| Basement | Future Media — SW ceiling `[circular]` | 84 | 5x12 | 202 | ok |
+| Basement | Utility — NE ceiling `[circular]` | 83 | 5x12 | 199 | ok |
+| Main | Kitchen | 251 | 3x20 | **602** | **too fast** |
+| Main | Main Bed | 227 | 5x9 | 726 | Matches its duct — see below |
+| Main | Living room | 143 | 6x12 | 286 | ok |
+| Main | Kids Room | 64 | 4x10 | 230 | ok |
+| 2nd | Play Room — SW | 168 | 6x12 | 336 | ok |
+| 2nd | Office — SW | 113 | 4x8 | **509** | **too fast** |
+| | **Return grilles** | | | | **8** |
 
-The Main Bed return grille is the one row that understates a known problem. **The 8x14 face is correct and the duct behind it is not** — it is the existing 7.5x4 through the inaccessible crawlspace, good for about 91 CFM against 227. The plan of record is a transfer grille over the bedroom door first; see the note in the handover plan.
+### The four that need a bigger face
+
+| Register | Now | fpm | Wants | fpm |
+|---|:-:|---:|:-:|---:|
+| Kitchen — SE supply | 2x15 | 806 | **4x15** | 403 |
+| Main Bed — W supply | 4x8 | 678 | **6x11** | 329 |
+| Kitchen return | 3x20 | 602 | **6x20** | 301 |
+| Office — SW return | 4x8 | 509 | **6x8** | 339 |
+
+**The kitchen SE register is the one worth building around.** At 2″ of height under the cabinetry it runs 806 fpm — not marginal, audible, and in a kitchen where people stand. Moving one cabinet over for 4″ of height halves it to 403. Modifying the cabinet does the same. Either is a better trade than living with it, because this is the register a person stands next to while cooking.
+
+The Main Bed W register just needs to match its NE twin at 6x11; it is drawn at 4x8 while carrying the same 113 CFM. **It may also want to point east** rather than the way it is currently drawn — noted here because it is a throw question, and throw is Manual T's business rather than something the plan view can settle.
+
+**The Main Bed return is not in that list, though its number is the worst.** 726 fpm assumes 227 CFM actually arrives, and it cannot: behind that grille is the existing 7.5x4 through the inaccessible crawlspace, good for roughly 91 CFM. At 91 the 5x9 face runs 291 fpm and is perfectly quiet. **The grille is correctly sized for the duct; the duct is the problem**, and the plan of record remains a transfer grille over the bedroom door first.
+
+The Kids Room supply is the opposite case — 6x12 for 64 CFM is generous enough that throw suffers. Harmless in a small room, and worth leaving if the opening is already cut.
 
 ---
 

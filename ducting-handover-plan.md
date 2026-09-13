@@ -74,6 +74,16 @@ Register: Supply to play room south
 
 **Only the position matters, not the precision.** Attachment is resolved by adjacency against the duct runs, so a small frame at the right end of the right run is enough. The living-room return overlaps its branch by 0.1″ — the grille face sitting flush against the duct's end, which is exactly right physically and well inside the 3″ tolerance.
 
+**Face style is tagged the same way as duct material, and defaults the same way.** Bare means a standard louvred grille — the venetian-blind face used everywhere in the house. The exception is tagged:
+
+```
+Register: NW ceiling duct supply for future media room [circular]
+```
+
+`[circular]` is the round commercial-style diffuser, and it is deliberately confined to **the four basement ceiling registers**, where the runs are exposed double-wall spiral and a round face is what belongs under them. Everywhere else the duct is concealed and a rectangular grille is both cheaper and correct.
+
+**Preposition carries the side:** air returns *from* a room and is supplied *for* one. `Return from kitchen`, `SW supply for kitchen`. This is load-bearing — with a register attached to whichever duct is nearest, a supply face sitting on a return branch is the signal that something is mislabelled or misplaced, and two of them were.
+
 Duct names must not contain the word *register*; it collides with the object prefix. One did, and is now `Supply branch for main closet 1`.
 
 ### Duct naming, normalised

@@ -54,7 +54,7 @@ Faces below are **as drawn in the model**, sized against available space, with t
 | Main | Kitchen — SW | 126 | 6x11 | 367 | ok |
 | Main | Kitchen — SE | 126 | 2x15 | **806** | **too fast** |
 | Main | Main Bed — NE | 113 | 6x11 | 329 | ok |
-| Main | Main Bed — W | 113 | 4x8 | **678** | **too fast** |
+| Main | Main Bed — W | 113 | 6x11 | 329 | ok |
 | Main | Living room — NW | 71 | 5x10 | 273 | ok |
 | Main | Living room — NE | 71 | 6x10 | 227 | ok |
 | Main | Kids Room | 64 | 6x12 | 171 | Generous; throw will be weak |
@@ -72,21 +72,23 @@ Faces below are **as drawn in the model**, sized against available space, with t
 | Main | Living room | 143 | 6x12 | 286 | ok |
 | Main | Kids Room | 64 | 4x10 | 230 | ok |
 | 2nd | Play Room — SW | 168 | 6x12 | 336 | ok |
-| 2nd | Office — SW | 113 | 4x8 | **509** | **too fast** |
+| 2nd | Office — SW | 113 | 6x8 | 339 | ok |
 | | **Return grilles** | | | | **8** |
 
-### The four that need a bigger face
+### Two still to settle — both in the kitchen, both constrained by cabinetry
 
 | Register | Now | fpm | Wants | fpm |
 |---|:-:|---:|:-:|---:|
 | Kitchen — SE supply | 2x15 | 806 | **4x15** | 403 |
-| Main Bed — W supply | 4x8 | 678 | **6x11** | 329 |
 | Kitchen return | 3x20 | 602 | **6x20** | 301 |
-| Office — SW return | 4x8 | 509 | **6x8** | 339 |
 
-**The kitchen SE register is the one worth building around.** At 2″ of height under the cabinetry it runs 806 fpm — not marginal, audible, and in a kitchen where people stand. Moving one cabinet over for 4″ of height halves it to 403. Modifying the cabinet does the same. Either is a better trade than living with it, because this is the register a person stands next to while cooking.
+**The kitchen SE register is the one worth building around.** At 2″ of height under the cabinetry it runs 806 fpm — not marginal, audible, and in a kitchen where people stand. Moving one cabinet over for 4″ of height halves it to 403; modifying the cabinet does the same. Either is a better trade than living with it, because this is the register a person stands beside while cooking. **Both options are construction decisions rather than duct decisions**, which is why the model still carries the 2″ version.
 
-The Main Bed W register just needs to match its NE twin at 6x11; it is drawn at 4x8 while carrying the same 113 CFM. **It may also want to point east** rather than the way it is currently drawn — noted here because it is a throw question, and throw is Manual T's business rather than something the plan view can settle.
+The kitchen return at 3x20 needs to roughly double in area. Whether 6x20 fits, or whether the opening has to go somewhere else entirely, is the same cabinetry question.
+
+*Already corrected in the model:* Main Bed W supply 4x8 → **6x11**, matching its NE twin at the same 113 CFM, and Office SW return 4x8 → **6x8**. Neither had a space constraint; both were simply drawn small.
+
+**The Main Bed W register may also want to point east** rather than the way it is drawn — a throw question, and throw is Manual T's business rather than something the plan view can settle.
 
 **The Main Bed return is not in that list, though its number is the worst.** 726 fpm assumes 227 CFM actually arrives, and it cannot: behind that grille is the existing 7.5x4 through the inaccessible crawlspace, good for roughly 91 CFM. At 91 the 5x9 face runs 291 fpm and is perfectly quiet. **The grille is correctly sized for the duct; the duct is the problem**, and the plan of record remains a transfer grille over the bedroom door first.
 

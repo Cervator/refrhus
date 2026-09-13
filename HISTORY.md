@@ -168,6 +168,33 @@ the *east* face puts the known end of the datum against the thing being correcte
    floor-plan frame. The **survey is authoritative for the true exterior footprint**;
    the floor plan is explicitly *not to scale* (good for interior layout only).
 
+## The parcel, from the survey
+
+The lot as surveyed 2022-09-23. Recorded here because the survey endorsement that
+carried it has been removed from the repository — it was title paperwork wrapped
+around four useful numbers, and these are the four numbers.
+
+| Leg | Bearing | Length |
+|---|---|---:|
+| 1 | N 39°29′ E | 125.00 ft |
+| 2 | S 48°05′ E | 68.15 ft |
+| 3 | S 39°29′ W | 125.00 ft |
+| 4 | N 48°05′ W | 68.15 ft — the street frontage |
+
+A rectangle, **125 ft deep by 68.15 ft wide**, matching the `125.00'` and `68.15'`
+dimensions printed on `SurveyAlone.png`.
+
+**The frontage bearing is the one that matters beyond the footprint.** The street
+line runs N 48°05′ W, so a front elevation square to the street faces roughly
+**S 42° W** — which is the source of the "front faces roughly southwest" claim used
+in the window and solar-gain reasoning. Anything that re-derives orientation should
+reconcile against this rather than against the floor plan, which is not to scale and
+carries no true north at all.
+
+**Not recorded, deliberately:** the street address, deed book reference, tax lot and
+block, title file number and surveyor details that accompanied these bearings. None
+of them affect any measurement, and this repository is public.
+
 ## Background-image facts (for any registration math)
 
 Placement, taken verbatim from `PlanComponent.paintBackgroundImage`:

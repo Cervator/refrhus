@@ -17,7 +17,7 @@ Airflow is biased on purpose — **second floor ×1.35**, **basement ×0.70**, m
 | Main | Kitchen | 251 | 2 | 126 | 7″ | 4x10 | 470 | 1 | 251 | 9″ | 5x14 | 569 | 2 | One tricky |
 | Main | Main Bed | 227 | 2 | 113 | 7″ | 4x10 | 424 | 1 | 227 | 9″ | 5x14 | 513 | 1 | Return narrow? |
 | Main | Living room | 143 | 2 | 71 | 6″ | 3x10 | 363 | 1 | 143 | 7″ | 4x12 | 534 | | |
-| Main | Kids Room | 64 | 1 | 64 | 6″ | 3x8 | 324 | 1 | 64 | 6″ | 3x8 | 324 | | |
+| Main | Kids Room | 64 | 1 | 64 | 6″ | 3x8 | 324 | 1 | 64 | **8″** | 4x12 | 421 | | Branch also carries the utility return — 147 total |
 | Main | Main Bath | 36 | 1 | 36 | 5″ | 3x6 | 263 | — | — | — | — | — | | |
 | Main | Main Closet | 17 | 1 | 17 | 4″ | 3x6 | 191 | — | — | — | — | — | 1 | Tiny split from orphan |
 | 2nd | Play Room | 115 | 2 | 115 | 7″ | 4x10 | 429 | 1 | **168** | 8″ | 4x14 | 481 | 1 | New south duct sized for the *whole* room — see below |
@@ -28,6 +28,8 @@ Airflow is biased on purpose — **second floor ×1.35**, **basement ×0.70**, m
 Rectangular sizes are the shallowest option holding an **aspect ratio at or under 4:1**. Flatter than that costs friction and makes fittings awkward, so a 3x20 is not a real substitute for a 4x14 even though the areas are similar.
 
 **Two return decisions are baked into the table above.**
+
+*The Utility Room return joins the Kids Room branch rather than a basement trunk.* That branch passes through the basement ceiling on its way down, so tapping it is the short path — but it means the branch carries **147 CFM, not 64**. It is drawn at 8″, which runs 421 fpm and is fine; the 6″ the schedule originally called for would have run 747 and been a mistake. **A shared branch is sized for the sum, and the room name on it stops being the whole story.**
 
 *The basement runs two ceiling returns rather than one midline.* The earlier plan collapsed both rooms onto a single 167 CFM midline grille, which was the cheaper build — three new ducts instead of five. Drawing it settled the question the other way: the two rooms are separated by the stair and utility walls, so a single midline grille would have pulled almost entirely from whichever room it sat in, and the other would have had to give its air up through a doorway. Each room now returns where it is supplied, at **84 and 83 CFM**, the same total split two ways.
 
@@ -41,7 +43,9 @@ Room-name mapping, since the model and conversation differ: the 2nd-floor "kids 
 
 ## Register and grille faces
 
-Sized on face velocity only: supply registers at 40–70% free area running 300–500 fpm, return grilles on gross area at roughly 300–350 fpm. Quiet, and deliberately on the generous side — **an undersized grille is the one part of this system a person hears every day.**
+Sized on face velocity only. **Supplies assume 75% free area** — the generous end for a louvred face, so a grille with heavier blades runs faster than shown, never slower. Returns are computed on gross area.
+
+Targets: supplies **500–750 fpm** is the normal band and 600 is where this document starts objecting; returns **300–500 fpm**, and the sizes below aim at the quiet end of it. That aim is a choice, and an expensive one — **a return sized at 300 fpm is two-thirds larger than the same airflow at 500.** Worth knowing before treating any "wants" figure as a requirement, because the honest floor is 500 and the rest is comfort.
 
 **This is not Manual T.** Throw, spread, drop and NC need the room's dimensions against a specific manufacturer's catalogue, and the choice of *where* on the wall or floor matters as much as the size. Treat the faces below as the starting schedule a contractor prices, not as a selection.
 
@@ -80,11 +84,21 @@ Faces below are **as drawn in the model**, sized against available space, with t
 | Register | Now | fpm | Wants | fpm |
 |---|:-:|---:|:-:|---:|
 | Kitchen — SE supply | 2x15 | 806 | **4x15** | 403 |
-| Kitchen return | 3x20 | 602 | **6x20** | 301 |
+| Kitchen return | 3x20 | 602 | **8x14** | 323 |
 
-**The kitchen SE register is the one worth building around.** At 2″ of height under the cabinetry it runs 806 fpm — not marginal, audible, and in a kitchen where people stand. Moving one cabinet over for 4″ of height halves it to 403; modifying the cabinet does the same. Either is a better trade than living with it, because this is the register a person stands beside while cooking. **Both options are construction decisions rather than duct decisions**, which is why the model still carries the 2″ version.
+**The kitchen SE register is the one worth building around.** At 2″ of height under the cabinetry it runs 806 fpm — not marginal, audible, and in a kitchen where people stand. Moving one cabinet over for 4″ of height halves it to 403; modifying the cabinet does the same. Either is a better trade than living with it, because this is the register a person stands beside while cooking. **Both options are construction decisions rather than duct decisions**, which is why the model still carries the 2″ version. Note that 806 fpm assumes a generous 75% free area — a real louvred face makes it worse, not better.
 
-The kitchen return at 3x20 needs to roughly double in area. Whether 6x20 fits, or whether the opening has to go somewhere else entirely, is the same cabinetry question.
+**The kitchen return is about area, not length.** 251 CFM needs roughly 120 in² at 300 fpm, and the drawn 3x20 gives 60. What it does *not* need is to stay 20″ long: an earlier draft of this table said 6x20 purely because it preserved the drawn dimension and grew the other, which is how a 3.3:1 grille nobody stocks ends up recommended.
+
+| Target | Area | Sensible face |
+|---|---:|:-:|
+| 300 fpm — quiet | 120 in² | 10x12 |
+| 350 fpm | 103 in² | **8x14** |
+| 500 fpm — the honest ceiling | 72 in² | 6x12 |
+
+**8x14 is the pick** — a stock size, 323 fpm, and the figure this schedule carried before the constraint discussion started. 6x12 is defensible if space is genuinely tight, at the cost of a return you can hear. The current 3x20 is outside the range at either end.
+
+If the 3″ height really is fixed by cabinetry, no single grille solves it — 3x40 would be needed, and the answer is two openings rather than one enormous one.
 
 *Already corrected in the model:* Main Bed W supply 4x8 → **6x11**, matching its NE twin at the same 113 CFM, and Office SW return 4x8 → **6x8**. Neither had a space constraint; both were simply drawn small.
 

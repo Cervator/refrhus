@@ -55,3 +55,7 @@ PYTHONPATH=components/eldr components/eldr/.venv/bin/python -m eldr.cli \
 # the parts list and cost estimate
 components/eldr/.venv/bin/python hoards/refrhus/tools/partslist.py
 ```
+
+CI does both for you. **On a pull request** that touches the model or the side-car, `.github/workflows/loads.yml` runs the engine against the base and the head and comments what moved — component by component, plus equipment sizing and per-room airflow. **On a push to `main`**, `regenerate.yml` rebuilds `hvac/eldr-report.md` and `ducting-parts-list.md` and commits them if they no longer match the model.
+
+The comparison itself is `eldr --diff`, which lives in the engine and is unit-tested there; these workflows only fetch, run and post. Eldr has no packaging metadata yet, so it is checked out beside this repository and reached via `PYTHONPATH` rather than pip-installed.

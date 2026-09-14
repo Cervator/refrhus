@@ -1,0 +1,16 @@
+title: Refr Hus — HVAC
+description: A measured model of a 1950s house, and the duct design that came out of it
+theme: jekyll-theme-primer
+
+# GitHub Pages enables jekyll-optional-front-matter by default, so every
+# markdown file in this repo renders without needing front matter added to it.
+# The documents stay plain markdown, readable in the repo and in an editor.
+
+exclude:
+  - Refrhus.sh3d
+  - sh3d-internals/
+  - tools/
+  - descent-into-chaos.json
+  - minioverhaul.json
+  - eldr-sidecar.yaml
+  - "*.PDF"

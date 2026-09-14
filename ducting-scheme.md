@@ -2,7 +2,7 @@
 
 Where the ducting design stands as of 2026-09-02, why it is shaped this way, and what is still open. Written to be readable cold — by a contractor, by a future session, or by the owner in six months.
 
-Companion documents: `ducting-design.md` (the as-built seed), `ducting-plan.md` (the earlier forward spec, including the maintenance-wall chase), `chimney-measure-sheet.md` (the chimney's geometry), and `hvac/README.md` (the load calculations and where they disagree with the professional Manual J).
+Companion documents: `chimney-measure-sheet.md` (the chimney's geometry), and `hvac/README.md` (the load calculations and where they disagree with the professional Manual J).
 
 ---
 
@@ -34,14 +34,16 @@ Design airflow from Eldr's per-room Manual J, on geometry that is deliberately c
 
 | Level | CFM | Dominated by |
 |---|---:|---|
-| Basement | 155 | Future Media 73, Utility 70 |
-| **Main** | **524** | Main Bed 156, Kitchen 153, Living room 114 |
-| 2nd floor | 205 | Office 87, Play Room 72 |
-| **Total** | **884** | |
+| Basement | 256 | Future Media 124, Utility 118 |
+| **Main** | **751** | Kitchen 254, Main Bed 225, Living room 134 |
+| 2nd floor | 238 | Office 100, Play Room 86 |
+| **Total** | **1,245** | |
+
+> **Two airflow totals appear across these documents and they are not interchangeable.** **1,245 CFM** is the whole-house design airflow Eldr computes, and the per-room figures now sum to the same number — the figure the *equipment* is sized on. **1,133** is the [register schedule](ducting-register-schedule.md) total, which is lower because the second-floor ×1.35 and basement ×0.70 biases are applied to it and because it was tuned against an earlier model state. **The schedule is authoritative for duct sizes; Eldr's total is authoritative for equipment.** Where a per-room figure differs between them, the schedule is the older number — the Office in particular reads 83 raw there against 100 now.
 
 **The main floor is the load** — two and a half times the second floor. Which reframes the whole argument: the second floor is not the hard part *volumetrically*, it is the hard part *geometrically*. That distinction is the crux of the disagreement with the contractors, who are pricing the geometry and concluding the load can't be served.
 
-**These numbers understate the second floor and should be presented that way.** Our ceiling area on that level is 984 ft² against the professional Manual J's 1,547 — sloped roof and knee-wall surfaces nobody has modelled yet. It cuts both ways: it makes *"the south side needs real supply"* stronger than shown, and *"one unit can do it"* easier than reality. Quote them as a floor, not an estimate: *on geometry that understates our second-floor ceiling by a third, the office still needs 87 CFM.* A number biased against your own case is much harder to argue with.
+**These numbers understate the second floor and should be presented that way.** Our ceiling area on that level is 984 ft² against the professional Manual J's 1,547 — sloped roof and knee-wall surfaces nobody has modelled yet. It cuts both ways: it makes *"the south side needs real supply"* stronger than shown, and *"one unit can do it"* easier than reality. Quote them as a floor, not an estimate: *on geometry that understates our second-floor ceiling by a third, the office still needs 100 CFM.* A number biased against your own case is much harder to argue with.
 
 ---
 
@@ -74,12 +76,12 @@ Velocities run 115–450 fpm throughout — quiet, with nothing strained.
 
 | | CFM | Round | Rectangular |
 |---|---:|---|---|
-| Basement branch | 100 | 7″ | 4×10 |
-| Main branch | 517 | 12″ | 8×16 |
-| 2nd floor riser | **257** | **9″** | **9×9** or 6×12 |
-| Trunk at the unit | **874** | **14″** | **8×24** |
+| Basement branch | 167 | 8″ | 4×14 |
+| Main branch | 737 | 14″ | 8×20 |
+| 2nd floor riser | **276** | **9″** | **5×16** |
+| Trunk at the unit | **1,179** | **16″** | **10×22** |
 
-**The two biases nearly cancel at the trunk** — 874 against the unbiased 884 — so the largest single piece of ductwork is insensitive to how those judgement calls land.
+**The biases nearly cancel at the trunk**, so the largest single piece of ductwork is insensitive to how those judgement calls land. And **the 16″ never has to exist** — if the plenum carries four takeoffs directly rather than one duct splitting later, the largest duct in the house becomes a 10″. See the trunk section of the [register schedule](ducting-register-schedule.md), which is where that decision lives.
 
 **But the uplift changes the old ducts' role.** At design friction a 3×10 carries **86 CFM**, against a biased Office at 113 and Play Room at 98. Together they cover 172 of 257 — **67%**, not the 83% the unbiased numbers suggested. They remain a substantial contribution rather than the base, and the riser should be planned to carry the shortfall rather than leaning on them running hard. A 3×10 pushed to 113 CFM reaches 542 fpm: tolerable, but bought with noise and pressure drop.
 
@@ -102,12 +104,23 @@ Sizes are computed with Eldr's own `ductd` equal-friction math at 0.08 in.wc/100
 
 The cabinet is the whole argument in physical form. The standard, correct objection to retrofit second-floor ducting is that ducts in an unconditioned knee-wall attic lose 20–30%. A stacked cabinet running basement → main → second floor is a **conditioned chase**: it keeps the ducts inside the thermal envelope, which dissolves the objection rather than arguing with it.
 
-It carries **only the second floor** — 205 CFM up, 205 CFM back. Not the whole 884. The main floor is fed from basement runs and never enters the cabinet. That is why a chase this modest is sufficient.
+It carries **only the second floor**, not the whole 1,245. The main floor is fed from basement runs and never enters the cabinet, which is why a chase this modest is sufficient.
 
-| Duct | CFM | Equivalent round | Rectangular options |
-|---|---:|---|---|
-| Supply riser | 205 | ~8″ | 6×10, 8×8, 4×14 |
-| Return riser | 205 | ~8–10″ | 6×10, 9×9 |
+**Two figures, two scopes — and they are not one multiplication apart.**
+
+- **238 CFM** is Eldr's current unbiased second-floor total, aggregated across every room on the level.
+- **276 CFM** is the sum of the [register schedule](ducting-register-schedule.md)'s four second-floor rows — Play Room 115, Office 113, Upper Bath 28, Upstairs Hallway 20 — each biased at *room* level against an earlier model state, with the Play Room row since revised upward to carry the whole room rather than half of it.
+
+**The schedule is authoritative for duct sizing, so the riser is built to 276.** But the two numbers do not reconcile by applying ×1.35 to 238: that would give **321**, and an earlier draft of this paragraph claimed otherwise. Worth stating plainly, because 321 is the figure a fresh biased calculation would ask for today — **16% above what the riser is sized to.**
+
+That gap does not change the answer. A 9″ round carries 357 CFM at design friction, so it holds 276 and 321 alike, with the velocity rising from 625 to 727 fpm. It is worth knowing which end of its range the riser is working at, and worth re-deriving the schedule against current loads before anything is fabricated.
+
+| Duct | CFM | Round | Rectangular |
+|---|---:|:-:|:-:|
+| Supply riser | 276 | 9″ | 5×16 |
+| Return riser | 281 | 9″ | 9×9 |
+
+The return riser is sized at 281 — Office 113 plus Play Room 168 — rather than the 228 mass balance requires, so the cross-flow split between the two rooms can be set by damper rather than by re-ducting.
 
 Round is unnecessary anywhere inside the cabinet or under the stairs — it is all concealed, so rectangular wins on fit. Round is worth reserving for anywhere the duct is seen.
 
@@ -135,7 +148,9 @@ Elevating it a foot or two adds duct routing space beneath, **condensate fall** 
 
 ### Main floor
 
-Open space; not a constraint. The cabinet here passes the two risers through and is the natural place to take **the office supply straight up through the floor**, keeping that room's supply out of the attic entirely. The office is 87 CFM — 42% of the second floor — so this solves the biggest room with the shortest and safest run.
+Open space; not a constraint. The cabinet here passes the two risers through and is the natural place to take **the office supply straight up through the floor**, keeping that room's supply out of the attic entirely. The office is **100 CFM unbiased — 42% of the second floor's 238** — so this solves the largest single room with the shortest and safest run. (The figure was 87 CFM on an earlier model state; the percentage happens to be unchanged.)
+
+**On the schedule's biased basis the ranking flips**, and it is worth knowing why before anyone re-derives from it: Office 113 against Play Room 115. That does not mean the Play Room is the bigger load — it is the deliberate choice to size the Play Room's new south duct for the *whole* room rather than half, because its existing east duct is unmeasured. Unbiased, the office is larger by 100 to 86.
 
 ### Second floor
 
@@ -183,18 +198,75 @@ That is a real trade and it matters more in an old house with mixed glazing than
 1. The plan already includes **secondary perimeter supply** via the old window-adjacent duct in the office. The scheme is really *primary central + secondary perimeter*, which is a recognised retrofit compromise rather than a straight inversion.
 2. There is **room to add supply later** — including a north run — if internal room balance turns out poor. The cabinet is sized with margin and the risers are not the constraint.
 
-**The assumption to check is throw.** Whether a central register at 87 CFM actually reaches the office's far wall is Manual T territory. Rough answer: a typical floor register at that flow throws 8–12 ft against a room around 14–15 ft, so a central position needs ~7 ft. Plausible with margin — but it is a catalog lookup at register selection, not something to take on faith.
+**The assumption to check is throw.** Whether a central register at **100 CFM** actually reaches the office's far wall is Manual T territory. Rough answer: a typical floor register at that flow throws 8–12 ft against a room around 14–15 ft, so a central position needs ~7 ft. Plausible with margin — and the margin grew rather than shrank when the load rose from the 87 CFM an earlier model state gave, since more air throws further. Still a catalogue lookup at register selection, not something to take on faith.
+
+**This assumes the central register carries the whole 100 CFM.** The office also has the existing perimeter duct, and if that stays in service the central register carries less and throws shorter. Either specify the central register for the full load and treat the perimeter duct as recovered capacity — the same call already made for the Play Room — or size both and check the throw at the reduced figure. **What must not happen is sizing for the full load and then quietly splitting it.**
 
 ---
 
-## The case against a second air handler
+## One air handler or two
 
-Presented in the order that a contractor will engage with it:
+The company suggests a **second ducted air handler** — two handlers with ducts, rather than a head per room with none. Described as "internal", which sounded like conditioned space and would have removed the strongest objection outright. **It is not.** The proposed location is the **north knee-wall attic**, accessed through the wall at the top of the stairs.
 
-1. **The objection is usually right, and doesn't apply here.** Ducts in an unconditioned knee-wall attic genuinely lose 20–30%. That is the correct reason to distrust retrofit second-floor ducting. A conditioned three-level chase removes the premise instead of disputing the number.
-2. **The load is modest.** 205 CFM to the second floor, against 524 to the main floor. The second floor is a geometry problem, not a capacity problem.
-3. **Both supply and return reach it.** A second air handler quietly solves the *return* problem by putting the blower where the air is. A single unit needs both, or the floor pressurises and the air stops moving — which is the real reason "you can't duct a second floor" is so often true in retrofits. The cabinet has room for both, measured.
+That puts it back where the standard objection lives, and adds a second one that is harder to fix.
+
+### It is attic equipment, and this attic is hot
+
+The knee-wall attics here are insulated at the floor and wall planes, so the space itself sits outside the thermal envelope. Our own load model estimates **summer attic air at about 133°F** — the sol-air figure Eldr derives from outdoor design plus roof gain. A heat-pump air handler, its coil, its cabinet leakage and every foot of its supply duct would live in that.
+
+That is the whole reason retrofit attic equipment loses 20–30%, and it applies here in full. It also brings a condensate pan over a finished ceiling, and service access — filter changes included — through a knee-wall hatch at the top of the stairs.
+
+### The placement problem, which is worse
+
+**A unit in the north knee-wall attic can reach the north side of those rooms and not the south.** That is not a detail to solve later; it decides what the scheme can deliver. The south side of the second floor has real load — this document's own conservative numbers say so, and they *understate* it, since a third of that ceiling area is not even drawn yet.
+
+The suggested remedy is a duct run in a channel along the east side of the office, into the small east knee-wall attic. Skepticism there is well placed, and the reason is worth naming precisely: **a channel along a finished wall is a chase.** If building a chase is acceptable, then the objection to this design — which is built around a chase — was never really about chases. It is about *which* one.
+
+Compare them honestly:
+
+| | This design's chase | The proposed channel |
+|---|---|---|
+| Location | Utility cabinet alongside the chimney | A box along a finished office wall |
+| Serves | All three floors, supply and return | One register |
+| Inside the envelope | Yes | Partly — it ends in an unconditioned knee-wall attic |
+| Visible | No | Yes, in a room people use |
+| Has to exist anyway | **Yes** — the main floor needs it | No |
+
+The second unit is meant to *avoid* building a chase. Needing one anyway, in a worse place, to reach a corner the first unit was going to reach through the chase already planned, is the argument turning back on itself.
+
+### What it still genuinely buys
+
+None of that touches the real advantage, and it should be stated plainly rather than buried under the objections.
+
+### What two internal handlers genuinely buy
+
+- **Real zoning, which one unit cannot have here.** This is the strongest point in its favour, and this document's own analysis supports it: neither the basement (167 CFM, 14% of total) nor the second floor alone can be a hard zone on a single unit this size without starving the blower. Smart throttling of individual branches works, hard per-floor zoning does not. **Two handlers make per-floor zoning real instead of approximate** — and there are already three thermostats in this house expecting exactly that.
+- **Much shorter duct runs, and therefore lower static pressure.** Static pressure is the thing most likely to defeat the single-unit scheme, and a second handler attacks it directly rather than arguing about it.
+- **Independent part-load behaviour**, and no single point of failure for the whole house.
+
+### What it costs
+
+- A second indoor unit, a second filter, a second condensate path, a second service point, and a second maintenance schedule for as long as the house stands.
+- **Somewhere inside conditioned space to put it**, which on the second floor of this house is not obvious. The knee-wall attic is what makes the space available, and putting the unit there is precisely what the internal framing rules out.
+- Equipment and installation cost against a riser that has to exist anyway — the main floor needs the chase regardless.
+
+### Where the single-unit case still stands
+
+1. **The load is modest.** 238 CFM to the second floor against 751 to the main floor. The second floor is a geometry problem, not a capacity problem — and a second handler is a capacity answer to a geometry question.
+2. **Both supply and return reach it.** A second handler quietly solves the *return* problem by putting the blower where the air is; that is the real reason "you can't duct a second floor" is so often true in retrofits. The cabinet has measured room for both, so the single unit is not relying on the return problem going away.
+3. **The chase is conditioned.** Ducts stay inside the envelope for their whole run, which is the same benefit the internal-handler proposal is reaching for, obtained a different way.
 4. **The numbers are conservative.** See the ceiling-area caveat above.
+
+### The honest decision criterion
+
+**Static pressure decides whether one unit is enough.** If it can move 1,245 CFM through this layout at an acceptable external static pressure, one unit is the better buy — everything inside the envelope, half the equipment, one filter to change. That is a question the fitting counts settle, and a contractor is better placed to supply them than this model is. Ask for the counts rather than for an opinion.
+
+**But placement decides whether two units would even help.** A second handler in the north knee-wall attic does not serve the south side of those rooms, and no amount of static-pressure headroom changes that. So the two questions are independent, and they should be asked in this order:
+
+1. *Where would the second unit sit, and which registers can it actually reach?* If the answer is "north only, plus a channel along the office wall", the proposal has not solved the problem it was brought in to solve.
+2. *Only if it reaches everything:* does one unit hit its static-pressure limit?
+
+A second handler somewhere genuinely central and inside the envelope would be a real alternative worth pricing — it would buy the per-floor zoning a single unit cannot have here. **The north knee-wall attic is not that location**, and choosing it converts the strongest argument for two units into an argument about where to put a chase.
 
 **Where to be careful.** Eldr's Manual D uses a flat 1.5× fitting factor, not true fitting equivalent lengths. Real elbows, tees and boots on a three-storey run add 50–150 ft of equivalent length, so any static-pressure figure computed with the default is optimistic. Either raise the factor to something defensible (2.5–3) and say so, or count fittings by hand for the contested run. **Do not hand over a number that flatters the case on a modelling shortcut** — it is the one thing that would cost the credibility everything else earns.
 
@@ -202,10 +274,29 @@ Also worth noting: the current HVAC company specialises in insulation, so envelo
 
 ---
 
+## The maintenance wall — front door to primary bedroom
+
+The wall the upstairs-east risers pass through, and the trickiest build in the scheme. It is currently **one stud space deep**, with room for exactly one more inside the bedroom — a quirk of the doubled/offset wall created when the bedroom was extended south. Breaking in from the bedroom side showed **2–3 studs and an old conduit hole through to the basement**.
+
+**Use the conduit hole as the datum.** It is a single point piercing both the basement and the wall cavity, so it registers the two coordinate frames against each other — the same shared-anchor trick the joists provide. Measure the studs relative to it and reference every riser to it, and "I cannot tell where the studs are versus where the ducts come up" becomes exact offsets from one known hole.
+
+**Go rectangular, not round.** The depth budget is roughly two stud bays back to back (~7″), and a bay gives about 14.5″ clear. Three round 5–6″ ducts side by side need 15–18″ and fight the studs. Residential **wall-stack duct** — 3.25x10 or 3.25x12, purpose-made to run vertically between studs in a 2x4 wall — puts the shallow dimension across the wall depth and solves the problem directly. Oval is the fallback. Prefer running each duct *within* a bay so no stud needs notching; if a riser must cross one, verify the partition is non-load-bearing first, because the south-extension quirk muddies that.
+
+**The panel has to come off and still look intentional.** Build the built-in as a rigid self-bracing box so it does not rack when lifted, and hang it on a French cleat with a few concealed screws — rigidity gives the sturdiness, few fasteners give the removability. Hide screws inside shelf interiors, behind the coat rail, or under a toe-kick. **Put the removable seams on natural trim lines** — design the face as board-and-batten or stile-and-rail so the panel edges fall on a batten joint. That single move is the difference between millwork and an access hatch, and it is what makes the wall read as built-in from the front door rather than as a duct chase with a lid.
+
+The alternative to all of it is over-provisioning ducts up front so the wall never needs opening. This scheme deliberately takes the other bet: **fewer ducts, and a wall you can unscrew.**
+
+## Constraints from the rest of the basement
+
+**The SW utility corner is spoken for.** It is being prepped for a Powerwall — a 45″ × 30″ unit on plywood, with a 40″ × 14″ electrical panel to its left and network gear to the right. Relocating the air handler under the stairs is partly what frees that corner, so **duct routing must stay clear of it**; it is not spare wall.
+
+**Cost intuition for spiral:** roughly *diameter × 2 × length* in dollars — a 6″ run at 5 ft lands near $60, so about $12/ft. Order of magnitude only, useful for judging whether a routing change is worth arguing about.
+
+---
+
 ## Open questions
 
 - **Which dimension constrains the basement ducts** — stud-bay width after the chimney, or the 16″ closet depth. Changes duct proportions, not position.
-- **56.5″ or "just under 40″"** for the second-floor cabinet depth. They differ by 16″.
 - **The two old ducts** — sizes, and whether the office one can be rescued from its dead end.
 - **The knee-wall attic itself** — not yet entered. Estimated ~32″ deep from the 56.5″ reading.
 - **The chimney's absolute position** carries a 2″ disagreement with its own tape chain; fine for layout, not for cutting.
@@ -213,7 +304,7 @@ Also worth noting: the current HVAC company specialises in insulation, so envelo
 
 ## Equipment
 
-Sized on the larger of heating and cooling, which here is heating: **39,651 BTU/hr = 3.3 tons** on current geometry, rising to roughly **3.8 tons** once `basement_wall` takes the professionals' measured U-value. So the target is **3.5–4 tons**, and 4 is the safer read.
+Sized on the larger of heating and cooling, which here is heating: **40,331 BTU/hr = 3.4 tons** on current geometry, rising to roughly **3.8 tons** once `basement_wall` takes the professionals' measured U-value. So the target is **3.5–4 tons**, and 4 is the safer read.
 
 ### Bosch IDS Ultra — the leading candidate
 

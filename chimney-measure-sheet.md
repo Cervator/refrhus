@@ -85,7 +85,6 @@ Consequence for ducting: the north bay is tall but half-blocked, and the south b
 ## Still open
 
 - **The 2″ disagreement.** The 94″ chain puts the south face at **417.0**; the model carries **415.0**. Irrelevant for a relative layout where all three levels share one line, and it matters as soon as the closet meets real joists.
-- **56.5″ versus "just under 40″".** Both were reported for the second-floor cabinet's depth and they differ by 16″ — enough to change duct arrangement rather than just position.
 - **The wrap thickness on main and second floors** is inferred from the box dimensions, not measured. Only the basement exposes raw cinder.
 - **`Chimney Void` is oversized** in the model — the flue is smaller than drawn. Left approximate deliberately while wall thicknesses and positions were being sorted.
 - **A one-inch joist discrepancy nearby:** 12″ measured between the joist-15 beam and joist-16 where the grid records 13.0″, while joist-16 → joist-17 matches (13.25 against 13.37). Larger than the recorded ~½″ drift. Shifting joist-16 cascades east, so it wants one more reading before anything moves.

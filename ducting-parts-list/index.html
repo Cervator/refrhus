@@ -20,10 +20,9 @@
   <header class="site-header">
     <a href="/refrhus/" class="site-title">Refr Hus</a>
     <div class="header-actions"><button class="theme-toggle" type="button" id="theme-toggle"
-              aria-label="Toggle dark or light theme"
               onclick="window.__refrhusToggleTheme(this)">
         <span class="theme-icon" aria-hidden="true">&#9728;</span>
-        <span class="theme-label">Light</span>
+        <span class="theme-label">enable light mode</span>
       </button>
       <button class="nav-toggle" type="button" aria-label="Toggle contents"
               aria-expanded="false" aria-controls="site-nav"
@@ -955,9 +954,13 @@
   <script>
   (function () {
     // --- theme -----------------------------------------------------------
+    // The button names the theme it will switch TO, icon and words agreeing:
+    // sitting in dark, it offers "☀ enable light mode".
     function paintToggle(button, theme) {
-      button.querySelector('.theme-icon').textContent = theme === 'light' ? '☽' : '☀';
-      button.querySelector('.theme-label').textContent = theme === 'light' ? 'Dark' : 'Light';
+      var toDark = theme !== 'light';
+      button.querySelector('.theme-icon').textContent = toDark ? '☀' : '☽';
+      button.querySelector('.theme-label').textContent =
+        toDark ? 'enable light mode' : 'enable dark mode';
     }
 
     window.__refrhusToggleTheme = function (button) {

@@ -20,10 +20,9 @@
   <header class="site-header">
     <a href="/refrhus/" class="site-title">Refr Hus</a>
     <div class="header-actions"><button class="theme-toggle" type="button" id="theme-toggle"
-              aria-label="Toggle dark or light theme"
               onclick="window.__refrhusToggleTheme(this)">
         <span class="theme-icon" aria-hidden="true">&#9728;</span>
-        <span class="theme-label">Light</span>
+        <span class="theme-label">enable light mode</span>
       </button>
       <button class="nav-toggle" type="button" aria-label="Toggle contents"
               aria-expanded="false" aria-controls="site-nav"
@@ -141,7 +140,24 @@
 
 <p><strong>Airflow assumes a 30°F supply-air rise</strong>, which is the heat-pump figure. A 50°F rise is a gas furnace and undersizes every heating-driven duct by 1.67×.</p>
 
-<p><strong>Quote 4.0 tons rather than 3.5.</strong> The model omits a grade line — basement walls are classed below-grade over their full height — and roughly a third of the second-floor ceiling area is not drawn. Both omissions understate the load. Adopting the professionals’ measured basement U-value alone raises it to about 3.8 tons.</p>
+<h2 id="where-these-numbers-come-from">Where these numbers come from</h2>
+
+<p>Two independent load calculations sit behind this package.</p>
+
+<p><strong>A professional Manual J</strong>, commissioned in August 2026 from an ACCA-certified energy auditor. It covers the house in three progressions — as-is, plus insulation, plus air sealing — so each one shows what the equipment could shrink to if the preceding envelope work is done. The as-is progression gives <strong>54,260 BTU/hr heating</strong>. It also includes a blower-door test and a construction-details page listing every assembly with its measured area and U-value.</p>
+
+<p><strong>Our own model</strong>, built in Sweet Home 3D from hand measurements and run through <a href="https://github.com/SiliconSaga/eldr">Eldr</a>, an open-source Manual J engine. It gives <strong>40,331 BTU/hr</strong>, or 74% of the professional figure.</p>
+
+<p>The two are not competing estimates. <strong>The measured inputs come from the professional report</strong> — wall, window, ceiling and slab U-values are taken from its construction page, and the infiltration rate is its blower-door result of 3,751 CFM50. What our model adds is geometry: per-room loads and per-register airflow, which a whole-house figure cannot give and which duct sizing needs.</p>
+
+<p>Where the two still differ is documented line by line in <a href="/refrhus/hvac/">the load calculations</a>. The gap is concentrated in two known omissions, and both understate our number:</p>
+
+<ul>
+  <li><strong>No grade line.</strong> Eldr classes each basement wall as below-grade over its full height, where the professionals split it at grade. Adopting their measured basement U-value alone raises our load to about <strong>3.8 tons</strong>.</li>
+  <li><strong>The second-floor roof is not drawn.</strong> Ceiling area is modelled at 984 ft² against their 1,547.</li>
+</ul>
+
+<p><strong>Quote 4.0 tons rather than 3.5.</strong> Manual S on our current model gives 3.4, but both omissions above push the real figure up, and the professional report brackets it from the other side.</p>
 
 <p><strong>All pricing is pre-incentive.</strong> No rebate, credit or utility programme is netted off anywhere, so the figures compare against a quote line for line.</p>
 
@@ -199,7 +215,7 @@
 
 <p><strong>Some loads are deliberately biased.</strong> Second-floor airflow is multiplied by 1.35 and the basement by 0.70, because the second floor runs hot and the basement holds temperature unconditioned. The second floor’s ceiling area is modelled at 984 ft² against a professional report’s 1,547, which makes the second-floor figures conservative.</p>
 
-<p><strong>This is not an ACCA-certified calculation.</strong> It is a Manual J estimate from a measured model, offered as a starting point rather than as a substitute for a professional report.</p>
+<p><strong>Our own load figures are not ACCA-certified.</strong> The professional Manual J referenced above is; this model is not, and is offered as the per-room detail that report does not carry rather than as a replacement for it.</p>
 
     </main>
   </div>
@@ -215,9 +231,13 @@
   <script>
   (function () {
     // --- theme -----------------------------------------------------------
+    // The button names the theme it will switch TO, icon and words agreeing:
+    // sitting in dark, it offers "☀ enable light mode".
     function paintToggle(button, theme) {
-      button.querySelector('.theme-icon').textContent = theme === 'light' ? '☽' : '☀';
-      button.querySelector('.theme-label').textContent = theme === 'light' ? 'Dark' : 'Light';
+      var toDark = theme !== 'light';
+      button.querySelector('.theme-icon').textContent = toDark ? '☀' : '☽';
+      button.querySelector('.theme-label').textContent =
+        toDark ? 'enable light mode' : 'enable dark mode';
     }
 
     window.__refrhusToggleTheme = function (button) {

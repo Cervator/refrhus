@@ -1,16 +1,54 @@
-title: Refr Hus — HVAC
-description: A measured model of a 1950s house, and the duct design that came out of it
-theme: jekyll-theme-primer
+title: Refr Hus
+description: >-
+  A 1950s house measured by hand, modelled in Sweet Home 3D, and run through a
+  Manual J load calculation — with the duct design that came out of it.
 
-# GitHub Pages enables jekyll-optional-front-matter by default, so every
-# markdown file in this repo renders without needing front matter added to it.
-# The documents stay plain markdown, readable in the repo and in an editor.
+url: "https://siliconsaga.github.io"
+baseurl: "/refrhus"
 
+permalink: pretty
+markdown: kramdown
+
+kramdown:
+  toc_levels: 2..3
+
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# These three are why the documents need no front matter, and they MUST be
+# declared here rather than assumed. GitHub's own Pages build injects them; a
+# `bundle exec jekyll build` does not — the gem ships them, it does not enable
+# them. Without this block every page except index.md is copied out as a raw
+# `.md` file instead of being rendered, which is a working site turning into a
+# directory of downloads.
+#
+#   optional-front-matter — render markdown that has no `---` header
+#   relative-links        — rewrite `.md` links to their published URLs
+#   titles-from-headings  — use the leading `# H1` as the page title
+plugins:
+  - jekyll-optional-front-matter
+  - jekyll-relative-links
+  - jekyll-titles-from-headings
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+# `vendor` matters more than it looks: `bundler-cache` installs gems into
+# vendor/bundle, and Jekyll would otherwise try to render the site template
+# shipped inside the jekyll gem — which fails the build outright.
 exclude:
   - Refrhus.sh3d
   - sh3d-internals/
   - tools/
-  - descent-into-chaos.json
-  - minioverhaul.json
   - eldr-sidecar.yaml
+  - .commits/
   - "*.PDF"
+  - vendor/
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - .github/

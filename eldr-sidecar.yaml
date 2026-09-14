@@ -31,8 +31,13 @@ assemblies:                   # U-value, BTU/(hr*ft^2*F), per surface category
   #                             # 247.9 ft^2 of it is not. The garage partition (222.0 ft^2 @ U-0.097)
   #                             # is EXCLUDED here; it is a buffer wall, declared below.
   #                             # LIMIT: one U house-wide, so this blend cannot say WHICH sections are
-  #                             # the uninsulated ones. That distorts per-room loads until Eldr grows
-  #                             # per-surface U overrides.
+  #                             # the uninsulated ones, which distorts per-room loads.
+  #                             # NO LONGER AN ENGINE LIMIT — Eldr resolves a U-value per surface.
+  #                             # To split it: declare `exterior_wall/r0: 0.240` and
+  #                             # `exterior_wall/r13: 0.091` here, then tag the walls with
+  #                             # realms/realm-siliconsaga/sweethome3d/tag.py. What is missing is
+  #                             # knowing which physical sections are the uninsulated 247.9 ft^2 —
+  #                             # see schematic-hitlist.md item 1.4.
   buffer_wall: 0.097          # MEASURED (pros): "Garage Partition | 2x4 Wood Framed wall, Stucco/Siding
   #                             # - R-11 cavity / R-0 board", 222.0 ft^2 @ U-0.097 — a single row, so
   #                             # this is their measured value, not a blend. Was borrowing
@@ -50,7 +55,7 @@ assemblies:                   # U-value, BTU/(hr*ft^2*F), per surface category
   #                             # 9,271: a 32% overshoot replacing today's 53% undershoot. Trading
   #                             # one error for another is not accuracy. Resolve it properly with
   #                             # either the grade-line split, or measured wall surface temperatures
-  #                             # (see hvac/README.md) — then this number can be set honestly.
+  #                             # (see hvac/index.md) — then this number can be set honestly.
   window: 0.588               # MEASURED (pros' construction page, area-weighted over all ten window
   #                             # rows / 152.5 ft^2 -> 89.72/152.5 = 0.5883). The glazing is a genuine
   #                             # MIX, not one product: 18.1 ft^2 clear single-pane @ U-0.900 (2 NE +

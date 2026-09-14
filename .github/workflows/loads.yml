@@ -1,0 +1,111 @@
+# Run the load engine on every pull request and comment what changed.
+#
+# The engine lives in a separate public repository and has no packaging metadata
+# yet, so it is checked out beside this one and reached via PYTHONPATH rather
+# than pip-installed. Dependencies are two pure-Python packages.
+#
+# Everything interesting happens in `eldr --diff`, which is unit-tested there.
+# This file only fetches, runs twice, and posts.
+name: Loads
+
+on:
+  pull_request:
+    paths:
+      - 'sh3d-internals/**'
+      - 'eldr-sidecar.yaml'
+      - '.github/workflows/loads.yml'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+# One answer per pull request. A push mid-run makes the in-flight comparison
+# stale, so cancel it rather than race it to the comment.
+concurrency:
+  group: loads-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  diff:
+    runs-on: ubuntu-latest
+    steps:
+      # persist-credentials: false throughout — nothing here needs to push, and
+      # a token left in .git/config is a token a later step can pick up.
+      - name: Check out the PR head
+        uses: actions/checkout@v4
+        with:
+          path: head
+          persist-credentials: false
+
+      - name: Check out the base
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: base
+          persist-credentials: false
+
+      # Deliberately unpinned, and checked out ONCE. Both sides of the
+      # comparison then run on the same engine, so the diff can only show model
+      # changes — an engine change moves both sides identically and cancels out.
+      # Pinning would instead freeze the house against engine improvements,
+      # which is the opposite of what this repository wants.
+      - name: Check out the engine
+        uses: actions/checkout@v4
+        with:
+          repository: SiliconSaga/eldr
+          path: eldr
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pip install pyyaml==6.0.3 defusedxml==0.7.1
+
+      - name: Run both sides
+        env:
+          PYTHONPATH: ${{ github.workspace }}/eldr
+        run: |
+          # The base may predate the side-car or the model path, in which case
+          # there is nothing to compare and the job should say so rather than fail.
+          for side in base head; do
+            if [ -f "$side/sh3d-internals/Home.xml" ] && [ -f "$side/eldr-sidecar.yaml" ]; then
+              python -m eldr.cli "$side/sh3d-internals/Home.xml" \
+                                 "$side/eldr-sidecar.yaml" --json > "$side.json"
+            fi
+          done
+
+      - name: Render the comparison
+        id: render
+        env:
+          PYTHONPATH: ${{ github.workspace }}/eldr
+        run: |
+          if [ -f base.json ] && [ -f head.json ]; then
+            python -m eldr.cli --diff base.json head.json > comment.md
+          else
+            printf '## Eldr — load change\n\nOne side has no model or side-car, so there is nothing to compare.\n' > comment.md
+          fi
+          cat comment.md
+
+      # Find our previous comment so pushes edit it rather than stacking. A long
+      # review should leave one current answer, not a scrollback of stale ones.
+      - name: Find the previous comment
+        uses: peter-evans/find-comment@3eae4d37986fb5a8592848f6a574fdf654e61f9e  # v3
+        id: find
+        if: github.event.pull_request.head.repo.full_name == github.repository
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: github-actions[bot]
+          body-includes: Eldr — load change
+
+      - name: Comment on the pull request
+        uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043  # v4
+        if: github.event.pull_request.head.repo.full_name == github.repository
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-id: ${{ steps.find.outputs.comment-id }}
+          body-path: comment.md
+          edit-mode: replace
+
+    # A fork PR gets read-only permissions, so the comment steps are skipped and
+    # the rendered diff is left in the job log instead.

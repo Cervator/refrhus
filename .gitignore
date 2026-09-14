@@ -6,5 +6,12 @@
 # manual unzip can't re-track it.
 sh3d-internals/Home
 
+# Jekyll build output and the vendored gem tree. `Gemfile.lock` is NOT ignored —
+# it is what pins the local build to the same versions CI resolves.
+_site/
+.jekyll-cache/
+.jekyll-metadata
+vendor/
+
 # OS / temp
 .DS_Store

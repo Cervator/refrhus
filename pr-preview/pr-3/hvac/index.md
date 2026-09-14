@@ -45,7 +45,7 @@ Worth recording: 3,751 CFM50 × 60 ÷ 16,457 ft³ = 13.7 ACH50, over an LBL N-fa
 
 [`eldr-report.md`](eldr-report.md) — the current run. Regenerate after any change to the model or the side-car.
 
-**How the number got here**, kept as a changelog because each step was a correction worth remembering, not because the documents behind them were worth keeping:
+**How the number got here**, kept as a changelog because each step was a correction rather than because the documents behind them were worth keeping:
 
 - **The level stack** replaced ceilings and floors derived from level *bounding boxes* with resolved surfaces, per-space buffer policies, hot-attic cooling and measured ACH.
 - **Measured assemblies** adopted the professionals' ceiling and crawl-floor U-values and the crawlspace's observed winter temperature: heating 31,757 → **37,962**.
@@ -91,7 +91,7 @@ Currently heating **40,331** against their **54,260**, or 74%. That ratio *fell*
 | Occupants | 5 | 5 | ✅ reconciled. The actual headcount, and the ACCA bedrooms+1 convention, agree |
 | SHR | 0.80 | 0.90 | Our assumed 30-grain humidity difference vs their station's 27.805 |
 
-**The attic divergence is deliberate and it is ours to keep.** An earlier version of this table blamed part of the ceiling gap on "our unvented-attic default halves the heating ΔT where they take the full one", which reads as an Eldr error. It is not one. The attic genuinely is unvented, and Eldr already models the seasonal asymmetry correctly: a winter factor of **0.50** from the `vented: false` shorthand, and a summer factor of **3.66** resolved from a sol-air attic temperature. Being unvented *helps* in winter — stale air does not track outdoor temperature — and *hurts* in summer, when superheated air has nowhere to go. Declaring the attic vented to match their treatment would make the schematic less true to the house in order to close a number, which is backwards. The whole remaining ceiling gap is the 563 ft² of area we have not drawn.
+**The attic divergence is deliberate and ours to keep.** An earlier version of this table blamed part of the ceiling gap on "our unvented-attic default halves the heating ΔT where they take the full one", which reads as an Eldr error. It is not one. The attic genuinely is unvented, and Eldr already models the seasonal asymmetry correctly: a winter factor of **0.50** from the `vented: false` shorthand, and a summer factor of **3.66** resolved from a sol-air attic temperature. Being unvented *helps* in winter — stale air does not track outdoor temperature — and *hurts* in summer, when superheated air has nowhere to go. Declaring the attic vented to match their treatment would make the schematic less true to the house in order to close a number, which is backwards. The whole remaining ceiling gap is the 563 ft² of area we have not drawn.
 
 **Why `basement_wall` was left at 0.07.** Their area-weighted below-grade U is 0.196 (bare 8" stone at 0.293/0.297, finished R-11 at 0.088). Applying that to *our* area gives **12,236 BTU/hr against their 9,271** — a 32% overshoot replacing today's 53% undershoot, because our area is 47% too large for want of a grade line. Substituting one error for another is not accuracy. This one waits for the grade-line split or for measured wall temperatures.
 

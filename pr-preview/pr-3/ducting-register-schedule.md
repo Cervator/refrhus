@@ -45,7 +45,7 @@ Room-name mapping, since the model and conversation differ: the 2nd-floor "kids 
 
 Sized on face velocity only. **Supplies assume 75% free area** — the generous end for a louvred face, so a grille with heavier blades runs faster than shown, never slower. Returns are computed on gross area.
 
-Targets: supplies **500–750 fpm** is the normal band and 600 is where this document starts objecting; returns **300–500 fpm**, and the sizes below aim at the quiet end of it. That aim is a choice, and an expensive one — **a return sized at 300 fpm is two-thirds larger than the same airflow at 500.** Worth knowing before treating any "wants" figure as a requirement, because the honest floor is 500 and the rest is comfort.
+Targets: supplies **500–750 fpm** is the normal band and 600 is where this document starts objecting; returns **300–500 fpm**, with the sizes below aimed at the quiet end. That aim is a choice, and an expensive one — **a return sized at 300 fpm is two-thirds larger than the same airflow at 500.** Treat 500 as the requirement and the rest as comfort.
 
 **This is not Manual T.** Throw, spread, drop and NC need the room's dimensions against a specific manufacturer's catalogue, and the choice of *where* on the wall or floor matters as much as the size. Treat the faces below as the starting schedule a contractor prices, not as a selection.
 
@@ -88,17 +88,17 @@ Faces below are **as drawn in the model**, sized against available space, with t
 
 **The kitchen SE register is the one worth building around.** At 2″ of height under the cabinetry it runs 806 fpm — not marginal, audible, and in a kitchen where people stand. Moving one cabinet over for 4″ of height halves it to 403; modifying the cabinet does the same. Either is a better trade than living with it, because this is the register a person stands beside while cooking. **Both options are construction decisions rather than duct decisions**, which is why the model still carries the 2″ version. Note that 806 fpm assumes a generous 75% free area — a real louvred face makes it worse, not better.
 
-**The kitchen return is about area, not length.** 251 CFM needs roughly 120 in² at 300 fpm, and the drawn 3x20 gives 60. What it does *not* need is to stay 20″ long: an earlier draft of this table said 6x20 purely because it preserved the drawn dimension and grew the other, which is how a 3.3:1 grille nobody stocks ends up recommended.
+**The kitchen return is about area, not length.** 251 CFM needs roughly 120 in² at 300 fpm, and the drawn 3x20 gives 60. What it does *not* need is to stay 20″ long. Preserving the drawn dimension and growing only the other gives 6x20 — a 3.3:1 grille nobody stocks.
 
 | Target | Area | Sensible face |
 |---|---:|:-:|
 | 300 fpm — quiet | 120 in² | 10x12 |
 | 350 fpm | 103 in² | **8x14** |
-| 500 fpm — the honest ceiling | 72 in² | 6x12 |
+| 500 fpm — the ceiling | 72 in² | 6x12 |
 
-**8x14 is the pick** — a stock size, 323 fpm, and the figure this schedule carried before the constraint discussion started. 6x12 is defensible if space is genuinely tight, at the cost of a return you can hear. The current 3x20 is outside the range at either end.
+**8x14 is the pick** — a stock size at 323 fpm. 6x12 is defensible if space is tight, at the cost of a return you can hear. The current 3x20 is outside the range at either end.
 
-If the 3″ height really is fixed by cabinetry, no single grille solves it — 3x40 would be needed, and the answer is two openings rather than one enormous one.
+If the 3″ height is fixed by cabinetry, no single grille solves it — 3x40 would be needed, and the answer is two openings rather than one enormous one.
 
 *Already corrected in the model:* Main Bed W supply 4x8 → **6x11**, matching its NE twin at the same 113 CFM, and Office SW return 4x8 → **6x8**. Neither had a space constraint; both were simply drawn small.
 
@@ -169,7 +169,7 @@ Four takeoffs, nothing above 10″, and the south/north split happens to follow 
 
 ## Returns are not a mirror of the supply side
 
-Total return must equal total supply — mass balance, no way around it. But the return side is **a smaller number of larger openings**:
+Total return must equal total supply. But the return side is **a smaller number of larger openings**:
 
 - **Fewer.** Rooms without their own return give their air up through door undercuts or transfer grilles. Here that is Main Bath, Main Closet, Upper Bath and Upstairs Hallway.
 - **Larger per CFM.** Returns are designed at lower velocity — roughly 400–600 fpm against a supply branch's 600–900 — so the same airflow wants a bigger duct.
@@ -187,7 +187,7 @@ With the Upper Bath and Upstairs Hallway carrying no supply:
 
 ### Using return placement to balance the second floor
 
-Oversizing the Play Room's return to drag air across from the Office is a real technique, and the numbers work. The only constraint is that the floor's two returns sum to 228.
+Oversizing the Play Room's return to drag air across from the Office is a standard technique, and the numbers work. The only constraint is that the floor's two returns sum to 228.
 
 | | Supply | Return | Net |
 |---|---:|---:|---|
@@ -239,7 +239,7 @@ The arithmetic here is unfriendly. Against a whole-house design of ~1,180 CFM, a
 
 **Neither the basement nor the second floor can be its own hard zone** on a single unit this size. Either alone starves the blower and drives static pressure up.
 
-What actually works, roughly in order of preference:
+What works, roughly in order of preference:
 
 - **Manual balancing dampers and no zoning.** A modulating compressor running long low-output cycles does much of what zoning promises, because the classic reason to zone is a single-stage unit blasting and shutting off. Simplest, cheapest, and reversible.
 - **Modulating zone dampers** that throttle rather than shut, so every zone keeps some flow. Avoids the minimum-airflow cliff entirely.
@@ -249,7 +249,7 @@ What actually works, roughly in order of preference:
 
 **The caution that links back to controls:** a zone panel able to stage the blower generally has to *communicate* with the unit, and zone panels are frequently where the open-controls option quietly disappears. Zoning and third-party thermostats pull against each other, the same tension as modulation and open control.
 
-**Recommendation: manual dampers now, zoning later if the balance genuinely disappoints.** The stack effect is real and does not care about modulation, so this may not be the final answer — but it is the cheap experiment, and the ductwork for it is identical either way.
+**Recommendation: manual dampers now, zoning later if the balance disappoints.** The stack effect is real and does not care about modulation, so this may not be the final answer — but it is the cheap experiment, and the ductwork for it is identical either way.
 
 ### Throttling is not zoning, and the distinction matters
 

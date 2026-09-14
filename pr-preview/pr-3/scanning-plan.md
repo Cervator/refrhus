@@ -53,7 +53,7 @@ This is the literal substrate for the "scan a house with a tablet, then ask the 
 
 ## Recommendation
 
-**For this house, right now:** don't buy anything on the critical path. The survey already anchors the footprint core, and room-by-room is enough — the only genuinely unmeasurable spot left is the crawlspace under the kitchen (a deferred TODO).
+**For this house, right now:** don't buy anything on the critical path. The survey already anchors the footprint core, and room-by-room is enough — the only unmeasurable spot left is the crawlspace under the kitchen (a deferred TODO).
 
 - **If anyone can borrow a RoomPlan-capable Apple device for an afternoon:** scan just the crawlspace, export both the structured model and a point cloud/`.obj`. Then build the ingest→slice→plane-fit tool and prove the whole pipeline on the one area that can't be tape-measured. Best ROI, zero spend, unblocks a real TODO.
 - **If nobody has Apple gear:** the crawlspace is tape-measurable with patience, so no purchase blocks this house. Don't buy a $450 iPad for one crawlspace.
@@ -65,7 +65,7 @@ This is the literal substrate for the "scan a house with a tablet, then ask the 
 ## Open questions
 
 - Does the friend already own a RoomPlan-capable Apple device? (Changes the right-now answer entirely — borrow beats buy.)
-- Is whole-house coherence actually needed soon, or is room-by-room fine for the foreseeable future? (Forks "phone/Vega is fine" vs. "tripod LiDAR.")
+- Is whole-house coherence needed soon, or is room-by-room fine for the foreseeable future? (Forks "phone/Vega is fine" vs. "tripod LiDAR.")
 - Is "open formats" a hard requirement for the business, or negotiable? (Rules vendors in/out — especially the Leica's Cyclone-register step.)
 - Android: still no mainstream phone with comparable LiDAR plus a RoomPlan-equivalent — worth a periodic re-check, but not a 2026 option. The photogrammetry apps (above) are the Android fallback: accessible but unscaled and lower-fidelity, so they don't change the recommendation.
 

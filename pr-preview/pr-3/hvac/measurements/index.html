@@ -79,7 +79,7 @@
     <main class="content">
       <h1 id="surface-temperature-measurements">Surface-temperature measurements</h1>
 
-<p>A protocol for readings that stay comparable across days, seasons and instruments. The point is not one accurate number; it is a <strong>series</strong> — the same spots, repeatedly, with enough context recorded that a reading from February can be compared against one from August.</p>
+<p>A protocol for readings that stay comparable across days, seasons and instruments. The goal is not one accurate number; it is a <strong>series</strong> — the same spots, repeatedly, with enough context recorded that a reading from February can be compared against one from August.</p>
 
 <p>Raw readings live in <a href="/refrhus/pr-preview/pr-3/hvac/measurements/wall-temperatures.csv"><code class="language-plaintext highlighter-rouge">wall-temperatures.csv</code></a>. Nothing here is derived or computed — store what you observed, derive later. A reading you can’t reconstruct the conditions for is nearly worthless, so the conditions columns are not optional.</p>
 
@@ -99,7 +99,7 @@ U_eff  = q / (T_indoor − T_outdoor)          BTU/hr·ft²·°F
 
 <p>Summer readings are still worth taking: they show the below-grade wall behaving as a heat <em>sink</em>, which is what justifies Eldr reporting zero below-grade cooling load. Just don’t expect a U from them.</p>
 
-<p>The gradient reverses between seasons, and that is the honest check that the readings are real:</p>
+<p>The gradient reverses between seasons, which is the check that the readings are real:</p>
 
 <table>
   <thead>

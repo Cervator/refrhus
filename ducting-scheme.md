@@ -16,7 +16,7 @@ The alternative on the table — a second air handler in the second-floor knee-w
 
 ## The governing principle
 
-Everything below follows from one rule, and it is worth stating first because it decides every routing question that comes up:
+Everything below follows from one rule, which decides every routing question that comes up:
 
 > **Supplies stay inside the thermal envelope. Returns may cross buffer spaces.**
 
@@ -111,9 +111,9 @@ It carries **only the second floor**, not the whole 1,245. The main floor is fed
 - **238 CFM** is Eldr's current unbiased second-floor total, aggregated across every room on the level.
 - **276 CFM** is the sum of the [register schedule](ducting-register-schedule.md)'s four second-floor rows — Play Room 115, Office 113, Upper Bath 28, Upstairs Hallway 20 — each biased at *room* level against an earlier model state, with the Play Room row since revised upward to carry the whole room rather than half of it.
 
-**The schedule is authoritative for duct sizing, so the riser is built to 276.** But the two numbers do not reconcile by applying ×1.35 to 238: that would give **321**, and an earlier draft of this paragraph claimed otherwise. Worth stating plainly, because 321 is the figure a fresh biased calculation would ask for today — **16% above what the riser is sized to.**
+**The schedule is authoritative for duct sizing, so the riser is built to 276.** But the two numbers do not reconcile by applying ×1.35 to 238: that would give **321**, and an earlier draft of this paragraph claimed otherwise. 321 is the figure a fresh biased calculation would ask for today — **16% above what the riser is sized to.**
 
-That gap does not change the answer. A 9″ round carries 357 CFM at design friction, so it holds 276 and 321 alike, with the velocity rising from 625 to 727 fpm. It is worth knowing which end of its range the riser is working at, and worth re-deriving the schedule against current loads before anything is fabricated.
+That gap does not change the answer. A 9″ round carries 357 CFM at design friction, so it holds 276 and 321 alike, with the velocity rising from 625 to 727 fpm. Which end of that range the riser works at is worth settling: re-derive the schedule against current loads before anything is fabricated.
 
 | Duct | CFM | Round | Rectangular |
 |---|---:|:-:|:-:|
@@ -150,7 +150,7 @@ Elevating it a foot or two adds duct routing space beneath, **condensate fall** 
 
 Open space; not a constraint. The cabinet here passes the two risers through and is the natural place to take **the office supply straight up through the floor**, keeping that room's supply out of the attic entirely. The office is **100 CFM unbiased — 42% of the second floor's 238** — so this solves the largest single room with the shortest and safest run. (The figure was 87 CFM on an earlier model state; the percentage happens to be unchanged.)
 
-**On the schedule's biased basis the ranking flips**, and it is worth knowing why before anyone re-derives from it: Office 113 against Play Room 115. That does not mean the Play Room is the bigger load — it is the deliberate choice to size the Play Room's new south duct for the *whole* room rather than half, because its existing east duct is unmeasured. Unbiased, the office is larger by 100 to 86.
+**On the schedule's biased basis the ranking flips**: Office 113 against Play Room 115. That does not mean the Play Room is the bigger load — it is the deliberate choice to size the Play Room's new south duct for the *whole* room rather than half, because its existing east duct is unmeasured. Unbiased, the office is larger by 100 to 86.
 
 ### Second floor
 
@@ -270,7 +270,7 @@ A second handler somewhere genuinely central and inside the envelope would be a 
 
 **Where to be careful.** Eldr's Manual D uses a flat 1.5× fitting factor, not true fitting equivalent lengths. Real elbows, tees and boots on a three-storey run add 50–150 ft of equivalent length, so any static-pressure figure computed with the default is optimistic. Either raise the factor to something defensible (2.5–3) and say so, or count fittings by hand for the contested run. **Do not hand over a number that flatters the case on a modelling shortcut** — it is the one thing that would cost the credibility everything else earns.
 
-Also worth noting: the current HVAC company specialises in insulation, so envelope work is likely already in their plan. That is an ally for this scheme rather than an obstacle — a tighter envelope lowers the load the ducts have to carry.
+The current HVAC company specialises in insulation, so envelope work is likely already in their plan. A tighter envelope lowers the load the ducts have to carry, so the two efforts work together.
 
 ---
 

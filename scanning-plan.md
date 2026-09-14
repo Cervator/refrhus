@@ -6,7 +6,7 @@ Distilled from the 2026-06 discussion. Raw scanner notes were in `scanning.txt` 
 
 Every hard moment in the Refrhus rebuild traces to one missing thing: accurate ground truth. The floor plan was explicitly "not to scale," the survey is a blurry JPEG good only for the footprint envelope, and the basement was mis-measured so the *whole house* was wrong. A scan is the ground truth we never had. It does not replace the model — it becomes a *reference* you trace against and overlay-check: a tool does the math, a vision-capable agent does the interpretation.
 
-## The decision axis that actually matters: structured vs. mesh
+## Structured output vs. mesh
 
 Forget "which scanner" first. The real fork is **what the output IS**, because it changes the whole downstream pipeline:
 
@@ -21,7 +21,7 @@ The irony to internalize: the cheaper dedicated scanners give better geometry bu
 
 **A third category — photo-based (photogrammetry).** Most Android 3D-scan apps (and any phone without a LiDAR sensor) reconstruct geometry from ordinary photos rather than a depth sensor. They're the most accessible option — any camera works — but they produce an *unscaled* mesh: there is no metric reference, so scale must be set by hand from a known dimension, and fidelity trails both LiDAR and dedicated scanners, especially on blank/featureless walls. Useful for rough massing or a textured visual to eyeball, not for trustworthy wall dimensions. The clean way to place the three: **RoomPlan = scaled structure**, **LiDAR / dedicated scanners = scaled geometry**, **photogrammetry = unscaled geometry**. For our pipeline, a photogrammetry mesh can still be dropped in as a rough mock-up, but a survey/known-dimension scale step is mandatory before any measurement is trusted.
 
-## Accuracy reality check (this is the part that bites)
+## Accuracy
 
 - **iPad/iPhone LiDAR:** ~±1–3 cm horizontal in good conditions, but peer-reviewed testing shows most points land ~10 cm off the reference on *dynamic* (walking) scans, and accuracy degrades as the area grows and pose changes accumulate. Great for one small room held still; shaky as one coherent whole-house capture.
 - **RoomPlan specifically** reduces the room to rectangles — sloped/non-flat walls become primitive boxes, ceilings and height variation are ignored, and it does not give wall thickness. So the 2nd floor is out (angled knee-wall/roof geometry is exactly what it can't represent), and wall thickness you'd still tape-measure (easy, and already being done).

@@ -106,7 +106,7 @@ If the 3″ height really is fixed by cabinetry, no single grille solves it — 
 
 ### The main-floor return path is the real bottleneck
 
-Worth stating plainly, because it is larger than every grille question combined. As drawn, **`Return branch for both main bedrooms` is a single 4x8 running 30 ft**, and three returns hang off it: Main Bed, Kids Room, and — since the utility return was tapped into the Kids Room branch — the Utility Room as well.
+This is larger than every grille question combined. As drawn, **`Return branch for both main bedrooms` is a single 4x8 running 30 ft**, and three returns hang off it: Main Bed, Kids Room, and — since the utility return was tapped into the Kids Room branch — the Utility Room as well.
 
 | | CFM |
 |---|---:|
@@ -125,7 +125,7 @@ The Kids Room supply is the opposite case — 6x12 for 64 CFM is generous enough
 
 ---
 
-## What a trunk actually is
+## How trunks are sized
 
 The duct system is a hierarchy, and each level is sized by **the air passing through that particular segment** — not by anything upstream or downstream:
 
@@ -203,7 +203,7 @@ That drives 53 CFM through the bath and hallway on its way to the Play Room. Shr
 
 ### Transit air sweeps a room; it does not heat one
 
-Worth stating plainly, because it is the trap in leaving the Upper Bath unsupplied. Air arriving from the Office is at room temperature and has no heat to give up. Steady-state estimate for the bath, on a UA of about 16.5 BTU/hr·°F:
+This is the trap in leaving the Upper Bath unsupplied. Air arriving from the Office is at room temperature and has no heat to give up. Steady-state estimate for the bath, on a UA of about 16.5 BTU/hr·°F:
 
 | Transit air through it | Design-day temperature |
 |---:|---:|

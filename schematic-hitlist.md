@@ -163,7 +163,7 @@ Tags survive Sweet Home 3D's own save and `normalize.sh`. They do **not** surviv
 
 ---
 
-## What this is all for
+## What the remaining work buys
 
 Per-room CFM. The whole-house total is close enough that equipment sizing barely moves now. What the remaining work buys is *per-room* accuracy — and per-room CFM is the input to Manual T, which is the argument that the far corner of the office can actually be reached, and that the south side of the 2nd floor has a load whether or not it is convenient to duct.
 

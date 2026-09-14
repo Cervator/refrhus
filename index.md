@@ -4,9 +4,22 @@ title: Overview
 
 # Refr Hus — HVAC design package
 
-A 1950s house in West Orange, NJ, measured by hand and rebuilt as a dimensioned Sweet Home 3D model, with a Manual J load calculation and a duct design derived from it.
+A 1950s house in West Orange, NJ, rebuilt as a dimensioned architectural model and used to compute the loads a duct design can be sized against.
 
-This package is written to be handed to an HVAC contractor. Every figure is open to challenge, and the reasoning behind each one is recorded in the linked documents.
+The model is not a sketch. Every exterior dimension is measured — joist by joist in the basement, the chimney on all three floors, the posts to the eighth of an inch — and cross-registered so the levels stack. Room volumes, wall areas, window orientations and duct runs are read straight out of that geometry rather than estimated from floor area.
+
+On top of it, [Eldr](https://github.com/SiliconSaga/eldr) computes the ACCA chain:
+
+| | |
+|---|---|
+| **Manual J** | Heating and cooling loads — whole-house and per room, with solar gain resolved per window bearing |
+| **Manual S** | Equipment sizing against those loads |
+| **Manual D** | Duct sizing by equal friction |
+| **Manual T** | Not done. Register throw, spread and drop need a manufacturer's catalogue — see [known drawbacks](#known-drawbacks) |
+
+Eldr is our own open-source engine, written for this house and run against the model on every change. It reports its own assumptions — which U-values were borrowed, which floor area sits over a space nobody has drawn — so the gaps are visible rather than buried.
+
+This package is written to be handed to an HVAC contractor. Every figure is open to challenge, and the reasoning behind each one is in the linked documents.
 
 ## Load and equipment
 

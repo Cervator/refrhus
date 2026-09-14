@@ -46,7 +46,7 @@ Every cylinder in the model is in the basement, and every basement *supply* need
 
 **The caveat that comes with standardising on double-wall:** the insulation sits inside the shell, so the airway is smaller than the nominal size. Sizing here is by *airway*, so confirm whether a supplier quotes inner or outer diameter before ordering — getting it backwards costs two inches of diameter on every round run at once.
 
-### When insulation is actually required
+### When insulation is required
 
 **Supply ducts sweat; returns do not.** A supply carries ~55°F air in cooling, and a basement at 75°F / 50% RH has a dew point right at 55°F — 60°F at 60% RH. So exposed basement supply runs condense *even in conditioned space*. Returns run near 75°F, above any indoor dew point, and never sweat.
 

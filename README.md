@@ -68,3 +68,18 @@ CI does both for you.
 The load comparison is `eldr --diff`, which lives in the engine and is unit-tested there; `loads.yml` only fetches, runs and posts. **Eldr is deliberately unpinned and checked out once**, so both sides of a comparison run on the same engine — an engine change moves both sides identically and cancels out, leaving only model changes visible. Eldr has no packaging metadata yet, so it is reached via `PYTHONPATH` rather than pip-installed.
 
 The two site workflows call reusable ones in [volundr](https://github.com/SiliconSaga/volundr), the same pair MTL Soccer uses. They replace GitHub's built-in Jekyll build, which fails silently by email; building here means a broken stylesheet fails a check on the pull request that introduced it.
+
+## Building the site locally
+
+CI runs Ruby 3.3, so match it:
+
+```bash
+brew install ruby@3.3
+cd hoards/refrhus
+PATH="/opt/homebrew/opt/ruby@3.3/bin:$PATH" bundle install
+PATH="/opt/homebrew/opt/ruby@3.3/bin:$PATH" bundle exec jekyll serve
+```
+
+`Gemfile.lock` is committed, so a local build resolves to the same versions CI does. Gems vendor into `vendor/bundle` and the output lands in `_site`; both are gitignored.
+
+**The three plugins in `_config.yml` are load-bearing.** GitHub's legacy Pages build injects `jekyll-optional-front-matter`, `jekyll-relative-links` and `jekyll-titles-from-headings` automatically; `bundle exec jekyll build` does not — the `github-pages` gem ships them but leaves them off. Without them declared, every document that has no front matter is copied out as a raw `.md` file rather than rendered, `.md` links stay unrewritten, and pages lose their titles. That is the whole site, since only `index.md` carries front matter.

@@ -198,7 +198,9 @@ That is a real trade and it matters more in an old house with mixed glazing than
 1. The plan already includes **secondary perimeter supply** via the old window-adjacent duct in the office. The scheme is really *primary central + secondary perimeter*, which is a recognised retrofit compromise rather than a straight inversion.
 2. There is **room to add supply later** — including a north run — if internal room balance turns out poor. The cabinet is sized with margin and the risers are not the constraint.
 
-**The assumption to check is throw.** Whether a central register at 87 CFM actually reaches the office's far wall is Manual T territory. Rough answer: a typical floor register at that flow throws 8–12 ft against a room around 14–15 ft, so a central position needs ~7 ft. Plausible with margin — but it is a catalog lookup at register selection, not something to take on faith.
+**The assumption to check is throw.** Whether a central register at **100 CFM** actually reaches the office's far wall is Manual T territory. Rough answer: a typical floor register at that flow throws 8–12 ft against a room around 14–15 ft, so a central position needs ~7 ft. Plausible with margin — and the margin grew rather than shrank when the load rose from the 87 CFM an earlier model state gave, since more air throws further. Still a catalogue lookup at register selection, not something to take on faith.
+
+**This assumes the central register carries the whole 100 CFM.** The office also has the existing perimeter duct, and if that stays in service the central register carries less and throws shorter. Either specify the central register for the full load and treat the perimeter duct as recovered capacity — the same call already made for the Play Room — or size both and check the throw at the reduced figure. **What must not happen is sizing for the full load and then quietly splitting it.**
 
 ---
 

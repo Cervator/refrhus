@@ -111,7 +111,7 @@ It carries **only the second floor**, not the whole 1,245. The main floor is fed
 - **238 CFM** is Eldr's current unbiased second-floor total, aggregated across every room on the level.
 - **276 CFM** is the sum of the [register schedule](ducting-register-schedule.md)'s four second-floor rows — Play Room 115, Office 113, Upper Bath 28, Upstairs Hallway 20 — each biased at *room* level against an earlier model state, with the Play Room row since revised upward to carry the whole room rather than half of it.
 
-**The schedule is authoritative for duct sizing, so the riser is built to 276.** But the two numbers do not reconcile by applying ×1.35 to 238: that would give **321**, and an earlier draft of this paragraph claimed otherwise. Worth stating plainly, because 321 is the figure a fresh biased calculation would ask for today — **14% above what the riser is sized to.**
+**The schedule is authoritative for duct sizing, so the riser is built to 276.** But the two numbers do not reconcile by applying ×1.35 to 238: that would give **321**, and an earlier draft of this paragraph claimed otherwise. Worth stating plainly, because 321 is the figure a fresh biased calculation would ask for today — **16% above what the riser is sized to.**
 
 That gap does not change the answer. A 9″ round carries 357 CFM at design friction, so it holds 276 and 321 alike, with the velocity rising from 625 to 727 fpm. It is worth knowing which end of its range the riser is working at, and worth re-deriving the schedule against current loads before anything is fabricated.
 
@@ -148,7 +148,9 @@ Elevating it a foot or two adds duct routing space beneath, **condensate fall** 
 
 ### Main floor
 
-Open space; not a constraint. The cabinet here passes the two risers through and is the natural place to take **the office supply straight up through the floor**, keeping that room's supply out of the attic entirely. The office is 87 CFM — 42% of the second floor — so this solves the biggest room with the shortest and safest run.
+Open space; not a constraint. The cabinet here passes the two risers through and is the natural place to take **the office supply straight up through the floor**, keeping that room's supply out of the attic entirely. The office is **100 CFM unbiased — 42% of the second floor's 238** — so this solves the largest single room with the shortest and safest run. (The figure was 87 CFM on an earlier model state; the percentage happens to be unchanged.)
+
+**On the schedule's biased basis the ranking flips**, and it is worth knowing why before anyone re-derives from it: Office 113 against Play Room 115. That does not mean the Play Room is the bigger load — it is the deliberate choice to size the Play Room's new south duct for the *whole* room rather than half, because its existing east duct is unmeasured. Unbiased, the office is larger by 100 to 86.
 
 ### Second floor
 

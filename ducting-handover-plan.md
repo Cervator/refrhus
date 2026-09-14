@@ -183,7 +183,7 @@ Practicalities:
 
 1. **The kitchen SE supply** runs 806 fpm at 2″ of cabinet height and wants 4″. Moving one cabinet over or modifying the cabinet both solve it; either is a construction decision.
 2. **The kitchen return** at 3x20 needs roughly double the area, and wants to get *rounder* rather than longer — 8x14 against the drawn 3x20.
-3. **The main-floor return path**, which is the one genuinely worth a site visit before anything is priced. The buried section cannot change; the basement run is open and can be enlarged at least as far as the splitter.
+3. **The main-floor return path**, the one worth a site visit before anything is priced. The buried section cannot change; the basement run is open and can be enlarged at least as far as the splitter.
 
 ## What to be upfront about in the package
 

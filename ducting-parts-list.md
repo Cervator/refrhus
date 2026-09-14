@@ -112,7 +112,7 @@ Future runs excluded. Round sizes are **airway** — confirm whether a supplier 
 
 ## Cost — planning grade only
 
-**Every figure here is a band, and the bands are wide on purpose.** Fabrication, access and region move installed duct pricing more than size does, so a single number would imply a precision this does not have. Use it to compare options against each other — which is what it is actually for — not to budget.
+**Every figure here is a band, and the bands are wide on purpose.** Fabrication, access and region move installed duct pricing more than size does, so a single number would imply a precision this does not have. Use it to compare options against each other, not to budget.
 
 | Item | Quantity | Low | High |
 |---|---:|---:|---:|
@@ -132,7 +132,7 @@ Future runs excluded. Round sizes are **airway** — confirm whether a supplier 
 
 The $/ft figures above are *installed*, not material-only, so labour is not a line to add — it is most of what the band's width represents. For sanity-checking a quote that separates them: duct labour alone runs roughly **$5–15 per linear foot**, and HVAC labour is **$75–150 per hour per technician**.
 
-Published estimates of labour's *share* of a duct job disagree sharply — one puts it near 22% of a whole-house replacement, another at 60%. **That spread is a signal, not noise:** it is the difference between duct run through open basement joists and duct fished through finished walls. This house is both, which is exactly why the bands here are wide and why a walkthrough quote will beat any figure on this page.
+Published estimates of labour's *share* of a duct job disagree sharply — one puts it near 22% of a whole-house replacement, another at 60%. **That spread is a signal, not noise:** it is the difference between duct run through open basement joists and duct fished through finished walls. This house is both, which is why the bands here are wide and why a walkthrough quote will beat any figure on this page.
 
 ### Ducted extras, priced separately
 
@@ -140,7 +140,7 @@ Published estimates of labour's *share* of a duct job disagree sharply — one p
 |---|---|---|
 | Media air cleaner | **$400–1,000** | A deep pleated filter in the return. The default choice, and the one with no downside beyond filter changes |
 | UV treatment | **$400–800**, up to $3,500 | Coil-sterilising lamps at the low end; in-duct air treatment at the high end. Effectiveness claims vary far more than price does |
-| Whole-house humidifier | **$400–1,200**, up to $2,500 | Bypass or steam. Steam costs more and actually holds a setpoint |
+| Whole-house humidifier | **$400–1,200**, up to $2,500 | Bypass or steam. Steam costs more and holds a setpoint |
 
 **A media cleaner has a real interaction with this design and the others do not.** A deep filter adds static pressure to the return side, and the return side is already this system's constraint — see the main-floor return path above. Size the filter cabinet generously and account for its pressure drop in the same breath as the return trunk, rather than adding it afterwards. **The others are additions to the system; filtration is a change to it.**
 
@@ -178,7 +178,7 @@ The Bosch IDS Ultra is the candidate on file. Treat both rows as placeholders un
 
 **Pre-incentive throughout.** Nothing here is netted against a rebate, credit or utility programme, so it can be compared against a quote line for line — and whatever incentives apply come off afterwards rather than being baked into a number nobody can reconcile.
 
-The honest caveat on the whole table: **the fittings allowance is the weakest number in it.** It is a percentage standing in for a count nobody has made, on the one quantity this model explicitly cannot derive. It is also, not coincidentally, the same count that settles the one-unit-versus-two question — so asking for it buys an answer twice.
+One caveat on the whole table: **the fittings allowance is the weakest number in it.** It is a percentage standing in for a count nobody has made, on the one quantity this model explicitly cannot derive. It is also, not coincidentally, the same count that settles the one-unit-versus-two question — so asking for it buys an answer twice.
 
 ### What this is for: one air handler or two
 
@@ -186,7 +186,7 @@ The number that matters is not the total, it is **the delta between one unit and
 
 On cost alone, the delta is a second indoor unit, a second filter, a second condensate path — over a finished ceiling — a second service point reached through a knee-wall hatch, and a second maintenance schedule for as long as the house stands. Against a riser that **has to be built anyway** for the main floor.
 
-**But cost is not what decides it, and neither is static pressure alone.** A north knee-wall unit does not reach the south side of those rooms, and the suggested remedy — a duct channel along the office wall — is itself a chase. Ask which registers the second unit can actually reach *before* asking whether one unit runs out of static pressure. The fitting counts settle the second question; only a site visit settles the first.
+**But cost is not what decides it, and neither is static pressure alone.** A north knee-wall unit does not reach the south side of those rooms, and the suggested remedy — a duct channel along the office wall — is itself a chase. Ask which registers the second unit can reach *before* asking whether one unit runs out of static pressure. The fitting counts settle the second question; only a site visit settles the first.
 
 ## Counts
 
@@ -198,5 +198,5 @@ On cost alone, the delta is a second indoor unit, a second filter, a second cond
 | Branch runs (one balancing damper each) | 21 |
 | Inferred direction changes | 32 |
 
-**Damper every takeoff regardless of what the balance calculation says.** A branch without one cannot be adjusted after the fact, and the first season in a house is when the balance is actually discovered.
+**Damper every takeoff regardless of what the balance calculation says.** A branch without one cannot be adjusted after the fact, and the first season in a house is when the balance is discovered.
 

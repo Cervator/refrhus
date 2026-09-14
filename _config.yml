@@ -52,3 +52,7 @@ exclude:
   - Gemfile.lock
   - README.md
   - .github/
+  # Figure keys are fragments meant to be `include`d beside their SVG. Left
+  # alone they would each become a page of their own, because
+  # optional-front-matter renders every stray `.md` in the tree.
+  - "assets/schematics/*.key.md"

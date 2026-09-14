@@ -106,7 +106,14 @@ The cabinet is the whole argument in physical form. The standard, correct object
 
 It carries **only the second floor**, not the whole 1,245. The main floor is fed from basement runs and never enters the cabinet, which is why a chase this modest is sufficient.
 
-**Two figures, two scopes.** Eldr's unbiased second-floor total is **238 CFM**; the ducts are sized on the [register schedule](ducting-register-schedule.md)'s **276 CFM**, which is that total after the ×1.35 second-floor bias. The schedule is authoritative for duct sizes, so the riser is built to 276.
+**Two figures, two scopes — and they are not one multiplication apart.**
+
+- **238 CFM** is Eldr's current unbiased second-floor total, aggregated across every room on the level.
+- **276 CFM** is the sum of the [register schedule](ducting-register-schedule.md)'s four second-floor rows — Play Room 115, Office 113, Upper Bath 28, Upstairs Hallway 20 — each biased at *room* level against an earlier model state, with the Play Room row since revised upward to carry the whole room rather than half of it.
+
+**The schedule is authoritative for duct sizing, so the riser is built to 276.** But the two numbers do not reconcile by applying ×1.35 to 238: that would give **321**, and an earlier draft of this paragraph claimed otherwise. Worth stating plainly, because 321 is the figure a fresh biased calculation would ask for today — **14% above what the riser is sized to.**
+
+That gap does not change the answer. A 9″ round carries 357 CFM at design friction, so it holds 276 and 321 alike, with the velocity rising from 625 to 727 fpm. It is worth knowing which end of its range the riser is working at, and worth re-deriving the schedule against current loads before anything is fabricated.
 
 | Duct | CFM | Round | Rectangular |
 |---|---:|:-:|:-:|

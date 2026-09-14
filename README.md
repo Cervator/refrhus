@@ -56,6 +56,15 @@ PYTHONPATH=components/eldr components/eldr/.venv/bin/python -m eldr.cli \
 components/eldr/.venv/bin/python hoards/refrhus/tools/partslist.py
 ```
 
-CI does both for you. **On a pull request** that touches the model or the side-car, `.github/workflows/loads.yml` runs the engine against the base and the head and comments what moved — component by component, plus equipment sizing and per-room airflow. **On a push to `main`**, `regenerate.yml` rebuilds `hvac/eldr-report.md` and `ducting-parts-list.md` and commits them if they no longer match the model.
+CI does both for you.
 
-The comparison itself is `eldr --diff`, which lives in the engine and is unit-tested there; these workflows only fetch, run and post. Eldr has no packaging metadata yet, so it is checked out beside this repository and reached via `PYTHONPATH` rather than pip-installed.
+| Workflow | When | What |
+|---|---|---|
+| `loads.yml` | PR touching the model or side-car | Runs the engine on base and head, comments what moved |
+| `regenerate.yml` | Push to `main` | Rebuilds the report and parts list, commits if they drifted |
+| `deploy.yml` | Push to `main` | Builds the site and publishes to `gh-pages` |
+| `pr-preview.yml` | Every PR | Publishes a browsable preview and a visual diff against `main` |
+
+The load comparison is `eldr --diff`, which lives in the engine and is unit-tested there; `loads.yml` only fetches, runs and posts. **Eldr is deliberately unpinned and checked out once**, so both sides of a comparison run on the same engine — an engine change moves both sides identically and cancels out, leaving only model changes visible. Eldr has no packaging metadata yet, so it is reached via `PYTHONPATH` rather than pip-installed.
+
+The two site workflows call reusable ones in [volundr](https://github.com/SiliconSaga/volundr), the same pair MTL Soccer uses. They replace GitHub's built-in Jekyll build, which fails silently by email; building here means a broken stylesheet fails a check on the pull request that introduced it.

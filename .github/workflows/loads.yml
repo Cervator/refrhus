@@ -19,6 +19,12 @@ permissions:
   contents: read
   pull-requests: write
 
+# One answer per pull request. A push mid-run makes the in-flight comparison
+# stale, so cancel it rather than race it to the comment.
+concurrency:
+  group: loads-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
   diff:
     runs-on: ubuntu-latest
@@ -34,6 +40,11 @@ jobs:
           ref: ${{ github.event.pull_request.base.sha }}
           path: base
 
+      # Deliberately unpinned, and checked out ONCE. Both sides of the
+      # comparison then run on the same engine, so the diff can only show model
+      # changes — an engine change moves both sides identically and cancels out.
+      # Pinning would instead freeze the house against engine improvements,
+      # which is the opposite of what this repository wants.
       - name: Check out the engine
         uses: actions/checkout@v4
         with:
@@ -44,7 +55,7 @@ jobs:
         with:
           python-version: '3.12'
 
-      - run: pip install pyyaml defusedxml
+      - run: pip install pyyaml==6.0.3 defusedxml==0.7.1
 
       - name: Run both sides
         env:
@@ -74,7 +85,7 @@ jobs:
       # Find our previous comment so pushes edit it rather than stacking. A long
       # review should leave one current answer, not a scrollback of stale ones.
       - name: Find the previous comment
-        uses: peter-evans/find-comment@v3
+        uses: peter-evans/find-comment@3eae4d37986fb5a8592848f6a574fdf654e61f9e  # v3
         id: find
         if: github.event.pull_request.head.repo.full_name == github.repository
         with:
@@ -83,7 +94,7 @@ jobs:
           body-includes: Eldr — load change
 
       - name: Comment on the pull request
-        uses: peter-evans/create-or-update-comment@v4
+        uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043  # v4
         if: github.event.pull_request.head.repo.full_name == github.repository
         with:
           issue-number: ${{ github.event.pull_request.number }}

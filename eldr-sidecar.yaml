@@ -55,7 +55,7 @@ assemblies:                   # U-value, BTU/(hr*ft^2*F), per surface category
   #                             # 9,271: a 32% overshoot replacing today's 53% undershoot. Trading
   #                             # one error for another is not accuracy. Resolve it properly with
   #                             # either the grade-line split, or measured wall surface temperatures
-  #                             # (see hvac/README.md) — then this number can be set honestly.
+  #                             # (see hvac/index.md) — then this number can be set honestly.
   window: 0.588               # MEASURED (pros' construction page, area-weighted over all ten window
   #                             # rows / 152.5 ft^2 -> 89.72/152.5 = 0.5883). The glazing is a genuine
   #                             # MIX, not one product: 18.1 ft^2 clear single-pane @ U-0.900 (2 NE +

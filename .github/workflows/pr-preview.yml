@@ -1,0 +1,31 @@
+# A browsable copy of the site for every pull request, plus a visual diff
+# against main. Publishes to gh-pages/pr-preview/pr-<n>/ and cleans up on close.
+#
+# This is what makes a documentation change reviewable: the diff shows that a
+# table gained a column, the preview shows whether the column fits.
+name: PR preview
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+# No workflow-level grants; the preview job declares exactly what it needs.
+permissions: {}
+
+# Shared with the deploy workflow — both write gh-pages, and a preview must not
+# land mid-deploy.
+concurrency:
+  group: gh-pages-write
+  cancel-in-progress: false
+
+jobs:
+  preview:
+    permissions:
+      # Publish previews to gh-pages/pr-preview/<pr>/.
+      contents: write
+      # Upsert the sticky preview and visual-diff comments.
+      pull-requests: write
+      # Read the served Pages configuration (custom domain vs github.io) for
+      # volundr's preview-coordinate derivation.
+      pages: read
+    uses: SiliconSaga/volundr/.github/workflows/pr-preview.yml@main

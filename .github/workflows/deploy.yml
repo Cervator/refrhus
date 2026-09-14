@@ -1,0 +1,27 @@
+# Build the site and publish it to gh-pages.
+#
+# This replaces GitHub's built-in Jekyll build, and the reason is worth stating:
+# the built-in one fails silently by email. Building here means a broken
+# stylesheet or a bad Liquid tag fails a check on the pull request that
+# introduced it. It is also the prerequisite for per-PR previews, which need a
+# gh-pages branch to publish into.
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# No workflow-level grants; the deploy job declares exactly what it needs.
+permissions: {}
+
+concurrency:
+  group: gh-pages-write
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    permissions:
+      # Push the built site to gh-pages — the job's only repository write.
+      contents: write
+    uses: SiliconSaga/volundr/.github/workflows/jekyll-deploy.yml@main

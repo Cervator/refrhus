@@ -2,23 +2,23 @@
 
 # Eldr — Heating Load (Phase 1, whole-house)
 
-- Indoor / 99% outdoor design: **70°F / 15°F** (ΔT = 55°F)
+- Indoor / 99% outdoor design: **70°F / 14°F** (ΔT = 56°F)
 - Infiltration: **0.68 ACH**
-- Design temps from nearest station: **New York, NY** (lat/long from the model — approximate; set your ACCA station for accuracy)
+- Design temps from nearest station: **Newark, NJ** (lat/long from the model — approximate; set your ACCA station for accuracy)
 
 | Component | Load (BTU/hr) |
 |---|---:|
-| basement_wall | 3,473 |
+| basement_wall | 3,536 |
 | buffer_floor | 4,629 |
-| ceiling | 1,544 |
-| door | 2,278 |
-| exterior_wall | 10,564 |
-| floor | 796 |
-| window | 5,060 |
-| infiltration | 11,350 |
-| **total** | **39,694** |
+| ceiling | 1,572 |
+| door | 2,319 |
+| exterior_wall | 10,756 |
+| floor | 810 |
+| window | 5,152 |
+| infiltration | 11,556 |
+| **total** | **40,331** |
 
-**Supply airflow:** 1,225 CFM (at 30°F supply-air rise)
+**Supply airflow:** 1,245 CFM (at 30°F supply-air rise)
 
 _Phase 1 whole-house estimate. Not ACCA-certified. Room-by-room to follow._
 
@@ -39,10 +39,10 @@ _Total conditioned volume **16,859 ft³** — the infiltration basis. Set `level
 
 ### Buffer spaces
 
-| Space | Winter factor (of 55°F ΔT) | Winter input | Summer factor (of 16°F ΔT) | Summer input |
+| Space | Winter factor (of 56°F ΔT) | Winter input | Summer factor (of 16°F ΔT) | Summer input |
 |---|---:|---|---:|---|
-| attic | 0.50 → 27.5°F | `vented: false` (built-in default) | 3.66 → 58.5°F | sol-air estimate 133.5°F attic air (outdoor 91°F + 42.5°F roof gain) — set `cooling.attic_temp_f` to replace it |
-| crawlspace | 0.69 → 38.0°F | `winter_temp_f` 32.0°F (side-car) | 0.50 → 8.0°F | unvented fallback 0.50 (side-car) — winter shorthand, reused for summer |
+| attic | 0.50 → 28.0°F | `vented: false` (built-in default) | 3.66 → 58.5°F | sol-air estimate 133.5°F attic air (outdoor 91°F + 42.5°F roof gain) — set `cooling.attic_temp_f` to replace it |
+| crawlspace | 0.68 → 38.0°F | `winter_temp_f` 32.0°F (side-car) | 0.50 → 8.0°F | unvented fallback 0.50 (side-car) — winter shorthand, reused for summer |
 
 _A surface facing a buffer space sees the ΔT shown, not the whole design ΔT; the arrow resolves the factor against that season's own design ΔT. A factor above 1 is not a bug: a sun-heated attic runs hotter than outdoor air, so the ceiling beneath it sees a larger ΔT than an exterior wall does._
 
@@ -97,10 +97,10 @@ _Solar reads each window's exact bearing (grouped for display by nearest 8-point
 
 ## Manual S — Equipment Sizing
 
-- Design load (heating): **39,694 BTU/hr = 3.3 tons**
-- Recommended (smallest size that meets the load): **3.5 tons** (+6% vs load)
-- Next size up: **4.0 tons** (+21% vs load)
-- Existing unit: **4.0 tons** → +21% vs load → **oversized** ⚠
+- Design load (heating): **40,331 BTU/hr = 3.4 tons**
+- Recommended (smallest size that meets the load): **3.5 tons** (+4% vs load)
+- Next size up: **4.0 tons** (+19% vs load)
+- Existing unit: **4.0 tons** → +19% vs load → **oversized** ⚠
   - _short-cycling, poor humidity control, added wear_
 
 _Demo estimate, not ACCA-certified. Sized on the larger of heating/cooling (here: heating)._
@@ -109,29 +109,29 @@ _Demo estimate, not ACCA-certified. Sized on the larger of heating/cooling (here
 
 | Room | Heating (BTU/hr) | Cooling sens. (BTU/hr) | Design CFM |
 |---|---:|---:|---:|
-| Kitchen | 8,138 | 3,312 | 251 |
-| Main Bed | 7,207 | 3,261 | 222 |
-| Living room | 4,265 | 2,284 | 132 |
-| Future Media Room | 3,951 | 1,115 | 122 |
-| Utility Room | 3,746 | 968 | 116 |
-| Office | 2,898 | 2,151 | 100 |
-| Play Room | 2,748 | 1,562 | 85 |
-| Kids Room | 2,056 | 1,218 | 63 |
-| Main Bath | 1,161 | 574 | 36 |
-| Upper Bath | 652 | 446 | 21 |
-| Main Closet | 531 | 200 | 16 |
-| Upstairs Hallway | 525 | 307 | 16 |
-| Closet | 337 | 187 | 10 |
-| Closet | 223 | 109 | 7 |
-| Closet | 207 | 88 | 6 |
-| Main Hallway | 204 | 91 | 6 |
-| Bar Area | 160 | 73 | 5 |
-| Base Bath Void | 148 | 9 | 5 |
-| Main Stairway | 142 | 82 | 4 |
-| Base Bath | 134 | 69 | 4 |
-| **20 rooms** | | | **1,228** |
+| Kitchen | 8,242 | 3,312 | 254 |
+| Main Bed | 7,297 | 3,261 | 225 |
+| Living room | 4,343 | 2,284 | 134 |
+| Future Media Room | 4,023 | 1,115 | 124 |
+| Utility Room | 3,815 | 968 | 118 |
+| Office | 2,950 | 2,151 | 100 |
+| Play Room | 2,798 | 1,562 | 86 |
+| Kids Room | 2,093 | 1,218 | 65 |
+| Main Bath | 1,182 | 574 | 36 |
+| Upper Bath | 664 | 446 | 21 |
+| Main Closet | 541 | 200 | 17 |
+| Upstairs Hallway | 535 | 307 | 17 |
+| Closet | 343 | 187 | 11 |
+| Closet | 227 | 109 | 7 |
+| Closet | 211 | 88 | 7 |
+| Main Hallway | 207 | 91 | 6 |
+| Bar Area | 163 | 73 | 5 |
+| Base Bath Void | 150 | 9 | 5 |
+| Main Stairway | 145 | 82 | 4 |
+| Base Bath | 137 | 69 | 4 |
+| **20 rooms** | | | **1,245** |
 
-_Each room's load is from the exterior walls, windows, doors and ceiling/floor attributed to it, plus infiltration on its own volume; design CFM is the larger of heating/cooling airflow. Served rooms sum to **1,228 CFM** vs the whole-house **1,225 CFM** — the gap is space not carried here: floor area not yet drawn as rooms (halls, stairs, unfinished), plus tiny rooms below the 3-CFM run threshold. Draw more rooms and it closes._
+_Each room's load is from the exterior walls, windows, doors and ceiling/floor attributed to it, plus infiltration on its own volume; design CFM is the larger of heating/cooling airflow. Served rooms sum to **1,245 CFM** vs the whole-house **1,245 CFM** — the gap is space not carried here: floor area not yet drawn as rooms (halls, stairs, unfinished), plus tiny rooms below the 3-CFM run threshold. Draw more rooms and it closes._
 
 ## Manual D — Duct Sizing (round, equal-friction)
 
@@ -140,26 +140,26 @@ _Each room's load is from the exterior walls, windows, doors and ceiling/floor a
 
 | Run | CFM | Exact dia | Duct | Velocity | Length | Drop |
 |---|---:|---:|---:|---:|---:|---:|
-| main trunk | 1,228 | 15.7″ | **16″** | 879 fpm | — | — |
-| Kitchen | 251 | 8.6″ | **9″** | 569 fpm | 40 ft | 0.032″ |
-| Main Bed | 222 | 8.2″ | **9″** | 503 fpm | 46 ft | 0.037″ |
-| Main Closet | 16 | 3.1″ | **4″** | 188 fpm | 34 ft | 0.028″ |
-| Kids Room | 63 | 5.1″ | **6″** | 323 fpm | 38 ft | 0.031″ |
-| Main Bath | 36 | 4.1″ | **5″** | 263 fpm | 28 ft | 0.023″ |
-| Closet | 7 | 2.2″ | **4″** | 79 fpm | 34 ft | 0.027″ |
-| Living room | 132 | 6.7″ | **7″** | 493 fpm | 34 ft | 0.027″ |
-| Main Hallway | 6 | 2.1″ | **4″** | 72 fpm | 18 ft | 0.014″ |
-| Main Stairway | 4 | 1.9″ | **4″** | 50 fpm | 20 ft | 0.016″ |
+| main trunk | 1,245 | 15.8″ | **16″** | 892 fpm | — | — |
+| Kitchen | 254 | 8.7″ | **9″** | 576 fpm | 40 ft | 0.032″ |
+| Main Bed | 225 | 8.3″ | **9″** | 510 fpm | 46 ft | 0.037″ |
+| Main Closet | 17 | 3.1″ | **4″** | 191 fpm | 34 ft | 0.028″ |
+| Kids Room | 65 | 5.2″ | **6″** | 329 fpm | 38 ft | 0.031″ |
+| Main Bath | 36 | 4.2″ | **5″** | 268 fpm | 28 ft | 0.023″ |
+| Closet | 7 | 2.2″ | **4″** | 80 fpm | 34 ft | 0.027″ |
+| Living room | 134 | 6.8″ | **7″** | 502 fpm | 34 ft | 0.027″ |
+| Main Hallway | 6 | 2.1″ | **4″** | 73 fpm | 18 ft | 0.014″ |
+| Main Stairway | 4 | 1.9″ | **4″** | 51 fpm | 20 ft | 0.016″ |
 | Office | 100 | 6.1″ | **7″** | 373 fpm | 53 ft | 0.042″ |
 | Upper Bath | 21 | 3.3″ | **4″** | 237 fpm | 35 ft | 0.028″ |
-| Closet (2) | 10 | 2.6″ | **4″** | 119 fpm | 50 ft | 0.040″ |
-| Play Room | 85 | 5.7″ | **6″** | 432 fpm | 40 ft | 0.032″ |
-| Closet (3) | 6 | 2.1″ | **4″** | 73 fpm | 54 ft | 0.043″ |
-| Upstairs Hallway | 16 | 3.1″ | **4″** | 186 fpm | 28 ft | 0.023″ |
-| Utility Room | 116 | 6.4″ | **7″** | 433 fpm | 15 ft | 0.012″ |
-| Base Bath | 4 | 1.8″ | **4″** | 47 fpm | 11 ft | 0.008″ |
-| Base Bath Void | 5 | 1.9″ | **4″** | 52 fpm | 16 ft | 0.012″ |
-| Bar Area | 5 | 1.9″ | **4″** | 57 fpm | 1 ft | 0.001″ |
-| Future Media Room | 122 | 6.6″ | **7″** | 456 fpm | 16 ft | 0.013″ |
+| Closet (2) | 11 | 2.6″ | **4″** | 121 fpm | 50 ft | 0.040″ |
+| Play Room | 86 | 5.8″ | **6″** | 440 fpm | 40 ft | 0.032″ |
+| Closet (3) | 7 | 2.2″ | **4″** | 75 fpm | 54 ft | 0.043″ |
+| Upstairs Hallway | 17 | 3.1″ | **4″** | 189 fpm | 28 ft | 0.023″ |
+| Utility Room | 118 | 6.5″ | **7″** | 441 fpm | 15 ft | 0.012″ |
+| Base Bath | 4 | 1.8″ | **4″** | 48 fpm | 11 ft | 0.008″ |
+| Base Bath Void | 5 | 1.9″ | **4″** | 53 fpm | 16 ft | 0.012″ |
+| Bar Area | 5 | 2.0″ | **4″** | 58 fpm | 1 ft | 0.001″ |
+| Future Media Room | 124 | 6.6″ | **7″** | 465 fpm | 16 ft | 0.013″ |
 
 _Round duct, equal-friction, demo-grade. Total effective length uses a fitting fudge factor, not true fitting equivalent lengths; a full Manual D adds those and rectangular/oval sizing via equivalent diameter._

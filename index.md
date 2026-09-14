@@ -10,11 +10,11 @@ Everything here is generated from or checked against the model in this repositor
 
 | | |
 |---|---:|
-| Heating load, 70°F / 15°F design | **39,694 BTU/hr** |
+| Heating load, 70°F / 14°F design | **40,331 BTU/hr** |
 | Cooling load, 75°F / 91°F design | **23,125 BTU/hr** (18,228 sensible) |
 | Sensible heat ratio | 0.79 |
-| Design supply airflow (equipment) | **1,225 CFM** |
-| Manual S on today's model | 3.5 tons |
+| Design supply airflow (equipment) | **1,245 CFM** |
+| Manual S on today's model | 3.4 tons → 3.5 |
 | **Size to quote** | **4.0 tons** — see below |
 | Existing unit | 4.0 tons |
 | Duct, straight runs | 344 ft across **29 live runs** (31 drawn, 2 future) |

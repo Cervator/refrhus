@@ -6,7 +6,7 @@
   <furnitureVisibleProperty name='HEIGHT'/>
   <furnitureVisibleProperty name='VISIBLE'/>
   <environment groundColor='00A8A8A8' skyColor='00CCE4FC' lightColor='00D0D0D0' ceillingLightColor='00D0D0D0' photoWidth='400' photoHeight='67' photoAspectRatio='VIEW_3D_RATIO' photoQuality='0' videoWidth='320' videoAspectRatio='RATIO_4_3' videoQuality='0' videoFrameRate='25'/>
-  <compass x='-118.0' y='-287.5' diameter='100.0' northDirection='5.5517' longitude='-1.2916551' latitude='0.7105963' timeZone='America/New_York'/>
+  <compass x='-118.0' y='-287.5' diameter='100.0' northDirection='5.5517' longitude='-1.2957324' latitude='0.7120943' timeZone='America/New_York'/>
   <level id='level-e7a412ad-f7b9-4030-9cdf-2864bfb96bef' name='Basement' elevation='0.0' floorThickness='12.0' height='213.36' elevationIndex='0'>
     <backgroundImage image='0' scaleDistance='647.7' scaleDistanceXStart='409.3023' scaleDistanceYStart='430.23254' scaleDistanceXEnd='823.2558' scaleDistanceYEnd='427.90698' xOrigin='-10.16' yOrigin='788.7' visible='false'/>
   </level>

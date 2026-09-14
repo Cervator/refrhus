@@ -51,7 +51,8 @@ Worth recording: 3,751 CFM50 × 60 ÷ 16,457 ft³ = 13.7 ACH50, over an LBL N-fa
 - **Measured assemblies** adopted the professionals' ceiling and crawl-floor U-values and the crawlspace's observed winter temperature: heating 31,757 → **37,962**.
 - **Cooling gained its missing sensible infiltration term** — it had only latent. Cooling 17,571 → **20,794**, airflow 610 → **759 CFM**, and duct sizes moved with it.
 - **The assembly true-up** took the professionals' measured wall, window and slab U-values, area-weighted off their Construction Details page, and corrected occupants 3 → 5. Heating → **42,097**.
-- **The basement measurement work** then brought it down to the current **39,694** on geometry that is finally measured rather than estimated.
+- **The basement measurement work** then brought it down to **39,694** on geometry that is finally measured rather than estimated.
+- **Site coordinates** replaced Sweet Home 3D's factory default — which sat in lower Manhattan and had never been set — with West Orange's town centroid. The design station moves New York → **Newark, NJ** and the 99% design temperature 15°F → 14°F, taking heating to the current **40,331**.
 
 The one verdict to watch across that sequence: the existing 4-ton unit has read as oversized, then well-matched, then oversized again. **A sizing verdict that flips with each correction is a sizing verdict to hold loosely** — which is the argument for rounding up rather than shaving down.
 
@@ -74,7 +75,7 @@ PYTHONPATH=components/eldr components/eldr/.venv/bin/python -m eldr.cli \
 
 Same house, two engines, and the gaps are now nameable rather than mysterious:
 
-Currently heating **39,694** against their **54,260**, or 73%. That ratio *fell* after the basement measurement work, which looks like regression and is not: the measured basement is smaller and better sealed than the estimate it replaced, so the remaining gap is now concentrated in things that can be named — the grade line and the undrawn second-floor roof surfaces — rather than spread thinly across assumptions nobody had checked.
+Currently heating **40,331** against their **54,260**, or 74%. That ratio *fell* after the basement measurement work, which looks like regression and is not: the measured basement is smaller and better sealed than the estimate it replaced, so the remaining gap is now concentrated in things that can be named — the grade line and the undrawn second-floor roof surfaces — rather than spread thinly across assumptions nobody had checked.
 
 | Line | Eldr | Theirs | Status |
 |---|---:|---:|---|

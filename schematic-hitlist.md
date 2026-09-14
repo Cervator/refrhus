@@ -2,7 +2,7 @@
 
 What still has to change in `Refrhus.sh3d`, who does each piece, and what it is worth. Ranked by BTU/hr impact within each section.
 
-Current run: **39,694** heating against the professionals' **54,260** — a gap of **14,566 BTU/hr**. The gap *widened* after the basement measurement work, which is the right direction for honesty even though it looks like the wrong one: the measured basement is smaller and better-sealed than the estimate it replaced, so the two numbers now disagree for reasons that can be named rather than for reasons nobody had looked at.
+Current run: **40,331** heating against the professionals' **54,260** — a gap of **13,929 BTU/hr**. That gap has moved both ways as corrections landed — wider when the basement was measured and found smaller and better-sealed than the estimate it replaced, narrower again when the design station was corrected from Sweet Home 3D's default to Newark. **Neither movement is progress or regression on its own.** What matters is that the remaining difference is now concentrated in things that can be named — the grade line and the undrawn second-floor roof — rather than spread thinly across assumptions nobody had checked.
 
 After the assembly true-up, almost all of what remains is *geometry* rather than assumptions. Above-grade walls, windows, the slab and occupants are settled against measured values. What is left is drawing and measuring — and item 1.1 alone accounts for roughly a third of the gap.
 

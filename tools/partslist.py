@@ -289,9 +289,10 @@ w("- **No grade line.** Basement walls are classed below-grade over their whole 
 w("- **The second-floor roof is not drawn.** Ceiling area is modelled at 984 ft² against "
   "a professional report's 1,547 — a third of that surface is missing, and it is the "
   "hot side of the house.")
-w("- **The load has risen at almost every correction.** 31,757 → 37,962 → 42,097, then "
-  "down to 39,694 only because the basement was finally *measured* rather than "
-  "estimated. The sizing verdict on the existing 4-ton unit has flipped between "
+w("- **The load has risen at almost every correction.** 31,757 → 37,962 → 42,097, down "
+  "to 39,694 only because the basement was finally *measured* rather than estimated, "
+  "and back to **40,331** once the design station was corrected from Sweet Home 3D's "
+  "default to Newark. The sizing verdict on the existing 4-ton unit has flipped between "
   "oversized and well-matched three times.")
 w("")
 w("**A sizing verdict that flips with each correction is one to hold loosely.** 3.5 tons "

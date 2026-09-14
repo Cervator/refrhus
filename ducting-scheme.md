@@ -34,12 +34,12 @@ Design airflow from Eldr's per-room Manual J, on geometry that is deliberately c
 
 | Level | CFM | Dominated by |
 |---|---:|---|
-| Basement | 252 | Future Media 122, Utility 116 |
-| **Main** | **740** | Kitchen 251, Main Bed 222, Living room 132 |
-| 2nd floor | 235 | Office 100, Play Room 85 |
-| **Total** | **1,228** | |
+| Basement | 256 | Future Media 124, Utility 118 |
+| **Main** | **751** | Kitchen 254, Main Bed 225, Living room 134 |
+| 2nd floor | 238 | Office 100, Play Room 86 |
+| **Total** | **1,245** | |
 
-> **Three airflow totals appear across these documents and they are not interchangeable.** **1,225 CFM** is the whole-house design airflow Eldr computes — the figure the *equipment* is sized on. **1,228** is the same thing summed per room, differing only by rooms below the run threshold. **1,133** is the [register schedule](ducting-register-schedule.md) total, which is lower because the second-floor ×1.35 and basement ×0.70 biases are applied to it and because it was tuned against an earlier model state. **The schedule is authoritative for duct sizes; Eldr's total is authoritative for equipment.** Where a per-room figure differs between them, the schedule is the older number — the Office in particular reads 83 raw there against 100 now.
+> **Two airflow totals appear across these documents and they are not interchangeable.** **1,245 CFM** is the whole-house design airflow Eldr computes, and the per-room figures now sum to the same number — the figure the *equipment* is sized on. **1,133** is the [register schedule](ducting-register-schedule.md) total, which is lower because the second-floor ×1.35 and basement ×0.70 biases are applied to it and because it was tuned against an earlier model state. **The schedule is authoritative for duct sizes; Eldr's total is authoritative for equipment.** Where a per-room figure differs between them, the schedule is the older number — the Office in particular reads 83 raw there against 100 now.
 
 **The main floor is the load** — two and a half times the second floor. Which reframes the whole argument: the second floor is not the hard part *volumetrically*, it is the hard part *geometrically*. That distinction is the crux of the disagreement with the contractors, who are pricing the geometry and concluding the load can't be served.
 
@@ -104,7 +104,7 @@ Sizes are computed with Eldr's own `ductd` equal-friction math at 0.08 in.wc/100
 
 The cabinet is the whole argument in physical form. The standard, correct objection to retrofit second-floor ducting is that ducts in an unconditioned knee-wall attic lose 20–30%. A stacked cabinet running basement → main → second floor is a **conditioned chase**: it keeps the ducts inside the thermal envelope, which dissolves the objection rather than arguing with it.
 
-It carries **only the second floor** — 235 CFM up, 235 CFM back. Not the whole 1,228. The main floor is fed from basement runs and never enters the cabinet. That is why a chase this modest is sufficient.
+It carries **only the second floor** — 238 CFM up, 238 CFM back. Not the whole 1,245. The main floor is fed from basement runs and never enters the cabinet. That is why a chase this modest is sufficient.
 
 | Duct | CFM | Equivalent round | Rectangular options |
 |---|---:|---|---|
@@ -237,14 +237,14 @@ None of that touches the real advantage, and it should be stated plainly rather 
 
 ### Where the single-unit case still stands
 
-1. **The load is modest.** 235 CFM to the second floor against 740 to the main floor. The second floor is a geometry problem, not a capacity problem — and a second handler is a capacity answer to a geometry question.
+1. **The load is modest.** 238 CFM to the second floor against 751 to the main floor. The second floor is a geometry problem, not a capacity problem — and a second handler is a capacity answer to a geometry question.
 2. **Both supply and return reach it.** A second handler quietly solves the *return* problem by putting the blower where the air is; that is the real reason "you can't duct a second floor" is so often true in retrofits. The cabinet has measured room for both, so the single unit is not relying on the return problem going away.
 3. **The chase is conditioned.** Ducts stay inside the envelope for their whole run, which is the same benefit the internal-handler proposal is reaching for, obtained a different way.
 4. **The numbers are conservative.** See the ceiling-area caveat above.
 
 ### The honest decision criterion
 
-**Static pressure decides whether one unit is enough.** If it can move 1,225 CFM through this layout at an acceptable external static pressure, one unit is the better buy — everything inside the envelope, half the equipment, one filter to change. That is a question the fitting counts settle, and a contractor is better placed to supply them than this model is. Ask for the counts rather than for an opinion.
+**Static pressure decides whether one unit is enough.** If it can move 1,245 CFM through this layout at an acceptable external static pressure, one unit is the better buy — everything inside the envelope, half the equipment, one filter to change. That is a question the fitting counts settle, and a contractor is better placed to supply them than this model is. Ask for the counts rather than for an opinion.
 
 **But placement decides whether two units would even help.** A second handler in the north knee-wall attic does not serve the south side of those rooms, and no amount of static-pressure headroom changes that. So the two questions are independent, and they should be asked in this order:
 
@@ -289,7 +289,7 @@ The alternative to all of it is over-provisioning ducts up front so the wall nev
 
 ## Equipment
 
-Sized on the larger of heating and cooling, which here is heating: **39,651 BTU/hr = 3.3 tons** on current geometry, rising to roughly **3.8 tons** once `basement_wall` takes the professionals' measured U-value. So the target is **3.5–4 tons**, and 4 is the safer read.
+Sized on the larger of heating and cooling, which here is heating: **40,331 BTU/hr = 3.4 tons** on current geometry, rising to roughly **3.8 tons** once `basement_wall` takes the professionals' measured U-value. So the target is **3.5–4 tons**, and 4 is the safer read.
 
 ### Bosch IDS Ultra — the leading candidate
 

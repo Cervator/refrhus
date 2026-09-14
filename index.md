@@ -27,7 +27,22 @@ Design temperatures come from the Newark, NJ station.
 
 **Airflow assumes a 30°F supply-air rise**, which is the heat-pump figure. A 50°F rise is a gas furnace and undersizes every heating-driven duct by 1.67×.
 
-**Quote 4.0 tons rather than 3.5.** The model omits a grade line — basement walls are classed below-grade over their full height — and roughly a third of the second-floor ceiling area is not drawn. Both omissions understate the load. Adopting the professionals' measured basement U-value alone raises it to about 3.8 tons.
+## Where these numbers come from
+
+Two independent load calculations sit behind this package.
+
+**A professional Manual J**, commissioned in August 2026 from an ACCA-certified energy auditor. It covers the house in three progressions — as-is, plus insulation, plus air sealing — so each one shows what the equipment could shrink to if the preceding envelope work is done. The as-is progression gives **54,260 BTU/hr heating**. It also includes a blower-door test and a construction-details page listing every assembly with its measured area and U-value.
+
+**Our own model**, built in Sweet Home 3D from hand measurements and run through [Eldr](https://github.com/SiliconSaga/eldr), an open-source Manual J engine. It gives **40,331 BTU/hr**, or 74% of the professional figure.
+
+The two are not competing estimates. **The measured inputs come from the professional report** — wall, window, ceiling and slab U-values are taken from its construction page, and the infiltration rate is its blower-door result of 3,751 CFM50. What our model adds is geometry: per-room loads and per-register airflow, which a whole-house figure cannot give and which duct sizing needs.
+
+Where the two still differ is documented line by line in [the load calculations](hvac/index.md). The gap is concentrated in two known omissions, and both understate our number:
+
+- **No grade line.** Eldr classes each basement wall as below-grade over its full height, where the professionals split it at grade. Adopting their measured basement U-value alone raises our load to about **3.8 tons**.
+- **The second-floor roof is not drawn.** Ceiling area is modelled at 984 ft² against their 1,547.
+
+**Quote 4.0 tons rather than 3.5.** Manual S on our current model gives 3.4, but both omissions above push the real figure up, and the professional report brackets it from the other side.
 
 **All pricing is pre-incentive.** No rebate, credit or utility programme is netted off anywhere, so the figures compare against a quote line for line.
 
@@ -60,4 +75,4 @@ Against that, the proposed location has two costs. Attic air reaches an estimate
 
 **Some loads are deliberately biased.** Second-floor airflow is multiplied by 1.35 and the basement by 0.70, because the second floor runs hot and the basement holds temperature unconditioned. The second floor's ceiling area is modelled at 984 ft² against a professional report's 1,547, which makes the second-floor figures conservative.
 
-**This is not an ACCA-certified calculation.** It is a Manual J estimate from a measured model, offered as a starting point rather than as a substitute for a professional report.
+**Our own load figures are not ACCA-certified.** The professional Manual J referenced above is; this model is not, and is offered as the per-room detail that report does not carry rather than as a replacement for it.

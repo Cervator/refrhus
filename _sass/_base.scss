@@ -149,6 +149,10 @@ hr {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  // The theme button carries a full sentence now; on a narrow phone it and the
+  // title together exceed the viewport, so let the row wrap rather than clip.
+  flex-wrap: wrap;
+  row-gap: 0.5rem;
   gap: 1rem;
   padding: 0.7rem 1.25rem;
   background: var(--bg-surface);

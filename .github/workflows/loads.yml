@@ -29,16 +29,20 @@ jobs:
   diff:
     runs-on: ubuntu-latest
     steps:
+      # persist-credentials: false throughout — nothing here needs to push, and
+      # a token left in .git/config is a token a later step can pick up.
       - name: Check out the PR head
         uses: actions/checkout@v4
         with:
           path: head
+          persist-credentials: false
 
       - name: Check out the base
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.base.sha }}
           path: base
+          persist-credentials: false
 
       # Deliberately unpinned, and checked out ONCE. Both sides of the
       # comparison then run on the same engine, so the diff can only show model
@@ -50,6 +54,7 @@ jobs:
         with:
           repository: SiliconSaga/eldr
           path: eldr
+          persist-credentials: false
 
       - uses: actions/setup-python@v5
         with:

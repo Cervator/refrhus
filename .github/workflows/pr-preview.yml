@@ -17,9 +17,19 @@ permissions: {}
 concurrency:
   group: gh-pages-write
   cancel-in-progress: false
+  # Without this only ONE run may sit pending in the group, so a second writer
+  # arriving while a deploy is in flight silently replaces a third. `max` keeps
+  # up to 100 queued — the difference between "previews are serialised" and
+  # "some pull requests quietly never get one".
+  queue: max
 
 jobs:
   preview:
+    # A `pull_request` from a fork gets a read-only token whatever the block
+    # below asks for, so the publish and comment steps would fail rather than
+    # do anything dangerous. Skipping the job outright turns a red X on every
+    # outside contribution into a cleanly skipped check.
+    if: github.event.pull_request.head.repo.full_name == github.repository
     permissions:
       # Publish previews to gh-pages/pr-preview/<pr>/.
       contents: write

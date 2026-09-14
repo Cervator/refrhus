@@ -4,6 +4,13 @@
 # `Home.xml`. Regenerating them here means the site is never stale relative to
 # the model, and a drifted figure shows up as a commit rather than as a review
 # finding three sessions later.
+#
+# Split into two jobs on purpose. The engine is checked out from a mutable
+# branch and its Python is executed; that must not happen in a job holding
+# `contents: write`, or a change on Eldr's main could push anything it liked to
+# this repository. `build` runs the engine with read-only credentials and hands
+# the result over as an artifact; `commit` has the write token but runs nothing
+# except checkout and git.
 name: Regenerate
 
 on:
@@ -15,26 +22,30 @@ on:
       - 'tools/**'
   workflow_dispatch:
 
-permissions:
-  contents: write
+permissions: {}
 
-# This job commits to main. Two of them interleaving would race on the push, so
-# queue rather than cancel.
+# The commit job pushes to main. Two interleaving runs would race on the push,
+# so queue rather than cancel.
 concurrency:
   group: regenerate-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
-  regenerate:
+  build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Check out the engine
         uses: actions/checkout@v4
         with:
           repository: SiliconSaga/eldr
           path: .eldr
+          persist-credentials: false
 
       - uses: actions/setup-python@v5
         with:
@@ -56,8 +67,34 @@ jobs:
           PYTHONPATH: ${{ github.workspace }}/.eldr
         run: python tools/partslist.py
 
+      - uses: actions/upload-artifact@v4
+        with:
+          name: generated-docs
+          path: |
+            hvac/eldr-report.md
+            ducting-parts-list.md
+          if-no-files-found: error
+
+  commit:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: generated-docs
+          path: generated
+
       - name: Commit if anything moved
         run: |
+          set -euo pipefail
+          cp generated/hvac/eldr-report.md hvac/eldr-report.md
+          cp generated/ducting-parts-list.md ducting-parts-list.md
+          rm -rf generated
+
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if git diff --quiet -- hvac/eldr-report.md ducting-parts-list.md; then

@@ -131,7 +131,7 @@ _Demo estimate, not ACCA-certified. Sized on the larger of heating/cooling (here
 | Base Bath | 137 | 69 | 4 |
 | **20 rooms** | | | **1,246** |
 
-_Each room's load is from the exterior walls, windows, doors and ceiling/floor attributed to it, plus infiltration on its own volume; design CFM is the larger of heating/cooling airflow. Served rooms account for the whole-house **1,245 CFM**, leaving only 8 conditioned room(s) below the 3-CFM run threshold. The column totals **1,246** because each row is rounded before summing, while the whole-house figure rounds once at the end._
+_Each room's load is from the exterior walls, windows, doors and ceiling/floor attributed to it, plus infiltration on its own volume; design CFM is the larger of heating/cooling airflow. Served rooms account for the whole-house **1,245 CFM**. A further **8 conditioned room(s) carry 8.3 CFM** between them, each below the 3-CFM run threshold — closets, chases and voids, served by transfer rather than a duct of their own. That airflow is **additional to the served sum, not a remainder within it**, so all conditioned rooms together come to **1,254 CFM**. Exceeding the whole-house figure is expected: each room takes the larger of its own heating and cooling airflow, and those do not peak in the same rooms. The column totals **1,246** because each row is rounded before summing, while the whole-house figure rounds once at the end._
 
 ## Manual D — Duct Sizing (round, equal-friction)
 

@@ -2,7 +2,7 @@
 
 Where the ducting design stands as of 2026-09-02, why it is shaped this way, and what is still open. Written to be readable cold — by a contractor, by a future session, or by the owner in six months.
 
-Companion documents: `chimney-measure-sheet.md` (the chimney's geometry), and `hvac/README.md` (the load calculations and where they disagree with the professional Manual J).
+Companion documents: `chimney-measure-sheet.md` (the chimney's geometry), and [`hvac/index.md`](hvac/index.md) (the load calculations and where they disagree with the professional Manual J).
 
 ---
 

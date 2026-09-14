@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  {%- comment -%}
+    Set data-theme before first paint, or the page flashes the wrong scheme on
+    every load. Saved choice wins; otherwise follow the OS.
+  {%- endcomment -%}
+  <script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('refrhus-theme');
+      var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches
+                            ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {}
+  })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <a href="{{ '/' | relative_url }}" class="site-title">{{ site.title }}</a>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button"
+              aria-label="Toggle dark or light theme"
+              onclick="(function(b){var cur=document.documentElement.getAttribute('data-theme');var t=cur==='light'?'dark':'light';document.documentElement.setAttribute('data-theme',t);try{localStorage.setItem('refrhus-theme',t);}catch(e){}b.querySelector('.theme-icon').textContent=t==='light'?'☽':'☀';b.querySelector('.theme-label').textContent=t==='light'?'Dark':'Light';})(this)">
+        <span class="theme-icon" aria-hidden="true">&#9728;</span>
+        <span class="theme-label">Light</span>
+      </button>
+      <button class="nav-toggle" type="button" aria-label="Toggle contents"
+              onclick="document.querySelector('.site-nav').classList.toggle('open')">
+        &#9776;
+      </button>
+    </div>
+  </header>
+
+  <div class="layout">
+    {% include nav.html %}
+    <main class="content">
+      {{ content }}
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>
+      The model, the engine and every document here are public.
+      <a href="https://github.com/SiliconSaga/refrhus">Source</a> ·
+      <a href="https://github.com/SiliconSaga/eldr">Eldr</a>
+    </p>
+  </footer>
+
+  <script>
+  // Mark the current page in the sidebar. Done client-side so the nav stays a
+  // plain data file rather than needing a per-page front-matter key.
+  (function () {
+    var here = window.location.pathname.replace(/\/$/, '');
+    document.querySelectorAll('.site-nav a').forEach(function (a) {
+      if (a.getAttribute('href').replace(/\/$/, '') === here) {
+        a.classList.add('current');
+        a.setAttribute('aria-current', 'page');
+      }
+    });
+  })();
+  </script>
+</body>
+</html>

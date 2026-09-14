@@ -8,6 +8,8 @@ After the assembly true-up, almost all of what remains is *geometry* rather than
 
 **The per-BTU figures below predate the basement work and are indicative, not current.** Re-derive from a fresh run before using one to decide what to do next.
 
+**Still valuable, and still the right ranking.** Items 1.1 and 1.2 — the grade line and the second-floor roof — remain the two largest, and between them account for most of the gap. What has changed since this list was written is that the *tooling* side is done: Eldr resolves a U-value per surface, and `tag.py` writes the tags. Items 1.4 and 1.5 are now blocked only on knowing which physical sections are which.
+
 ---
 
 ## 1. Needs you in the house (measuring or looking)
@@ -26,7 +28,7 @@ That is why `basement_wall` is held at 0.07 instead of their area-weighted 0.196
 
 Our ceiling area is **984 ft² against their 1,547** — a 563 ft² shortfall that is almost certainly the sloped roof and knee-wall surfaces on the still-incomplete 2nd floor, plus the unmodelled attic volume above the centre.
 
-Note this is *entirely* area. The ceiling U-value already matches theirs (0.057, area-weighted from their construction page), and the unvented attic is deliberate and correct — see `hvac/README.md`. Nothing here is a thermal assumption to argue about; it is surface nobody has drawn.
+Note this is *entirely* area. The ceiling U-value already matches theirs (0.057, area-weighted from their construction page), and the unvented attic is deliberate and correct — see [`hvac/index.md`](hvac/index.md). Nothing here is a thermal assumption to argue about; it is surface nobody has drawn.
 
 **What to measure:** roof angles from the 2nd-floor door onto the garage roof, including the original-versus-kitchen-extension slope change that mildens the pitch toward the backyard. Knee-wall height and the run from knee wall to ridge on each side.
 
@@ -135,7 +137,9 @@ Heights of 0.08 ft, 0.17 ft and 3.00 ft. **Decide:** real features or leftovers.
 
 ---
 
-## How the tagging works, when we get there
+## How the tagging works
+
+Both halves of this now exist: Eldr resolves a U-value per surface, and `tag.py` writes the wall and room properties. Items 1.4 and 1.5 are blocked only on house knowledge, not on tooling.
 
 Windows and doors you can do yourself in Sweet Home 3D — rename them in the furniture list:
 

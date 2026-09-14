@@ -1,16 +1,35 @@
-title: Refr Hus — HVAC
-description: A measured model of a 1950s house, and the duct design that came out of it
-theme: jekyll-theme-primer
+title: Refr Hus
+description: >-
+  A 1950s house measured by hand, modelled in Sweet Home 3D, and run through a
+  Manual J load calculation — with the duct design that came out of it.
 
-# GitHub Pages enables jekyll-optional-front-matter by default, so every
-# markdown file in this repo renders without needing front matter added to it.
-# The documents stay plain markdown, readable in the repo and in an editor.
+url: "https://siliconsaga.github.io"
+baseurl: "/refrhus"
+
+permalink: pretty
+markdown: kramdown
+
+kramdown:
+  toc_levels: 2..3
+
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# GitHub Pages enables jekyll-optional-front-matter and jekyll-relative-links by
+# default, so every document here renders without front matter and `.md` links
+# resolve to their published URLs. The documents stay plain markdown — readable
+# in the repo, in an editor, and on the site, with no third format to maintain.
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
 
 exclude:
   - Refrhus.sh3d
   - sh3d-internals/
   - tools/
-  - descent-into-chaos.json
-  - minioverhaul.json
   - eldr-sidecar.yaml
+  - .commits/
   - "*.PDF"

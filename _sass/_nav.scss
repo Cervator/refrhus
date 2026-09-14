@@ -1,0 +1,80 @@
+.site-nav {
+  flex: 0 0 15rem;
+  position: sticky;
+  top: 4.2rem;              // clears the sticky header
+  align-self: flex-start;
+  max-height: calc(100vh - 5.5rem);
+  overflow-y: auto;
+  font-size: 0.9rem;
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin-bottom: 1rem;
+
+  > a {
+    font-weight: 600;
+    color: var(--fg);
+    text-decoration: none;
+    &:hover { color: var(--accent); }
+  }
+}
+
+.nav-group {
+  display: block;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.72rem;
+  margin-bottom: 0.35rem;
+}
+
+.nav-children {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-left: 1px solid var(--border);
+
+  li { margin: 0; }
+
+  a {
+    display: block;
+    padding: 0.28rem 0 0.28rem 0.75rem;
+    margin-left: -1px;
+    border-left: 2px solid transparent;
+    color: var(--fg);
+    text-decoration: none;
+    line-height: 1.35;
+
+    &:hover {
+      color: var(--accent);
+      border-left-color: var(--border-strong);
+    }
+  }
+}
+
+// The page you are on, in both the top level and the nested lists.
+.site-nav a.current {
+  color: var(--accent);
+  font-weight: 600;
+  border-left-color: var(--accent);
+}
+
+@media (max-width: 860px) {
+  .site-nav {
+    display: none;
+    position: static;
+    max-height: none;
+    width: 100%;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+
+    &.open { display: block; }
+  }
+}

@@ -127,7 +127,7 @@ Heights of 0.08 ft, 0.17 ft and 3.00 ft. **Decide:** real features or leftovers.
 
 ## 3. Things I can do alone once 1 and 2 are answered
 
-- **Draw the crawlspace under the Main Bed extension** (110.1 ft²) and the Living room void (39.4 ft²) — 149.5 ft² currently modelled as an *assumption* rather than seen as geometry. Drawing it makes the *Schematic gaps* warning shrink, which is the signal it is working.
+- **Draw the crawlspace under the Main Bed extension** — the current run reports **113.0 ft²** of conditioned floor with no level drawn beneath it, all of it Main Bed, modelled as an *assumption* rather than seen as geometry. (An earlier figure of 149.5 ft² also counted a Living room void that the report no longer flags.) Drawing it makes the *Schematic gaps* warning shrink, which is the signal it is working.
 - **Draw the rest of the basement floor as rooms** — rooms cover 678 ft² of a 761 ft² footprint, so ~83 ft² is undrawn, and walls bordering undrawn space read as facing outdoors. That pulls roughly 14 interior partition segments into the envelope and inflates the wall area.
 - **The two main-floor void walls** (the kitchen/bathroom void).
 - **Declare the assembly variants** in `eldr-sidecar.yaml` — `exterior_wall/r0: 0.240`, `window/single: 0.900`, `window/storm: 0.570`, `ceiling/r11: 0.081`, `ceiling/r13: 0.070`, `ceiling/r19: 0.049`, `buffer_wall: 0.097`.

@@ -17,10 +17,10 @@ Airflow is biased on purpose — **second floor ×1.35**, **basement ×0.70**, m
 | Main | Kitchen | 251 | 2 | 126 | 7″ | 4x10 | 470 | 1 | 251 | 9″ | 5x14 | 569 | 2 | One tricky |
 | Main | Main Bed | 227 | 2 | 113 | 7″ | 4x10 | 424 | 1 | 227 | 9″ | 5x14 | 513 | 1 | Return narrow? |
 | Main | Living room | 143 | 2 | 71 | 6″ | 3x10 | 363 | 1 | 143 | 7″ | 4x12 | 534 | | |
-| Main | Kids Room | 64 | 1 | 64 | 6″ | 3x8 | 324 | 1 | 64 | **8″** | 4x12 | 421 | | Branch also carries the utility return — 147 total |
+| Main | Kids Room | 64 | 1 | 64 | 6″ | 3x8 | 324 | 1 | 64 | **8″** | 4x12 | 421 | | Grille carries 64; the **duct** is sized 8″ for the **147** it shares with the utility return, which is where 421 fpm comes from |
 | Main | Main Bath | 36 | 1 | 36 | 5″ | 3x6 | 263 | — | — | — | — | — | | |
 | Main | Main Closet | 17 | 1 | 17 | 4″ | 3x6 | 191 | — | — | — | — | — | 1 | Tiny split from orphan |
-| 2nd | Play Room | 115 | 2 | 115 | 7″ | 4x10 | 429 | 1 | **168** | 8″ | 4x14 | 481 | 1 | New south duct sized for the *whole* room — see below |
+| 2nd | Play Room | 115 | 2 | 115 / ? | 7″ | 4x10 | 429 | 1 | **168** | 8″ | 4x14 | 481 | 1 | The **new south** duct alone is sized for the whole 115; the existing east register contributes an unknown amount on top — not a second 115 |
 | 2nd | Office | 113 | 2 | 56 | 5″ | 3x8 | 413 | 1 | 113 | 7″ | 4x10 | 423 | 2.5 | Rescue orphan counts half |
 | 2nd | Upper Bath | 28 | — | — | — | — | — | — | — | — | — | — | | No supply — wants electric heat |
 | 2nd | Upstairs Hallway | 20 | — | — | — | — | — | — | — | — | — | — | | Swept by transit only |

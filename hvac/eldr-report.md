@@ -129,9 +129,9 @@ _Demo estimate, not ACCA-certified. Sized on the larger of heating/cooling (here
 | Base Bath Void | 150 | 9 | 5 |
 | Main Stairway | 145 | 82 | 4 |
 | Base Bath | 137 | 69 | 4 |
-| **20 rooms** | | | **1,245** |
+| **20 rooms** | | | **1,246** |
 
-_Each room's load is from the exterior walls, windows, doors and ceiling/floor attributed to it, plus infiltration on its own volume; design CFM is the larger of heating/cooling airflow. Served rooms sum to **1,245 CFM** vs the whole-house **1,245 CFM** — the gap is space not carried here: floor area not yet drawn as rooms (halls, stairs, unfinished), plus tiny rooms below the 3-CFM run threshold. Draw more rooms and it closes._
+_Each room's load is from the exterior walls, windows, doors and ceiling/floor attributed to it, plus infiltration on its own volume; design CFM is the larger of heating/cooling airflow. Served rooms account for the whole-house **1,245 CFM** with nothing left over, so every conditioned space is drawn as a room. The column totals **1,246** because each row is rounded before summing, while the whole-house figure rounds once at the end._
 
 ## Manual D — Duct Sizing (round, equal-friction)
 
@@ -161,5 +161,7 @@ _Each room's load is from the exterior walls, windows, doors and ceiling/floor a
 | Base Bath Void | 5 | 1.9″ | **4″** | 53 fpm | 16 ft | 0.012″ |
 | Bar Area | 5 | 2.0″ | **4″** | 58 fpm | 1 ft | 0.001″ |
 | Future Media Room | 124 | 6.6″ | **7″** | 465 fpm | 16 ft | 0.013″ |
+
+_**Analysis, not a duct schedule.** These sizes come from each room's own load with no trunk hierarchy, no reducing runs and no installed layout — they answer "how big would a dedicated duct to this room have to be", which is a useful cross-check and not a thing anyone builds. Where a project keeps a hand-authored register schedule, that schedule is the authority for what gets installed._
 
 _Round duct, equal-friction, demo-grade. Total effective length uses a fitting fudge factor, not true fitting equivalent lengths; a full Manual D adds those and rectangular/oval sizing via equivalent diameter._

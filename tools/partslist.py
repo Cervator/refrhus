@@ -26,7 +26,9 @@ except ImportError:
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HOME = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, "sh3d-internals", "Home.xml")
 OUT = sys.argv[2] if len(sys.argv) > 2 else os.path.join(ROOT, "ducting-parts-list.md")
-IN = lambda cm: cm / 2.54
+def IN(cm):
+    """Sweet Home 3D stores every length in centimetres; this house thinks in inches."""
+    return cm / 2.54
 
 DEFAULT_MATERIAL = {"round": "dwspiral", "rect": "rect"}
 

@@ -181,8 +181,11 @@ around four useful numbers, and these are the four numbers.
 | 3 | S 39°29′ W | 125.00 ft |
 | 4 | N 48°05′ W | 68.15 ft — the street frontage |
 
-A rectangle, **125 ft deep by 68.15 ft wide**, matching the `125.00'` and `68.15'`
-dimensions printed on `SurveyAlone.png`.
+**A parallelogram, not a rectangle** — 125 ft deep by 68.15 ft wide, matching the
+`125.00'` and `68.15'` dimensions printed on `SurveyAlone.png`, but with interior
+angles of **92°26′ and 87°34′**. Opposite sides are equal and parallel; the corners
+are not square. Anything that squares the house to the lot boundary inherits that
+2.43° error.
 
 **The frontage bearing is the one that matters beyond the footprint.** The street
 line runs N 48°05′ W, so a front elevation square to the street faces roughly

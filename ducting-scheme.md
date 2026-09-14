@@ -104,12 +104,16 @@ Sizes are computed with Eldr's own `ductd` equal-friction math at 0.08 in.wc/100
 
 The cabinet is the whole argument in physical form. The standard, correct objection to retrofit second-floor ducting is that ducts in an unconditioned knee-wall attic lose 20–30%. A stacked cabinet running basement → main → second floor is a **conditioned chase**: it keeps the ducts inside the thermal envelope, which dissolves the objection rather than arguing with it.
 
-It carries **only the second floor** — 238 CFM up, 238 CFM back. Not the whole 1,245. The main floor is fed from basement runs and never enters the cabinet. That is why a chase this modest is sufficient.
+It carries **only the second floor**, not the whole 1,245. The main floor is fed from basement runs and never enters the cabinet, which is why a chase this modest is sufficient.
 
-| Duct | CFM | Equivalent round | Rectangular options |
-|---|---:|---|---|
-| Supply riser | 205 | ~8″ | 6×10, 8×8, 4×14 |
-| Return riser | 205 | ~8–10″ | 6×10, 9×9 |
+**Two figures, two scopes.** Eldr's unbiased second-floor total is **238 CFM**; the ducts are sized on the [register schedule](ducting-register-schedule.md)'s **276 CFM**, which is that total after the ×1.35 second-floor bias. The schedule is authoritative for duct sizes, so the riser is built to 276.
+
+| Duct | CFM | Round | Rectangular |
+|---|---:|:-:|:-:|
+| Supply riser | 276 | 9″ | 5×16 |
+| Return riser | 281 | 9″ | 9×9 |
+
+The return riser is sized at 281 — Office 113 plus Play Room 168 — rather than the 228 mass balance requires, so the cross-flow split between the two rooms can be set by damper rather than by re-ducting.
 
 Round is unnecessary anywhere inside the cabinet or under the stairs — it is all concealed, so rectangular wins on fit. Round is worth reserving for anywhere the duct is seen.
 

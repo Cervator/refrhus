@@ -1,6 +1,6 @@
 # Surface-temperature measurements
 
-A protocol for readings that stay comparable across days, seasons and instruments. The point is not one accurate number; it is a **series** — the same spots, repeatedly, with enough context recorded that a reading from February can be compared against one from August.
+A protocol for readings that stay comparable across days, seasons and instruments. The goal is not one accurate number; it is a **series** — the same spots, repeatedly, with enough context recorded that a reading from February can be compared against one from August.
 
 Raw readings live in [`wall-temperatures.csv`](wall-temperatures.csv). Nothing here is derived or computed — store what you observed, derive later. A reading you can't reconstruct the conditions for is nearly worthless, so the conditions columns are not optional.
 
@@ -21,7 +21,7 @@ Take that on the **bare cinder block** and on the **R-11 panelled** section and 
 
 Summer readings are still worth taking: they show the below-grade wall behaving as a heat *sink*, which is what justifies Eldr reporting zero below-grade cooling load. Just don't expect a U from them.
 
-The gradient reverses between seasons, and that is the honest check that the readings are real:
+The gradient reverses between seasons, which is the check that the readings are real:
 
 | | Coldest | Warmest | Why |
 |---|---|---|---|

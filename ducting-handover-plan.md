@@ -46,7 +46,7 @@ Every cylinder in the model is in the basement, and every basement *supply* need
 
 **The caveat that comes with standardising on double-wall:** the insulation sits inside the shell, so the airway is smaller than the nominal size. Sizing here is by *airway*, so confirm whether a supplier quotes inner or outer diameter before ordering — getting it backwards costs two inches of diameter on every round run at once.
 
-### When insulation is actually required
+### When insulation is required
 
 **Supply ducts sweat; returns do not.** A supply carries ~55°F air in cooling, and a basement at 75°F / 50% RH has a dew point right at 55°F — 60°F at 60% RH. So exposed basement supply runs condense *even in conditioned space*. Returns run near 75°F, above any indoor dew point, and never sweat.
 
@@ -183,7 +183,7 @@ Practicalities:
 
 1. **The kitchen SE supply** runs 806 fpm at 2″ of cabinet height and wants 4″. Moving one cabinet over or modifying the cabinet both solve it; either is a construction decision.
 2. **The kitchen return** at 3x20 needs roughly double the area, and wants to get *rounder* rather than longer — 8x14 against the drawn 3x20.
-3. **The main-floor return path**, which is the one genuinely worth a site visit before anything is priced. The buried section cannot change; the basement run is open and can be enlarged at least as far as the splitter.
+3. **The main-floor return path**, the one worth a site visit before anything is priced. The buried section cannot change; the basement run is open and can be enlarged at least as far as the splitter.
 
 ## What to be upfront about in the package
 

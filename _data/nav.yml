@@ -30,7 +30,7 @@
     - title: Chimney measurements
       url: /chimney-measure-sheet/
     - title: Basement post details
-      url: /basement-post-details.html
+      url: /basement-post-details/
 
 - title: Load calculations
   children:
@@ -38,6 +38,8 @@
       url: /hvac/
     - title: Current Eldr run
       url: /hvac/eldr-report/
+    - title: Surface-temperature protocol
+      url: /hvac/measurements/
 
 - title: Still open
   children:

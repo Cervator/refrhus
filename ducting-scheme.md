@@ -1,22 +1,28 @@
-# The duct scheme — primer and design thinking
+# The duct scheme
 
-Where the ducting design stands as of 2026-09-02, why it is shaped this way, and what is still open. Written to be readable cold — by a contractor, by a future session, or by the owner in six months.
+**One air handler in the basement behind the bar, feeding all three floors through a single stacked utility cabinet beside the chimney.**
 
-Companion documents: `chimney-measure-sheet.md` (the chimney's geometry), and [`hvac/index.md`](hvac/index.md) (the load calculations and where they disagree with the professional Manual J).
+The main floor is served by basement runs — south through the under-stair space, north through the basement bathroom and then west along the girder. The second floor takes one supply and one return riser up the cabinet: the supply branches short and central, the return splits in the knee-wall attic to reach the far corners of both rooms.
 
----
+| | |
+|---|---:|
+| Design airflow (Eldr, equipment basis) | 1,245 CFM |
+| Plenums | 12x20 supply and return |
+| Largest trunk | 12x16 |
+| Straight duct | 344 ft across 29 runs |
+| Registers and grilles | 15 supply, 8 return |
+| Faces outside the velocity band | 2 — both kitchen, cabinetry-constrained |
+| Worst constraint | Main-floor return, 374 CFM asked of a 4x8 |
 
-## The scheme in one paragraph
+Two contractors have instead proposed a second air handler in the knee-wall attic. That option is compared against this one [below](#one-air-handler-or-two).
 
-**One air handler, relocated to the basement behind the bar, feeding all three floors through a single stacked utility cabinet built alongside the chimney.** The main floor is served by basement runs — south through the under-stair space, north through the basement bathroom and then west along the girder. The second floor is served by one supply and one return riser up the cabinet, with the supply branching short and central and the return splitting in the knee-wall attic to reach the far corners of both rooms.
-
-The alternative on the table — a second air handler in the second-floor knee-wall attic — has been proposed by two separate contractors. This document exists partly to argue against it on evidence rather than preference.
+Related: [the register schedule](ducting-register-schedule.md) for per-register sizes, [the parts list](ducting-parts-list.md) for materials and cost, [the load calculations](hvac/index.md) for where our numbers and the professional Manual J differ, and [the chimney measurements](chimney-measure-sheet.md) for the geometry the cabinet is built against.
 
 ---
 
 ## The governing principle
 
-Everything below follows from one rule, and it is worth stating first because it decides every routing question that comes up:
+Everything below follows from one rule, which decides every routing question that comes up:
 
 > **Supplies stay inside the thermal envelope. Returns may cross buffer spaces.**
 
@@ -47,12 +53,12 @@ Design airflow from Eldr's per-room Manual J, on geometry that is deliberately c
 
 ---
 
-## Per-room duct sizing (2026-09-02)
+## Per-room duct sizing
 
 Airflow deliberately biased before sizing, on the owner's read of how the house behaves rather than what the model computes:
 
 - **Second floor ×1.35.** Its ceiling is modelled at 984 ft² whole-house against the professionals' 1,547, its knee walls are not drawn at all, and it is observed to run hot. The uplift sits between the moderate correction (~×1.15) and the worst case (~×1.40).
-- **Basement ×0.70.** Largely below grade, thermally massive, and observed to hold temperature with no conditioning at all. Its design-day peak overstates the airflow it actually needs.
+- **Basement ×0.70.** Largely below grade, thermally massive, and observed to hold temperature with no conditioning at all. Its design-day peak overstates the airflow it needs.
 - **Main floor unchanged.**
 
 Rooms under 10 CFM get no dedicated run — door undercut or a transfer grille instead.
@@ -104,16 +110,16 @@ Sizes are computed with Eldr's own `ductd` equal-friction math at 0.08 in.wc/100
 
 The cabinet is the whole argument in physical form. The standard, correct objection to retrofit second-floor ducting is that ducts in an unconditioned knee-wall attic lose 20–30%. A stacked cabinet running basement → main → second floor is a **conditioned chase**: it keeps the ducts inside the thermal envelope, which dissolves the objection rather than arguing with it.
 
-It carries **only the second floor**, not the whole 1,245. The main floor is fed from basement runs and never enters the cabinet, which is why a chase this modest is sufficient.
+It carries **only the second floor**, not the whole 1,245 — the main floor is fed from basement runs and never enters the cabinet. That is what keeps a chase this modest sufficient.
 
 **Two figures, two scopes — and they are not one multiplication apart.**
 
 - **238 CFM** is Eldr's current unbiased second-floor total, aggregated across every room on the level.
 - **276 CFM** is the sum of the [register schedule](ducting-register-schedule.md)'s four second-floor rows — Play Room 115, Office 113, Upper Bath 28, Upstairs Hallway 20 — each biased at *room* level against an earlier model state, with the Play Room row since revised upward to carry the whole room rather than half of it.
 
-**The schedule is authoritative for duct sizing, so the riser is built to 276.** But the two numbers do not reconcile by applying ×1.35 to 238: that would give **321**, and an earlier draft of this paragraph claimed otherwise. Worth stating plainly, because 321 is the figure a fresh biased calculation would ask for today — **16% above what the riser is sized to.**
+**The schedule is authoritative for duct sizing, so the riser is built to 276.** The two do not reconcile by applying ×1.35 to 238, which gives **321** — the figure a fresh biased calculation would ask for today, **16% above what the riser is sized to.**
 
-That gap does not change the answer. A 9″ round carries 357 CFM at design friction, so it holds 276 and 321 alike, with the velocity rising from 625 to 727 fpm. It is worth knowing which end of its range the riser is working at, and worth re-deriving the schedule against current loads before anything is fabricated.
+The gap does not change the answer. A 9″ round carries 357 CFM at design friction, so it holds 276 and 321 alike, with velocity rising from 625 to 727 fpm. Settle which end of that range applies by re-deriving the schedule against current loads before anything is fabricated.
 
 | Duct | CFM | Round | Rectangular |
 |---|---:|:-:|:-:|
@@ -150,7 +156,7 @@ Elevating it a foot or two adds duct routing space beneath, **condensate fall** 
 
 Open space; not a constraint. The cabinet here passes the two risers through and is the natural place to take **the office supply straight up through the floor**, keeping that room's supply out of the attic entirely. The office is **100 CFM unbiased — 42% of the second floor's 238** — so this solves the largest single room with the shortest and safest run. (The figure was 87 CFM on an earlier model state; the percentage happens to be unchanged.)
 
-**On the schedule's biased basis the ranking flips**, and it is worth knowing why before anyone re-derives from it: Office 113 against Play Room 115. That does not mean the Play Room is the bigger load — it is the deliberate choice to size the Play Room's new south duct for the *whole* room rather than half, because its existing east duct is unmeasured. Unbiased, the office is larger by 100 to 86.
+**On the schedule's biased basis the ranking flips**: Office 113 against Play Room 115. That does not mean the Play Room is the bigger load — it is the deliberate choice to size the Play Room's new south duct for the *whole* room rather than half, because its existing east duct is unmeasured. Unbiased, the office is larger by 100 to 86.
 
 ### Second floor
 
@@ -193,12 +199,12 @@ The existing supply register sits diagonally across the room from there, which i
 
 **Central supply with perimeter return inverts normal practice.** Convention puts supply at the perimeter — under windows, against exterior walls, where the load is and where you want to break the cold-surface draft — and returns centrally. This scheme does the reverse on the second floor.
 
-That is a real trade and it matters more in an old house with mixed glazing than in a tight new one. Two things make it acceptable:
+The trade matters more in an old house with mixed glazing than in a tight new one. Two things make it acceptable:
 
-1. The plan already includes **secondary perimeter supply** via the old window-adjacent duct in the office. The scheme is really *primary central + secondary perimeter*, which is a recognised retrofit compromise rather than a straight inversion.
+1. The plan already includes **secondary perimeter supply** via the old window-adjacent duct in the office. The scheme is *primary central + secondary perimeter*, a recognised retrofit compromise rather than a straight inversion.
 2. There is **room to add supply later** — including a north run — if internal room balance turns out poor. The cabinet is sized with margin and the risers are not the constraint.
 
-**The assumption to check is throw.** Whether a central register at **100 CFM** actually reaches the office's far wall is Manual T territory. Rough answer: a typical floor register at that flow throws 8–12 ft against a room around 14–15 ft, so a central position needs ~7 ft. Plausible with margin — and the margin grew rather than shrank when the load rose from the 87 CFM an earlier model state gave, since more air throws further. Still a catalogue lookup at register selection, not something to take on faith.
+**The assumption to check is throw.** Whether a central register at **100 CFM** reaches the office's far wall is Manual T territory. A typical floor register at that flow throws 8–12 ft against a room around 14–15 ft, so a central position needs ~7 ft — plausible with margin. It remains a catalogue lookup at register selection rather than something to take on faith.
 
 **This assumes the central register carries the whole 100 CFM.** The office also has the existing perimeter duct, and if that stays in service the central register carries less and throws shorter. Either specify the central register for the full load and treat the perimeter duct as recovered capacity — the same call already made for the Play Room — or size both and check the throw at the reduced figure. **What must not happen is sizing for the full load and then quietly splitting it.**
 
@@ -218,11 +224,11 @@ That is the whole reason retrofit attic equipment loses 20–30%, and it applies
 
 ### The placement problem, which is worse
 
-**A unit in the north knee-wall attic can reach the north side of those rooms and not the south.** That is not a detail to solve later; it decides what the scheme can deliver. The south side of the second floor has real load — this document's own conservative numbers say so, and they *understate* it, since a third of that ceiling area is not even drawn yet.
+**A unit in the north knee-wall attic can reach the north side of those rooms and not the south.** That is not a detail to solve later; it decides what the scheme can deliver. The south side of the second floor carries load that the conservative numbers here already show, and they *understate* it: a third of that ceiling area is not drawn yet.
 
-The suggested remedy is a duct run in a channel along the east side of the office, into the small east knee-wall attic. Skepticism there is well placed, and the reason is worth naming precisely: **a channel along a finished wall is a chase.** If building a chase is acceptable, then the objection to this design — which is built around a chase — was never really about chases. It is about *which* one.
+The suggested remedy is a duct run in a channel along the east side of the office, into the small east knee-wall attic. **A channel along a finished wall is a chase.** If building a chase is acceptable, the objection to this design — which is built around a chase — was never about chases but about *which* one.
 
-Compare them honestly:
+The two compared:
 
 | | This design's chase | The proposed channel |
 |---|---|---|
@@ -234,13 +240,9 @@ Compare them honestly:
 
 The second unit is meant to *avoid* building a chase. Needing one anyway, in a worse place, to reach a corner the first unit was going to reach through the chase already planned, is the argument turning back on itself.
 
-### What it still genuinely buys
+### What two handlers buy
 
-None of that touches the real advantage, and it should be stated plainly rather than buried under the objections.
-
-### What two internal handlers genuinely buy
-
-- **Real zoning, which one unit cannot have here.** This is the strongest point in its favour, and this document's own analysis supports it: neither the basement (167 CFM, 14% of total) nor the second floor alone can be a hard zone on a single unit this size without starving the blower. Smart throttling of individual branches works, hard per-floor zoning does not. **Two handlers make per-floor zoning real instead of approximate** — and there are already three thermostats in this house expecting exactly that.
+- **Real zoning, which one unit cannot have here.** The strongest point in its favour, and the analysis here supports it: neither the basement (167 CFM, 14% of total) nor the second floor alone can be a hard zone on a single unit this size without starving the blower. Smart throttling of individual branches works, hard per-floor zoning does not. **Two handlers make per-floor zoning real instead of approximate** — and there are already three thermostats in this house expecting exactly that.
 - **Much shorter duct runs, and therefore lower static pressure.** Static pressure is the thing most likely to defeat the single-unit scheme, and a second handler attacks it directly rather than arguing about it.
 - **Independent part-load behaviour**, and no single point of failure for the whole house.
 
@@ -253,24 +255,24 @@ None of that touches the real advantage, and it should be stated plainly rather 
 ### Where the single-unit case still stands
 
 1. **The load is modest.** 238 CFM to the second floor against 751 to the main floor. The second floor is a geometry problem, not a capacity problem — and a second handler is a capacity answer to a geometry question.
-2. **Both supply and return reach it.** A second handler quietly solves the *return* problem by putting the blower where the air is; that is the real reason "you can't duct a second floor" is so often true in retrofits. The cabinet has measured room for both, so the single unit is not relying on the return problem going away.
+2. **Both supply and return reach it.** A second handler solves the *return* problem by putting the blower where the air is, which is the usual reason "you can't duct a second floor" holds in retrofits. The cabinet has measured room for both, so the single unit is not relying on the return problem going away.
 3. **The chase is conditioned.** Ducts stay inside the envelope for their whole run, which is the same benefit the internal-handler proposal is reaching for, obtained a different way.
 4. **The numbers are conservative.** See the ceiling-area caveat above.
 
-### The honest decision criterion
+### The decision criterion
 
 **Static pressure decides whether one unit is enough.** If it can move 1,245 CFM through this layout at an acceptable external static pressure, one unit is the better buy — everything inside the envelope, half the equipment, one filter to change. That is a question the fitting counts settle, and a contractor is better placed to supply them than this model is. Ask for the counts rather than for an opinion.
 
 **But placement decides whether two units would even help.** A second handler in the north knee-wall attic does not serve the south side of those rooms, and no amount of static-pressure headroom changes that. So the two questions are independent, and they should be asked in this order:
 
-1. *Where would the second unit sit, and which registers can it actually reach?* If the answer is "north only, plus a channel along the office wall", the proposal has not solved the problem it was brought in to solve.
+1. *Where would the second unit sit, and which registers can it reach?* If the answer is "north only, plus a channel along the office wall", the proposal has not solved the problem it was brought in to solve.
 2. *Only if it reaches everything:* does one unit hit its static-pressure limit?
 
-A second handler somewhere genuinely central and inside the envelope would be a real alternative worth pricing — it would buy the per-floor zoning a single unit cannot have here. **The north knee-wall attic is not that location**, and choosing it converts the strongest argument for two units into an argument about where to put a chase.
+A second handler somewhere central and inside the envelope would be an alternative worth pricing, and would buy the per-floor zoning a single unit cannot have here. **The north knee-wall attic is not that location**, and choosing it converts the strongest argument for two units into an argument about where to put a chase.
 
 **Where to be careful.** Eldr's Manual D uses a flat 1.5× fitting factor, not true fitting equivalent lengths. Real elbows, tees and boots on a three-storey run add 50–150 ft of equivalent length, so any static-pressure figure computed with the default is optimistic. Either raise the factor to something defensible (2.5–3) and say so, or count fittings by hand for the contested run. **Do not hand over a number that flatters the case on a modelling shortcut** — it is the one thing that would cost the credibility everything else earns.
 
-Also worth noting: the current HVAC company specialises in insulation, so envelope work is likely already in their plan. That is an ally for this scheme rather than an obstacle — a tighter envelope lowers the load the ducts have to carry.
+The current HVAC company specialises in insulation, so envelope work is likely already in their plan. A tighter envelope lowers the load the ducts have to carry, so the two efforts work together.
 
 ---
 
@@ -282,7 +284,7 @@ The wall the upstairs-east risers pass through, and the trickiest build in the s
 
 **Go rectangular, not round.** The depth budget is roughly two stud bays back to back (~7″), and a bay gives about 14.5″ clear. Three round 5–6″ ducts side by side need 15–18″ and fight the studs. Residential **wall-stack duct** — 3.25x10 or 3.25x12, purpose-made to run vertically between studs in a 2x4 wall — puts the shallow dimension across the wall depth and solves the problem directly. Oval is the fallback. Prefer running each duct *within* a bay so no stud needs notching; if a riser must cross one, verify the partition is non-load-bearing first, because the south-extension quirk muddies that.
 
-**The panel has to come off and still look intentional.** Build the built-in as a rigid self-bracing box so it does not rack when lifted, and hang it on a French cleat with a few concealed screws — rigidity gives the sturdiness, few fasteners give the removability. Hide screws inside shelf interiors, behind the coat rail, or under a toe-kick. **Put the removable seams on natural trim lines** — design the face as board-and-batten or stile-and-rail so the panel edges fall on a batten joint. That single move is the difference between millwork and an access hatch, and it is what makes the wall read as built-in from the front door rather than as a duct chase with a lid.
+**The panel has to come off and still look intentional.** Build the built-in as a rigid self-bracing box so it does not rack when lifted, and hang it on a French cleat with a few concealed screws — rigidity gives the sturdiness, few fasteners give the removability. Hide screws inside shelf interiors, behind the coat rail, or under a toe-kick. **Put the removable seams on natural trim lines** — design the face as board-and-batten or stile-and-rail so the panel edges fall on a batten joint. That is the difference between millwork and an access hatch.
 
 The alternative to all of it is over-provisioning ducts up front so the wall never needs opening. This scheme deliberately takes the other bet: **fewer ducts, and a wall you can unscrew.**
 
@@ -326,15 +328,15 @@ Behind the bar either orientation fits: the basement's 84″ to joist bottoms cl
 
 Electric heat kits (EHK-05B through EHK-20B, 5–20 kW) fit the cabinet without modification, which is the backup-heat path if the cold-climate performance ever needs supplementing.
 
-### Orientation, generally
+### Air handler orientation
 
 **Most residential air handlers are multi-position** — the same cabinet is sold for upflow, downflow, horizontal-left and horizontal-right. The Bosch BVA line ships configured for *upflow or horizontal-right* and is field-convertible to *horizontal-left or downflow*. The IDS Ultra air handler's drain pan is explicitly described as offering "flexibility for VT or HZ applications."
 
-**The drain pan is the part that actually changes.** Condensate has to fall toward a drain in whatever orientation the coil ends up, so conversion is usually a matter of repositioning the pan and sometimes fitting a kit. Ask specifically whether the horizontal conversion needs a part, and confirm the drain fall — a horizontal pan with insufficient slope is a recurring source of overflow.
+**The drain pan is the part that changes.** Condensate has to fall toward a drain in whatever orientation the coil ends up, so conversion is usually a matter of repositioning the pan and sometimes fitting a kit. Ask specifically whether the horizontal conversion needs a part, and confirm the drain fall — a horizontal pan with insufficient slope is a recurring source of overflow.
 
-### The controls trade-off, which is a real decision
+### The controls trade-off
 
-The requirement here is variable speed **and** open control rather than a locked ecosystem. Those pull against each other, and it is worth deciding deliberately:
+The requirement here is variable speed **and** open control rather than a locked ecosystem. The two pull against each other:
 
 | | Conventional 24V | Bosch communicating |
 |---|---|---|
@@ -342,16 +344,16 @@ The requirement here is variable speed **and** open control rather than a locked
 | Modulation | **staged**, not continuous | full compressor range |
 | Openness | complete | closed |
 
-The good news is that a Bosch variable-speed unit **can** run on a third-party 24V thermostat, because the modulation logic lives in the unit rather than the stat. The IDS Ultra's remote monitoring is documented as working "even without a communicating thermostat." A two-stage-capable smart thermostat is the practical minimum.
+A Bosch variable-speed unit **can** run on a third-party 24V thermostat, because the modulation logic lives in the unit rather than the stat. The IDS Ultra's remote monitoring is documented as working "even without a communicating thermostat." A two-stage-capable smart thermostat is the practical minimum.
 
 The cost is granularity. The Ultra's compressor modulates **35% to 138% in 1% increments**, and a conventional thermostat can only ask for stages, so most of that resolution goes unused. A communicating thermostat unlocks it and closes the system.
 
-**One thing worth confirming before committing:** whether any local telemetry is available, or whether monitoring only goes through Bosch's EasyAir cloud app. Given the house already has an LGTM stack, a local data path would be worth more here than in a typical install.
+**Confirm before committing:** whether local telemetry is available, or whether monitoring only goes through Bosch's EasyAir cloud app. The house already runs an LGTM stack, so a local data path is worth more here than in a typical install.
 
 ## Future options, deliberately deferred
 
-- **Garage mudroom conversion.** Split the return off the kitchen run at one end, bring supply across the *conditioned* basement, and enter at the opposite end. The governing principle holds, and supply and return land diagonally opposite — the arrangement you would choose freely. This is the case that shows the scheme extends rather than merely fits.
+- **Garage mudroom conversion.** Split the return off the kitchen run at one end, bring supply across the *conditioned* basement, and enter at the opposite end. The governing principle holds, and supply and return land diagonally opposite — the arrangement you would choose freely.
 - **A north supply run** if room balance proves poor.
 - **More second-floor supply** beyond the central pair and the two old ducts.
-- **Manual T** — register throw and spread — which turns "should reach the far corner" into a calculation, and speaks the contractor's language most directly.
+- **Manual T** — register throw and spread — which turns "should reach the far corner" into a calculation.
 - **Grade line and second-floor ceiling geometry**, the two largest remaining Manual J gaps, both parked while the duct layout takes shape.

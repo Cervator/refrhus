@@ -31,6 +31,14 @@ plugins:
   - jekyll-relative-links
   - jekyll-titles-from-headings
 
+# optional-front-matter *copies* a markdown file into a page and leaves the
+# original in place unless told otherwise, so every document ships twice: the
+# rendered page at /ducting-scheme/ and a raw download at /ducting-scheme.md.
+# The raw copies carry no nav, no theme and no styling, and search engines
+# index them alongside the real pages.
+optional_front_matter:
+  remove_originals: true
+
 defaults:
   - scope:
       path: ""

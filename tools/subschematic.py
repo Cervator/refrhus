@@ -23,6 +23,30 @@ The projection tag is optional and defaults to `plan`:
     section-ns   looking west   — y across, z up the page
     section-ew   looking north  — x across, z up the page
 
+HOW BIG TO DRAW THE BOX
+-----------------------
+**Roughly 6–10 ft across.** The plenum view below is 8.7 x 7.6 ft and holds 28
+objects, which is the busy end of readable; under about 4 ft you have zoomed
+past the context that makes the close-up worth having. Aim for one junction
+and everything that lands on it.
+
+**All three dimensions are read, in both projections.** The two the drawing
+shows are the crop. The third is a slice: it decides what is near enough to
+belong in the picture, and without it a section of the plenum collects every
+duct anywhere along the house at the same height.
+
+So for a **plan** box, the height picks the levels — sitting on the Basement
+and stopping below the ceiling draws the basement alone, while drawing it up
+through the slab picks up the transition level and the floor above. For a
+**section** box, the depth is the slice thickness; 1–2 ft cuts a junction and
+its takeoffs without the far side of the room piling up behind them. A section
+box also has to be as *tall* as the elevation you want to show, which for the
+three-level cabinet means a box that spans levels — set its height directly
+rather than expecting the level to bound it.
+
+Set the box invisible so it never renders in 3D. It is read out of `Home.xml`
+either way.
+
 `--around` is the escape hatch for a region with no box drawn yet: it derives
 bounds from every object whose name contains the given text, plus padding.
 
@@ -421,7 +445,7 @@ def main():
     ap.add_argument("--pad-in", type=float, default=18.0,
                     help="inches of margin around --around bounds")
     ap.add_argument("--levels", help="comma-separated level names to draw in plan; "
-                                     "defaults to the level the view box sits on")
+                                     "defaults to the levels the box's height spans")
     ap.add_argument("--list", action="store_true", help="list View: objects and exit")
     args = ap.parse_args()
 
@@ -464,9 +488,23 @@ def main():
 
     explicit = [s.strip() for s in args.levels.split(",")] if args.levels else None
 
+    def levels_spanned(b3, own):
+        """Which levels a plan view should draw, from how tall the box is.
+
+        A box sitting on the Basement and stopping below the ceiling draws the
+        basement alone; one drawn up through the slab picks up the transition
+        level and the floor above as well. That makes the box's height mean
+        something in plan, not only in section, so there is one rule to
+        explain rather than two.
+        """
+        z0, z1 = b3[2], b3[5]
+        hit = [lv["name"] for lv in levels.values()
+               if lv["elevation"] < z1 and lv["elevation"] + lv["height"] > z0]
+        return hit or [own]
+
     os.makedirs(args.outdir, exist_ok=True)
     for title, level, proj, b3 in jobs:
-        keep = explicit or [level]
+        keep = explicit or levels_spanned(b3, level)
         items, ws = collect(b3, all_items, all_walls, proj, keep)
         if not items:
             print(f"  {title}: nothing inside the box — skipped")
